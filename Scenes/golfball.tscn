@@ -1,21 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://dluevt7f3vicc"]
+[gd_scene load_steps=8 format=3 uid="uid://dluevt7f3vicc"]
 
 [ext_resource type="Script" path="res://Scripts/CameraPivot.gd" id="1_8kske"]
 [ext_resource type="Script" path="res://Scripts/golfball.gd" id="1_ahl7a"]
 [ext_resource type="PhysicsMaterial" uid="uid://b7f3tpjorcnfy" path="res://Physics/mat_golfball.tres" id="1_jurg1"]
 [ext_resource type="Script" path="res://Scripts/FollowNode.gd" id="4_55kpm"]
+[ext_resource type="Material" uid="uid://b4cb4h5dd0vik" path="res://Materials/Golfball/Golfball_mat.tres" id="4_ivy6g"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_klkvt"]
-radius = 0.022
+radius = 0.044
 
 [sub_resource type="SphereMesh" id="SphereMesh_f4cbf"]
-radius = 0.022
-height = 0.044
+material = ExtResource("4_ivy6g")
+radius = 0.044
+height = 0.088
 
 [node name="Golfball" type="Node3D"]
 
 [node name="OnGroundRaycast" type="RayCast3D" parent="." node_paths=PackedStringArray("follow")]
-target_position = Vector3(0, -0.025, 0)
+target_position = Vector3(0, -0.05, 0)
 script = ExtResource("4_55kpm")
 LERP_WEIGHT = 100
 follow = NodePath("../Golfball")

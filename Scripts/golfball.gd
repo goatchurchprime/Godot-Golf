@@ -1,5 +1,13 @@
 extends RigidBody3D
 
+const MIN_VELOCITY = 0.5
+const LERP_WEIGHT = 0.9
+const TIMER_END = 250
+
+var timer = 0
+var moveTimer : bool
+
+var moveAllowed : bool
 
 var tmpStrength = -0.4
 var impulse : Vector3
@@ -17,7 +25,7 @@ func _process(delta):
 	pass # Replace with function body.
 
 func _input(event):
-	if Input.is_action_just_pressed("left_mouse"):
+	if Input.is_action_just_pressed("left_mouse") and moveAllowed:
 		print("Shoot!")
 		impulse = -springArm.transform.basis.y
 		impulse.y = 0
@@ -28,21 +36,25 @@ func _integrate_forces(state):
 	if impulse:
 		apply_impulse(impulse)
 		impulse = Vector3(0,0,0)
-	if
+	
+	if moveTimer:
+		timer+=1
+		if timer == TIMER_END:
+			linear_velocity = Vector3(0,0,0)
+			moveAllowed = true
+			resetTimer()
+	
+	if abs(linear_velocity.length()) > MIN_VELOCITY:
+		moveAllowed = false
+		resetTimer()
+	else:
+		moveTimer = true
 	
 	lastLinearVelocity = linear_velocity
-	
-	
-		#if abs(linear_velocity) < MIN_VELOCITY && abs(linear_velocity) < abs(lastLinearVelocity):
-		#	print("its ok you can shoot now")
-		#	linear_velocity = lerp(linear_velocity,Vector3(0,0,0),LERP_WEIGHT)
-		#	if linear_velocity < MIN_VELOCITY/2:
-		#		allowedToMove = true
-	
-	#Stop the rotation, does not affect simulation, fixes camera
-	#rotation.x = 0
-	#rotation.z = 0
-	#rotation.y = 0
+
+func resetTimer():
+	moveTimer = false
+	timer = 0
 
 func isOnTheGround():
 	if onGroundRaycast.get_collider() is StaticBody3D:
