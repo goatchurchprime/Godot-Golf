@@ -1,0 +1,14 @@
+Coola saker:
+	FollowNode Scriptet använder sig av linear interpolation för att följa bollen smoothly
+
+
+
+Problem jag mötte på vägen:
+	Inte jätte mycket information kring att göra ett third person golf spel.
+	Svårt att skapa movementControllern
+	Mycket clipping med SpringArm till kameran - Fixades genom att höja margin
+	VIKTIGT - Svårt att räkna ut när drag är lagliga, kan inte använda abs(vel) < 0.1 för att om den studsar mot en vägg kommer den att sluta då den når väggen.
+
+
+Saker att göra:
+	Namge om allt och fixa strukturen.

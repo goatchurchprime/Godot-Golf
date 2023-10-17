@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dluevt7f3vicc"]
+
+[ext_resource type="Script" path="res://Scripts/CameraPivot.gd" id="1_8kske"]
+[ext_resource type="Script" path="res://Scripts/golfball.gd" id="1_ahl7a"]
+[ext_resource type="PhysicsMaterial" uid="uid://b7f3tpjorcnfy" path="res://Physics/mat_golfball.tres" id="1_jurg1"]
+[ext_resource type="Script" path="res://Scripts/FollowNode.gd" id="4_55kpm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_klkvt"]
+radius = 0.022
+
+[sub_resource type="SphereMesh" id="SphereMesh_f4cbf"]
+radius = 0.022
+height = 0.044
+
+[node name="Golfball" type="Node3D"]
+
+[node name="OnGroundRaycast" type="RayCast3D" parent="." node_paths=PackedStringArray("follow")]
+target_position = Vector3(0, -0.025, 0)
+script = ExtResource("4_55kpm")
+LERP_WEIGHT = 100
+follow = NodePath("../Golfball")
+
+[node name="Golfball" type="RigidBody3D" parent="."]
+mass = 0.05
+physics_material_override = ExtResource("1_jurg1")
+can_sleep = false
+linear_damp = 1.0
+script = ExtResource("1_ahl7a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Golfball"]
+shape = SubResource("SphereShape3D_klkvt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Golfball"]
+mesh = SubResource("SphereMesh_f4cbf")
+
+[node name="FollowNode" type="Node3D" parent="." node_paths=PackedStringArray("follow")]
+script = ExtResource("4_55kpm")
+LERP_WEIGHT = 4
+follow = NodePath("../Golfball")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="FollowNode"]
+transform = Transform3D(1, 0, 0, 0, 0.927184, 0.374607, 0, -0.374607, 0.927184, 0, 0.380318, 0)
+spring_length = 1.5
+margin = 0.1
+script = ExtResource("1_8kske")
+
+[node name="Camera3D" type="Camera3D" parent="FollowNode/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)

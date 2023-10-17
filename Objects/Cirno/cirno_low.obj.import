@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://5ojyu2uls7x7"
+path="res://.godot/imported/cirno_low.obj-5dd679896e2a612a93d820a79f0998bf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cirno_low.obj-5dd679896e2a612a93d820a79f0998bf.mesh"]
+
+source_file="res://Objects/Cirno/cirno_low.obj"
+dest_files=["res://.godot/imported/cirno_low.obj-5dd679896e2a612a93d820a79f0998bf.mesh", "res://.godot/imported/cirno_low.obj-5dd679896e2a612a93d820a79f0998bf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
