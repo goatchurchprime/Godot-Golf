@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://blcujpj5qhmqm"]
+[gd_scene load_steps=20 format=3 uid="uid://blcujpj5qhmqm"]
 
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass/grass.tres" id="1_w3hdd"]
 [ext_resource type="Material" uid="uid://cmkw6fa3fvndx" path="res://materials/cirno.tres" id="2_hkdih"]
@@ -33,6 +33,9 @@ size = Vector3(0.582028, 0.530628, 0.71864)
 size = Vector3(0.119411, 0.114922, 0.254647)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ug350"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mwby"]
+size = Vector3(0.271714, 0.354151, 0.533474)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rewji"]
 
@@ -90,6 +93,10 @@ shape = SubResource("BoxShape3D_ob8kg")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Level/Cirno"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947218, 0)
 shape = SubResource("SphereShape3D_ug350")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Level/Cirno"]
+transform = Transform3D(0.734151, 0.574898, -0.361267, -0.616835, 0.787092, -0.000975758, 0.283789, 0.223558, 0.932461, -0.230431, 0.0821924, -0.0377674)
+shape = SubResource("BoxShape3D_3mwby")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.114, 0, 0)
