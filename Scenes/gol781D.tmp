@@ -1,21 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://dluevt7f3vicc"]
+[gd_scene load_steps=11 format=3 uid="uid://dluevt7f3vicc"]
 
 [ext_resource type="Script" path="res://Scenes/VariableController.gd" id="1_6w6pv"]
 [ext_resource type="Script" path="res://Scripts/CameraPivot.gd" id="1_8kske"]
 [ext_resource type="Script" path="res://Scripts/golfball.gd" id="1_ahl7a"]
 [ext_resource type="PhysicsMaterial" uid="uid://b7f3tpjorcnfy" path="res://Physics/mat_golfball.tres" id="1_jurg1"]
 [ext_resource type="Script" path="res://Scripts/FollowNode.gd" id="4_55kpm"]
+[ext_resource type="Material" uid="uid://b4cb4h5dd0vik" path="res://Materials/Golfball/Golfball_mat.tres" id="4_ivy6g"]
 [ext_resource type="Script" path="res://Scenes/StrengthArrow.gd" id="7_s0aef"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_klkvt"]
 radius = 0.044
 
 [sub_resource type="SphereMesh" id="SphereMesh_f4cbf"]
+material = ExtResource("4_ivy6g")
 radius = 0.044
 height = 0.088
 
-[sub_resource type="BoxMesh" id="BoxMesh_j5idn"]
-size = Vector3(0.01, 0.045, 1)
+[sub_resource type="PlaneMesh" id="PlaneMesh_buqra"]
+size = Vector2(0.01, 0.295)
 
 [node name="Golfball" type="Node3D"]
 script = ExtResource("1_6w6pv")
@@ -58,6 +60,6 @@ script = ExtResource("7_s0aef")
 LERP_WEIGHT = 100
 followingNode = NodePath("../Golfball")
 
-[node name="ArrowMesh" type="MeshInstance3D" parent="Arrow"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arrow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.206441)
-mesh = SubResource("BoxMesh_j5idn")
+mesh = SubResource("PlaneMesh_buqra")

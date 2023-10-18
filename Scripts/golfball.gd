@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 #Related to hitting
-const MIN_STRENGTH = 0.1
+const MIN_STRENGTH = 0.01
 const MAX_STRENGTH = -10
 const STRENGTH = 0.1
 const HIT_SENSITIVITY = 3
@@ -15,18 +15,16 @@ var timer : int
 var moveTimer : bool
 
 var moveAllowed : bool
-var aiming : bool
 
 var impulse : Vector3
-var mouseMove : float
 
-@onready var springArm = $"../FollowNode/SpringArm3D"
+@onready var head = $".."
 @onready var onGroundRaycast = $"../OnGroundRaycast"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = 0
-	mouseMove = MIN_STRENGTH
+	head.hitStrength = MIN_STRENGTH
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -35,19 +33,19 @@ func _process(delta):
 func _input(event):
 	if moveAllowed:
 		if Input.is_action_just_pressed("left_mouse"):
-			aiming = true
+			head.aiming = true
 			print("click")
 		elif Input.is_action_just_released("left_mouse"):
-			print(mouseMove)
-			aiming = false
-			impulse = -springArm.transform.basis.y
+			print(head.hitStrength)
+			head.aiming = false
+			impulse = head.springArmRotation
 			impulse.y = 0
 			impulse = impulse.normalized()
-			impulse*= -abs(mouseMove*STRENGTH)
-			mouseMove = MIN_STRENGTH
-		elif event is InputEventMouseMotion and aiming:
-			mouseMove += deg_to_rad(-event.relative.y)*HIT_SENSITIVITY
-			mouseMove = clamp(mouseMove,MAX_STRENGTH,MIN_STRENGTH)
+			impulse*= -abs(head.hitStrength*STRENGTH)
+			head.hitStrength = MIN_STRENGTH
+		elif event is InputEventMouseMotion and head.aiming:
+			head.hitStrength += deg_to_rad(-event.relative.y)*HIT_SENSITIVITY
+			head.hitStrength = clamp(head.hitStrength,MAX_STRENGTH,MIN_STRENGTH)
 
 
 func _integrate_forces(state):
@@ -67,6 +65,8 @@ func _integrate_forces(state):
 		resetTimer()
 	else:
 		moveTimer = true
+	
+	head.ballPosition = position
 
 func resetTimer():
 	moveTimer = false
