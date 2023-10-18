@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 #Related to hitting
-const MIN_STRENGTH = 0.01
+const MIN_STRENGTH = 0
 const MAX_STRENGTH = -10
 const STRENGTH = 0.1
 const HIT_SENSITIVITY = 3
@@ -12,9 +12,9 @@ const LERP_WEIGHT = 0.9
 const TIMER_END = 250
 
 var timer : int
-var moveTimer : bool
+var move_timer : bool
 
-var moveAllowed : bool
+var move_allowed : bool
 
 var impulse : Vector3
 
@@ -24,28 +24,32 @@ var impulse : Vector3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = 0
-	head.hitStrength = MIN_STRENGTH
+	head.hit_strength = MIN_STRENGTH
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass # Replace with function body.
 
 func _input(event):
-	if moveAllowed:
+	if move_allowed:
 		if Input.is_action_just_pressed("left_mouse"):
 			head.aiming = true
-			print("click")
 		elif Input.is_action_just_released("left_mouse"):
-			print(head.hitStrength)
+			#Gives possibility to cancel hit
+			if abs(head.hit_strength) > 0:
+				print("hit_strength: " + str(head.hit_strength))
+				impulse = head.spring_arm_rotation
+				impulse.y = 0
+				impulse = impulse.normalized()
+				impulse*= -abs(head.hit_strength*STRENGTH)
+				print(head.hit_strength)
+				head.hit_strength = MIN_STRENGTH
+			else:
+				print("Hit cancelled!")
 			head.aiming = false
-			impulse = head.springArmRotation
-			impulse.y = 0
-			impulse = impulse.normalized()
-			impulse*= -abs(head.hitStrength*STRENGTH)
-			head.hitStrength = MIN_STRENGTH
 		elif event is InputEventMouseMotion and head.aiming:
-			head.hitStrength += deg_to_rad(-event.relative.y)*HIT_SENSITIVITY
-			head.hitStrength = clamp(head.hitStrength,MAX_STRENGTH,MIN_STRENGTH)
+			head.hit_strength += deg_to_rad(-event.relative.y)*HIT_SENSITIVITY
+			head.hit_strength = clamp(head.hit_strength,MAX_STRENGTH,MIN_STRENGTH)
 
 
 func _integrate_forces(state):
@@ -53,23 +57,23 @@ func _integrate_forces(state):
 		apply_impulse(impulse)
 		impulse = Vector3.ZERO
 	
-	if moveTimer:
+	if move_timer:
 		timer+=1
 		if timer == TIMER_END:
 			linear_velocity = Vector3.ZERO
-			moveAllowed = true
+			move_allowed = true
 			resetTimer()
 	
 	if abs(linear_velocity.length()) > MIN_VELOCITY:
-		moveAllowed = false
+		move_allowed = false
 		resetTimer()
 	else:
-		moveTimer = true
+		move_timer = true
 	
-	head.ballPosition = position
+	head.ball_position = position
 
 func resetTimer():
-	moveTimer = false
+	move_timer = false
 	timer = 0
 
 func isOnTheGround():

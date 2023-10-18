@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass/grass.tres" id="1_w3hdd"]
 [ext_resource type="Material" uid="uid://cmkw6fa3fvndx" path="res://materials/cirno.tres" id="2_hkdih"]
 [ext_resource type="ArrayMesh" uid="uid://5ojyu2uls7x7" path="res://objects/cirno/cirno_low.obj" id="3_ybr58"]
-[ext_resource type="PackedScene" uid="uid://yhymts02hl6e" path="res://scenes/golfball.tscn" id="4_jlkrn"]
+[ext_resource type="PackedScene" path="res://Scenes/golfball.tscn" id="4_jlkrn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vclxc"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,6 +19,17 @@ tonemap_mode = 2
 ssao_enabled = true
 sdfgi_enabled = true
 glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_51sje"]
+material = ExtResource("1_w3hdd")
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e0g37"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ta2bk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fqark"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4mlx8"]
 size = Vector3(0.69474, 0.17529, 0.149314)
@@ -38,17 +49,6 @@ size = Vector3(0.119411, 0.114922, 0.254647)
 
 [sub_resource type="BoxMesh" id="BoxMesh_42y30"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_ta2bk"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fqark"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_51sje"]
-material = ExtResource("1_w3hdd")
-size = Vector3(30, 1, 30)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_e0g37"]
-size = Vector3(30, 1, 30)
-
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -58,62 +58,60 @@ environment = SubResource("Environment_qm0rs")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 10.0418, 24.8703, -12.0266)
 shadow_enabled = true
 
-[node name="Golfball" parent="." instance=ExtResource("4_jlkrn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.203274, 0)
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="Level" type="Node3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_51sje")
 
-[node name="Cirno" type="StaticBody3D" parent="Level"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_e0g37")
+
+[node name="Ramp" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, -0.5, -2.681)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ramp"]
+mesh = SubResource("BoxMesh_ta2bk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp"]
+shape = SubResource("BoxShape3D_fqark")
+
+[node name="Cirno" type="StaticBody3D" parent="."]
 transform = Transform3D(0.268281, 0, 0.963341, 0, 1, 0, -0.963341, 0, 0.268281, 5.68132, -0.538018, -5.51329)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Cirno"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cirno"]
 transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, 0.05, 0, -0.05, -2.18557e-09, 0, 0, 0)
 material_override = ExtResource("2_hkdih")
 mesh = ExtResource("3_ybr58")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Cirno"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cirno"]
 transform = Transform3D(0.803857, 0, -0.594823, 0, 1, 0, 0.594823, 0, 0.803857, -0.0931873, 0.128127, -0.232035)
 shape = SubResource("BoxShape3D_4mlx8")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Level/Cirno"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cirno"]
 transform = Transform3D(0.324859, 0, 0.945763, 0, 1, 0, -0.945763, 0, 0.324859, -0.274448, 0.143384, 0.123716)
 shape = SubResource("BoxShape3D_eui4p")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Level/Cirno"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Cirno"]
 transform = Transform3D(0.926483, 0, -0.376337, 0, 1, 0, 0.376337, 0, 0.926483, -0.0164518, 0.275279, 0.0631752)
 shape = SubResource("BoxShape3D_lf08f")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Level/Cirno"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Cirno"]
 transform = Transform3D(0.915801, -0.0970258, -0.389737, 0.220703, 0.932311, 0.286506, 0.335558, -0.348399, 0.875225, 0.126576, 0.388689, -0.338626)
 shape = SubResource("BoxShape3D_ob8kg")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Level/Cirno"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Cirno"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947218, 0)
 shape = SubResource("SphereShape3D_ug350")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Level"]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.114, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_rewji")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_42y30")
 
-[node name="Ramp" type="StaticBody3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, -0.5, -2.681)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Ramp"]
-mesh = SubResource("BoxMesh_ta2bk")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Ramp"]
-shape = SubResource("BoxShape3D_fqark")
-
-[node name="Floor" type="StaticBody3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Floor"]
-mesh = SubResource("BoxMesh_51sje")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Floor"]
-shape = SubResource("BoxShape3D_e0g37")
+[node name="Golfball" parent="." instance=ExtResource("4_jlkrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.203274, 0)

@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://5ojyu2uls7x7"
-path="res://.godot/imported/cirno_low.obj-5dd679896e2a612a93d820a79f0998bf.mesh"
+path="res://.godot/imported/cirno_low.obj-97abb3c76ec47cf24088ca6bcb86a75b.mesh"
 
 [deps]
 
-files=["res://.godot/imported/cirno_low.obj-5dd679896e2a612a93d820a79f0998bf.mesh"]
+files=["res://.godot/imported/cirno_low.obj-97abb3c76ec47cf24088ca6bcb86a75b.mesh"]
 
-source_file="res://Objects/Cirno/cirno_low.obj"
-dest_files=["res://.godot/imported/cirno_low.obj-5dd679896e2a612a93d820a79f0998bf.mesh", "res://.godot/imported/cirno_low.obj-5dd679896e2a612a93d820a79f0998bf.mesh"]
+source_file="res://objects/cirno/cirno_low.obj"
+dest_files=["res://.godot/imported/cirno_low.obj-97abb3c76ec47cf24088ca6bcb86a75b.mesh", "res://.godot/imported/cirno_low.obj-97abb3c76ec47cf24088ca6bcb86a75b.mesh"]
 
 [params]
 

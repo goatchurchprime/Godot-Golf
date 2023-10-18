@@ -1,9 +1,9 @@
 extends Node3D
 
 var aiming : bool
-var springArmRotation #fix later
-var ballPosition # fix later
-var hitStrength : float
+var spring_arm_rotation : Vector3
+var ball_position : Vector3
+var hit_strength : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
