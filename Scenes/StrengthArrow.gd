@@ -31,4 +31,6 @@ func change_hit_strength():
 	mesh.position.z = -mesh.scale.z/2 + 0.1
 	
 func change_color():
-	material.albedo_color = Color8(int(abs(head.hitStrength*20)),0,0) 
+	var color = clamp(int(abs(head.hitStrength*25)),0,255)
+	print(color)
+	material.albedo_color = Color8(color,0,0) 
