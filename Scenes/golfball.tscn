@@ -19,12 +19,14 @@ size = Vector3(0.01, 0.02, 1)
 [node name="Golfball" type="Node3D"]
 
 [node name="OnGroundRaycast" type="RayCast3D" parent="." node_paths=PackedStringArray("followingNode")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252613, 0)
 target_position = Vector3(0, -0.05, 0)
 script = ExtResource("2_fbk7p")
 LERP_WEIGHT = 100
 followingNode = NodePath("../Golfball")
 
 [node name="Golfball" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252613, 0)
 mass = 0.05
 physics_material_override = ExtResource("3_bvs30")
 can_sleep = false
@@ -38,6 +40,7 @@ shape = SubResource("SphereShape3D_klkvt")
 mesh = SubResource("SphereMesh_f4cbf")
 
 [node name="FollowNode" type="Node3D" parent="." node_paths=PackedStringArray("followingNode")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252613, 0)
 script = ExtResource("2_fbk7p")
 LERP_WEIGHT = 4
 followingNode = NodePath("../Golfball")
@@ -52,6 +55,7 @@ script = ExtResource("5_rnkab")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
 [node name="StrengthArrow" type="Node3D" parent="." node_paths=PackedStringArray("followingNode")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252613, 0)
 script = ExtResource("6_yi7yd")
 LERP_WEIGHT = 100
 followingNode = NodePath("../Golfball")

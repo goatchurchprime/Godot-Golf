@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://irlti1bgtydq"
-path="res://.godot/imported/godot_golf.png-82283d6431d0322e5b737a71ddc3f1c7.ctex"
+uid="uid://cdblvh4e87h67"
+path="res://.godot/imported/horse.png-4218bc44a634398b98c745c51efd553e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/godot_golf.png"
-dest_files=["res://.godot/imported/godot_golf.png-82283d6431d0322e5b737a71ddc3f1c7.ctex"]
+source_file="res://assets/images/horse.png"
+dest_files=["res://.godot/imported/horse.png-4218bc44a634398b98c745c51efd553e.ctex"]
 
 [params]
 

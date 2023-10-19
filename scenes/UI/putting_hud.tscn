@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c45nvkwehpn5t"]
 
-[ext_resource type="Texture2D" uid="uid://cdblvh4e87h67" path="res://assets/img/horse.png" id="1_1fqk1"]
 [ext_resource type="Script" path="res://scripts/gui/score_hud.gd" id="1_ak8j6"]
+[ext_resource type="Texture2D" uid="uid://cdblvh4e87h67" path="res://assets/images/horse.png" id="2_3bc4h"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ak8j6")
@@ -33,7 +33,7 @@ anchor_bottom = 1.0
 offset_top = -135.0
 offset_right = 167.0
 grow_vertical = 0
-texture = ExtResource("1_1fqk1")
+texture = ExtResource("2_3bc4h")
 expand_mode = 2
 
 [node name="ScoreLabel" type="Label" parent="Control/PanelContainer/Panel"]
