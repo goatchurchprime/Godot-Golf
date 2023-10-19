@@ -51,10 +51,10 @@ script = ExtResource("5_rnkab")
 [node name="Camera3D" type="Camera3D" parent="FollowNode/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
-[node name="Arrow" type="Node3D" parent="." node_paths=PackedStringArray("followingNode")]
+[node name="StrengthArrow" type="Node3D" parent="." node_paths=PackedStringArray("followingNode")]
 script = ExtResource("6_yi7yd")
 LERP_WEIGHT = 100
 followingNode = NodePath("../Golfball")
 
-[node name="ArrowMesh" type="MeshInstance3D" parent="Arrow"]
+[node name="ArrowMesh" type="MeshInstance3D" parent="StrengthArrow"]
 mesh = SubResource("BoxMesh_j5idn")

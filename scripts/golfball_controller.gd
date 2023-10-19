@@ -1,4 +1,7 @@
-extends RigidBody3D
+class_name Golfball extends RigidBody3D
+
+#Sync puts with UI
+signal putted
 
 #Related to hitting
 const MIN_STRENGTH = 0
@@ -43,8 +46,8 @@ func _input(event):
 				impulse.y = 0
 				impulse = impulse.normalized()
 				impulse*= -abs(hit_strength*STRENGTH)
-				print(hit_strength)
 				hit_strength = MIN_STRENGTH
+				emit_signal("putted")
 			else:
 				print("Hit cancelled!")
 			aiming = false
