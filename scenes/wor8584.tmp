@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://blcujpj5qhmqm"]
+
+[ext_resource type="PackedScene" uid="uid://c45nvkwehpn5t" path="res://scenes/hud.tscn" id="1_4t4jo"]
+[ext_resource type="PackedScene" uid="uid://yhymts02hl6e" path="res://scenes/golfball.tscn" id="1_7pfa5"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_qem3v"]
+[ext_resource type="PackedScene" uid="uid://cxf7iw1ycs5sl" path="res://scenes/levels/test_level.tscn" id="2_m7ow2"]
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("ball", "GUI")]
+script = ExtResource("1_qem3v")
+ball = NodePath("Golfball/Golfball")
+GUI = NodePath("HUD")
+
+[node name="HUD" parent="." instance=ExtResource("1_4t4jo")]
+
+[node name="Golfball" parent="." instance=ExtResource("1_7pfa5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.203274, 0)
+
+[node name="TestLevel" parent="." instance=ExtResource("2_m7ow2")]
+
+[editable path="Golfball"]

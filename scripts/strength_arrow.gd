@@ -1,4 +1,4 @@
-extends "res://scripts/follow_node.gd"
+class_name StrengthArrow extends "res://scripts/follow_node.gd"
 
 @onready var ball = $"../Golfball"
 @onready var spring_arm = $"../FollowNode/SpringArm3D"
