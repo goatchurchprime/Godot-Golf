@@ -1,6 +1,7 @@
 extends "res://scripts/follow_node.gd"
 
-@onready var head = $".."
+@onready var ball = $"../Golfball"
+@onready var spring_arm = $"../FollowNode/SpringArm3D"
 @onready var mesh = $ArrowMesh
 
 var material = StandardMaterial3D.new()
@@ -12,7 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	follow(delta)
-	if head.aiming:
+	if ball.aiming:
 		show()
 		rotate_to_camera()
 		change_hit_strength()
@@ -21,14 +22,16 @@ func _process(delta):
 		hide()
 
 func rotate_to_camera():
-	if head.spring_arm_rotation and head.ball_position:
-		look_at(head.spring_arm_rotation+ head.ball_position) 
-		rotation.x = 0
+	var tmpRotation = spring_arm.get_rotation_basis()
+	var tmpPosition = ball.position
+	if tmpRotation and tmpPosition:
+		look_at(tmpRotation + tmpPosition) 
+		rotation.x = 0 
 
 func change_hit_strength():
-	mesh.scale.z = head.hit_strength/10
+	mesh.scale.z = ball.hit_strength/10
 	mesh.position.z = -mesh.scale.z/2 + 0.1
 	
 func change_color():
-	var color = clamp(int(abs(head.hit_strength*25)),0,255)
+	var color = clamp(int(abs(ball.hit_strength*25)),0,255)
 	material.albedo_color = Color8(color,0,0) 

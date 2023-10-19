@@ -15,16 +15,17 @@ var timer : int
 var move_timer : bool
 
 var move_allowed : bool
-
+var aiming : bool
+var hit_strength : float
 var impulse : Vector3
 
-@onready var head = $".."
+@onready var spring_arm = $"../FollowNode/SpringArm3D"
 @onready var onGroundRaycast = $"../OnGroundRaycast"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = 0
-	head.hit_strength = MIN_STRENGTH
+	hit_strength = MIN_STRENGTH
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,23 +34,23 @@ func _process(delta):
 func _input(event):
 	if move_allowed:
 		if Input.is_action_just_pressed("left_mouse"):
-			head.aiming = true
+			aiming = true
 		elif Input.is_action_just_released("left_mouse"):
 			#Gives possibility to cancel hit
-			if abs(head.hit_strength) > 0:
-				print("hit_strength: " + str(head.hit_strength))
-				impulse = head.spring_arm_rotation
+			if abs(hit_strength) > 0:
+				print("hit_strength: " + str(hit_strength))
+				impulse = spring_arm.get_rotation_basis()
 				impulse.y = 0
 				impulse = impulse.normalized()
-				impulse*= -abs(head.hit_strength*STRENGTH)
-				print(head.hit_strength)
-				head.hit_strength = MIN_STRENGTH
+				impulse*= -abs(hit_strength*STRENGTH)
+				print(hit_strength)
+				hit_strength = MIN_STRENGTH
 			else:
 				print("Hit cancelled!")
-			head.aiming = false
-		elif event is InputEventMouseMotion and head.aiming:
-			head.hit_strength += deg_to_rad(-event.relative.y)*HIT_SENSITIVITY
-			head.hit_strength = clamp(head.hit_strength,MAX_STRENGTH,MIN_STRENGTH)
+			aiming = false
+		elif event is InputEventMouseMotion and aiming:
+			hit_strength += deg_to_rad(-event.relative.y)*HIT_SENSITIVITY
+			hit_strength = clamp(hit_strength,MAX_STRENGTH,MIN_STRENGTH)
 
 
 func _integrate_forces(state):
@@ -69,8 +70,6 @@ func _integrate_forces(state):
 		resetTimer()
 	else:
 		move_timer = true
-	
-	head.ball_position = position
 
 func resetTimer():
 	move_timer = false
