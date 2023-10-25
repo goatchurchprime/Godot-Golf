@@ -5,7 +5,7 @@ signal putted
 
 #Related to hitting
 const MIN_STRENGTH = 0
-const MAX_STRENGTH = -10
+const MAX_STRENGTH = -12
 const STRENGTH = 0.1
 const HIT_SENSITIVITY = 3
 
