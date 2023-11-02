@@ -2,15 +2,9 @@ extends Camera3D
 
 @onready var spring_arm = $".."
 
-const ROTATION_SPEED = 0.003
+const ROTATION_SPEED = 0.002
 
 var active : bool
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -18,5 +12,5 @@ func _process(delta):
 		spring_arm.rotate_y(ROTATION_SPEED)
 
 func activate():
-	make_current()
+	make_current() #Take over camera for viewport
 	active = true
