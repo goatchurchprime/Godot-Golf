@@ -1,8 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2s65plx0h5fy"]
+[gd_scene load_steps=8 format=3 uid="uid://d2s65plx0h5fy"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ceojf"]
+[ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood/wood.tres" id="1_qid2p"]
+[ext_resource type="Material" uid="uid://by025803sllra" path="res://materials/red_flag/red_flag.tres" id="2_navo7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dfwcf"]
+height = 0.2
+radius = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xyud7"]
+top_radius = 0.025
+bottom_radius = 0.025
+height = 1.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_d7loh"]
+material = ExtResource("2_navo7")
+size = Vector3(0.025, 0.29, 0.19)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orjo6"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ag2ke"]
+material = SubResource("StandardMaterial3D_orjo6")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.2
 
 [node name="Hole" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0748383, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_ceojf")
+shape = SubResource("CylinderShape3D_dfwcf")
+
+[node name="Flagpole" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_xyud7")
+surface_material_override/0 = ExtResource("1_qid2p")
+
+[node name="Flag" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.897639, 0.155447)
+mesh = SubResource("PrismMesh_d7loh")
+
+[node name="BlackHole" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_ag2ke")

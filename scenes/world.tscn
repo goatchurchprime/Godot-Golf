@@ -19,6 +19,6 @@ hole = NodePath("Hole")
 [node name="TestLevel" parent="." instance=ExtResource("2_m7ow2")]
 
 [node name="Hole" parent="." instance=ExtResource("5_v4n6x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.47094, 0.00510895, -5.26964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548, -0.55, -5.019)
 
 [editable path="Golfball"]
