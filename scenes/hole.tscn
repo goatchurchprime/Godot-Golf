@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2s65plx0h5fy"]
+[gd_scene load_steps=9 format=3 uid="uid://d2s65plx0h5fy"]
 
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood/wood.tres" id="1_qid2p"]
 [ext_resource type="Material" uid="uid://by025803sllra" path="res://materials/red_flag/red_flag.tres" id="2_navo7"]
+[ext_resource type="Script" path="res://scripts/hole_camera.gd" id="3_uuv0s"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dfwcf"]
 height = 0.2
@@ -42,3 +43,11 @@ mesh = SubResource("PrismMesh_d7loh")
 
 [node name="BlackHole" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_ag2ke")
+
+[node name="CameraSpringArm" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+spring_length = 2.0
+
+[node name="HoleCamera" type="Camera3D" parent="CameraSpringArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("3_uuv0s")

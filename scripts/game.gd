@@ -9,6 +9,7 @@ var puts
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	puts = 0
+	
 	if !ball.putted.is_connected(on_putted):
 		ball.putted.connect(on_putted)
 	
@@ -17,11 +18,16 @@ func _ready():
 	
 	GUI.update_text(puts)
 
-
 func on_putted():
 	puts+=1
 	GUI.update_text(puts)
 
 func ball_collision(node):
 	if node is Golfball:
-		print("yay")
+		ball.get_parent().queue_free()
+		var tmpChildren = hole.get_children()
+		for child in tmpChildren:
+			if child is SpringArm3D:
+				var cam = child.get_child(0)
+				if cam is Camera3D:
+					cam.activate()
