@@ -40,7 +40,6 @@ shape = SubResource("SphereShape3D_klkvt")
 mesh = SubResource("SphereMesh_f4cbf")
 
 [node name="FollowNode" type="Node3D" parent="." node_paths=PackedStringArray("followingNode")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252613, 0)
 script = ExtResource("2_fbk7p")
 LERP_WEIGHT = 4
 followingNode = NodePath("../Golfball")
@@ -56,6 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
 [node name="StrengthArrow" type="Node3D" parent="." node_paths=PackedStringArray("followingNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252613, 0)
+visible = false
 script = ExtResource("6_yi7yd")
 LERP_WEIGHT = 100
 followingNode = NodePath("../Golfball")

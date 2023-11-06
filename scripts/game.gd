@@ -8,6 +8,7 @@ var puts
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # MOVE LATER
 	puts = 0
 	
 	if !ball.putted.is_connected(on_putted):
@@ -24,10 +25,16 @@ func on_putted():
 
 func ball_collision(node):
 	if node is Golfball:
-		ball.get_parent().queue_free()
-		var tmpChildren = hole.get_children()
+		var tmpChildren = node.get_parent().get_children()
 		for child in tmpChildren:
-			if child is SpringArm3D:
-				var cam = child.get_child(0)
-				if cam is Camera3D:
-					cam.activate()
+			if child is FollowNode:
+				child.setNodeToFollow(hole)
+	
+	#if node is Golfball:
+	#	ball.get_parent().queue_free()
+	#	var tmpChildren = hole.get_children()
+	#	for child in tmpChildren:
+	#		if child is SpringArm3D:
+	#			var cam = child.get_child(0)
+	#			if cam is Camera3D:
+	#				cam.activate()

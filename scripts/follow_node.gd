@@ -1,4 +1,4 @@
-extends Node3D
+class_name FollowNode extends Node3D
 
 @export var LERP_WEIGHT : int
 @export var followingNode : Node
@@ -13,3 +13,6 @@ func _process(delta):
 
 func follow(delta):
 	transform.origin = lerp(transform.origin,followingNode.transform.origin,delta*LERP_WEIGHT)
+
+func setNodeToFollow(node):
+	followingNode = node
