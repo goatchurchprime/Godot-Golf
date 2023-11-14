@@ -1,19 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://exa2an6pgjgf"]
+[gd_scene load_steps=14 format=3 uid="uid://exa2an6pgjgf"]
 
 [ext_resource type="PackedScene" uid="uid://yhymts02hl6e" path="res://scenes/golfball.tscn" id="1_cwgsy"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_y4v15"]
 [ext_resource type="PackedScene" uid="uid://6c3sxht652g0" path="res://scenes/level_objects/u_shape.tscn" id="2_4adq5"]
+[ext_resource type="PackedScene" uid="uid://c45nvkwehpn5t" path="res://scenes/UI/putting_hud.tscn" id="2_w217h"]
 [ext_resource type="PackedScene" uid="uid://dkq7bwcakgjgq" path="res://scenes/level_objects/row_shape.tscn" id="3_ymja1"]
 [ext_resource type="PackedScene" uid="uid://c80lp440b60i1" path="res://scenes/level_objects/corner_shape.tscn" id="4_uljo6"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxp78"]
-albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_fysej"]
-material = SubResource("StandardMaterial3D_pxp78")
-size = Vector2(10, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0ksig"]
-size = Vector3(10, 0, 10)
+[ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/hole.tscn" id="5_ofd28"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2wyyj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,7 +23,35 @@ ssao_enabled = true
 sdfgi_enabled = true
 glow_enabled = true
 
-[node name="Level1" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxp78"]
+albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fysej"]
+material = SubResource("StandardMaterial3D_pxp78")
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ksig"]
+size = Vector3(10, 0, 10)
+
+[node name="Level1" type="Node3D" node_paths=PackedStringArray("ball", "GUI", "hole")]
+script = ExtResource("1_y4v15")
+ball = NodePath("Golfball/Golfball")
+GUI = NodePath("HUD")
+hole = NodePath("Hole")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tmsen")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.25, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 10.0418, 24.9966, -12.0266)
+shadow_enabled = true
+
+[node name="HUD" parent="." instance=ExtResource("2_w217h")]
+
+[node name="Golfball" parent="." instance=ExtResource("1_cwgsy")]
+
+[node name="Hole" parent="." instance=ExtResource("5_ofd28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17018, 0.788115, -5.71719)
 
 [node name="Ground" type="StaticBody3D" parent="."]
 
@@ -39,15 +60,6 @@ mesh = SubResource("PlaneMesh_fysej")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_0ksig")
-
-[node name="Golfball" parent="." instance=ExtResource("1_cwgsy")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_tmsen")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 10.0418, 24.9966, -12.0266)
-shadow_enabled = true
 
 [node name="Course" type="Node3D" parent="."]
 
@@ -64,3 +76,5 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 
 [node name="row_shape2" parent="Course" instance=ExtResource("3_ymja1")]
 transform = Transform3D(-4.37114e-08, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-08, -4.2222e-08, 2.94102, 0.390241, -6)
+
+[editable path="Golfball"]
