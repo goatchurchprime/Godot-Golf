@@ -1,49 +1,62 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3bq1rilltf52"]
+[gd_scene load_steps=3 format=3 uid="uid://d3bq1rilltf52"]
 
-[ext_resource type="Script" path="res://scripts/gui/level_select.gd" id="1_qiy51"]
+[ext_resource type="Script" path="res://scripts/gui/lvl_select_btn.gd" id="1_1nrdm"]
+[ext_resource type="Texture2D" uid="uid://irlti1bgtydq" path="res://assets/images/godot_golf.png" id="1_mnjtw"]
 
-[node name="level_select" type="CanvasLayer"]
-script = ExtResource("1_qiy51")
+[node name="CanvasLayer" type="CanvasLayer"]
 
-[node name="Control" type="Control" parent="."]
+[node name="LevelSelect" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="LevelSelect"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.21
-anchor_top = 0.235
-anchor_right = 0.747
-anchor_bottom = 0.76
-offset_left = 334.08
-offset_top = 171.72
-offset_right = -284.544
-offset_bottom = -168.48
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -50.5
+offset_right = 97.0
+offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Control/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelect/MarginContainer"]
 layout_mode = 2
 
-[node name="Level0" type="Button" parent="Control/PanelContainer/Panel"]
-layout_mode = 0
-offset_left = -494.0
-offset_top = -244.0
-offset_right = -409.0
-offset_bottom = -213.0
-text = "Level 0"
+[node name="TextureRect" type="TextureRect" parent="LevelSelect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_mnjtw")
+expand_mode = 5
 
-[node name="Level1" type="Button" parent="Control/PanelContainer/Panel"]
-layout_mode = 0
-offset_left = -365.0
-offset_top = -242.0
-offset_right = -303.0
-offset_bottom = -211.0
+[node name="Test_Level" type="Button" parent="LevelSelect/MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Level 1"
+script = ExtResource("1_1nrdm")
+level_path = "res://scenes/levels/test_level.tscn"
+
+[node name="Level1" type="Button" parent="LevelSelect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 2"
+script = ExtResource("1_1nrdm")
+level_path = "res://scenes/levels/level_1.tscn"
+
+[node name="Level2" type="Button" parent="LevelSelect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 3"
+
+[connection signal="pressed" from="LevelSelect/MarginContainer/VBoxContainer/Test_Level" to="LevelSelect/MarginContainer/VBoxContainer/Test_Level" method="_on_pressed"]
+[connection signal="pressed" from="LevelSelect/MarginContainer/VBoxContainer/Level1" to="LevelSelect/MarginContainer/VBoxContainer/Level1" method="_on_pressed"]
