@@ -87,4 +87,3 @@ func putt():
 	else:
 		print("Hit cancelled!")
 	aiming = false
-

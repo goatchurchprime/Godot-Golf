@@ -14,6 +14,7 @@ GUI = NodePath("HUD")
 hole = NodePath("Hole")
 
 [node name="level_select" parent="." instance=ExtResource("3_bl7nf")]
+visible = false
 
 [node name="HUD" parent="." instance=ExtResource("1_4t4jo")]
 
