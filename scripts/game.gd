@@ -14,11 +14,14 @@ var current_level : Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	change_state(false)
-	puts = 0
+	reset_stats()
+	
 	
 	if !level_select.change_level.is_connected(change_level):
 		level_select.change_level.connect(change_level)
-	
+
+func reset_stats():
+	puts = 0
 	GUI.update_text(puts)
 
 func on_putted():
@@ -28,8 +31,9 @@ func on_putted():
 func change_level(path):
 	remove_current_level()
 	initialize_level(path)
+	remove_old_ball()
 	add_ball()
-	
+	reset_stats()
 	change_state(true)
 
 func ball_collision(node):
@@ -43,11 +47,18 @@ func ball_collision(node):
 
 func change_state(game_active):
 	if game_active:
+		GUI.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		level_select.visible = false
 	else:
+		GUI.visible = false
 		level_select.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func remove_old_ball():
+	if ball:
+		get_tree().current_scene.remove_child(ball.get_parent())
+		ball = null
 
 func add_ball():
 	var tmp = BALL_SCENE.instantiate()
