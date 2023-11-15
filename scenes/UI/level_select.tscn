@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf0wxjnst3lm0"]
+[gd_scene load_steps=3 format=3 uid="uid://bf0wxjnst3lm0"]
 
-[ext_resource type="Script" path="res://scripts/gui/lvl_select_btn.gd" id="1_1nrdm"]
 [ext_resource type="Texture2D" uid="uid://irlti1bgtydq" path="res://assets/images/godot_golf.png" id="1_mnjtw"]
 [ext_resource type="Script" path="res://scripts/gui/level_select.gd" id="1_w2a3l"]
 
@@ -44,11 +43,3 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("1_mnjtw")
 expand_mode = 5
-
-[node name="Test_Level" type="Button" parent="Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Test Level"
-script = ExtResource("1_1nrdm")
-level_path = "res://scenes/levels/test_level.tscn"
-
-[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Test_Level" to="Control/MarginContainer/VBoxContainer/Test_Level" method="_on_pressed"]

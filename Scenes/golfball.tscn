@@ -17,6 +17,7 @@ height = 0.088
 size = Vector3(0.01, 0.02, 1)
 
 [node name="Golfball" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.847, 0)
 
 [node name="OnGroundRaycast" type="RayCast3D" parent="." node_paths=PackedStringArray("followingNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252613, 0)
@@ -26,7 +27,6 @@ LERP_WEIGHT = 100
 followingNode = NodePath("../Golfball")
 
 [node name="Golfball" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252613, 0)
 mass = 0.05
 physics_material_override = ExtResource("3_bvs30")
 can_sleep = false

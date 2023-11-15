@@ -1,12 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://cxf7iw1ycs5sl"]
+[gd_scene load_steps=20 format=3 uid="uid://cxf7iw1ycs5sl"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_7maju"]
 [ext_resource type="Material" uid="uid://cmkw6fa3fvndx" path="res://materials/cirno.tres" id="1_kdy5t"]
 [ext_resource type="ArrayMesh" uid="uid://5ojyu2uls7x7" path="res://objects/cirno/cirno_low.obj" id="2_3al7o"]
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass/grass.tres" id="3_2jyeo"]
-[ext_resource type="PackedScene" uid="uid://yhymts02hl6e" path="res://scenes/golfball.tscn" id="4_nx4fk"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/hole.tscn" id="5_o45r4"]
-[ext_resource type="PackedScene" uid="uid://c45nvkwehpn5t" path="res://scenes/UI/putting_hud.tscn" id="7_x6q7a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ay1sb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -55,11 +52,7 @@ size = Vector3(30, 1, 30)
 [sub_resource type="BoxShape3D" id="BoxShape3D_osokg"]
 size = Vector3(30, 1, 30)
 
-[node name="TestLevel" type="Node3D" node_paths=PackedStringArray("ball", "GUI", "hole")]
-script = ExtResource("1_7maju")
-ball = NodePath("Golfball/Golfball")
-GUI = NodePath("HUD")
-hole = NodePath("Hole")
+[node name="TestLevel" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nht1e")
@@ -127,11 +120,8 @@ mesh = SubResource("BoxMesh_8jns1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_osokg")
 
-[node name="Golfball" parent="." instance=ExtResource("4_nx4fk")]
-
 [node name="Hole" parent="." instance=ExtResource("5_o45r4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94603, -0.5, -4.64144)
 
-[node name="HUD" parent="." instance=ExtResource("7_x6q7a")]
-
-[editable path="Golfball"]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.779218, 0.626753, 0, -0.626753, 0.779218, 0, 4.76708, 4.82852)

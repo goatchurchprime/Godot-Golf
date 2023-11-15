@@ -1,6 +1,10 @@
+class_name LevelSelect
+
 extends CanvasLayer
 
 const LEVEL_BUTTON = preload("res://scenes/lvl_select_button.tscn")
+
+signal change_level
 
 @export_dir var path
 
@@ -16,7 +20,6 @@ func get_files(path):
 	if !path:
 		print("Level select is missing folder")
 		return
-	var level_names = Array()
 	var dir = DirAccess.open(path)
 	
 	if dir:
@@ -25,22 +28,22 @@ func get_files(path):
 		while true:
 			var tmp = dir.get_next()
 			if tmp != "":
-				if tmp == "test_level.tscn":
-					continue
 				lvl_count += 1
 				var tmpPath = dir.get_current_dir() + "/" + tmp
 				var tmpName = "Level " + str(lvl_count)
+				if tmp == "test_level.tscn":
+					tmpName = "Test Level"
 				create_button(tmpPath,tmpName)
-				level_names.append(tmp)
 			else:
 				dir.list_dir_end()
 				break
-				
-	for name in level_names:
-		print(name)
 
 func create_button(lvl_path, lvl_name):
 	var btn = LEVEL_BUTTON.instantiate()
 	btn.level_path = lvl_path
 	btn.text = lvl_name
+	btn.change_level.connect(change_level_func)
 	container.add_child(btn)
+
+func change_level_func(path):
+	emit_signal("change_level", path)

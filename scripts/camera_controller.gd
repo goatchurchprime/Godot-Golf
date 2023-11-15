@@ -15,9 +15,5 @@ func _input(event):
 		camera.rotate_x(deg_to_rad(-event.relative.y) * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-35),deg_to_rad(35))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func get_rotation_basis():
 	return -transform.basis.y
