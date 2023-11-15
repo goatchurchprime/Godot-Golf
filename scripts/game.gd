@@ -16,7 +16,6 @@ func _ready():
 	change_state(false)
 	reset_stats()
 	
-	
 	if !level_select.change_level.is_connected(change_level):
 		level_select.change_level.connect(change_level)
 
@@ -38,8 +37,8 @@ func change_level(path):
 
 func ball_collision(node):
 	if node is Golfball:
-		var tmpChildren = node.get_parent().get_children()
-		for child in tmpChildren:
+		var tmp_children = node.get_parent().get_children()
+		for child in tmp_children:
 			if child is FollowNode:
 				child.setNodeToFollow(hole)
 				ball.get_parent().visible = false
@@ -63,8 +62,8 @@ func remove_old_ball():
 func add_ball():
 	var tmp = BALL_SCENE.instantiate()
 	get_tree().current_scene.add_child(tmp)
-	var tmpChildren = tmp.get_children()
-	for child in tmpChildren:
+	var tmp_children = tmp.get_children()
+	for child in tmp_children:
 		if child is RigidBody3D:
 			ball = child
 			if !ball.putted.is_connected(on_putted):
@@ -74,8 +73,8 @@ func add_ball():
 func initialize_level(path):
 	current_level = load(path).instantiate()
 	get_tree().current_scene.add_child(current_level)
-	var tmpChildren = current_level.get_children()
-	for child in tmpChildren:
+	var tmp_children = current_level.get_children()
+	for child in tmp_children:
 		if child is Area3D:
 			hole = child
 			if !hole.body_entered.is_connected(ball_collision):

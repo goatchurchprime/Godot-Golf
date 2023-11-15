@@ -29,11 +29,11 @@ func get_files(path):
 			var tmp = dir.get_next()
 			if tmp != "":
 				lvl_count += 1
-				var tmpPath = dir.get_current_dir() + "/" + tmp
-				var tmpName = "Level " + str(lvl_count)
+				var tmp_path = dir.get_current_dir() + "/" + tmp
+				var tmp_name = "Level " + str(lvl_count)
 				if tmp == "test_level.tscn":
-					tmpName = "Test Level"
-				create_button(tmpPath,tmpName)
+					tmp_name = "Test Level"
+				create_button(tmp_path,tmp_name)
 			else:
 				dir.list_dir_end()
 				break
