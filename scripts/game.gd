@@ -30,4 +30,3 @@ func ball_collision(node):
 			if child is FollowNode:
 				child.setNodeToFollow(hole)
 				ball.get_parent().visible = false
-				_ready()

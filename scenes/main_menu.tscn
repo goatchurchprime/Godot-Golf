@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://blcujpj5qhmqm"]
-
-[ext_resource type="PackedScene" uid="uid://d3bq1rilltf52" path="res://scenes/UI/level_select.tscn" id="1_ml7dv"]
-
-[node name="MainMenu" type="Node3D"]
-
-[node name="level_select" parent="." instance=ExtResource("1_ml7dv")]

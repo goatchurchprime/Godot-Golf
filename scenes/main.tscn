@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg4sjmuo0nxot"]
+
+[ext_resource type="PackedScene" uid="uid://bf0wxjnst3lm0" path="res://scenes/UI/level_select.tscn" id="1_2eddi"]
+[ext_resource type="AudioStream" uid="uid://4o7ej4rdlh0m" path="res://assets/audio/gymnopedie1.mp3" id="2_jscbh"]
+
+[node name="Main" type="Node3D"]
+
+[node name="LevelSelect" parent="." instance=ExtResource("1_2eddi")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jscbh")
+autoplay = true
