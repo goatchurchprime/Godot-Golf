@@ -17,4 +17,3 @@ visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_jscbh")
-autoplay = true

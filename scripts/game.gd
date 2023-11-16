@@ -24,7 +24,7 @@ func reset_stats():
 	GUI.update_text(puts)
 
 func on_putted():
-	puts+=1
+	puts += 1
 	GUI.update_text(puts)
 
 func change_level(path):
@@ -35,7 +35,7 @@ func change_level(path):
 	reset_stats()
 	change_state(true)
 
-func ball_collision(node):
+func game_win(node):
 	if node is Golfball:
 		var tmp_children = node.get_parent().get_children()
 		for child in tmp_children:
@@ -77,8 +77,8 @@ func initialize_level(path):
 	for child in tmp_children:
 		if child is Area3D:
 			hole = child
-			if !hole.body_entered.is_connected(ball_collision):
-				hole.body_entered.connect(ball_collision)
+			if !hole.body_entered.is_connected(game_win):
+				hole.body_entered.connect(game_win)
 
 func remove_current_level():
 	if current_level:

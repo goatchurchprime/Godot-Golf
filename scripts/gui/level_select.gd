@@ -30,10 +30,12 @@ func get_files(path):
 			if tmp != "":
 				lvl_count += 1
 				var tmp_path = dir.get_current_dir() + "/" + tmp
+				# Fixes exporting map, adds suffix .remap at the end
+				tmp_path = tmp_path.trim_suffix(".remap") 
 				var tmp_name = "Level " + str(lvl_count)
 				if tmp == "test_level.tscn":
 					tmp_name = "Test Level"
-				create_button(tmp_path,tmp_name)
+				create_button(tmp_path, tmp_name)
 			else:
 				dir.list_dir_end()
 				break

@@ -22,10 +22,10 @@ func _process(delta):
 		hide()
 
 func rotate_to_camera():
-	var tmpRotation = spring_arm.get_rotation_basis()
-	var tmpPosition = ball.position
-	if tmpRotation and tmpPosition:
-		look_at(tmpRotation + tmpPosition) 
+	var tmp_rotation = spring_arm.get_rotation_basis()
+	var tmp_position = ball.position
+	if tmp_rotation and tmp_position:
+		look_at(tmp_rotation + tmp_position) 
 		rotation.x = 0 
 
 func change_hit_strength():
