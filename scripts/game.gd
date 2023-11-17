@@ -3,6 +3,7 @@ class_name Game extends Node3D
 const BALL_SCENE = preload("res://scenes/golfball.tscn")
 
 var puts
+var highscores = {}
 
 @export var GUI : HUD
 @export var level_select : LevelSelect
@@ -10,6 +11,7 @@ var puts
 var hole : Area3D
 var ball : Golfball
 var current_level : Node3D
+var current_level_name : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,11 +25,15 @@ func reset_stats():
 	puts = 0
 	GUI.update_text(puts)
 
+func add_high_score(current_level_name):
+	highscores[current_level_name] = puts
+
 func on_putted():
 	puts += 1
 	GUI.update_text(puts)
 
-func change_level(path):
+func change_level(path, level_name):
+	current_level_name = level_name
 	remove_current_level()
 	initialize_level(path)
 	remove_old_ball()
@@ -40,6 +46,7 @@ func game_win(node):
 		var tmp_children = node.get_parent().get_children()
 		for child in tmp_children:
 			if child is FollowNode:
+				add_high_score(current_level_name)
 				child.setNodeToFollow(hole)
 				ball.get_parent().visible = false
 				change_state(false)

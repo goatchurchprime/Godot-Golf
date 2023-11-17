@@ -1,6 +1,6 @@
 class_name LevelSelect
 
-extends CanvasLayer
+extends Control
 
 const LEVEL_BUTTON = preload("res://scenes/lvl_select_button.tscn")
 
@@ -8,9 +8,7 @@ signal change_level
 
 @export_dir var path
 
-@onready var container = $Control/MarginContainer/VBoxContainer
-
-var buttons
+@onready var container = $MarginContainer/VBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,5 +45,5 @@ func create_button(lvl_path, lvl_name):
 	btn.change_level.connect(change_level_func)
 	container.add_child(btn)
 
-func change_level_func(path):
-	emit_signal("change_level", path)
+func change_level_func(path, level_name):
+	emit_signal("change_level", path, level_name)

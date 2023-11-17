@@ -1,6 +1,6 @@
-class_name HUD extends CanvasLayer
+class_name HUD extends Control
 
-@onready var score_label = $Control/PanelContainer/Panel/ScoreLabel
+@onready var score_label = $PanelContainer/Panel/ScoreLabel
 
 func update_text(puts):
 	score_label.text = str(puts)

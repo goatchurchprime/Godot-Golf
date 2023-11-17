@@ -54,8 +54,6 @@ script = ExtResource("5_rnkab")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 
 [node name="StrengthArrow" type="Node3D" parent="." node_paths=PackedStringArray("following_node")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252613, 0)
-visible = false
 script = ExtResource("6_yi7yd")
 LERP_WEIGHT = 100
 following_node = NodePath("../Golfball")

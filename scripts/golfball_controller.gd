@@ -1,19 +1,19 @@
 class_name Golfball extends RigidBody3D
 
-#Sync puts with UI
+# Sync puts with UI
 signal putted
 
-#Related to hitting
+# Related to hitting
 const MIN_STRENGTH = 0
 const MAX_STRENGTH = -12
 const STRENGTH = 0.1
 const HIT_SENSITIVITY = 3
 
-#Calculating when moves are allowed
 const MIN_VELOCITY = 0.5
 const LERP_WEIGHT = 0.9
 const TIMER_END = 250
 
+# Calculating when moves are allowed
 var timer : int
 var move_timer : bool
 
