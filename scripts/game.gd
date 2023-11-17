@@ -2,11 +2,12 @@ class_name Game extends Node3D
 
 const BALL_SCENE = preload("res://scenes/golfball.tscn")
 
-var puts
+var putts
 var highscores = {}
 
 @export var GUI : HUD
 @export var level_select : LevelSelect
+@export var leaderboard : Leaderboard
 
 var hole : Area3D
 var ball : Golfball
@@ -22,15 +23,20 @@ func _ready():
 		level_select.change_level.connect(change_level)
 
 func reset_stats():
-	puts = 0
-	GUI.update_text(puts)
+	putts = 0
+	GUI.update_text(putts)
 
 func add_high_score(current_level_name):
-	highscores[current_level_name] = puts
+	if highscores.has(current_level_name):
+		if highscores[current_level_name] > putts:
+			highscores[current_level_name] = putts
+	else:
+		highscores[current_level_name] = putts
+	leaderboard.set_highscores(highscores)
 
 func on_putted():
-	puts += 1
-	GUI.update_text(puts)
+	putts += 1
+	GUI.update_text(putts)
 
 func change_level(path, level_name):
 	current_level_name = level_name

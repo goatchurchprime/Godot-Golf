@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://irlti1bgtydq" path="res://assets/images/godot_golf.png" id="1_mnjtw"]
 [ext_resource type="Script" path="res://scripts/gui/level_select.gd" id="1_w2a3l"]
 
-[node name="Control" type="Control"]
+[node name="LevelSelect" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

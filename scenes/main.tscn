@@ -1,19 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg4sjmuo0nxot"]
+[gd_scene load_steps=6 format=3 uid="uid://bg4sjmuo0nxot"]
 
 [ext_resource type="PackedScene" uid="uid://bf0wxjnst3lm0" path="res://scenes/UI/level_select.tscn" id="1_2eddi"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_somfj"]
-[ext_resource type="PackedScene" uid="uid://c45nvkwehpn5t" path="res://scenes/UI/putting_hud.tscn" id="2_8m3y4"]
+[ext_resource type="PackedScene" uid="uid://c45nvkwehpn5t" path="res://scenes/UI/putting_hud.tscn" id="2_52ple"]
 [ext_resource type="AudioStream" uid="uid://4o7ej4rdlh0m" path="res://assets/audio/gymnopedie1.mp3" id="2_jscbh"]
+[ext_resource type="PackedScene" uid="uid://bke5b08jmjbmx" path="res://scenes/UI/leaderboard.tscn" id="4_exr6i"]
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("GUI", "level_select")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("GUI", "level_select", "leaderboard")]
 script = ExtResource("1_somfj")
-GUI = NodePath("HUD")
+GUI = NodePath("PuttingHUD")
 level_select = NodePath("LevelSelect")
+leaderboard = NodePath("Leaderboard")
 
-[node name="HUD" parent="." instance=ExtResource("2_8m3y4")]
-visible = false
+[node name="PuttingHUD" parent="." instance=ExtResource("2_52ple")]
 
 [node name="LevelSelect" parent="." instance=ExtResource("1_2eddi")]
+
+[node name="Leaderboard" parent="." instance=ExtResource("4_exr6i")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_jscbh")
