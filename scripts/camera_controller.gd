@@ -13,7 +13,7 @@ func _input(event):
 	if event is InputEventMouseMotion and not ball.aiming:
 		get_parent().rotate_y(deg_to_rad(-event.relative.x * SENSITIVITY))
 		rotate_x(deg_to_rad(-event.relative.y) * SENSITIVITY)
-		rotation.x = clamp(rotation.x, deg_to_rad(-35),deg_to_rad(35))
+		rotation.x = clamp(rotation.x, deg_to_rad(-50),deg_to_rad(10))
 
 
 func get_rotation_basis():
