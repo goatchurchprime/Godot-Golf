@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d2s65plx0h5fy"]
 
-[ext_resource type="Script" path="res://scenes/hole.gd" id="1_0jee1"]
+[ext_resource type="Script" path="res://scripts/hole.gd" id="1_7d6aw"]
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood/wood.tres" id="1_qid2p"]
 [ext_resource type="Material" uid="uid://by025803sllra" path="res://materials/red_flag/red_flag.tres" id="2_navo7"]
 
@@ -28,7 +28,7 @@ height = 0.2
 
 [node name="Hole" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0748383, 0)
-script = ExtResource("1_0jee1")
+script = ExtResource("1_7d6aw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_dfwcf")
