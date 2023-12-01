@@ -11,10 +11,10 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouseMotion and not ball.aiming:
-		rotate_y(deg_to_rad(-event.relative.x) * SENSITIVITY)
-		camera.rotate_x(deg_to_rad(-event.relative.y) * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-35),deg_to_rad(35))
+		get_parent().rotate_y(deg_to_rad(-event.relative.x * SENSITIVITY))
+		rotate_x(deg_to_rad(-event.relative.y) * SENSITIVITY)
+		rotation.x = clamp(rotation.x, deg_to_rad(-35),deg_to_rad(35))
 
 
 func get_rotation_basis():
-	return -transform.basis.y
+	return -get_parent().transform.basis.x.rotated(Vector3.UP, deg_to_rad(90))

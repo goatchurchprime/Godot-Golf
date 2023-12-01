@@ -10,6 +10,7 @@ const STRENGTH = 0.1
 const HIT_SENSITIVITY = 3
 
 const MIN_VELOCITY = 0.5
+
 const LERP_WEIGHT = 0.9
 
 var move_allowed : bool
