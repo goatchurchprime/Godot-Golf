@@ -47,14 +47,13 @@ func change_level(path, level_name):
 	change_state(true)
 
 func game_win(node):
-	if node is Golfball:
-		var tmp_children = node.get_parent().get_children()
-		for child in tmp_children:
-			if child is FollowNode:
-				add_high_score(current_level_name)
-				child.setNodeToFollow(hole)
-				ball.get_parent().visible = false
-				change_state(false)
+	var tmp_children = node.get_parent().get_children()
+	for child in tmp_children:
+		if child is FollowNode:
+#			add_high_score(current_level_name)
+			child.setNodeToFollow(hole)
+			ball.get_parent().visible = false
+			change_state(false)
 
 func change_state(game_active):
 	if game_active:
