@@ -21,6 +21,7 @@ func _ready():
 	if !level_select.change_level.is_connected(change_level):
 		level_select.change_level.connect(change_level)
 
+
 func reset_stats():
 	putts = 0
 	GUI.update_text(putts)
@@ -37,6 +38,7 @@ func on_putted():
 	putts += 1
 	GUI.update_text(putts)
 
+
 func change_level(path, level_name):
 	current_level_name = level_name
 	remove_current_level()
@@ -46,6 +48,7 @@ func change_level(path, level_name):
 	reset_stats()
 	change_state(true)
 
+
 func game_win(node):
 	var tmp_children = node.get_parent().get_children()
 	for child in tmp_children:
@@ -54,6 +57,7 @@ func game_win(node):
 			child.setNodeToFollow(hole)
 			ball.get_parent().visible = false
 			change_state(false)
+
 
 func change_state(game_active):
 	if game_active:
@@ -65,10 +69,12 @@ func change_state(game_active):
 		level_select.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
+
 func remove_old_ball():
 	if ball:
 		get_tree().current_scene.remove_child(ball.get_parent())
 		ball = null
+
 
 func add_ball():
 	var tmp = BALL_SCENE.instantiate()
@@ -81,6 +87,7 @@ func add_ball():
 				ball.putted.connect(on_putted)
 			continue
 
+
 func initialize_level(path):
 	current_level = load(path).instantiate()
 	get_tree().current_scene.add_child(current_level)
@@ -90,6 +97,7 @@ func initialize_level(path):
 			hole = child
 			if !hole.body_entered.is_connected(game_win):
 				hole.body_entered.connect(game_win)
+
 
 func remove_current_level():
 	if current_level:

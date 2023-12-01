@@ -10,9 +10,9 @@ signal change_level
 
 @onready var container = $MarginContainer/VBoxContainer
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	get_files(path)
+
 
 func get_files(path):
 	if !path:
@@ -37,6 +37,7 @@ func get_files(path):
 			else:
 				dir.list_dir_end()
 				break
+
 
 func create_button(lvl_path, lvl_name):
 	var btn = LEVEL_BUTTON.instantiate()
