@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://w6qkohd2ejme"]
+[gd_scene load_steps=16 format=3 uid="uid://w6qkohd2ejme"]
 
 [ext_resource type="Script" path="res://scripts/follow_node.gd" id="2_fbk7p"]
 [ext_resource type="PhysicsMaterial" uid="uid://b7f3tpjorcnfy" path="res://physics/phys_mat_golfball.tres" id="3_bvs30"]
@@ -37,7 +37,11 @@ scale_min = 0.5
 color_ramp = SubResource("GradientTexture1D_8ew6x")
 color_initial_ramp = SubResource("GradientTexture1D_jspiy")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mq8he"]
+albedo_color = Color(0.552941, 0.552941, 0.552941, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_plf04"]
+material = SubResource("StandardMaterial3D_mq8he")
 radius = 0.02
 height = 0.04
 radial_segments = 32
@@ -81,7 +85,7 @@ following_node = NodePath("../Golfball")
 [node name="PuttingGPUParticle" type="GPUParticles3D" parent="FollowNode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, -1.49012e-08)
 emitting = false
-amount = 32
+amount = 48
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.8

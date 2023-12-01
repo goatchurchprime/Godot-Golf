@@ -8,7 +8,7 @@ signal change_level
 
 @export_dir var path
 
-@onready var container = $MarginContainer/VBoxContainer
+@onready var container = $VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer
 
 func _ready():
 	get_files(path)
