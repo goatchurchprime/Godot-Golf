@@ -13,7 +13,6 @@ var ball : Golfball
 var current_level : Node3D
 var current_level_name : String
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	change_state(false)
 	reset_stats()
@@ -25,14 +24,6 @@ func _ready():
 func reset_stats():
 	putts = 0
 	GUI.update_text(putts)
-
-#func add_high_score(current_level_name):
-#	if highscores.has(current_level_name):
-#		if highscores[current_level_name] > putts:
-#			highscores[current_level_name] = putts
-#	else:
-#		highscores[current_level_name] = putts
-#	leaderboard.set_highscores(highscores)
 
 func on_putted():
 	putts += 1

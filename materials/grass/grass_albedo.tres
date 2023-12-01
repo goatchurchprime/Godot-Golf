@@ -1,0 +1,8 @@
+[gd_resource type="NoiseTexture2D" load_steps=2 format=3 uid="uid://db74w5b81bwxg"]
+
+[ext_resource type="FastNoiseLite" uid="uid://8dcbamlsetlo" path="res://materials/grass/grass_noise.tres" id="1_j5jm2"]
+
+[resource]
+width = 2000
+height = 2000
+noise = ExtResource("1_j5jm2")

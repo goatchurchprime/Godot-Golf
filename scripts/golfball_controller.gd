@@ -1,9 +1,7 @@
 class_name Golfball extends RigidBody3D
 
-# Sync puts with UI
 signal putted
 
-# Related to hitting
 const MIN_STRENGTH = 0
 const MAX_STRENGTH = -12
 const STRENGTH = 0.1
