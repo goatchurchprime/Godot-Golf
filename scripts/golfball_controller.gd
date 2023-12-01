@@ -11,23 +11,19 @@ const HIT_SENSITIVITY = 3
 
 const MIN_VELOCITY = 0.5
 const LERP_WEIGHT = 0.9
-const TIMER_END = 250
-
-# Calculating when moves are allowed
-var timer : int
-var move_timer : bool
 
 var move_allowed : bool
 var aiming : bool
 var hit_strength : float
 var impulse : Vector3
 
+@onready var move_allowed_timer = $"../MoveAllowedTimer"
 @onready var spring_arm = $"../FollowNode/SpringArm3D"
 @onready var onGroundRaycast = $"../OnGroundRaycast"
+@onready var particle_emitter = $"../FollowNode/PuttingGPUParticle"
 
 
 func _ready():
-	timer = 0
 	hit_strength = MIN_STRENGTH
 
 
@@ -46,23 +42,13 @@ func _integrate_forces(state):
 		apply_impulse(impulse)
 		impulse = Vector3.ZERO
 	
-	if move_timer:
-		timer+=1
-		if timer == TIMER_END:
-			linear_velocity = Vector3.ZERO
-			move_allowed = true
-			resetTimer()
-	
 	if abs(linear_velocity.length()) > MIN_VELOCITY:
 		move_allowed = false
-		resetTimer()
+		move_allowed_timer.stop()
 	else:
-		move_timer = true
+		if move_allowed_timer.is_stopped():
+			move_allowed_timer.start()
 
-
-func resetTimer():
-	move_timer = false
-	timer = 0
 
 func isOnTheGround():
 	if onGroundRaycast.get_collider() is StaticBody3D:
@@ -83,7 +69,18 @@ func putt():
 		impulse = impulse.normalized()
 		impulse*= -abs(hit_strength*STRENGTH)
 		hit_strength = MIN_STRENGTH
+		emit_particles()
 		emit_signal("putted")
 	else:
 		print("Hit cancelled!")
 	aiming = false
+
+
+func emit_particles():
+	particle_emitter.rotation.x = spring_arm.get_rotation_basis().x
+	particle_emitter.restart()
+
+
+func _on_move_allowed_timer_timeout():
+	linear_velocity = Vector3.ZERO
+	move_allowed = true
