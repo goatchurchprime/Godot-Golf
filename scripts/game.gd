@@ -7,7 +7,6 @@ var highscores = {}
 
 @export var GUI : HUD
 @export var level_select : LevelSelect
-@export var leaderboard : Leaderboard
 
 var hole : Area3D
 var ball : Golfball
@@ -26,13 +25,13 @@ func reset_stats():
 	putts = 0
 	GUI.update_text(putts)
 
-func add_high_score(current_level_name):
-	if highscores.has(current_level_name):
-		if highscores[current_level_name] > putts:
-			highscores[current_level_name] = putts
-	else:
-		highscores[current_level_name] = putts
-	leaderboard.set_highscores(highscores)
+#func add_high_score(current_level_name):
+#	if highscores.has(current_level_name):
+#		if highscores[current_level_name] > putts:
+#			highscores[current_level_name] = putts
+#	else:
+#		highscores[current_level_name] = putts
+#	leaderboard.set_highscores(highscores)
 
 func on_putted():
 	putts += 1
@@ -88,7 +87,7 @@ func initialize_level(path):
 	get_tree().current_scene.add_child(current_level)
 	var tmp_children = current_level.get_children()
 	for child in tmp_children:
-		if child is Area3D:
+		if child is Hole:
 			hole = child
 			if !hole.body_entered.is_connected(game_win):
 				hole.body_entered.connect(game_win)
