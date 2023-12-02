@@ -34,20 +34,17 @@ func change_level(path, level_name):
 	current_level_name = level_name
 	remove_current_level()
 	initialize_level(path)
-	remove_old_ball()
 	add_ball()
 	reset_stats()
 	change_state(true)
 
 
-func game_win(node):
-	var tmp_children = node.get_parent().get_children()
-	for child in tmp_children:
-		if child is FollowNode:
-#			add_high_score(current_level_name)
-			child.setNodeToFollow(hole)
-			ball.get_parent().visible = false
-			change_state(false)
+func game_win():
+	#add_high_score(current_level_name)
+	remove_old_ball()
+	print("game win")
+	change_state(false)
+#			
 
 
 func change_state(game_active):
@@ -68,6 +65,7 @@ func remove_old_ball():
 
 
 func add_ball():
+	#bad code
 	var tmp = BALL_SCENE.instantiate()
 	get_tree().current_scene.add_child(tmp)
 	var tmp_children = tmp.get_children()
@@ -86,8 +84,8 @@ func initialize_level(path):
 	for child in tmp_children:
 		if child is Hole:
 			hole = child
-			if !hole.body_entered.is_connected(game_win):
-				hole.body_entered.connect(game_win)
+			if !hole.game_win.is_connected(game_win):
+				hole.game_win.connect(game_win)
 
 
 func remove_current_level():
