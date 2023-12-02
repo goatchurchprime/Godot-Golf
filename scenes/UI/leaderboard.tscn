@@ -1,71 +1,193 @@
 [gd_scene format=3 uid="uid://bwn5g5n35ox2g"]
 
-[node name="ScrollContainer" type="ScrollContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="VBoxContainer" type="VBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -573.5
+offset_top = -323.0
+offset_right = 573.5
+offset_bottom = 323.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Highscores"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "jätte långt namn som kanske inte får plats"
-
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "100"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "MFringo"
+text = "superlångtnamn"
 
-[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "100"
+text = "level 1"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+text = "5"
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "MFringo"
-
-[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "100"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "MFringo"
+text = "superlångtnamn"
 
-[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "100"
+text = "level 1"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "5"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer5"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-text = "MFringo"
+text = "superlångtnamn"
 
-[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer5"]
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-text = "100"
+text = "level 1"
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "5"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "superlångtnamn"
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "level 1"
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "5"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "superlångtnamn"
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "level 1"
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "5"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "superlångtnamn"
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "level 1"
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "5"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "superlångtnamn"
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "level 1"
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "5"
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+text = "superlångtnamn"
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+text = "level 1"
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+text = "5"
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+text = "superlångtnamn"
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+text = "level 1"
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+text = "5"
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+text = "superlångtnamn"
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+text = "level 1"
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+text = "5"
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+text = "superlångtnamn"
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+text = "level 1"
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+text = "5"

@@ -6,6 +6,5 @@ signal game_win
 
 func _on_body_entered(body):
 	if body is Golfball:
-		print("you won")
 		game_win.emit()
 		camera.activate()

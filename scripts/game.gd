@@ -42,9 +42,7 @@ func change_level(path, level_name):
 func game_win():
 	#add_high_score(current_level_name)
 	remove_old_ball()
-	print("game win")
 	change_state(false)
-#			
 
 
 func change_state(game_active):

@@ -1,6 +1,6 @@
 class_name HoleCamera extends Camera3D
 
-const ROTATION_AMT = deg_to_rad(0.2)
+const ROTATION_AMT = deg_to_rad(0.07)
 
 @onready var spring_arm = $".."
 

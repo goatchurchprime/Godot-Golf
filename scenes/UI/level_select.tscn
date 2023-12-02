@@ -50,8 +50,6 @@ text = "TMP BUTTON"
 
 [node name="Leaderboard" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_tax1x")]
 layout_mode = 2
-size_flags_horizontal = 1
-size_flags_vertical = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 visible = false

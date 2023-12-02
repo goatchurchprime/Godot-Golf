@@ -19,7 +19,9 @@ var impulse : Vector3
 @onready var move_allowed_timer = $"../MoveAllowedTimer"
 @onready var spring_arm = $"../FollowNode/SpringArm3D"
 @onready var onGroundRaycast = $"../OnGroundRaycast"
+
 @onready var particle_emitter = $"../FollowNode/PuttingGPUParticle"
+@onready var putt_audio_player = $"../FollowNode/PuttingAudioPlayer"
 
 
 func _ready():
@@ -67,8 +69,9 @@ func putt():
 		impulse.y = 0
 		impulse = impulse.normalized()
 		impulse*= -abs(hit_strength*STRENGTH)
-		hit_strength = MIN_STRENGTH
 		emit_particles()
+		play_putt_sound()
+		hit_strength = MIN_STRENGTH
 		emit_signal("putted")
 	else:
 		print("Hit cancelled!")
@@ -78,6 +81,11 @@ func putt():
 func emit_particles():
 	particle_emitter.rotation.x = spring_arm.get_rotation_basis().x
 	particle_emitter.restart()
+
+func play_putt_sound():
+	putt_audio_player.volume_db = clamp(MAX_STRENGTH*4 - hit_strength*10, -30, 0)
+	print(putt_audio_player.volume_db)
+	putt_audio_player.play()
 
 
 func _on_move_allowed_timer_timeout():
