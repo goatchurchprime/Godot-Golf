@@ -40,7 +40,6 @@ func change_level(path, level_name):
 
 
 func game_win():
-	#add_high_score(current_level_name)
 	remove_old_ball()
 	change_state(false)
 
@@ -58,21 +57,14 @@ func change_state(game_active):
 
 func remove_old_ball():
 	if ball:
-		get_tree().current_scene.remove_child(ball.get_parent())
+		get_tree().current_scene.remove_child(ball)
 		ball = null
 
 
 func add_ball():
-	#bad code
-	var tmp = BALL_SCENE.instantiate()
-	get_tree().current_scene.add_child(tmp)
-	var tmp_children = tmp.get_children()
-	for child in tmp_children:
-		if child is RigidBody3D:
-			ball = child
-			if !ball.putted.is_connected(on_putted):
-				ball.putted.connect(on_putted)
-			continue
+	ball = BALL_SCENE.instantiate()
+	get_tree().current_scene.add_child(ball)
+	ball.putted.connect(on_putted)
 
 
 func initialize_level(path):

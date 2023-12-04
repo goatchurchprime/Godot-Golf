@@ -1,7 +1,7 @@
-class_name StrengthArrow extends "res://scripts/follow_node.gd"
+class_name StrengthArrow extends Node3D
 
-@onready var ball = $"../Golfball"
-@onready var spring_arm = $"../FollowNode/SpringArm3D"
+@onready var ball = $"../.."
+@onready var spring_arm = $"../../CameraPosition/SpringArm3D"
 @onready var mesh = $ArrowMesh
 
 var material = StandardMaterial3D.new()
@@ -11,7 +11,6 @@ func _ready():
 
 
 func _process(delta):
-	follow(delta)
 	if ball.aiming:
 		show()
 		rotate_to_camera()
@@ -23,7 +22,7 @@ func _process(delta):
 
 func rotate_to_camera():
 	var tmp_rotation = spring_arm.get_rotation_basis()
-	var tmp_position = ball.position
+	var tmp_position = ball.rigidbody.position
 	if tmp_rotation and tmp_position:
 		look_at(tmp_rotation + tmp_position) 
 		rotation.x = 0 

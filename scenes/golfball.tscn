@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="5_rnkab"]
 [ext_resource type="Script" path="res://scripts/strength_arrow.gd" id="6_yi7yd"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_j5idn"]
+size = Vector3(0.01, 0.02, 1)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_klkvt"]
 radius = 0.044
 
@@ -48,29 +51,35 @@ height = 0.04
 radial_segments = 32
 rings = 16
 
-[sub_resource type="BoxMesh" id="BoxMesh_j5idn"]
-size = Vector3(0.01, 0.02, 1)
-
 [node name="Golfball" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.847, 0)
+script = ExtResource("4_x2185")
 
 [node name="MoveAllowedTimer" type="Timer" parent="."]
 wait_time = 0.4
 autostart = true
 
-[node name="OnGroundRaycast" type="RayCast3D" parent="." node_paths=PackedStringArray("following_node")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252613, 0)
-target_position = Vector3(0, -0.05, 0)
+[node name="FollowPosition" type="Node3D" parent="." node_paths=PackedStringArray("following_node")]
 script = ExtResource("2_fbk7p")
 LERP_WEIGHT = 100
 following_node = NodePath("../Golfball")
+
+[node name="OnGroundRaycast" type="RayCast3D" parent="FollowPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252613, 0)
+target_position = Vector3(0, -0.05, 0)
+
+[node name="StrengthArrow" type="Node3D" parent="FollowPosition"]
+visible = false
+script = ExtResource("6_yi7yd")
+
+[node name="ArrowMesh" type="MeshInstance3D" parent="FollowPosition/StrengthArrow"]
+mesh = SubResource("BoxMesh_j5idn")
 
 [node name="Golfball" type="RigidBody3D" parent="."]
 mass = 0.05
 physics_material_override = ExtResource("3_bvs30")
 can_sleep = false
 linear_damp = 1.0
-script = ExtResource("4_x2185")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Golfball"]
 shape = SubResource("SphereShape3D_klkvt")
@@ -78,15 +87,12 @@ shape = SubResource("SphereShape3D_klkvt")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Golfball"]
 mesh = SubResource("SphereMesh_f4cbf")
 
-[node name="FollowNode" type="Node3D" parent="." node_paths=PackedStringArray("following_node")]
+[node name="CameraPosition" type="Node3D" parent="." node_paths=PackedStringArray("following_node")]
 script = ExtResource("2_fbk7p")
 LERP_WEIGHT = 4
 following_node = NodePath("../Golfball")
 
-[node name="PuttingAudioPlayer" type="AudioStreamPlayer3D" parent="FollowNode"]
-stream = ExtResource("4_vvdv4")
-
-[node name="PuttingGPUParticle" type="GPUParticles3D" parent="FollowNode"]
+[node name="PuttingGPUParticle" type="GPUParticles3D" parent="CameraPosition"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, -1.49012e-08)
 emitting = false
 amount = 64
@@ -98,22 +104,16 @@ visibility_aabb = AABB(-1.64485, -1.79943, -1.84936, 3.2897, 3.59887, 3.69872)
 process_material = SubResource("ParticleProcessMaterial_0ocpq")
 draw_pass_1 = SubResource("SphereMesh_plf04")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="FollowNode"]
+[node name="PuttingAudioPlayer" type="AudioStreamPlayer3D" parent="CameraPosition"]
+stream = ExtResource("4_vvdv4")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPosition"]
 transform = Transform3D(1, 0, 0, 0, 0.927184, 0.374607, 0, -0.374607, 0.927184, 0, 0.380318, 0)
 spring_length = 1.5
 margin = 0.1
 script = ExtResource("5_rnkab")
 
-[node name="Camera3D" type="Camera3D" parent="FollowNode/SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="CameraPosition/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, 1.5)
 
-[node name="StrengthArrow" type="Node3D" parent="." node_paths=PackedStringArray("following_node")]
-visible = false
-script = ExtResource("6_yi7yd")
-LERP_WEIGHT = 100
-following_node = NodePath("../Golfball")
-
-[node name="ArrowMesh" type="MeshInstance3D" parent="StrengthArrow"]
-mesh = SubResource("BoxMesh_j5idn")
-
-[connection signal="timeout" from="MoveAllowedTimer" to="Golfball" method="_on_move_allowed_timer_timeout"]
+[connection signal="timeout" from="MoveAllowedTimer" to="." method="_on_move_allowed_timer_timeout"]

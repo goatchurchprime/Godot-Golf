@@ -2,7 +2,7 @@ extends Node3D
 
 const SENSITIVITY = 0.25
 
-@onready var ball = $"../../Golfball"
+@onready var ball = $"../.."
 @onready var camera = $Camera3D
 
 func _ready():

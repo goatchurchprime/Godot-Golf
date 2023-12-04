@@ -1,4 +1,4 @@
-class_name Golfball extends RigidBody3D
+class_name Golfball extends Node3D
 
 signal putted
 
@@ -16,12 +16,14 @@ var aiming : bool
 var hit_strength : float
 var impulse : Vector3
 
-@onready var move_allowed_timer = $"../MoveAllowedTimer"
-@onready var spring_arm = $"../FollowNode/SpringArm3D"
-@onready var onGroundRaycast = $"../OnGroundRaycast"
+@onready var rigidbody = $Golfball
 
-@onready var particle_emitter = $"../FollowNode/PuttingGPUParticle"
-@onready var putt_audio_player = $"../FollowNode/PuttingAudioPlayer"
+@onready var move_allowed_timer = $MoveAllowedTimer
+@onready var spring_arm = $CameraPosition/SpringArm3D
+@onready var onGroundRaycast = $FollowPosition/OnGroundRaycast
+
+@onready var particle_emitter = $CameraPosition/PuttingGPUParticle
+@onready var putt_audio_player = $CameraPosition/PuttingAudioPlayer
 
 
 func _ready():
@@ -37,13 +39,12 @@ func _input(event):
 		elif event is InputEventMouseMotion and aiming:
 			add_hit_strength(event)
 
-
-func _integrate_forces(state):
+func _physics_process(delta):
 	if impulse:
-		apply_impulse(impulse)
+		rigidbody.apply_impulse(impulse)
 		impulse = Vector3.ZERO
 	
-	if abs(linear_velocity.length()) > MIN_VELOCITY:
+	if abs(rigidbody.linear_velocity.length()) > MIN_VELOCITY:
 		move_allowed = false
 		move_allowed_timer.stop()
 	else:
@@ -84,10 +85,9 @@ func emit_particles():
 
 func play_putt_sound():
 	putt_audio_player.volume_db = clamp(MAX_STRENGTH*4 - hit_strength*10, -30, 0)
-	print(putt_audio_player.volume_db)
 	putt_audio_player.play()
 
 
 func _on_move_allowed_timer_timeout():
-	linear_velocity = Vector3.ZERO
+	rigidbody.linear_velocity = Vector3.ZERO
 	move_allowed = true
