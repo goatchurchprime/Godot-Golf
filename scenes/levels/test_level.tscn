@@ -1,9 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxf7iw1ycs5sl"]
+[gd_scene load_steps=22 format=3 uid="uid://cxf7iw1ycs5sl"]
 
+[ext_resource type="PackedScene" uid="uid://co72gw4aw7535" path="res://scenes/out_of_bounds_area.tscn" id="1_a0ihj"]
 [ext_resource type="Material" uid="uid://cmkw6fa3fvndx" path="res://materials/cirno.tres" id="1_kdy5t"]
 [ext_resource type="ArrayMesh" uid="uid://5ojyu2uls7x7" path="res://objects/cirno/cirno_low.obj" id="2_3al7o"]
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass/grass.tres" id="3_2jyeo"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/hole.tscn" id="5_o45r4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_psi54"]
+size = Vector3(50, 25, 50)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ay1sb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -53,6 +57,11 @@ size = Vector3(30, 1, 30)
 size = Vector3(30, 1, 30)
 
 [node name="TestLevel" type="Node3D"]
+
+[node name="OutOfBoundsArea" parent="." instance=ExtResource("1_a0ihj")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBoundsArea"]
+shape = SubResource("BoxShape3D_psi54")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nht1e")

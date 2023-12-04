@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://co72gw4aw7535"]
+
+[ext_resource type="Script" path="res://scripts/out_of_bounds_area.gd" id="1_2uofi"]
+
+[node name="OutOfBoundsArea" type="Area3D"]
+script = ExtResource("1_2uofi")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -91,3 +91,7 @@ func play_putt_sound():
 func _on_move_allowed_timer_timeout():
 	rigidbody.linear_velocity = Vector3.ZERO
 	move_allowed = true
+
+func move_back(last_pos):
+	rigidbody.position = last_pos
+	rigidbody.linear_velocity = Vector3.ZERO

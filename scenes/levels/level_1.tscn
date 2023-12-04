@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://exa2an6pgjgf"]
+[gd_scene load_steps=13 format=3 uid="uid://exa2an6pgjgf"]
 
+[ext_resource type="PackedScene" uid="uid://co72gw4aw7535" path="res://scenes/out_of_bounds_area.tscn" id="1_ra8kr"]
 [ext_resource type="PackedScene" uid="uid://6c3sxht652g0" path="res://scenes/level_objects/u_shape.tscn" id="2_4adq5"]
 [ext_resource type="PackedScene" uid="uid://dkq7bwcakgjgq" path="res://scenes/level_objects/row_shape.tscn" id="3_ymja1"]
 [ext_resource type="PackedScene" uid="uid://c80lp440b60i1" path="res://scenes/level_objects/corner_shape.tscn" id="4_uljo6"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/hole.tscn" id="5_ofd28"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gkkwf"]
+size = Vector3(25, 25, 25)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2wyyj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,6 +35,11 @@ size = Vector2(10, 10)
 size = Vector3(10, 0, 10)
 
 [node name="Level1" type="Node3D"]
+
+[node name="OutOfBoundsArea" parent="." instance=ExtResource("1_ra8kr")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBoundsArea"]
+shape = SubResource("BoxShape3D_gkkwf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tmsen")

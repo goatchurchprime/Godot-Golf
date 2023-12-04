@@ -8,7 +8,10 @@ var highscores = {}
 @export var GUI : HUD
 @export var level_select : LevelSelect
 
-var hole : Area3D
+var golfball_last_pos : Vector3
+var out_of_bounds_area : OutOfBoundsArea
+
+var hole : Hole
 var ball : Golfball
 var current_level : Node3D
 var current_level_name : String
@@ -26,6 +29,7 @@ func reset_stats():
 	GUI.update_text(putts)
 
 func on_putted():
+	golfball_last_pos = ball.rigidbody.position
 	putts += 1
 	GUI.update_text(putts)
 
@@ -76,6 +80,13 @@ func initialize_level(path):
 			hole = child
 			if !hole.game_win.is_connected(game_win):
 				hole.game_win.connect(game_win)
+		if child is OutOfBoundsArea:
+			out_of_bounds_area = child
+			if !out_of_bounds_area.golfball_left.is_connected(golfball_left):
+				out_of_bounds_area.golfball_left.connect(golfball_left)
+
+func golfball_left():
+	ball.move_back(golfball_last_pos)
 
 
 func remove_current_level():
