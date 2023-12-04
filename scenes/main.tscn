@@ -15,6 +15,6 @@ visible = false
 
 [node name="LevelSelect" parent="." instance=ExtResource("1_2eddi")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_jscbh")
 autoplay = true

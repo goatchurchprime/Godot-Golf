@@ -34,7 +34,7 @@ direction = Vector3(0, 0.1, 1)
 spread = 10.0
 gravity = Vector3(0, 0, 0)
 initial_velocity_max = 1.0
-scale_min = 0.5
+scale_max = 2.0
 color_ramp = SubResource("GradientTexture1D_8ew6x")
 color_initial_ramp = SubResource("GradientTexture1D_jspiy")
 
@@ -89,10 +89,12 @@ stream = ExtResource("4_vvdv4")
 [node name="PuttingGPUParticle" type="GPUParticles3D" parent="FollowNode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, -1.49012e-08)
 emitting = false
-amount = 48
-lifetime = 0.5
+amount = 64
+lifetime = 0.4
 one_shot = true
 explosiveness = 0.8
+randomness = 0.4
+visibility_aabb = AABB(-1.64485, -1.79943, -1.84936, 3.2897, 3.59887, 3.69872)
 process_material = SubResource("ParticleProcessMaterial_0ocpq")
 draw_pass_1 = SubResource("SphereMesh_plf04")
 
