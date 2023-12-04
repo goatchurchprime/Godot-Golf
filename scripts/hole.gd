@@ -6,7 +6,7 @@ signal game_win
 @onready var clapping_audio_player = $ClappingAudioPlayer
 
 func _on_body_entered(body):
-	if body is Golfball:
+	if body.get_parent() is Golfball:
 		game_win.emit()
 		camera.activate()
 		clapping_audio_player.play()
