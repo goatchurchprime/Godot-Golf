@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://w6qkohd2ejme"]
+[gd_scene load_steps=18 format=3 uid="uid://w6qkohd2ejme"]
 
 [ext_resource type="Script" path="res://scripts/follow_node.gd" id="2_fbk7p"]
 [ext_resource type="PhysicsMaterial" uid="uid://b7f3tpjorcnfy" path="res://physics/phys_mat_golfball.tres" id="3_bvs30"]
@@ -35,8 +35,8 @@ gradient = SubResource("Gradient_dmuqc")
 lifetime_randomness = 0.75
 direction = Vector3(0, 0.1, 1)
 spread = 10.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
 scale_max = 2.0
 color_ramp = SubResource("GradientTexture1D_8ew6x")
 color_initial_ramp = SubResource("GradientTexture1D_jspiy")
@@ -50,6 +50,17 @@ radius = 0.02
 height = 0.04
 radial_segments = 32
 rings = 16
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5gi3a"]
+properties/0/path = NodePath("Golfball:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Golfball:linear_velocity")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Golfball:angular_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Golfball" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.847, 0)
@@ -115,5 +126,8 @@ script = ExtResource("5_rnkab")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPosition/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, 1.5)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_5gi3a")
 
 [connection signal="timeout" from="MoveAllowedTimer" to="." method="_on_move_allowed_timer_timeout"]
