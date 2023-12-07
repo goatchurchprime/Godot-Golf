@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bf0wxjnst3lm0" path="res://scenes/UI/level_select.tscn" id="1_2eddi"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_somfj"]
-[ext_resource type="PackedScene" uid="uid://db7b0rlqvysxx" path="res://scenes/UI/multiplayer_menu.tscn" id="2_5um1l"]
+[ext_resource type="PackedScene" uid="uid://d3soqqlkvvbbp" path="res://scenes/UI/multiplayer_menu.tscn" id="2_5um1l"]
 [ext_resource type="PackedScene" uid="uid://c45nvkwehpn5t" path="res://scenes/UI/putting_hud.tscn" id="2_52ple"]
 [ext_resource type="AudioStream" uid="uid://4o7ej4rdlh0m" path="res://assets/audio/gymnopedie1.mp3" id="2_jscbh"]
 

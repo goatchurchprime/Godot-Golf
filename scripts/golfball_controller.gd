@@ -6,11 +6,9 @@ const MIN_STRENGTH = 0
 const MAX_STRENGTH = -12
 const STRENGTH = 0.1
 const HIT_SENSITIVITY = 3
-
 const MIN_VELOCITY = 0.5
 
-const LERP_WEIGHT = 0.9
-
+var putts
 var last_pos : Vector3
 var move_allowed : bool
 var aiming : bool
@@ -22,7 +20,6 @@ var impulse : Vector3
 @onready var move_allowed_timer = $MoveAllowedTimer
 @onready var camera = $CameraPosition/SpringArm3D/Camera3D
 @onready var spring_arm = $CameraPosition/SpringArm3D
-@onready var onGroundRaycast = $FollowPosition/OnGroundRaycast
 
 @onready var particle_emitter = $CameraPosition/PuttingGPUParticle
 @onready var putt_audio_player = $CameraPosition/PuttingAudioPlayer
@@ -32,6 +29,7 @@ func _enter_tree():
 
 func _ready():
 	if is_multiplayer_authority():
+		putts = 0
 		print("Player-Authority: " + str(get_multiplayer_authority()))
 		camera.current = true
 		hit_strength = MIN_STRENGTH
@@ -82,6 +80,7 @@ func putt():
 		play_putt_sound()
 		hit_strength = MIN_STRENGTH
 		emit_signal("putted")
+		putts += 1
 	else:
 		print("Hit cancelled!")
 	aiming = false
