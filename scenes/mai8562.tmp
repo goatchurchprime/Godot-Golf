@@ -29,5 +29,3 @@ stream = ExtResource("2_jscbh")
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/golfball.tscn")
 spawn_path = NodePath("..")
-
-[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

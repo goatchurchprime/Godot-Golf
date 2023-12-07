@@ -4,7 +4,7 @@ const ROTATION_AMT = deg_to_rad(0.07)
 
 @onready var spring_arm = $".."
 
-var active = true
+var active = false
 
 func _process(delta):
 	if active:

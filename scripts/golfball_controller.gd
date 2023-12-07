@@ -25,12 +25,13 @@ var impulse : Vector3
 @onready var putt_audio_player = $CameraPosition/PuttingAudioPlayer
 
 func _enter_tree():
+	print("created")
 	set_multiplayer_authority(str(name).to_int())
 
 func _ready():
 	if is_multiplayer_authority():
+		last_pos = Vector3.ZERO
 		putts = 0
-		print("Player-Authority: " + str(get_multiplayer_authority()))
 		camera.current = true
 		hit_strength = MIN_STRENGTH
 
@@ -72,8 +73,8 @@ func putt():
 		emit_particles()
 		play_putt_sound()
 		hit_strength = MIN_STRENGTH
-		emit_signal("putted")
 		putts += 1
+		emit_signal("putted")
 	else:
 		print("Hit cancelled!")
 	aiming = false
@@ -92,6 +93,13 @@ func _on_move_allowed_timer_timeout():
 		move_allowed = true
 
 func move_back():
-	if is_multiplayer_authority():
-		rigidbody.position = last_pos
-		rigidbody.linear_velocity = Vector3.ZERO
+	rigidbody.linear_velocity = Vector3.ZERO
+	rigidbody.angular_velocity = Vector3.ZERO
+	rigidbody.position = last_pos
+
+func reset():
+	_ready()
+	move_back()
+
+func activate_camera():
+	camera.make_current()
