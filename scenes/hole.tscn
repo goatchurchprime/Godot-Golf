@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood/wood.tres" id="1_qid2p"]
 [ext_resource type="Material" uid="uid://by025803sllra" path="res://materials/red_flag/red_flag.tres" id="2_navo7"]
 [ext_resource type="AudioStream" uid="uid://certrs0igt40c" path="res://assets/audio/audience_clapping.mp3" id="2_q6l68"]
-[ext_resource type="Script" path="res://scripts/HoleCamera.gd" id="4_h2coe"]
+[ext_resource type="Script" path="res://scripts/hole_camera.gd" id="4_h2coe"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dfwcf"]
 height = 0.2

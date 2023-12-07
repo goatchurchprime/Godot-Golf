@@ -5,10 +5,6 @@ const SENSITIVITY = 0.25
 @onready var ball = $"../.."
 @onready var camera = $Camera3D
 
-func _ready():
-	camera.make_current()
-
-
 func _input(event):
 	if event is InputEventMouseMotion and not ball.aiming:
 		get_parent().rotate_y(deg_to_rad(-event.relative.x * SENSITIVITY))
