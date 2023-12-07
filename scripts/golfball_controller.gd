@@ -16,8 +16,8 @@ var hit_strength : float
 var impulse : Vector3
 
 @onready var rigidbody = $Golfball
-
 @onready var move_allowed_timer = $MoveAllowedTimer
+
 @onready var camera = $CameraPosition/SpringArm3D/Camera3D
 @onready var spring_arm = $CameraPosition/SpringArm3D
 
@@ -33,7 +33,6 @@ func _ready():
 		print("Player-Authority: " + str(get_multiplayer_authority()))
 		camera.current = true
 		hit_strength = MIN_STRENGTH
-
 
 func _input(event):
 	if is_multiplayer_authority():
@@ -57,12 +56,6 @@ func _physics_process(delta):
 		else:
 			if move_allowed_timer.is_stopped():
 				move_allowed_timer.start()
-
-#THIS ISNT EVEN BEING USED
-#func isOnTheGround():
-#	if onGroundRaycast.get_collider() is StaticBody3D:
-#		return true
-#	return false
 
 func add_hit_strength(event):
 	hit_strength += deg_to_rad(-event.relative.y)*HIT_SENSITIVITY
