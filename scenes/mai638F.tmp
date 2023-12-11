@@ -6,14 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://c45nvkwehpn5t" path="res://scenes/UI/putting_hud.tscn" id="2_52ple"]
 [ext_resource type="AudioStream" uid="uid://4o7ej4rdlh0m" path="res://assets/audio/gymnopedie1.mp3" id="2_jscbh"]
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("GUI", "level_select", "multiplayer_menu")]
 script = ExtResource("1_somfj")
-
-[node name="PuttingHUD" parent="." instance=ExtResource("2_52ple")]
-visible = false
-
-[node name="LevelSelect" parent="." instance=ExtResource("1_2eddi")]
-visible = false
+GUI = NodePath("PuttingHUD")
+level_select = NodePath("LevelSelect")
+multiplayer_menu = NodePath("MultiplayerMenu")
 
 [node name="MultiplayerMenu" parent="." instance=ExtResource("2_5um1l")]
 anchors_preset = -1
@@ -25,6 +22,12 @@ offset_left = 334.08
 offset_top = 184.032
 offset_right = -299.52
 offset_bottom = -199.584
+
+[node name="PuttingHUD" parent="." instance=ExtResource("2_52ple")]
+visible = false
+
+[node name="LevelSelect" parent="." instance=ExtResource("1_2eddi")]
+visible = false
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_jscbh")

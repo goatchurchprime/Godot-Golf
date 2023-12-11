@@ -45,7 +45,7 @@ shape = SubResource("BoxShape3D_gkkwf")
 environment = SubResource("Environment_tmsen")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.25, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 10.0418, 24.9966, -12.0266)
+transform = Transform3D(-0.866024, -0.433016, 0.25, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
 [node name="Hole" parent="." instance=ExtResource("5_ofd28")]

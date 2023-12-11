@@ -1,12 +1,9 @@
 class_name Game extends Node3D
 
-const BALL_SCENE = preload("res://scenes/golfball.tscn")
-
-var highscores = {}
-
-@export var GUI : HUD
-@export var level_select : LevelSelect
-@export var multiplayer_menu : MultiplayerMenu
+@onready var GUI = $PuttingHUD
+@onready var level_select = $LevelSelect
+@onready var multiplayer_menu = $MultiplayerMenu
+@onready var multiplayer_spawner = $MultiplayerSpawner
 
 var golfball_last_pos : Vector3
 var out_of_bounds_area : OutOfBoundsArea
@@ -20,12 +17,25 @@ var current_level_name : String
 func _ready():
 	change_state(false)
 	
-	if !level_select.change_level.is_connected(change_level):
-		level_select.change_level.connect(change_level)
-
+	if !level_select.change_level.is_connected(change_level_receiver):
+		level_select.change_level.connect(change_level_receiver)
+	
+	if !multiplayer_menu.is_singleplayer.is_connected(select_singleplayer):
+		multiplayer_menu.is_singleplayer.connect(select_singleplayer)
+	
+	if !multiplayer_menu.is_multiplayer.is_connected(select_multiplayer):
+		multiplayer_menu.is_multiplayer.connect(select_multiplayer)
+	
+	if !level_select.levels_found.is_connected(add_levels_to_spawn_list):
+		level_select.levels_found.connect(add_levels_to_spawn_list)
+	
 func update_gui():
 	GUI.update_text(player.putts)
 
+func change_level_receiver(path, level_name):
+	change_level.rpc(path, level_name)
+
+@rpc("authority", "call_local")
 func change_level(path, level_name):
 	current_level_name = level_name
 	remove_current_level()
@@ -34,7 +44,7 @@ func change_level(path, level_name):
 
 func game_win(peer_id):
 	if peer_id == player.get_multiplayer_authority():
-		player.reset()
+		player.disable()
 		update_gui()
 		change_state(false)
 		hole.activate_hole_camera()
@@ -53,7 +63,7 @@ func change_state(game_active):
 
 func initialize_level(path):
 	if player:
-		player.activate_camera()
+		player.enable()
 	
 	current_level = load(path).instantiate()
 	get_tree().current_scene.add_child(current_level)
@@ -76,12 +86,23 @@ func remove_current_level():
 	if current_level:
 		current_level.get_parent().remove_child(current_level)
 
-func remove_player(peer_id):
-	print("someone left lol")
-
+#maybe move to multiplayer spawner signal somehow?
 func _on_child_entered_tree(node):
-	if not player:
-		if node is Golfball:
+	if node is Golfball:
+		if not player:
 			if node.is_multiplayer_authority():
 				player = node
 				player.putted.connect(update_gui)
+
+func select_singleplayer():
+	multiplayer_menu.queue_free()
+	level_select.activate()
+
+func select_multiplayer(is_host):
+	if is_host:
+		level_select.activate()
+
+func add_levels_to_spawn_list(level_paths):
+	if level_paths is Array:
+		for level in level_paths:
+			multiplayer_spawner.add_spawnable_scene(level)

@@ -46,3 +46,7 @@ up={
 [physics]
 
 common/physics_ticks_per_second=500
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=2

@@ -29,6 +29,7 @@ func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
 
 func _ready():
+	rigidbody.freeze = true
 	if is_multiplayer_authority():
 		last_pos = Vector3.ZERO
 		putts = 0
@@ -97,9 +98,16 @@ func move_back():
 	rigidbody.angular_velocity = Vector3.ZERO
 	rigidbody.position = last_pos
 
-func reset():
+func disable():
+	rigidbody.freeze = true
 	_ready()
 	move_back()
+	rigidbody.visible = false
+
+func enable():
+	rigidbody.freeze = false
+	rigidbody.visible = true
+	activate_camera()
 
 func activate_camera():
 	camera.make_current()

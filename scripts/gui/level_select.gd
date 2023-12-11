@@ -4,14 +4,20 @@ extends Control
 
 const LEVEL_BUTTON = preload("res://scenes/lvl_select_button.tscn")
 
+signal levels_found
 signal change_level
+
+var level_paths : Array
 
 @export_dir var path
 
-@onready var container = $VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer
+@onready var menu = $LevelContainer
+@onready var container = $LevelContainer/MarginContainer/HBoxContainer/VBoxContainer
 
 func _ready():
 	get_files(path)
+	levels_found.emit(level_paths)
+	menu.visible = false
 
 
 func get_files(path):
@@ -38,8 +44,8 @@ func get_files(path):
 				dir.list_dir_end()
 				break
 
-
 func create_button(lvl_path, lvl_name):
+	level_paths.append(lvl_path)
 	var btn = LEVEL_BUTTON.instantiate()
 	btn.level_path = lvl_path
 	btn.text = lvl_name
@@ -49,3 +55,6 @@ func create_button(lvl_path, lvl_name):
 
 func change_level_func(path, level_name):
 	emit_signal("change_level", path, level_name)
+
+func activate():
+	menu.visible = true

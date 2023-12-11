@@ -19,7 +19,7 @@ size_flags_horizontal = 4
 script = ExtResource("1_w2a3l")
 path = "res://scenes/levels"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="LevelContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -33,30 +33,24 @@ offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="LevelContainer"]
 layout_mode = 2
 texture = ExtResource("1_mnjtw")
 expand_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="LevelContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="LevelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "TMP BUTTON"
 
-[node name="Leaderboard" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_tax1x")]
+[node name="Leaderboard" parent="LevelContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_tax1x")]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-text = "här kan man ha pengar
-och annat"
