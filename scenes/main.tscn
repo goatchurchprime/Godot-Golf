@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg4sjmuo0nxot"]
+[gd_scene load_steps=7 format=3 uid="uid://bg4sjmuo0nxot"]
 
 [ext_resource type="PackedScene" uid="uid://bf0wxjnst3lm0" path="res://scenes/UI/level_select.tscn" id="1_2eddi"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_somfj"]
 [ext_resource type="PackedScene" uid="uid://d3soqqlkvvbbp" path="res://scenes/UI/multiplayer_menu.tscn" id="2_5um1l"]
 [ext_resource type="PackedScene" uid="uid://c45nvkwehpn5t" path="res://scenes/UI/putting_hud.tscn" id="2_52ple"]
 [ext_resource type="AudioStream" uid="uid://4o7ej4rdlh0m" path="res://assets/audio/gymnopedie1.mp3" id="2_jscbh"]
+[ext_resource type="PackedScene" uid="uid://be31scdsjltuh" path="res://scenes/UI/round_timer.tscn" id="5_3d6vm"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_somfj")
@@ -25,6 +26,8 @@ offset_left = 334.08
 offset_top = 184.032
 offset_right = -299.52
 offset_bottom = -199.584
+
+[node name="RoundTimer" parent="." instance=ExtResource("5_3d6vm")]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_jscbh")

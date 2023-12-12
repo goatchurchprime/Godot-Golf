@@ -4,6 +4,7 @@ class_name Game extends Node3D
 @onready var level_select = $LevelSelect
 @onready var multiplayer_menu = $MultiplayerMenu
 @onready var multiplayer_spawner = $MultiplayerSpawner
+@onready var round_timer = $RoundTimer
 
 var golfball_last_pos : Vector3
 var out_of_bounds_area : OutOfBoundsArea
@@ -29,6 +30,9 @@ func _ready():
 	if !level_select.levels_found.is_connected(add_levels_to_spawn_list):
 		level_select.levels_found.connect(add_levels_to_spawn_list)
 	
+	if !round_timer.timeout.is_connected(timeout):
+		round_timer.timeout.connect(timeout)
+	
 func update_gui():
 	GUI.update_text(player.putts)
 
@@ -37,12 +41,14 @@ func change_level_receiver(path, level_name):
 
 @rpc("authority", "call_local")
 func change_level(path, level_name):
+	round_timer.start_timer()
 	current_level_name = level_name
 	remove_current_level()
 	initialize_level(path)
 	change_state(true)
 
 func game_win(peer_id):
+	round_timer.stop_timer()
 	if peer_id == player.get_multiplayer_authority():
 		player.disable()
 		update_gui()
@@ -50,6 +56,13 @@ func game_win(peer_id):
 		hole.activate_hole_camera()
 	else:
 		print(str(peer_id) + " WON THE GAME!!!")
+
+@rpc("authority", "call_local")
+func end_game():
+	player.disable()
+	update_gui()
+	change_state(false)
+	hole.activate_hole_camera()
 
 func change_state(game_active):
 	if game_active:
@@ -106,3 +119,6 @@ func add_levels_to_spawn_list(level_paths):
 	if level_paths is Array:
 		for level in level_paths:
 			multiplayer_spawner.add_spawnable_scene(level)
+
+func timeout():
+	end_game.rpc()

@@ -67,7 +67,7 @@ shape = SubResource("BoxShape3D_psi54")
 environment = SubResource("Environment_nht1e")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 10.0418, 24.8703, -12.0266)
+transform = Transform3D(-0.903666, -0.133042, -0.407047, -0.338733, -0.359483, 0.869501, -0.262006, 0.923619, 0.279787, 0, 0, 0)
 shadow_enabled = true
 
 [node name="Cirno" type="StaticBody3D" parent="."]
@@ -131,6 +131,3 @@ shape = SubResource("BoxShape3D_osokg")
 
 [node name="Hole" parent="." instance=ExtResource("5_o45r4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94603, -0.5, -4.64144)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.779218, 0.626753, 0, -0.626753, 0.779218, 0, 4.76708, 4.82852)
