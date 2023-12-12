@@ -1,5 +1,6 @@
 class_name Game extends Node3D
 
+@onready var menu_background = $MenuBackground
 @onready var GUI = $PuttingHUD
 @onready var level_select = $LevelSelect
 @onready var multiplayer_menu = $MultiplayerMenu
@@ -41,6 +42,11 @@ func change_level_receiver(path, level_name):
 
 @rpc("authority", "call_local")
 func change_level(path, level_name):
+	player.disable()
+	update_gui()
+	if menu_background:
+		menu_background.queue_free()
+		menu_background = null
 	round_timer.start_timer()
 	current_level_name = level_name
 	remove_current_level()
@@ -59,6 +65,7 @@ func game_win(peer_id):
 
 @rpc("authority", "call_local")
 func end_game():
+	timeout().timer_stop()	
 	player.disable()
 	update_gui()
 	change_state(false)

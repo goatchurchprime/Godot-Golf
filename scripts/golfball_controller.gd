@@ -9,11 +9,12 @@ const HIT_SENSITIVITY = 3
 const MIN_VELOCITY = 0.5
 
 var putts
-var last_pos : Vector3
 var move_allowed : bool
 var aiming : bool
 var hit_strength : float
 var impulse : Vector3
+
+var last_pos : Vector3
 
 @onready var rigidbody = $Golfball
 @onready var move_allowed_timer = $MoveAllowedTimer
@@ -33,7 +34,6 @@ func _ready():
 	if is_multiplayer_authority():
 		last_pos = Vector3.ZERO
 		putts = 0
-		camera.current = true
 		hit_strength = MIN_STRENGTH
 
 func _input(event):
@@ -99,6 +99,7 @@ func move_back():
 	rigidbody.position = last_pos
 
 func disable():
+	camera.current = false
 	rigidbody.freeze = true
 	_ready()
 	move_back()

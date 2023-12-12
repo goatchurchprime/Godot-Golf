@@ -1,13 +1,68 @@
-[gd_scene load_steps=2 format=3 uid="uid://bin524of6343q"]
+[gd_scene load_steps=11 format=3 uid="uid://bin524of6343q"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_u6ra8"]
+[ext_resource type="ArrayMesh" uid="uid://5ojyu2uls7x7" path="res://objects/cirno/cirno_low.obj" id="1_of6ug"]
+[ext_resource type="Script" path="res://scripts/hole_camera.gd" id="2_jkh6w"]
+[ext_resource type="Texture2D" uid="uid://3lyuav61lacs" path="res://objects/cirno/cirno_low_u1_v1.jpg" id="2_pyriy"]
+[ext_resource type="Texture2D" uid="uid://dfemwrmp3io1h" path="res://objects/cirno/cirno_low_Material_u1_v1_ambient_occlusion.png" id="3_2lchy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_meeij"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_3iy3f"]
+sky_material = SubResource("ProceduralSkyMaterial_meeij")
+
+[sub_resource type="Environment" id="Environment_ebhwh"]
+background_mode = 2
+sky = SubResource("Sky_3iy3f")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0knc"]
+albedo_texture = ExtResource("2_pyriy")
+ao_enabled = true
+ao_texture = ExtResource("3_2lchy")
+
+[sub_resource type="BoxMesh" id="BoxMesh_glb2a"]
+size = Vector3(2.15, 0.165, 2.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mwri6"]
+size = Vector3(1, 7.32, 1)
 
 [node name="MenuBackground" type="Node3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ebhwh")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_u6ra8")
+[node name="Cirno" type="StaticBody3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 2, 2, 2)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cirno"]
+transform = Transform3D(-0.0856503, -0.0276408, -0.000139937, -6.87993e-11, -0.000455637, 0.0899988, -0.0276412, 0.0856492, 0.000433616, 0, -0.263937, 0)
+mesh = ExtResource("1_of6ug")
+surface_material_override/0 = SubResource("StandardMaterial3D_b0knc")
+
+[node name="Pedestal" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226466, -0.182557, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal"]
+mesh = SubResource("BoxMesh_glb2a")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pedestal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.62852, 0)
+mesh = SubResource("BoxMesh_mwri6")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(0.966268, -0.128769, 0.223034, 0, 0.866025, 0.5, -0.257538, -0.483134, 0.836812, 0, 0.5, 0)
+spring_length = 3.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SpringArm3D"]
+transform = Transform3D(1, 3.72529e-08, -5.96046e-08, 7.45058e-09, 1, -1.49012e-07, 0, -2.98023e-08, 1, 0, 0, 3)
+light_energy = 2.0
+spot_range = 4.683
+spot_angle = 26.57
+
+[node name="HoleCamera" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 3.72529e-08, -5.96046e-08, 7.45058e-09, 1, -1.49012e-07, 0, -2.98023e-08, 1, -3.72529e-09, 8.9407e-08, 3)
+script = ExtResource("2_jkh6w")
+rotation_amt = 0.0051
+active = true
