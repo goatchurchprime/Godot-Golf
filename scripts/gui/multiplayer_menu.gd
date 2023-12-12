@@ -4,10 +4,9 @@ class_name MultiplayerMenu extends Control
 
 @onready var singleplayer_multiplayer_container = $SingleplayerMultiplayerContainer
 @onready var multiplayer_container = $MultiplayerContainer
+@onready var ip_line_edit = $MultiplayerContainer/IPLineEdit
 
 var players : Array
-
-var multiplayer_address : String
 
 const PORT = 1984
 const MAX_PLAYERS = 8
@@ -28,8 +27,8 @@ func _on_host_pressed():
 	is_multiplayer.emit(true)
 
 func _on_join_pressed():
-	hide()	
-	enet_peer.create_client(multiplayer_address, PORT)
+	hide()
+	enet_peer.create_client(ip_line_edit.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	is_multiplayer.emit(false)
 
