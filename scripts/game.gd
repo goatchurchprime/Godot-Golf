@@ -65,7 +65,7 @@ func game_win(peer_id):
 
 @rpc("authority", "call_local")
 func end_game():
-	timeout().timer_stop()	
+	round_timer.stop_timer()
 	player.disable()
 	update_gui()
 	change_state(false)

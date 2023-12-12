@@ -53,4 +53,5 @@ layout_mode = 2
 text = "TMP BUTTON"
 
 [node name="Leaderboard" parent="LevelContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_tax1x")]
+visible = false
 layout_mode = 2
