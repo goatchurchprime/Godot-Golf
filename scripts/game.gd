@@ -106,7 +106,6 @@ func remove_current_level():
 	if current_level:
 		current_level.get_parent().remove_child(current_level)
 
-#maybe move to multiplayer spawner signal somehow?
 func _on_child_entered_tree(node):
 	if node is Golfball:
 		if not player:

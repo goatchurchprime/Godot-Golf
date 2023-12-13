@@ -19,7 +19,6 @@ func _ready():
 	levels_found.emit(level_paths)
 	menu.visible = false
 
-
 func get_files(path):
 	if !path:
 		print("Level select is missing folder")
@@ -37,8 +36,6 @@ func get_files(path):
 				# Fixes exporting map, adds suffix .remap at the end
 				tmp_path = tmp_path.trim_suffix(".remap") 
 				var tmp_name = "Level " + str(lvl_count)
-				if tmp == "test_level.tscn":
-					tmp_name = "Test Level"
 				create_button(tmp_path, tmp_name)
 			else:
 				dir.list_dir_end()
@@ -51,7 +48,6 @@ func create_button(lvl_path, lvl_name):
 	btn.text = lvl_name
 	btn.change_level.connect(change_level_func)
 	container.add_child(btn)
-
 
 func change_level_func(path, level_name):
 	emit_signal("change_level", path, level_name)

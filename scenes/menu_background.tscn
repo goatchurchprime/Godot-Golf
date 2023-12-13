@@ -64,5 +64,5 @@ spot_angle = 26.57
 [node name="HoleCamera" type="Camera3D" parent="SpringArm3D"]
 transform = Transform3D(1, 3.72529e-08, -5.96046e-08, 7.45058e-09, 1, -1.49012e-07, 0, -2.98023e-08, 1, -3.72529e-09, 8.9407e-08, 3)
 script = ExtResource("2_jkh6w")
-rotation_amt = 0.0051
+rotation_amt = 0.5
 active = true
