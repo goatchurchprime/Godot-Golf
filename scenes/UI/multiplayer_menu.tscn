@@ -20,7 +20,32 @@ size_flags_vertical = 4
 script = ExtResource("1_7u6sm")
 player_scene = ExtResource("2_52pmy")
 
+[node name="NameSelectionContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -22.0
+offset_right = 144.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="NameLineEdit" type="LineEdit" parent="NameSelectionContainer"]
+layout_mode = 2
+placeholder_text = "Insert your name here"
+expand_to_text_length = true
+
+[node name="NameConfirmButton" type="Button" parent="NameSelectionContainer"]
+layout_mode = 2
+text = "Confirm"
+
 [node name="SingleplayerMultiplayerContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -83,6 +108,7 @@ placeholder_text = "Insert host-IP"
 layout_mode = 2
 text = "Join"
 
+[connection signal="pressed" from="NameSelectionContainer/NameConfirmButton" to="." method="_on_name_confirm_button_pressed"]
 [connection signal="pressed" from="SingleplayerMultiplayerContainer/HBoxContainer/SingleplayerButton" to="." method="_on_singleplayer_button_pressed"]
 [connection signal="pressed" from="SingleplayerMultiplayerContainer/HBoxContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
 [connection signal="pressed" from="MultiplayerContainer/Host" to="." method="_on_host_pressed"]

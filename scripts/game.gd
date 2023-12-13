@@ -6,6 +6,7 @@ class_name Game extends Node3D
 @onready var multiplayer_menu = $MultiplayerMenu
 @onready var multiplayer_spawner = $MultiplayerSpawner
 @onready var round_timer = $RoundTimer
+@onready var scoreboard = $Scoreboard
 
 var golfball_last_pos : Vector3
 var out_of_bounds_area : OutOfBoundsArea
@@ -17,10 +18,13 @@ var current_level : Node3D
 var current_level_name : String
 
 func _ready():
-	change_state(false)
+	game_status(false)
 	
 	if !level_select.change_level.is_connected(change_level_receiver):
 		level_select.change_level.connect(change_level_receiver)
+	
+	if !multiplayer_menu.player_added.is_connected(set_player):
+		multiplayer_menu.player_added.connect(set_player)
 	
 	if !multiplayer_menu.is_singleplayer.is_connected(select_singleplayer):
 		multiplayer_menu.is_singleplayer.connect(select_singleplayer)
@@ -33,8 +37,13 @@ func _ready():
 	
 	if !round_timer.timeout.is_connected(timeout):
 		round_timer.timeout.connect(timeout)
-	
+
+func update_gui_non_rpc():
+	update_gui.rpc()
+
+@rpc("any_peer", "call_local", "reliable")
 func update_gui():
+	scoreboard.update()
 	GUI.update_text(player.putts)
 
 func change_level_receiver(path, level_name):
@@ -42,8 +51,9 @@ func change_level_receiver(path, level_name):
 
 @rpc("authority", "call_local")
 func change_level(path, level_name):
-	player.disable()
-	update_gui()
+	if player:
+		player.disable()
+	update_gui.rpc()
 	if menu_background:
 		menu_background.queue_free()
 		menu_background = null
@@ -51,14 +61,14 @@ func change_level(path, level_name):
 	current_level_name = level_name
 	remove_current_level()
 	initialize_level(path)
-	change_state(true)
+	game_status(true)
 
 func game_win(peer_id):
 	round_timer.stop_timer()
 	if peer_id == player.get_multiplayer_authority():
 		player.disable()
-		update_gui()
-		change_state(false)
+		update_gui.rpc()
+		game_status(false)
 		hole.activate_hole_camera()
 	else:
 		print(str(peer_id) + " WON THE GAME!!!")
@@ -68,10 +78,10 @@ func end_game():
 	round_timer.stop_timer()
 	player.disable()
 	update_gui()
-	change_state(false)
+	game_status(false)
 	hole.activate_hole_camera()
 
-func change_state(game_active):
+func game_status(game_active):
 	if game_active:
 		GUI.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -106,15 +116,14 @@ func remove_current_level():
 	if current_level:
 		current_level.get_parent().remove_child(current_level)
 
-func _on_child_entered_tree(node):
-	if node is Golfball:
-		if not player:
-			if node.is_multiplayer_authority():
-				player = node
-				player.putted.connect(update_gui)
+func set_player(player):
+	if not self.player:
+		self.player = player
+		player.putted.connect(update_gui_non_rpc)
 
 func select_singleplayer():
 	multiplayer_menu.queue_free()
+	multiplayer_menu = null
 	level_select.activate()
 
 func select_multiplayer(is_host):

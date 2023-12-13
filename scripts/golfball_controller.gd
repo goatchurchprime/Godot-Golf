@@ -8,6 +8,8 @@ const STRENGTH = 0.1
 const HIT_SENSITIVITY = 3
 const MIN_VELOCITY = 0.5
 
+var username
+
 var putts
 var move_allowed : bool
 var aiming : bool
@@ -15,6 +17,8 @@ var hit_strength : float
 var impulse : Vector3
 
 var last_pos : Vector3
+
+var locked = true
 
 @onready var rigidbody = $Golfball
 @onready var move_allowed_timer = $MoveAllowedTimer
@@ -26,11 +30,11 @@ var last_pos : Vector3
 @onready var putt_audio_player = $CameraPosition/PuttingAudioPlayer
 
 func _enter_tree():
-	print("created")
 	set_multiplayer_authority(str(name).to_int())
 
 func _ready():
 	rigidbody.freeze = true
+	locked = true
 	if is_multiplayer_authority():
 		last_pos = Vector3.ZERO
 		putts = 0
@@ -38,13 +42,14 @@ func _ready():
 
 func _input(event):
 	if is_multiplayer_authority():
-		if move_allowed:
-			if Input.is_action_just_pressed("left_mouse"):
-				aiming = true
-			elif Input.is_action_just_released("left_mouse"):
-				putt()
-			elif event is InputEventMouseMotion and aiming:
-				add_hit_strength(event)
+		if not locked:
+			if move_allowed:
+				if Input.is_action_just_pressed("left_mouse"):
+					aiming = true
+				elif Input.is_action_just_released("left_mouse"):
+					putt()
+				elif event is InputEventMouseMotion and aiming:
+					add_hit_strength(event)
 
 func _physics_process(delta):
 	if is_multiplayer_authority():
@@ -64,21 +69,23 @@ func add_hit_strength(event):
 	hit_strength = clamp(hit_strength,MAX_STRENGTH,MIN_STRENGTH)
 
 func putt():
-	last_pos = rigidbody.position
-	if abs(hit_strength) > 0:
-		print("hit_strength: " + str(hit_strength))
-		impulse = spring_arm.get_rotation_basis()
-		impulse.y = 0
-		impulse = impulse.normalized()
-		impulse*= -abs(hit_strength*STRENGTH)
-		emit_particles()
-		play_putt_sound()
-		hit_strength = MIN_STRENGTH
-		putts += 1
+	if is_multiplayer_authority():
+		last_pos = rigidbody.position
+		if abs(hit_strength) > 0:
+			print("hit_strength: " + str(hit_strength))
+			impulse = spring_arm.get_rotation_basis()
+			impulse.y = 0
+			impulse = impulse.normalized()
+			impulse*= -abs(hit_strength*STRENGTH)
+			emit_particles()
+			play_putt_sound()
+			hit_strength = MIN_STRENGTH
+			putts += 1
+			emit_signal("putted")
+		else:
+			print("Hit cancelled!")
+		aiming = false
 		emit_signal("putted")
-	else:
-		print("Hit cancelled!")
-	aiming = false
 
 func emit_particles():
 	particle_emitter.rotation.x = spring_arm.get_rotation_basis().x
@@ -99,6 +106,7 @@ func move_back():
 	rigidbody.position = last_pos
 
 func disable():
+	locked = true
 	camera.current = false
 	rigidbody.freeze = true
 	_ready()
@@ -106,6 +114,8 @@ func disable():
 	rigidbody.visible = false
 
 func enable():
+	_ready()
+	locked = false
 	rigidbody.freeze = false
 	rigidbody.visible = true
 	activate_camera()

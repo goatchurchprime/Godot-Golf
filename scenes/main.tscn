@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg4sjmuo0nxot"]
+[gd_scene load_steps=9 format=3 uid="uid://bg4sjmuo0nxot"]
 
 [ext_resource type="PackedScene" uid="uid://bf0wxjnst3lm0" path="res://scenes/UI/level_select.tscn" id="1_2eddi"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_somfj"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://4o7ej4rdlh0m" path="res://assets/audio/gymnopedie1.mp3" id="2_jscbh"]
 [ext_resource type="PackedScene" uid="uid://bin524of6343q" path="res://scenes/menu_background.tscn" id="2_wy3ih"]
 [ext_resource type="PackedScene" uid="uid://be31scdsjltuh" path="res://scenes/UI/round_timer.tscn" id="5_3d6vm"]
+[ext_resource type="PackedScene" uid="uid://b1ilb4u1816a3" path="res://scenes/UI/scoreboard.tscn" id="7_743ai"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_somfj")
@@ -32,11 +33,12 @@ offset_bottom = -199.584
 
 [node name="RoundTimer" parent="." instance=ExtResource("5_3d6vm")]
 
+[node name="Scoreboard" parent="." instance=ExtResource("7_743ai")]
+visible = false
+
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_jscbh")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/golfball.tscn")
 spawn_path = NodePath("..")
-
-[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

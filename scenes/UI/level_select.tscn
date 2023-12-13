@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf0wxjnst3lm0"]
+[gd_scene load_steps=3 format=3 uid="uid://bf0wxjnst3lm0"]
 
 [ext_resource type="Texture2D" uid="uid://irlti1bgtydq" path="res://assets/images/godot_golf.png" id="1_mnjtw"]
 [ext_resource type="Script" path="res://scripts/gui/level_select.gd" id="1_w2a3l"]
-[ext_resource type="PackedScene" uid="uid://bwn5g5n35ox2g" path="res://scenes/UI/leaderboard.tscn" id="3_tax1x"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -51,7 +50,3 @@ layout_mode = 2
 [node name="Button" type="Button" parent="LevelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "TMP BUTTON"
-
-[node name="Leaderboard" parent="LevelContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_tax1x")]
-visible = false
-layout_mode = 2
