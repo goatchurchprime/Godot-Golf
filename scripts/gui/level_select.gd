@@ -4,8 +4,15 @@ extends Control
 
 const LEVEL_BUTTON = preload("res://scenes/lvl_select_button.tscn")
 
+var current_level : Node3D
+var current_level_name : String
+var hole : Hole
+var out_of_bounds_area : OutOfBoundsArea
+
+signal change_level_signal
 signal levels_found
-signal change_level
+signal game_won
+signal golfball_left
 
 var level_paths : Array
 
@@ -18,6 +25,42 @@ func _ready():
 	get_files(path)
 	levels_found.emit(level_paths)
 	menu.visible = false
+
+func change_level(path, level_name):
+	current_level_name = level_name
+	remove_current_level()
+	initialize_level(path)
+
+func remove_current_level():
+	if current_level:
+		current_level.get_parent().remove_child(current_level)
+
+func initialize_level(path):
+	current_level = load(path).instantiate()
+	get_tree().current_scene.add_child(current_level)
+	var tmp_children = current_level.get_children()
+	for child in tmp_children:
+		if child is Hole:
+			hole = child
+			if !hole.game_win.is_connected(game_win):
+				hole.game_win.connect(game_win)
+		if child is OutOfBoundsArea:
+			out_of_bounds_area = child
+			if !out_of_bounds_area.golfball_left.is_connected(golfball_left_func):
+				out_of_bounds_area.golfball_left.connect(golfball_left_func)
+
+func game_win(peer_id):
+	hole.activate_hole_camera()
+	game_won.emit(peer_id)
+
+func end_game():
+	hole.activate_hole_camera()
+
+func golfball_left_func(peer_id):
+	golfball_left.emit(peer_id)
+
+func change_level_func(path, level_name):
+	change_level_signal.emit(path, level_name)
 
 func get_files(path):
 	if !path:
@@ -48,9 +91,6 @@ func create_button(lvl_path, lvl_name):
 	btn.text = lvl_name
 	btn.change_level.connect(change_level_func)
 	container.add_child(btn)
-
-func change_level_func(path, level_name):
-	emit_signal("change_level", path, level_name)
 
 func activate():
 	menu.visible = true
