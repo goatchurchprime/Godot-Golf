@@ -28,19 +28,17 @@ func _on_host_pressed():
 	hide()
 	enet_peer.create_server(PORT, MAX_PLAYERS)
 	multiplayer.multiplayer_peer = enet_peer
-	
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(player_disconnected)
-	
 	add_player(multiplayer.get_unique_id())
-	is_multiplayer.emit(true)
+	is_multiplayer.emit()
 
 func _on_join_pressed():
 	hide()
 	enet_peer.create_client(ip_line_edit.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	add_player(multiplayer.get_unique_id())
-	is_multiplayer.emit(false)
+	is_multiplayer.emit()
 
 func add_player(peer_id):
 	print("Player connected")
@@ -70,4 +68,5 @@ func _on_multiplayer_button_pressed():
 func _on_name_confirm_button_pressed():
 	username = str(name_line_edit.text)
 	name_selection_container.queue_free()
+	name_selection_container = null
 	singleplayer_multiplayer_container.visible = true

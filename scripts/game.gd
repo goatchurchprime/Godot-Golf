@@ -38,7 +38,7 @@ func _ready():
 	if !round_timer.timeout.is_connected(timeout):
 		round_timer.timeout.connect(timeout)
 
-func update_gui_non_rpc():
+func update_gui_receiver():
 	update_gui.rpc()
 
 @rpc("any_peer", "call_local", "reliable")
@@ -77,7 +77,7 @@ func game_win(peer_id):
 func end_game():
 	round_timer.stop_timer()
 	player.disable()
-	update_gui()
+	update_gui.rpc()
 	game_status(false)
 	hole.activate_hole_camera()
 
@@ -119,15 +119,15 @@ func remove_current_level():
 func set_player(player):
 	if not self.player:
 		self.player = player
-		player.putted.connect(update_gui_non_rpc)
+		player.putted.connect(update_gui_receiver)
 
 func select_singleplayer():
 	multiplayer_menu.queue_free()
 	multiplayer_menu = null
 	level_select.activate()
 
-func select_multiplayer(is_host):
-	if is_host:
+func select_multiplayer():
+	if multiplayer.is_server():
 		level_select.activate()
 
 func add_levels_to_spawn_list(level_paths):

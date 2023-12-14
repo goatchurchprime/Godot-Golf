@@ -14,7 +14,6 @@ func _unhandled_input(event):
 
 func update():
 	var players = get_tree().get_nodes_in_group("players")
-	print(players)
 	for player in players:
 		if player_dict.has(player.name):
 			player_dict[player.name].set_score(player.putts)
