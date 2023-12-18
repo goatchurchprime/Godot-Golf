@@ -12,13 +12,16 @@ var player : Golfball
 
 func _ready():
 	game_status(false)
+	
 	level_select.change_level_signal.connect(change_level_receiver)
 	level_select.game_won.connect(game_win)
 	level_select.golfball_left.connect(golfball_left)
+	level_select.levels_found.connect(add_levels_to_spawn_list)
+	
 	multiplayer_menu.player_added.connect(set_player)
 	multiplayer_menu.is_singleplayer.connect(select_singleplayer)
 	multiplayer_menu.is_multiplayer.connect(select_multiplayer)
-	level_select.levels_found.connect(add_levels_to_spawn_list)
+	
 	round_timer.timeout.connect(timeout)
 
 func update_gui_receiver():
