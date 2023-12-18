@@ -11,8 +11,6 @@ class_name MultiplayerMenu extends Control
 
 var username : String
 
-var players : Array
-
 const PORT = 1984
 const MAX_PLAYERS = 8
 
@@ -27,6 +25,7 @@ signal is_singleplayer
 func _on_host_pressed():
 	hide()
 	enet_peer.create_server(PORT, MAX_PLAYERS)
+	#enet_peer.set_bind_ip("0.0.0.0")
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(player_disconnected)
@@ -46,14 +45,12 @@ func add_player(peer_id):
 	player.name = str(peer_id)
 	player.username = username
 	get_tree().current_scene.add_child(player)
-	players.append(player)
-	
 	player_added.emit(player)
 
+@rpc("authority")
 func player_disconnected(peer_id):
-	for player in players:
+	for player in get_tree().get_nodes_in_group("players"):
 		if player.get_multiplayer_authority() == peer_id:
-			players.erase(player)
 			player.queue_free()
 
 func _on_singleplayer_button_pressed():
