@@ -42,11 +42,13 @@ func initialize_level(path):
 		if child is LevelGroup:
 			level_groups.append(child)
 	level_groups.sort()
+	current_level_group = level_groups[0]
 	connect_signals()
 	next_hole()
 
 func disconnect_signals():
 	if current_level_group:
+		print("SIGNALS DISCONNECTED")
 		if current_level_group.golfball_won.is_connected(game_win):
 			current_level_group.golfball_won.disconnect(game_win)
 		if current_level_group.golfball_out_of_bounds.is_connected(golfball_left_func):
@@ -62,7 +64,6 @@ func next_hole():
 	print("NEXT HOLE")
 
 func golfball_left_func(peer_id):
-	print("GOLFBALL LEFT!!!!")
 	golfball_left.emit(peer_id)
 
 func game_win(peer_id):
