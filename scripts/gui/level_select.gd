@@ -8,6 +8,7 @@ var level_groups : Array
 
 var current_level_group : LevelGroup
 
+signal last_level
 signal change_level_signal
 signal levels_found
 signal game_won
@@ -63,7 +64,7 @@ func next_hole():
 			current_level_group = level_groups[0]
 	else:
 		if current_level_group == level_groups[level_groups.size()-1]:
-			#insert last level code
+			last_level.emit()
 			print("last level!")
 			return
 		for n in range(level_groups.size()):
@@ -72,6 +73,7 @@ func next_hole():
 				break
 	
 	connect_signals()
+	
 	print("NEXT HOLE")
 
 func golfball_left_func(peer_id):
