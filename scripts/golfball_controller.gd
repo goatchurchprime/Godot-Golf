@@ -105,6 +105,10 @@ func move_back():
 	rigidbody.angular_velocity = Vector3.ZERO
 	rigidbody.position = last_pos
 
+func move_to(pos):
+	last_pos = pos
+	move_back()
+
 func disable():
 	locked = true
 	camera.current = false

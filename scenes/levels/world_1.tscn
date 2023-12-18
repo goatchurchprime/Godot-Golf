@@ -33,10 +33,10 @@ material = ExtResource("1_e5jj4")
 size = Vector3(50, 1, 50)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wi5f"]
-size = Vector3(8.96487, 3.46582, 9.08093)
+size = Vector3(8.96487, 8.01855, 9.08093)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j65ch"]
-size = Vector3(15, 3.85852, 15)
+size = Vector3(15, 9.15399, 15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yubiq"]
 size = Vector3(0.69474, 0.17529, 0.149314)
@@ -97,7 +97,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.042
 [node name="OutOfBoundsArea" parent="LevelGroup1" instance=ExtResource("5_tcjyp")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup1/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9369, 1.23291, -3.00519)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9369, 3.50928, -3.00519)
 shape = SubResource("BoxShape3D_4wi5f")
 
 [node name="Course" type="Node3D" parent="LevelGroup1"]
@@ -122,7 +122,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6486, 0, 16.0602)
 [node name="OutOfBoundsArea" parent="LevelGroup2" instance=ExtResource("5_tcjyp")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup2/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42926, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.077, 0)
 shape = SubResource("BoxShape3D_j65ch")
 
 [node name="SpawnLocation" parent="LevelGroup2" instance=ExtResource("4_nua1o")]

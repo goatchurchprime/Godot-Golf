@@ -6,7 +6,7 @@ const LEVEL_BUTTON = preload("res://scenes/lvl_select_button.tscn")
 
 var level_groups : Array
 
-var current_level_group
+var current_level_group : LevelGroup
 
 signal change_level_signal
 signal levels_found
@@ -42,8 +42,6 @@ func initialize_level(path):
 		if child is LevelGroup:
 			level_groups.append(child)
 	level_groups.sort()
-	current_level_group = level_groups[0]
-	connect_signals()
 	next_hole()
 
 func disconnect_signals():
@@ -61,6 +59,19 @@ func connect_signals():
 		current_level_group.golfball_out_of_bounds.connect(golfball_left_func)
 
 func next_hole():
+	if not current_level_group:
+			current_level_group = level_groups[0]
+	else:
+		if current_level_group == level_groups[level_groups.size()-1]:
+			#insert last level code
+			print("last level!")
+			return
+		for n in range(level_groups.size()):
+			if current_level_group == level_groups[n]:
+				current_level_group = level_groups[n+1]
+				break
+	
+	connect_signals()
 	print("NEXT HOLE")
 
 func golfball_left_func(peer_id):
@@ -75,6 +86,9 @@ func end_game():
 
 func change_level_func(path, level_name):
 	change_level_signal.emit(path, level_name)
+
+func get_current_spawn_location_pos():
+	return current_level_group.spawn_location.get_global_pos()
 
 func get_files(path):
 	if !path:

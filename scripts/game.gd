@@ -44,6 +44,7 @@ func change_level(path, level_name):
 		menu_background = null
 	level_select.change_level(path, level_name)
 	player.enable()
+	player.move_to(level_select.get_current_spawn_location_pos())
 	round_timer.start_timer()
 	game_status(true)
 
