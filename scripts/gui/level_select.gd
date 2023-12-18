@@ -87,7 +87,7 @@ func get_files(path):
 			var tmp = dir.get_next()
 			if tmp != "":
 				var tmp_path = dir.get_current_dir() + "/" + tmp
-				# Fixes exporting map, adds suffix .remap at the end
+				# Fixes exporting map, removes suffix .remap at the end
 				tmp_path = tmp_path.trim_suffix(".remap")
 				var tmp_name = get_name_from_path(tmp_path)
 				print(tmp_path)
