@@ -20,7 +20,7 @@ func _ready():
 	level_select.levels_found.connect(add_levels_to_spawn_list)
 	
 	level_select.game_won.connect(game_win_receiver)
-	level_select.last_level.connect(last_level)
+	level_select.game_over.connect(game_over)
 	
 	multiplayer_menu.player_added.connect(set_player)
 	multiplayer_menu.is_singleplayer.connect(select_singleplayer)
@@ -68,11 +68,10 @@ func game_win(peer_id):
 @rpc("authority", "call_local")
 func next_level():
 	level_select.next_hole()
-	ready_player()
-
-func last_level():
-	if multiplayer.is_server():
-		active_game(false)
+	if not level_select.last_hole:
+		ready_player.rpc()
+	else:
+		game_over.rpc()
 
 @rpc("authority", "call_local")
 func end_game():
@@ -117,6 +116,13 @@ func add_levels_to_spawn_list(level_paths):
 func timeout():
 	end_game.rpc()
 
+@rpc("authority","call_local")
+func game_over():
+	if multiplayer.is_server():
+		active_game(false)
+	player.disable()
+
+@rpc("authority", "call_local")
 func ready_player():
 	player.enable()
 	player.move_to(level_select.get_current_spawn_location_pos())

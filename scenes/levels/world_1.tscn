@@ -92,7 +92,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.352
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.57517, 0.788115, -5.81749)
 
 [node name="SpawnLocation" parent="LevelGroup1" instance=ExtResource("4_nua1o")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0426083, 0.212315, 0.254567)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="OutOfBoundsArea" parent="LevelGroup1" instance=ExtResource("5_tcjyp")]
 
@@ -117,7 +117,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 transform = Transform3D(-4.37114e-08, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-08, -4.2222e-08, 2.94102, 0.390241, -6)
 
 [node name="LevelGroup2" parent="." instance=ExtResource("2_37u63")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6486, 0, 16.0602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6486, 0, 14.9711)
 
 [node name="OutOfBoundsArea" parent="LevelGroup2" instance=ExtResource("5_tcjyp")]
 
@@ -126,7 +126,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.077, 0)
 shape = SubResource("BoxShape3D_j65ch")
 
 [node name="SpawnLocation" parent="LevelGroup2" instance=ExtResource("4_nua1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50531, 0, 2.40768)
 
 [node name="Hole" parent="LevelGroup2" instance=ExtResource("3_m0qga")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50119, 0, -6.15194)

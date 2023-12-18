@@ -6,12 +6,14 @@ const LEVEL_BUTTON = preload("res://scenes/lvl_select_button.tscn")
 
 var level_groups : Array
 
+var last_hole : bool
+
 var current_level_group : LevelGroup
 
-signal last_level
 signal change_level_signal
 signal levels_found
 signal game_won
+signal game_over
 signal golfball_left
 
 var level_paths : Array
@@ -26,17 +28,21 @@ func _ready():
 	levels_found.emit(level_paths)
 	menu.visible = false
 
-func change_level(path, level_name):
+func change_level(level_path, level_name):
+	last_hole = false
 	remove_current_level()
-	initialize_level(path)
+	initialize_level(level_path)
 
 func remove_current_level():
 	if current_level_group:
-		current_level_group.get_parent().remove_child(current_level_group)
+		get_tree().current_scene.remove_child(current_level_group.get_parent())
+		current_level_group = null
+	if level_groups:
+		level_groups.clear()
 
-func initialize_level(path):
+func initialize_level(level_path):
 	disconnect_signals()
-	var tmp = load(path).instantiate()
+	var tmp = load(level_path).instantiate()
 	get_tree().current_scene.add_child(tmp)
 	var tmp_children = tmp.get_children()
 	for child in tmp_children:
@@ -63,18 +69,15 @@ func next_hole():
 	if not current_level_group:
 			current_level_group = level_groups[0]
 	else:
-		if current_level_group == level_groups[level_groups.size()-1]:
-			last_level.emit()
-			print("last level!")
-			return
+		disconnect_signals()
 		for n in range(level_groups.size()):
 			if current_level_group == level_groups[n]:
+				if n == level_groups.size()-1:
+					last_hole = true
+					break
 				current_level_group = level_groups[n+1]
 				break
-	
 	connect_signals()
-	
-	print("NEXT HOLE")
 
 func golfball_left_func(peer_id):
 	golfball_left.emit(peer_id)
@@ -86,8 +89,8 @@ func game_win(peer_id):
 func end_game():
 	current_level_group.activate_hole_camera()
 
-func change_level_func(path, level_name):
-	change_level_signal.emit(path, level_name)
+func change_level_func(level_path, level_name):
+	change_level_signal.emit(level_path, level_name)
 
 func get_current_spawn_location_pos():
 	return current_level_group.spawn_location.get_global_pos()
