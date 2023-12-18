@@ -22,10 +22,15 @@ func golfball_left(peer_id):
 	golfball_out_of_bounds.emit(peer_id)
 
 func check_variables():
-	if not hole or not spawn_location or not out_of_bounds_area:
-		print("ERROR - Level group (" + self.name + ") missing entities")
-	else:
-		print(self.name + " Initialized correctly")
+	if not Hole:
+		print_error("Hole")
+	if not spawn_location:
+		print_error("Spawn Location")
+	if not out_of_bounds_area:
+		print_error("Out of Bounds Area")
+
+func print_error(missing):
+	print("ERROR - " + self.name + "IS MISSING: " + missing)
 
 func activate_hole_camera():
 	hole.activate_hole_camera()
