@@ -30,6 +30,8 @@ func _ready():
 	multiplayer_menu.is_singleplayer.connect(select_singleplayer)
 	multiplayer_menu.is_multiplayer.connect(select_multiplayer)
 	
+	if multiplayer.is_server():
+		round_timer.timeout.connect(end_game_receiver)
 	
 	next_hole_timer = initialize_timer()
 
@@ -62,7 +64,6 @@ func game_win_receiver(peer_id):
 @rpc("any_peer", "call_local")
 func game_win(peer_id):
 	players_won += 1
-	round_timer.stop_timer()
 	
 	if peer_id == player.get_multiplayer_authority():
 		player.disable()
@@ -70,9 +71,7 @@ func game_win(peer_id):
 	
 	if players_won == get_tree().get_nodes_in_group("players").size():
 		print("ALL PLAYERS HAVE WON")
-		if multiplayer.is_server():
-			next_hole_timer.start()
-		print("TIMER STARTED")
+		end_game()
 
 func next_level_receiver():
 	next_level.rpc()
@@ -81,12 +80,18 @@ func next_level_receiver():
 func next_level():
 	level_select.next_hole()
 	if not level_select.last_hole:
+		round_timer.start_timer()
 		ready_player.rpc()
 	else:
 		game_over.rpc()
 
+func end_game_receiver():
+	end_game.rpc()
+
 @rpc("authority", "call_local")
 func end_game():
+	if multiplayer.is_server():
+		next_hole_timer.start()
 	round_timer.stop_timer()
 	player.disable()
 	update_gui.rpc()
@@ -124,9 +129,6 @@ func add_levels_to_spawn_list(level_paths):
 	if level_paths is Array:
 		for level in level_paths:
 			multiplayer_spawner.add_spawnable_scene(level)
-
-func timeout():
-	end_game.rpc()
 
 @rpc("authority","call_local")
 func game_over():
