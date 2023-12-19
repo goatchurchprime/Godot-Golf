@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://bg4sjmuo0nxot"]
+
+[ext_resource type="PackedScene" uid="uid://bf0wxjnst3lm0" path="res://scenes/UI/level_select.tscn" id="1_2eddi"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_somfj"]
+[ext_resource type="PackedScene" uid="uid://d3soqqlkvvbbp" path="res://scenes/UI/multiplayer_menu.tscn" id="2_5um1l"]
+[ext_resource type="PackedScene" uid="uid://c45nvkwehpn5t" path="res://scenes/UI/putting_hud.tscn" id="2_52ple"]
+[ext_resource type="AudioStream" uid="uid://4o7ej4rdlh0m" path="res://assets/audio/gymnopedie1.mp3" id="2_jscbh"]
+[ext_resource type="PackedScene" uid="uid://bin524of6343q" path="res://scenes/menu_background.tscn" id="2_wy3ih"]
+[ext_resource type="PackedScene" uid="uid://be31scdsjltuh" path="res://scenes/UI/round_timer.tscn" id="5_3d6vm"]
+[ext_resource type="PackedScene" uid="uid://b1ilb4u1816a3" path="res://scenes/UI/scoreboard.tscn" id="7_743ai"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_somfj")
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_wy3ih")]
+
+[node name="PuttingHUD" parent="." instance=ExtResource("2_52ple")]
+visible = false
+
+[node name="LevelSelect" parent="." instance=ExtResource("1_2eddi")]
+visible = false
+
+[node name="MultiplayerMenu" parent="." instance=ExtResource("2_5um1l")]
+anchors_preset = -1
+anchor_left = 0.21
+anchor_top = 0.216
+anchor_right = 0.76
+anchor_bottom = 0.808
+offset_left = 334.08
+offset_top = 184.032
+offset_right = -299.52
+offset_bottom = -199.584
+
+[node name="RoundTimer" parent="." instance=ExtResource("5_3d6vm")]
+
+[node name="Scoreboard" parent="." instance=ExtResource("7_743ai")]
+visible = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jscbh")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/golfball.tscn")
+spawn_path = NodePath("..")

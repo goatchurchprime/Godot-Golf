@@ -1,5 +1,7 @@
 class_name Game extends Node3D
 
+const NEXT_HOLE_TIMER_WAIT = 3.0
+
 @onready var menu_background = $MenuBackground
 @onready var GUI = $PuttingHUD
 @onready var level_select = $LevelSelect
@@ -11,6 +13,8 @@ class_name Game extends Node3D
 var player : Golfball
 
 var players_won : int
+
+var next_hole_timer : Timer
 
 func _ready():
 	active_game(false)
@@ -25,6 +29,9 @@ func _ready():
 	multiplayer_menu.player_added.connect(set_player)
 	multiplayer_menu.is_singleplayer.connect(select_singleplayer)
 	multiplayer_menu.is_multiplayer.connect(select_multiplayer)
+	
+	
+	next_hole_timer = initialize_timer()
 
 func update_gui_receiver():
 	update_gui.rpc()
@@ -63,7 +70,12 @@ func game_win(peer_id):
 	
 	if players_won == get_tree().get_nodes_in_group("players").size():
 		print("ALL PLAYERS HAVE WON")
-		next_level.rpc()
+		if multiplayer.is_server():
+			next_hole_timer.start()
+		print("TIMER STARTED")
+
+func next_level_receiver():
+	next_level.rpc()
 
 @rpc("authority", "call_local")
 func next_level():
@@ -127,3 +139,17 @@ func ready_player():
 	player.enable()
 	player.move_to(level_select.get_current_spawn_location_pos())
 	players_won = 0
+
+func initialize_timer():
+	if not multiplayer.is_server():
+		return
+	
+	if next_hole_timer:
+		remove_child(next_hole_timer)
+	var tmp = Timer.new()
+	tmp.wait_time = NEXT_HOLE_TIMER_WAIT
+	tmp.autostart = false
+	tmp.one_shot = true
+	tmp.timeout.connect(next_level_receiver)
+	add_child(tmp)
+	return tmp
