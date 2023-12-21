@@ -24,8 +24,14 @@ sky_material = SubResource("ProceduralSkyMaterial_w783w")
 [sub_resource type="Environment" id="Environment_ht3dx"]
 background_mode = 2
 sky = SubResource("Sky_h16q5")
-tonemap_mode = 2
+tonemap_exposure = 1.5
+ssr_fade_in = 0.0832178
+ssao_enabled = true
+ssao_intensity = 5.0
 glow_enabled = true
+glow_bloom = 0.2
+adjustment_enabled = true
+adjustment_saturation = 1.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6e5g"]
 size = Vector3(80, 1, 80)
@@ -82,7 +88,8 @@ size = Vector3(0.1, 0.4, 15)
 environment = SubResource("Environment_ht3dx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -0.476668, 0.879084, 0, -0.879084, -0.476668, 0, 0, 0)
+light_energy = 1.2
 shadow_enabled = true
 
 [node name="Floor" type="StaticBody3D" parent="."]
@@ -218,7 +225,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -29.8489, 0, -26.5494)
 [node name="StaticBody3D" type="StaticBody3D" parent="WorldDecor/WorldBorder"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WorldDecor/WorldBorder/StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 11.0709, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 11, 0)
 mesh = SubResource("QuadMesh_tgnwu")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="WorldDecor/WorldBorder/StaticBody3D"]
@@ -237,7 +244,7 @@ mesh = SubResource("QuadMesh_tgnwu")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.3524, 0, 16.7074)
 
 [node name="Hole" parent="LevelGroup1" instance=ExtResource("3_m0qga")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.57517, 0.788115, -5.81749)
+transform = Transform3D(-0.666598, 0, -0.745418, 0, 1, 0, 0.745418, 0, -0.666598, 5.57517, 0.788115, -5.81749)
 
 [node name="SpawnLocation" parent="LevelGroup1" instance=ExtResource("4_nua1o")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -276,7 +283,7 @@ shape = SubResource("BoxShape3D_j65ch")
 [node name="SpawnLocation" parent="LevelGroup2" instance=ExtResource("4_nua1o")]
 
 [node name="Hole" parent="LevelGroup2" instance=ExtResource("3_m0qga")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50119, 0, -6.15194)
+transform = Transform3D(0.686935, 0, 0.726719, 0, 1, 0, -0.726719, 0, 0.686935, 4.50119, 0, -6.15194)
 
 [node name="Course" type="Node3D" parent="LevelGroup2"]
 

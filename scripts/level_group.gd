@@ -30,7 +30,7 @@ func check_variables():
 		print_error("Out of Bounds Area")
 
 func print_error(missing):
-	print("ERROR - " + self.name + "IS MISSING: " + missing)
+	print("ERROR - " + self.name + " IS MISSING: " + missing)
 
 func activate_hole_camera():
 	hole.activate_hole_camera()
