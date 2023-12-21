@@ -148,6 +148,7 @@ func initialize_timer():
 	
 	if next_hole_timer:
 		remove_child(next_hole_timer)
+	
 	var tmp = Timer.new()
 	tmp.wait_time = NEXT_HOLE_TIMER_WAIT
 	tmp.autostart = false

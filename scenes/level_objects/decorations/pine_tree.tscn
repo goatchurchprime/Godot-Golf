@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://cre124dy0mgrj"]
+
+[ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood/wood.tres" id="1_3a7y6"]
+[ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass/grass.tres" id="2_wtxrb"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_v1byo"]
+material = ExtResource("1_3a7y6")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 4.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_100f2"]
+material = ExtResource("2_wtxrb")
+top_radius = 0.2
+bottom_radius = 2.0
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_338sn"]
+material = ExtResource("2_wtxrb")
+top_radius = 0.2
+bottom_radius = 1.8
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5cy07"]
+material = ExtResource("2_wtxrb")
+top_radius = 0.2
+bottom_radius = 1.6
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bil2m"]
+material = ExtResource("2_wtxrb")
+top_radius = 0.2
+bottom_radius = 1.4
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3jq0a"]
+material = ExtResource("2_wtxrb")
+top_radius = 0.2
+bottom_radius = 1.0
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_22re7"]
+material = ExtResource("2_wtxrb")
+top_radius = 0.0
+bottom_radius = 0.8
+height = 1.0
+
+[node name="PineTree" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Root" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09394, 0)
+mesh = SubResource("CylinderMesh_v1byo")
+
+[node name="Node3D" type="Node3D" parent="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09142, 0)
+mesh = SubResource("CylinderMesh_100f2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67993, 0)
+mesh = SubResource("CylinderMesh_338sn")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24074, 0)
+mesh = SubResource("CylinderMesh_5cy07")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92195, 0)
+mesh = SubResource("CylinderMesh_bil2m")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="StaticBody3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52859, 0)
+mesh = SubResource("CylinderMesh_3jq0a")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="StaticBody3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.23048, 0)
+mesh = SubResource("CylinderMesh_22re7")

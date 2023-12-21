@@ -1,9 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://d3imjxg2h3thk"]
+[gd_scene load_steps=33 format=3 uid="uid://d3imjxg2h3thk"]
 
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass/grass.tres" id="1_e5jj4"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level_group.tscn" id="2_37u63"]
+[ext_resource type="PackedScene" uid="uid://cre124dy0mgrj" path="res://scenes/level_objects/decorations/pine_tree.tscn" id="2_rtn13"]
 [ext_resource type="PackedScene" uid="uid://6c3sxht652g0" path="res://scenes/level_objects/u_shape.tscn" id="3_g4aht"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/hole.tscn" id="3_m0qga"]
+[ext_resource type="Texture2D" uid="uid://dfmr816ryig2i" path="res://assets/images/trees.png" id="3_wsa6n"]
 [ext_resource type="PackedScene" uid="uid://dkq7bwcakgjgq" path="res://scenes/level_objects/row_shape.tscn" id="4_7gpb3"]
 [ext_resource type="PackedScene" uid="uid://351ma0g0bcvy" path="res://scenes/spawn_location.tscn" id="4_nua1o"]
 [ext_resource type="PackedScene" uid="uid://c80lp440b60i1" path="res://scenes/level_objects/corner_shape.tscn" id="5_n7gmh"]
@@ -26,11 +28,19 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6e5g"]
-size = Vector3(50, 1, 50)
+size = Vector3(80, 1, 80)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p0svw"]
 material = ExtResource("1_e5jj4")
-size = Vector3(50, 1, 50)
+size = Vector3(80, 1, 80)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ci352"]
+transparency = 1
+albedo_texture = ExtResource("3_wsa6n")
+
+[sub_resource type="QuadMesh" id="QuadMesh_tgnwu"]
+material = SubResource("StandardMaterial3D_ci352")
+size = Vector2(80, 51.695)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wi5f"]
 size = Vector3(8.96487, 8.01855, 9.08093)
@@ -84,6 +94,144 @@ shape = SubResource("BoxShape3D_e6e5g")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_p0svw")
+
+[node name="WorldDecor" type="Node3D" parent="."]
+
+[node name="Trees" type="Node3D" parent="WorldDecor"]
+
+[node name="PineTree" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.696018, 0, 33.7712)
+
+[node name="PineTree2" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -33.4825, 1.90735e-06, 30.2323)
+
+[node name="PineTree3" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -24.0009, 0, 34.5969)
+
+[node name="PineTree4" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5506, 0, 32.1397)
+
+[node name="PineTree5" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 23.0305, 0, 34.2975)
+
+[node name="PineTree6" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.0714, 0, 28.8819)
+
+[node name="PineTree7" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2688, 0, 16.5262)
+
+[node name="PineTree8" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 32.4916, 0, 0.913101)
+
+[node name="PineTree9" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6346, 0, -9.225)
+
+[node name="PineTree10" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.6571, 0, -14.4056)
+
+[node name="PineTree11" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.923, 0, -20.852)
+
+[node name="PineTree12" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 32.4334, 0, -29.616)
+
+[node name="PineTree13" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 15.8941, 0, -19.0978)
+
+[node name="PineTree14" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 3.69492, 0, -24.9875)
+
+[node name="PineTree15" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1295, 0, -31.4893)
+
+[node name="PineTree16" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7919, 0, -15.9207)
+
+[node name="PineTree17" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -8.78062, 0, -28.8271)
+
+[node name="PineTree18" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -14.6205, 0, -15.67)
+
+[node name="PineTree19" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5181, 0, -23.0373)
+
+[node name="PineTree20" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5442, 0, -4.69117)
+
+[node name="PineTree21" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -29.5298, 0, -8.67975)
+
+[node name="PineTree22" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.162, 0, 7.04965)
+
+[node name="PineTree23" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -31.3974, 0, 16.0218)
+
+[node name="PineTree24" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -31.2496, 0, -0.318508)
+
+[node name="PineTree25" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7893, 0, 24.4405)
+
+[node name="PineTree26" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 23.3862, 0, 16.5479)
+
+[node name="PineTree27" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5181, 0, 9.58254)
+
+[node name="PineTree28" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9643, 0, 9.75118)
+
+[node name="PineTree29" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.4224, 0, 22.6447)
+
+[node name="PineTree30" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8659, 0, 0.421327)
+
+[node name="PineTree31" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2979, 0, -8.45933)
+
+[node name="PineTree32" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 8.47433, 0, -13.0852)
+
+[node name="PineTree33" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.49966, -3.8147e-06, -22.6778)
+
+[node name="PineTree34" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4591, 3.8147e-06, -10.5681)
+
+[node name="PineTree35" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7097, 0, -12.332)
+
+[node name="PineTree36" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6931, 0, 35.3842)
+
+[node name="PineTree37" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8151, 0, -16.6822)
+
+[node name="PineTree38" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -29.8489, 0, -26.5494)
+
+[node name="WorldBorder" type="Node3D" parent="WorldDecor"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WorldDecor/WorldBorder"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldDecor/WorldBorder/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 11.0709, 0)
+mesh = SubResource("QuadMesh_tgnwu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WorldDecor/WorldBorder/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -40)
+mesh = SubResource("QuadMesh_tgnwu")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WorldDecor/WorldBorder/StaticBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 11, 40)
+mesh = SubResource("QuadMesh_tgnwu")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="WorldDecor/WorldBorder/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40, 11, 0)
+mesh = SubResource("QuadMesh_tgnwu")
 
 [node name="LevelGroup1" parent="." instance=ExtResource("2_37u63")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.3524, 0, 16.7074)
