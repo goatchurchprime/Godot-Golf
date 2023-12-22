@@ -118,6 +118,7 @@ func disable():
 
 func enable():
 	_ready()
+	last_pos = position
 	locked = false
 	rigidbody.freeze = false
 	rigidbody.visible = true
