@@ -1,9 +1,13 @@
 class_name PlayerContainer extends HBoxContainer
 
-var id
-
 @onready var name_label = $Name
 @onready var score_label = $Score
+
+func next_hole():
+	var tmp = Label.new()
+	tmp.text = str(0)
+	add_child(tmp)
+	score_label = tmp
 
 func set_username(name):
 	name_label.text = name

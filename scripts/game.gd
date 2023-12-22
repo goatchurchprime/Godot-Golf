@@ -80,6 +80,7 @@ func next_level_receiver():
 func next_level():
 	level_select.next_hole()
 	if not level_select.last_hole:
+		scoreboard_next_hole()
 		round_timer.start_timer()
 		ready_player.rpc()
 	else:
@@ -156,3 +157,8 @@ func initialize_timer():
 	tmp.timeout.connect(next_level_receiver)
 	add_child(tmp)
 	return tmp
+
+func scoreboard_next_hole():
+	player.reset_score()
+	scoreboard.next_hole()
+	scoreboard.update()
