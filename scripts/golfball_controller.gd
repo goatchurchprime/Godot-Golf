@@ -31,13 +31,13 @@ var locked = true
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
+	reset_score()
 
 func _ready():
 	rigidbody.freeze = true
 	locked = true
 	if is_multiplayer_authority():
 		last_pos = Vector3.ZERO
-		putts = 0
 		hit_strength = MIN_STRENGTH
 
 func _input(event):
@@ -81,7 +81,6 @@ func putt():
 			play_putt_sound()
 			hit_strength = MIN_STRENGTH
 			putts += 1
-			emit_signal("putted")
 		else:
 			print("Hit cancelled!")
 		aiming = false
@@ -123,6 +122,9 @@ func enable():
 	rigidbody.freeze = false
 	rigidbody.visible = true
 	activate_camera()
+
+func reset_score():
+	putts = 0
 
 func activate_camera():
 	camera.make_current()
