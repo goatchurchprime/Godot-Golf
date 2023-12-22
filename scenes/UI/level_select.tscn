@@ -46,7 +46,3 @@ size_flags_horizontal = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LevelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-
-[node name="Button" type="Button" parent="LevelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "TMP BUTTON"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cre124dy0mgrj"]
+[gd_scene load_steps=12 format=3 uid="uid://cre124dy0mgrj"]
 
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood/wood.tres" id="1_3a7y6"]
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass/grass.tres" id="2_wtxrb"]
@@ -45,36 +45,49 @@ top_radius = 0.0
 bottom_radius = 0.7
 height = 1.0
 
-[node name="PineTree" type="Node3D"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_doi66"]
+points = PackedVector3Array(2, 0, 0, -2, 0, 0, 0, 0, 2, 0, 0, -2, 0, 4.5, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xo6px"]
+height = 1.0
+radius = 0.2
 
-[node name="Root" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="PineTree" type="StaticBody3D"]
+
+[node name="Root" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09394, 0)
 mesh = SubResource("CylinderMesh_v1byo")
 
-[node name="Leaves" type="Node3D" parent="StaticBody3D"]
+[node name="Leaves" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Leaves"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Leaves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09142, 0)
 mesh = SubResource("CylinderMesh_100f2")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D/Leaves"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Leaves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67993, 0)
 mesh = SubResource("CylinderMesh_338sn")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D/Leaves"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Leaves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24074, 0)
 mesh = SubResource("CylinderMesh_5cy07")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D/Leaves"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Leaves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92195, 0)
 mesh = SubResource("CylinderMesh_bil2m")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="StaticBody3D/Leaves"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Leaves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52859, 0)
 mesh = SubResource("CylinderMesh_3jq0a")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="StaticBody3D/Leaves"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Leaves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.20535, 0)
 mesh = SubResource("CylinderMesh_22re7")
+
+[node name="CollisionShapeLeaves" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.00188923, 0.59658, 0.0102386)
+shape = SubResource("ConvexPolygonShape3D_doi66")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("CylinderShape3D_xo6px")
