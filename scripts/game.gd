@@ -41,25 +41,33 @@ func update_gui_receiver():
 func change_level_receiver(path, level_name):
 	change_level.rpc(path, level_name)
 
+func game_win_receiver(peer_id):
+	game_win.rpc(peer_id)
+
+func next_level_receiver():
+	next_level.rpc()
+
+func end_game_receiver():
+	end_game.rpc()
+
 @rpc("any_peer", "call_local", "reliable")
 func update_gui():
-	scoreboard.update()
 	GUI.update_text(player.putts)
+	scoreboard.update()
 
 @rpc("authority", "call_local")
 func change_level(path, level_name):
 	if menu_background:
 		menu_background.queue_free()
 		menu_background = null
+	scoreboard.reset()
+	player.reset_score()
 	player.disable()
 	update_gui.rpc()
 	level_select.change_level(path, level_name)
 	ready_player()
 	round_timer.start_timer()
 	active_game(true)
-
-func game_win_receiver(peer_id):
-	game_win.rpc(peer_id)
 
 @rpc("any_peer", "call_local")
 func game_win(peer_id):
@@ -73,9 +81,6 @@ func game_win(peer_id):
 		print("ALL PLAYERS HAVE WON")
 		end_game()
 
-func next_level_receiver():
-	next_level.rpc()
-
 @rpc("authority", "call_local")
 func next_level():
 	level_select.next_hole()
@@ -86,9 +91,6 @@ func next_level():
 	else:
 		game_over.rpc()
 
-func end_game_receiver():
-	end_game.rpc()
-
 @rpc("authority", "call_local")
 func end_game():
 	if multiplayer.is_server():
@@ -97,6 +99,7 @@ func end_game():
 	player.disable()
 	update_gui.rpc()
 	level_select.end_game()
+	players_won = 0
 
 func active_game(game_active):
 	if game_active:
@@ -141,7 +144,6 @@ func game_over():
 func ready_player():
 	player.enable()
 	player.move_to(level_select.get_current_spawn_location_pos())
-	players_won = 0
 
 func initialize_timer():
 	if not multiplayer.is_server():
@@ -162,3 +164,4 @@ func scoreboard_next_hole():
 	player.reset_score()
 	scoreboard.next_hole()
 	scoreboard.update()
+	update_gui.rpc()

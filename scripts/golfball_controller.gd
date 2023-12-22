@@ -81,7 +81,6 @@ func putt():
 			play_putt_sound()
 			hit_strength = MIN_STRENGTH
 			putts += 1
-			emit_signal("putted")
 		else:
 			print("Hit cancelled!")
 		aiming = false
