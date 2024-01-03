@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://85jqet14u5vk"]
+[gd_scene load_steps=27 format=3 uid="uid://85jqet14u5vk"]
 
 [ext_resource type="Texture2D" uid="uid://b3tq8pkflp44b" path="res://assets/materials/rock/rock_surface_diff_1k.jpg" id="1_7kcib"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_0rx1a"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c80lp440b60i1" path="res://scenes/level_objects/corner_shape.tscn" id="8_acfgg"]
 [ext_resource type="PackedScene" uid="uid://bjkudogg2s2m4" path="res://scenes/level_objects/decorations/torch.tscn" id="10_mco37"]
 [ext_resource type="PackedScene" uid="uid://bvsutob3fldtw" path="res://scenes/level_objects/decorations/rock.tscn" id="11_7oygo"]
-[ext_resource type="Texture2D" uid="uid://chq202ips3l1d" path="res://materials/lava.tres" id="12_pg1py"]
+[ext_resource type="Material" uid="uid://chq202ips3l1d" path="res://materials/lava.tres" id="12_pg1py"]
 [ext_resource type="PackedScene" uid="uid://drn1dk56rw8am" path="res://scenes/level_objects/decorations/volcano.tscn" id="13_vc0r6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4qow"]
@@ -66,11 +66,8 @@ size = Vector3(9.05725, 8.01855, 14.9278)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bknjj"]
 size = Vector3(2.98639, 5.18848, 22.4345)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qm57r"]
-albedo_texture = ExtResource("12_pg1py")
-
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_wr44a"]
-material = SubResource("StandardMaterial3D_qm57r")
+material = ExtResource("12_pg1py")
 radius = 5.151
 section_length = 0.1
 
