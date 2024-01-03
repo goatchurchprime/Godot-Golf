@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://d3imjxg2h3thk"]
 
-[ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass/grass.tres" id="1_e5jj4"]
+[ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="1_e5jj4"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level_group.tscn" id="2_37u63"]
 [ext_resource type="PackedScene" uid="uid://cre124dy0mgrj" path="res://scenes/level_objects/decorations/pine_tree.tscn" id="2_rtn13"]
 [ext_resource type="PackedScene" uid="uid://6c3sxht652g0" path="res://scenes/level_objects/u_shape.tscn" id="3_g4aht"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://co72gw4aw7535" path="res://scenes/level_objects/level groups/out_of_bounds_area.tscn" id="5_tcjyp"]
 [ext_resource type="Material" uid="uid://cmkw6fa3fvndx" path="res://materials/cirno.tres" id="9_jbky6"]
 [ext_resource type="ArrayMesh" uid="uid://5ojyu2uls7x7" path="res://objects/cirno/cirno_low.obj" id="10_sqyh1"]
-[ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood/wood.tres" id="11_lfgqb"]
+[ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="11_lfgqb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w783w"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

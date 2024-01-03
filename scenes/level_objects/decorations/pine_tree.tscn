@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cre124dy0mgrj"]
 
-[ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood/wood.tres" id="1_3a7y6"]
-[ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass/grass.tres" id="2_wtxrb"]
+[ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="1_3a7y6"]
+[ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="2_wtxrb"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_v1byo"]
 material = ExtResource("1_3a7y6")
