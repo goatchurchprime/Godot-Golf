@@ -24,7 +24,7 @@ size = Vector3(1.4, 0.4, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_tfyej"]
 size = Vector3(1.4, 0.4, 0.1)
 
-[node name="corner_shape" type="Node3D"]
+[node name="CornerShape" type="Node3D"]
 
 [node name="Grass" type="StaticBody3D" parent="."]
 
