@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://b3tq8pkflp44b" path="res://assets/materials/rock/rock_surface_diff_1k.jpg" id="1_7kcib"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level_group.tscn" id="2_0rx1a"]
-[ext_resource type="Material" uid="uid://bwvyr8a846v6" path="res://materials/rock.tres" id="2_nal6u"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/level groups/hole.tscn" id="3_fbsxp"]
 [ext_resource type="PackedScene" uid="uid://351ma0g0bcvy" path="res://scenes/level groups/spawn_location.tscn" id="4_q0xpq"]
 [ext_resource type="PackedScene" uid="uid://co72gw4aw7535" path="res://scenes/level groups/out_of_bounds_area.tscn" id="5_po8u8"]
@@ -50,8 +49,13 @@ uv1_triplanar = true
 material = SubResource("StandardMaterial3D_55ca4")
 size = Vector2(80, 40)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uob1"]
+albedo_texture = ExtResource("1_7kcib")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_triplanar = true
+
 [sub_resource type="QuadMesh" id="QuadMesh_83f3r"]
-material = ExtResource("2_nal6u")
+material = SubResource("StandardMaterial3D_5uob1")
 size = Vector2(80, 80)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4x6o5"]
@@ -104,10 +108,10 @@ mesh = SubResource("QuadMesh_3148g")
 
 [node name="Ceiling" type="Node3D" parent="WorldDecor"]
 
-[node name="StaticBody3D5" type="StaticBody3D" parent="WorldDecor/Ceiling"]
+[node name="StaticBody3D" type="StaticBody3D" parent="WorldDecor/Ceiling"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 40, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldDecor/Ceiling/StaticBody3D5"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldDecor/Ceiling/StaticBody3D"]
 mesh = SubResource("QuadMesh_83f3r")
 
 [node name="LevelGroup1" parent="." instance=ExtResource("2_0rx1a")]
