@@ -88,6 +88,7 @@ material = SubResource("StandardMaterial3D_xiept")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.2164, -0.274984)
 light_color = Color(1, 0.701961, 0.101961, 1)
+light_energy = 5.0
 omni_range = 16.407
 
 [node name="VolcanoObject" type="MeshInstance3D" parent="."]
@@ -105,7 +106,7 @@ process_material = SubResource("ParticleProcessMaterial_qpmi2")
 draw_pass_1 = SubResource("QuadMesh_5rqh3")
 
 [node name="SmokeParticles" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.7391, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.934944, 14.7391, 0)
 amount = 32
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_1b70g")
