@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bjkudogg2s2m4"]
+
+[ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="1_go45x"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tjnpc"]
+material = ExtResource("1_go45x")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.75
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_blucf"]
+material = ExtResource("1_go45x")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.1
+
+[sub_resource type="Gradient" id="Gradient_wd7xp"]
+offsets = PackedFloat32Array(0, 0.357542)
+colors = PackedColorArray(0.2, 0.2, 0.2, 1, 0.42, 0.42, 0.42, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jspiy"]
+gradient = SubResource("Gradient_wd7xp")
+
+[sub_resource type="Gradient" id="Gradient_5h8m8"]
+offsets = PackedFloat32Array(0.139665, 0.290503)
+colors = PackedColorArray(0.18, 0.18, 0.18, 1, 0.486034, 0.486034, 0.486034, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ew6x"]
+gradient = SubResource("Gradient_5h8m8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hkj8k"]
+lifetime_randomness = 0.75
+direction = Vector3(0, 1, 0)
+spread = 86.216
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_8ew6x")
+color_initial_ramp = SubResource("GradientTexture1D_jspiy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t47xh"]
+albedo_color = Color(1, 0.615686, 0.180392, 1)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_c0n5s"]
+material = SubResource("StandardMaterial3D_t47xh")
+size = Vector2(0.06, 0.06)
+
+[node name="Torch" type="StaticBody3D"]
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+mesh = SubResource("CylinderMesh_tjnpc")
+
+[node name="Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.764239, 0)
+mesh = SubResource("CylinderMesh_blucf")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+light_color = Color(0.819608, 0.486275, 0.231373, 1)
+omni_range = 6.497
+omni_attenuation = 1.10957
+
+[node name="PuttingGPUParticle" type="GPUParticles3D" parent="Top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058573, -1.49012e-08)
+amount = 64
+lifetime = 0.6
+explosiveness = 0.2
+randomness = 0.4
+visibility_aabb = AABB(-0.428702, -0.563253, -0.318604, 0.857405, 1.12652, 0.637208)
+process_material = SubResource("ParticleProcessMaterial_hkj8k")
+draw_pass_1 = SubResource("QuadMesh_c0n5s")
