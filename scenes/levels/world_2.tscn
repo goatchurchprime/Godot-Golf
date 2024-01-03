@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://85jqet14u5vk"]
+[gd_scene load_steps=28 format=3 uid="uid://85jqet14u5vk"]
 
 [ext_resource type="Texture2D" uid="uid://b3tq8pkflp44b" path="res://assets/materials/rock/rock_surface_diff_1k.jpg" id="1_7kcib"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_0rx1a"]
@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c80lp440b60i1" path="res://scenes/level_objects/corner_shape.tscn" id="8_acfgg"]
 [ext_resource type="PackedScene" uid="uid://bjkudogg2s2m4" path="res://scenes/level_objects/decorations/torch.tscn" id="10_mco37"]
 [ext_resource type="PackedScene" uid="uid://bvsutob3fldtw" path="res://scenes/level_objects/decorations/rock.tscn" id="11_7oygo"]
-[ext_resource type="Material" uid="uid://chq202ips3l1d" path="res://materials/lava.tres" id="12_pg1py"]
+[ext_resource type="Texture2D" uid="uid://chq202ips3l1d" path="res://materials/lava.tres" id="12_pg1py"]
+[ext_resource type="PackedScene" uid="uid://drn1dk56rw8am" path="res://scenes/level_objects/decorations/volcano.tscn" id="13_vc0r6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4qow"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -32,13 +33,13 @@ adjustment_saturation = 1.2
 [sub_resource type="BoxShape3D" id="BoxShape3D_ckjkr"]
 size = Vector3(80, 1, 80)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu18s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_543b4"]
 albedo_texture = ExtResource("1_7kcib")
 uv1_scale = Vector3(0.275, 0.275, 0.275)
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_2k1hv"]
-material = SubResource("StandardMaterial3D_pu18s")
+material = SubResource("StandardMaterial3D_543b4")
 size = Vector3(80, 1, 80)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55ca4"]
@@ -65,8 +66,11 @@ size = Vector3(9.05725, 8.01855, 14.9278)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bknjj"]
 size = Vector3(2.98639, 5.18848, 22.4345)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qm57r"]
+albedo_texture = ExtResource("12_pg1py")
+
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_wr44a"]
-material = ExtResource("12_pg1py")
+material = SubResource("StandardMaterial3D_qm57r")
 radius = 5.151
 section_length = 0.1
 
@@ -187,7 +191,7 @@ transform = Transform3D(0.743145, 0, -0.669131, 0, 1, 0, 0.669131, 0, 0.743145, 
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 21.523, 1.5, -21.508)
 
 [node name="Hole" parent="LevelGroup2" instance=ExtResource("3_fbsxp")]
-transform = Transform3D(-0.567801, 0, -0.823166, 0, 1, 0, 0.823166, 0, -0.567801, 0, 0, -20)
+transform = Transform3D(0.901546, 0, -0.432684, 0, 1, 0, 0.432684, 0, 0.901546, 0, 0, -20)
 
 [node name="OutOfBoundsArea" parent="LevelGroup2" instance=ExtResource("5_po8u8")]
 
@@ -220,9 +224,12 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -10.306)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LevelGroup2/Lava"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00112724, 0.0999995, -0.0039978)
 mesh = SubResource("TubeTrailMesh_wr44a")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="LevelGroup2/Lava"]
 light_color = Color(1, 0.517647, 0, 1)
 light_energy = 4.0
+
+[node name="Volcano" parent="." instance=ExtResource("13_vc0r6")]
+transform = Transform3D(-0.508516, 0, 0.861053, 0, 1, 0, -0.861053, 0, -0.508516, 3.12425, -2.08038, -1.22182)
