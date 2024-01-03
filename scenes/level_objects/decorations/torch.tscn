@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjkudogg2s2m4"]
+[gd_scene load_steps=13 format=3 uid="uid://bjkudogg2s2m4"]
 
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="1_go45x"]
+[ext_resource type="Material" uid="uid://by025803sllra" path="res://materials/red_flag.tres" id="2_inmxd"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tjnpc"]
 material = ExtResource("1_go45x")
@@ -48,6 +49,12 @@ billboard_keep_scale = true
 material = SubResource("StandardMaterial3D_i6paa")
 size = Vector2(0.1, 0.1)
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_c2wo7"]
+material = ExtResource("2_inmxd")
+top_radius = 0.08
+bottom_radius = 0.08
+height = 0.08
+
 [node name="Torch" type="StaticBody3D"]
 
 [node name="Base" type="MeshInstance3D" parent="."]
@@ -71,3 +78,7 @@ randomness = 0.5
 visibility_aabb = AABB(-1.24104, -1.05742, -1.03829, 2.48209, 2.11484, 2.07658)
 process_material = SubResource("ParticleProcessMaterial_kgfoj")
 draw_pass_1 = SubResource("QuadMesh_6hi0x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.843435, 0)
+mesh = SubResource("CylinderMesh_c2wo7")
