@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://85jqet14u5vk"]
 
 [ext_resource type="Texture2D" uid="uid://b3tq8pkflp44b" path="res://assets/materials/rock/rock_surface_diff_1k.jpg" id="1_7kcib"]
-[ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level_group.tscn" id="2_0rx1a"]
+[ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_0rx1a"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/level groups/hole.tscn" id="3_fbsxp"]
 [ext_resource type="PackedScene" uid="uid://351ma0g0bcvy" path="res://scenes/level groups/spawn_location.tscn" id="4_q0xpq"]
 [ext_resource type="PackedScene" uid="uid://co72gw4aw7535" path="res://scenes/level groups/out_of_bounds_area.tscn" id="5_po8u8"]
@@ -115,7 +115,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 40,
 mesh = SubResource("QuadMesh_83f3r")
 
 [node name="LevelGroup1" parent="." instance=ExtResource("2_0rx1a")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 26.3645, 0, 18.0443)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.0375, 0, 11.4172)
 
 [node name="Hole" parent="LevelGroup1" instance=ExtResource("3_fbsxp")]
 transform = Transform3D(-0.49817, 0, -0.867079, 0, 1, 0, 0.867079, 0, -0.49817, -3.8147e-06, 0.783, -12)

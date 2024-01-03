@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://d3imjxg2h3thk"]
 
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="1_e5jj4"]
-[ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level_group.tscn" id="2_37u63"]
+[ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_37u63"]
 [ext_resource type="PackedScene" uid="uid://cre124dy0mgrj" path="res://scenes/level_objects/decorations/pine_tree.tscn" id="2_rtn13"]
 [ext_resource type="PackedScene" uid="uid://6c3sxht652g0" path="res://scenes/level_objects/u_shape.tscn" id="3_g4aht"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/level groups/hole.tscn" id="3_m0qga"]
