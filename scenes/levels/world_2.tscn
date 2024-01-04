@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://85jqet14u5vk"]
+[gd_scene load_steps=29 format=3 uid="uid://85jqet14u5vk"]
 
 [ext_resource type="Texture2D" uid="uid://b3tq8pkflp44b" path="res://assets/materials/rock/rock_surface_diff_1k.jpg" id="1_7kcib"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_0rx1a"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bvsutob3fldtw" path="res://scenes/level_objects/decorations/rock.tscn" id="11_7oygo"]
 [ext_resource type="Material" uid="uid://chq202ips3l1d" path="res://materials/lava.tres" id="12_pg1py"]
 [ext_resource type="PackedScene" uid="uid://drn1dk56rw8am" path="res://scenes/level_objects/decorations/volcano.tscn" id="13_vc0r6"]
+[ext_resource type="PackedScene" uid="uid://c551mstmuoeim" path="res://scenes/level_objects/decorations/windmill.tscn" id="14_3ur4m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4qow"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -71,6 +72,9 @@ material = ExtResource("12_pg1py")
 radius = 5.151
 section_length = 0.1
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rreci"]
+size = Vector3(2.99023, 3.24365, 18.0258)
+
 [node name="World2" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -126,6 +130,9 @@ mesh = SubResource("QuadMesh_83f3r")
 
 [node name="Rock" parent="WorldDecor" instance=ExtResource("11_7oygo")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 24.3048, 3.5, 4.46567)
+
+[node name="Volcano" parent="WorldDecor" instance=ExtResource("13_vc0r6")]
+transform = Transform3D(-0.508516, 0, 0.861053, 0, 1, 0, -0.861053, 0, -0.508516, 3.12425, -2.08038, -1.22182)
 
 [node name="LevelGroup1" parent="." instance=ExtResource("2_0rx1a")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 26.0375, 0, 11.4172)
@@ -228,5 +235,39 @@ mesh = SubResource("TubeTrailMesh_wr44a")
 light_color = Color(1, 0.517647, 0, 1)
 light_energy = 4.0
 
-[node name="Volcano" parent="." instance=ExtResource("13_vc0r6")]
-transform = Transform3D(-0.508516, 0, 0.861053, 0, 1, 0, -0.861053, 0, -0.508516, 3.12425, -2.08038, -1.22182)
+[node name="LevelGroup3" parent="." instance=ExtResource("2_0rx1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3296, 0, -26.4609)
+
+[node name="SpawnLocation" parent="LevelGroup3" instance=ExtResource("4_q0xpq")]
+
+[node name="OutOfBoundsArea" parent="LevelGroup3" instance=ExtResource("5_po8u8")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup3/OutOfBoundsArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0161133, 1.12183, 7.50482)
+shape = SubResource("BoxShape3D_rreci")
+
+[node name="Hole" parent="LevelGroup3" instance=ExtResource("3_fbsxp")]
+transform = Transform3D(0.938974, 0, -0.343987, 0, 1, 0, 0.343987, 0, 0.938974, 0, 0.0251617, 15)
+
+[node name="Course" type="Node3D" parent="LevelGroup3"]
+
+[node name="UShape" parent="LevelGroup3/Course" instance=ExtResource("6_13ov2")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="RowShape" parent="LevelGroup3/Course" instance=ExtResource("7_fl2eu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 3)
+
+[node name="RowShape2" parent="LevelGroup3/Course" instance=ExtResource("7_fl2eu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 6)
+
+[node name="RowShape3" parent="LevelGroup3/Course" instance=ExtResource("7_fl2eu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 9)
+
+[node name="Windmill" parent="LevelGroup3/Course" instance=ExtResource("14_3ur4m")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.01987, 9)
+
+[node name="RowShape4" parent="LevelGroup3/Course" instance=ExtResource("7_fl2eu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 12)
+
+[node name="UShape2" parent="LevelGroup3/Course" instance=ExtResource("6_13ov2")]
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 0, 0, 15)
