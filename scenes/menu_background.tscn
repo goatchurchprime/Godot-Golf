@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bin524of6343q"]
+[gd_scene load_steps=9 format=3 uid="uid://bin524of6343q"]
 
 [ext_resource type="ArrayMesh" uid="uid://5ojyu2uls7x7" path="res://assets/objects/cirno/cirno_low.obj" id="1_of6ug"]
+[ext_resource type="Material" uid="uid://cmkw6fa3fvndx" path="res://materials/cirno.tres" id="2_cd8rh"]
 [ext_resource type="Script" path="res://scripts/hole_camera.gd" id="2_jkh6w"]
-[ext_resource type="Texture2D" uid="uid://3lyuav61lacs" path="res://assets/objects/cirno/cirno_low_u1_v1.jpg" id="2_pyriy"]
-[ext_resource type="Texture2D" uid="uid://dfemwrmp3io1h" path="res://assets/objects/cirno/cirno_low_Material_u1_v1_ambient_occlusion.png" id="3_2lchy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_meeij"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,11 +16,6 @@ background_mode = 2
 sky = SubResource("Sky_3iy3f")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0knc"]
-albedo_texture = ExtResource("2_pyriy")
-ao_enabled = true
-ao_texture = ExtResource("3_2lchy")
 
 [sub_resource type="BoxMesh" id="BoxMesh_glb2a"]
 size = Vector3(2.15, 0.165, 2.15)
@@ -39,7 +33,7 @@ environment = SubResource("Environment_ebhwh")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Cirno"]
 transform = Transform3D(-0.0856503, -0.0276408, -0.000139937, -6.87993e-11, -0.000455637, 0.0899988, -0.0276412, 0.0856492, 0.000433616, 0, -0.263937, 0)
 mesh = ExtResource("1_of6ug")
-surface_material_override/0 = SubResource("StandardMaterial3D_b0knc")
+surface_material_override/0 = ExtResource("2_cd8rh")
 
 [node name="Pedestal" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226466, -0.182557, 0)
