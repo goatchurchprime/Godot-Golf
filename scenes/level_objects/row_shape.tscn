@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dkq7bwcakgjgq"]
 
-[ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass/grass.tres" id="1_3wmhr"]
-[ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood/wood.tres" id="2_tsjfe"]
+[ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="1_3wmhr"]
+[ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="2_tsjfe"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2x07w"]
 material = ExtResource("1_3wmhr")
@@ -17,7 +17,7 @@ size = Vector3(0.1, 0.4, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_khsn5"]
 size = Vector3(0.1, 0.4, 3)
 
-[node name="row_shape" type="Node3D"]
+[node name="RowShape" type="Node3D"]
 
 [node name="Grass" type="StaticBody3D" parent="."]
 
