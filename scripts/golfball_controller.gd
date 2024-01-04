@@ -31,7 +31,7 @@ var locked = true
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
-	reset_score()
+	putts = 0
 
 func _ready():
 	rigidbody.freeze = true
@@ -110,22 +110,19 @@ func move_to(pos):
 
 func disable():
 	locked = true
-	camera.current = false
-	rigidbody.freeze = true
-	_ready()
+	last_pos = Vector3.ZERO
 	move_back()
+	rigidbody.freeze = true
 	rigidbody.visible = false
 
 func enable():
-	_ready()
-	last_pos = position
+	putts = 0
+	last_pos = Vector3.ZERO
 	locked = false
 	rigidbody.freeze = false
 	rigidbody.visible = true
 	activate_camera()
 
-func reset_score():
-	putts = 0
-
 func activate_camera():
-	camera.make_current()
+	if is_multiplayer_authority():
+		camera.make_current()

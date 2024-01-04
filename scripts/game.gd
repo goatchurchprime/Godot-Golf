@@ -60,14 +60,15 @@ func change_level(path, level_name):
 	if menu_background:
 		menu_background.queue_free()
 		menu_background = null
+	
 	scoreboard.reset()
-	player.reset_score()
-	player.disable()
 	update_gui.rpc()
+	
 	level_select.change_level(path, level_name)
-	ready_player()
 	round_timer.start_timer()
 	active_game(true)
+	
+	ready_player.rpc()
 
 @rpc("any_peer", "call_local")
 func game_win(peer_id):
@@ -161,7 +162,6 @@ func initialize_timer():
 	return tmp
 
 func scoreboard_next_hole():
-	player.reset_score()
 	scoreboard.next_hole()
 	scoreboard.update()
 	update_gui.rpc()
