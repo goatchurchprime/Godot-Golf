@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://drn1dk56rw8am"]
 
-[ext_resource type="ArrayMesh" uid="uid://ttd5us8fr2pj" path="res://objects/volcano/volcano.obj" id="1_gtkyi"]
+[ext_resource type="ArrayMesh" uid="uid://ttd5us8fr2pj" path="res://assets/objects/volcano/volcano.obj" id="1_gtkyi"]
 [ext_resource type="Material" uid="uid://bwvyr8a846v6" path="res://materials/rock.tres" id="2_dnfl7"]
 
 [sub_resource type="Gradient" id="Gradient_c73m0"]

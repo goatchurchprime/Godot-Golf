@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c80lp440b60i1" path="res://scenes/level_objects/corner_shape.tscn" id="5_n7gmh"]
 [ext_resource type="PackedScene" uid="uid://co72gw4aw7535" path="res://scenes/level groups/out_of_bounds_area.tscn" id="5_tcjyp"]
 [ext_resource type="Material" uid="uid://cmkw6fa3fvndx" path="res://materials/cirno.tres" id="9_jbky6"]
-[ext_resource type="ArrayMesh" uid="uid://5ojyu2uls7x7" path="res://objects/cirno/cirno_low.obj" id="10_sqyh1"]
+[ext_resource type="ArrayMesh" uid="uid://5ojyu2uls7x7" path="res://assets/objects/cirno/cirno_low.obj" id="10_sqyh1"]
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="11_lfgqb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w783w"]

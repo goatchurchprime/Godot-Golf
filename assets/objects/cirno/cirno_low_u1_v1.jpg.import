@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfemwrmp3io1h"
-path.s3tc="res://.godot/imported/cirno_low_Material_u1_v1_ambient_occlusion.png-307000b2ff7c9b486096cbec82cdc3b4.s3tc.ctex"
+uid="uid://3lyuav61lacs"
+path.s3tc="res://.godot/imported/cirno_low_u1_v1.jpg-3880a29c850d1b838499a7d1c2e63912.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://objects/cirno/cirno_low_Material_u1_v1_ambient_occlusion.png"
-dest_files=["res://.godot/imported/cirno_low_Material_u1_v1_ambient_occlusion.png-307000b2ff7c9b486096cbec82cdc3b4.s3tc.ctex"]
+source_file="res://assets/objects/cirno/cirno_low_u1_v1.jpg"
+dest_files=["res://.godot/imported/cirno_low_u1_v1.jpg-3880a29c850d1b838499a7d1c2e63912.s3tc.ctex"]
 
 [params]
 
