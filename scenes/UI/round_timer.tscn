@@ -27,6 +27,6 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 60.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
