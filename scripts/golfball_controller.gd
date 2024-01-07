@@ -115,9 +115,9 @@ func disable():
 	rigidbody.freeze = true
 	rigidbody.visible = false
 
-func enable():
+func enable(spawn_location):
 	putts = 0
-	last_pos = Vector3.ZERO
+	last_pos = spawn_location
 	locked = false
 	rigidbody.freeze = false
 	rigidbody.visible = true

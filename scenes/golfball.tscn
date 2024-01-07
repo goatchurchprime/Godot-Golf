@@ -91,6 +91,7 @@ mesh = SubResource("BoxMesh_j5idn")
 [node name="Golfball" type="RigidBody3D" parent="."]
 mass = 0.05
 physics_material_override = ExtResource("3_bvs30")
+freeze_mode = 1
 linear_damp = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Golfball"]
