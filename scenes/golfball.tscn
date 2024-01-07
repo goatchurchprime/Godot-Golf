@@ -89,6 +89,7 @@ script = ExtResource("6_yi7yd")
 mesh = SubResource("BoxMesh_j5idn")
 
 [node name="Golfball" type="RigidBody3D" parent="."]
+collision_layer = 2
 mass = 0.05
 physics_material_override = ExtResource("3_bvs30")
 freeze_mode = 1

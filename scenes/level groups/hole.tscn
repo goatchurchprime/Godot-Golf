@@ -30,6 +30,7 @@ height = 0.2
 
 [node name="Hole" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0748383, 0)
+collision_mask = 2
 script = ExtResource("1_7d6aw")
 
 [node name="ClappingAudioPlayer" type="AudioStreamPlayer3D" parent="."]

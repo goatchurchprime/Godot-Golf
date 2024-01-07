@@ -94,9 +94,12 @@ func play_putt_sound():
 	putt_audio_player.volume_db = clamp(MAX_STRENGTH*4 - hit_strength*10, -30, 0)
 	putt_audio_player.play()
 
+#Stop rigidbody from moving
 func _on_move_allowed_timer_timeout():
 	if is_multiplayer_authority():
 		rigidbody.linear_velocity = Vector3.ZERO
+		if putts > 0:
+			rigidbody.set_collision_mask_value(2, true)
 		move_allowed = true
 
 func move_back():
@@ -116,6 +119,7 @@ func disable():
 	rigidbody.visible = false
 
 func enable(spawn_location):
+	rigidbody.set_collision_mask_value(2, false)
 	putts = 0
 	last_pos = spawn_location
 	locked = false

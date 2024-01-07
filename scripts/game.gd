@@ -68,7 +68,7 @@ func change_level(path, level_name):
 	round_timer.start_timer()
 	active_game(true)
 	
-	ready_player.rpc()
+	ready_player()
 
 @rpc("any_peer", "call_local")
 func game_win(peer_id):
@@ -88,7 +88,7 @@ func next_level():
 	if not level_select.last_hole:
 		scoreboard_next_hole()
 		round_timer.start_timer()
-		ready_player.rpc()
+		ready_player()
 	else:
 		game_over.rpc()
 
@@ -141,7 +141,6 @@ func game_over():
 		active_game(false)
 	player.disable()
 
-@rpc("authority", "call_local")
 func ready_player():
 	player.move_to(level_select.get_current_spawn_location_pos())
 	player.enable(level_select.get_current_spawn_location_pos())

@@ -48,6 +48,10 @@ scoreboard={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_2="Golfballs"
+
 [physics]
 
 common/physics_ticks_per_second=500
