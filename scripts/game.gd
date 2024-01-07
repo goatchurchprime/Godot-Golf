@@ -144,6 +144,7 @@ func game_over():
 func ready_player():
 	player.move_to(level_select.get_current_spawn_location_pos())
 	player.enable(level_select.get_current_spawn_location_pos())
+	update_gui.rpc()
 
 func initialize_timer():
 	if not multiplayer.is_server():
