@@ -28,9 +28,12 @@ func _ready():
 	multiplayer_menu.is_multiplayer.connect(select_multiplayer)
 	
 	if multiplayer.is_server():
-		round_timer.timeout.connect(next_hole_receiver)
+		round_timer.timeout.connect(round_timer_timeout)
 	
 	next_hole_timer = initialize_timer()
+
+func round_timer_timeout():
+	start_next_hole_timer.rpc()
 
 func next_hole_receiver():
 	next_hole.rpc()
@@ -96,7 +99,7 @@ func game_win(peer_id):
 	if players_won == get_tree().get_nodes_in_group("players").size():
 		print("All players have won")
 		if multiplayer.is_server():
-			next_hole_timer.start()
+			start_next_hole_timer.rpc()
 
 func active_game(game_active):
 	if game_active:
@@ -144,3 +147,10 @@ func initialize_timer():
 func scoreboard_next_hole():
 	scoreboard.next_hole()
 	update_gui.rpc()
+
+@rpc("authority", "call_local")
+func start_next_hole_timer():
+	level_select.activate_hole_camera()
+	player.disable()
+	if multiplayer.is_server():
+		next_hole_timer.start()

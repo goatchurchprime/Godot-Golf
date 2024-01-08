@@ -34,7 +34,7 @@ func _enter_tree():
 	putts = 0
 
 func _ready():
-	rigidbody.freeze = true
+	rigidbody.set_freeze_enabled(true)
 	locked = true
 	if is_multiplayer_authority():
 		last_pos = Vector3.ZERO
@@ -116,7 +116,7 @@ func disable():
 	locked = true
 	last_pos = Vector3.ZERO
 	move_back()
-	rigidbody.freeze = true
+	rigidbody.set_freeze_enabled(true)
 	rigidbody.visible = false
 
 func enable(spawn_location):
@@ -124,7 +124,7 @@ func enable(spawn_location):
 	putts = 0
 	last_pos = spawn_location
 	locked = false
-	rigidbody.freeze = false
+	rigidbody.set_freeze_enabled(false)
 	rigidbody.visible = true
 	activate_camera()
 
