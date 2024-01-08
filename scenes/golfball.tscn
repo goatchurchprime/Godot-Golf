@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://w6qkohd2ejme"]
+[gd_scene load_steps=19 format=3 uid="uid://w6qkohd2ejme"]
 
 [ext_resource type="Script" path="res://scripts/follow_node.gd" id="2_fbk7p"]
 [ext_resource type="PhysicsMaterial" uid="uid://b7f3tpjorcnfy" path="res://physics/phys_mat_golfball.tres" id="3_bvs30"]
 [ext_resource type="AudioStream" uid="uid://dve11tyh5fanq" path="res://assets/audio/golfball_hit.mp3" id="4_vvdv4"]
 [ext_resource type="Script" path="res://scripts/golfball_controller.gd" id="4_x2185"]
+[ext_resource type="Script" path="res://scripts/golfball_rigidbody.gd" id="5_dceiy"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="5_rnkab"]
 [ext_resource type="Script" path="res://scripts/strength_arrow.gd" id="6_yi7yd"]
 
@@ -92,8 +93,8 @@ mesh = SubResource("BoxMesh_j5idn")
 collision_layer = 2
 mass = 0.05
 physics_material_override = ExtResource("3_bvs30")
-freeze_mode = 1
 linear_damp = 1.0
+script = ExtResource("5_dceiy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Golfball"]
 shape = SubResource("SphereShape3D_klkvt")
