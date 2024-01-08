@@ -21,40 +21,41 @@ func _ready():
 	
 	level_select.change_level_signal.connect(change_level_receiver)
 	level_select.golfball_left.connect(golfball_left)
-	level_select.levels_found.connect(add_levels_to_spawn_list)
-	
 	level_select.game_won.connect(game_win_receiver)
-	level_select.game_over.connect(game_over)
 	
 	multiplayer_menu.player_added.connect(set_player)
 	multiplayer_menu.is_singleplayer.connect(select_singleplayer)
 	multiplayer_menu.is_multiplayer.connect(select_multiplayer)
 	
 	if multiplayer.is_server():
-		round_timer.timeout.connect(end_game_receiver)
+		round_timer.timeout.connect(next_hole_receiver)
 	
 	next_hole_timer = initialize_timer()
 
-func update_gui_receiver():
-	update_gui.rpc()
+func next_hole_receiver():
+	next_hole.rpc()
+
+@rpc("authority", "call_local")
+func next_hole():
+	scoreboard_next_hole()
+	players_won = 0
+	round_timer.stop()
+	level_select.next_hole()
+	if not level_select.last_hole:
+		round_timer.start()
+		initialize_player.rpc(level_select.get_current_spawn_location_pos())
+	else:
+		if multiplayer.is_server():
+			active_game(false)
+
+@rpc("authority", "call_local")
+func initialize_player(pos):
+	player.move_to(pos)
+	player.enable(pos)
 
 func change_level_receiver(path, level_name):
 	change_level.rpc(path, level_name)
-
-func game_win_receiver(peer_id):
-	game_win.rpc(peer_id)
-
-func next_level_receiver():
-	next_level.rpc()
-
-func end_game_receiver():
-	end_game.rpc()
-
-@rpc("any_peer", "call_local", "reliable")
-func update_gui():
-	GUI.update_text(player.putts)
-	scoreboard.update()
-
+	
 @rpc("authority", "call_local")
 func change_level(path, level_name):
 	if menu_background:
@@ -65,42 +66,37 @@ func change_level(path, level_name):
 	update_gui.rpc()
 	
 	level_select.change_level(path, level_name)
-	round_timer.start_timer()
 	active_game(true)
 	
-	ready_player()
+	if multiplayer.is_server():
+		next_hole.rpc()
 
+@rpc("any_peer", "call_local")
+func update_gui():
+	GUI.update_text(player.putts)
+	scoreboard.update()
+
+func update_gui_receiver():
+	update_gui.rpc()
+
+func game_win_receiver(peer_id):
+	if peer_id == player.get_multiplayer_authority():
+		game_win.rpc(peer_id)
+		level_select.activate_hole_camera()
+	
 @rpc("any_peer", "call_local")
 func game_win(peer_id):
 	players_won += 1
+	print("winners: " + str(players_won))
 	
 	if peer_id == player.get_multiplayer_authority():
 		player.disable()
 		update_gui.rpc()
 	
 	if players_won == get_tree().get_nodes_in_group("players").size():
-		print("ALL PLAYERS HAVE WON")
-		end_game()
-
-@rpc("authority", "call_local")
-func next_level():
-	level_select.next_hole()
-	if not level_select.last_hole:
-		scoreboard_next_hole()
-		round_timer.start_timer()
-		ready_player()
-	else:
-		game_over.rpc()
-
-@rpc("authority", "call_local")
-func end_game():
-	if multiplayer.is_server():
-		next_hole_timer.start()
-	round_timer.stop_timer()
-	player.disable()
-	update_gui.rpc()
-	level_select.end_game()
-	players_won = 0
+		print("All players have won")
+		if multiplayer.is_server():
+			next_hole_timer.start()
 
 func active_game(game_active):
 	if game_active:
@@ -130,22 +126,6 @@ func select_multiplayer():
 	if multiplayer.is_server():
 		level_select.activate()
 
-func add_levels_to_spawn_list(level_paths):
-	if level_paths is Array:
-		for level in level_paths:
-			multiplayer_spawner.add_spawnable_scene(level)
-
-@rpc("authority","call_local")
-func game_over():
-	if multiplayer.is_server():
-		active_game(false)
-	player.disable()
-
-func ready_player():
-	player.move_to(level_select.get_current_spawn_location_pos())
-	player.enable(level_select.get_current_spawn_location_pos())
-	update_gui.rpc()
-
 func initialize_timer():
 	if not multiplayer.is_server():
 		return
@@ -157,11 +137,10 @@ func initialize_timer():
 	tmp.wait_time = NEXT_HOLE_TIMER_WAIT
 	tmp.autostart = false
 	tmp.one_shot = true
-	tmp.timeout.connect(next_level_receiver)
+	tmp.timeout.connect(next_hole_receiver)
 	add_child(tmp)
 	return tmp
 
 func scoreboard_next_hole():
 	scoreboard.next_hole()
-	scoreboard.update()
 	update_gui.rpc()

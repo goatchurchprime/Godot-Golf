@@ -48,7 +48,7 @@ func _input(event):
 					aiming = true
 				elif Input.is_action_just_released("left_mouse"):
 					putt()
-				elif event is InputEventMouseMotion and aiming:
+				if event is InputEventMouseMotion and aiming:
 					add_hit_strength(event)
 
 func _physics_process(delta):
@@ -98,7 +98,8 @@ func play_putt_sound():
 func _on_move_allowed_timer_timeout():
 	if is_multiplayer_authority():
 		rigidbody.linear_velocity = Vector3.ZERO
-		if putts > 0:
+		# Collision mask layer 1 and 2 active
+		if rigidbody.collision_mask != 3 and putts > 0:
 			rigidbody.set_collision_mask_value(2, true)
 		move_allowed = true
 

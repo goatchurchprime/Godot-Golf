@@ -1,6 +1,4 @@
-class_name LevelSelect
-
-extends Control
+class_name LevelSelect extends Control
 
 const LEVEL_BUTTON = preload("res://scenes/lvl_select_button.tscn")
 
@@ -11,9 +9,7 @@ var last_hole : bool
 var current_level_group : LevelGroup
 
 signal change_level_signal
-signal levels_found
 signal game_won
-signal game_over
 signal golfball_left
 
 var level_paths : Array
@@ -25,7 +21,6 @@ var level_paths : Array
 
 func _ready():
 	get_files(path)
-	levels_found.emit(level_paths)
 	menu.visible = false
 
 func change_level(level_path, level_name):
@@ -49,7 +44,6 @@ func initialize_level(level_path):
 		if child is LevelGroup:
 			level_groups.append(child)
 	level_groups.sort()
-	next_hole()
 
 func disconnect_signals():
 	if current_level_group:
@@ -79,15 +73,15 @@ func next_hole():
 				break
 	connect_signals()
 
+func activate_hole_camera():
+	current_level_group.activate_hole_camera()
+
 func golfball_left_func(peer_id):
 	golfball_left.emit(peer_id)
 
 func game_win(peer_id):
-	current_level_group.activate_hole_camera()
 	game_won.emit(peer_id)
-
-func end_game():
-	current_level_group.activate_hole_camera()
+	#current_level_group.activate_hole_camera()
 
 func change_level_func(level_path, level_name):
 	change_level_signal.emit(level_path, level_name)

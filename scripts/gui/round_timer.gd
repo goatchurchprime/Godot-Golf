@@ -9,10 +9,10 @@ func _process(delta):
 	if not timer.is_stopped():
 		time_label.text = str(floor(timer.time_left))
 
-func start_timer():
+func start():
 	timer.start()
 
-func stop_timer():
+func stop():
 	timer.stop()
 
 func _on_timer_timeout():
