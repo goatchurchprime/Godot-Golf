@@ -46,7 +46,7 @@ func next_hole():
 	level_select.next_hole()
 	if not level_select.last_hole:
 		round_timer.start()
-		initialize_player.rpc(level_select.get_current_spawn_location_pos())
+		initialize_player.rpc(level_select.get_current_spawn_location_transform())
 	else:
 		if multiplayer.is_server():
 			active_game(false)
