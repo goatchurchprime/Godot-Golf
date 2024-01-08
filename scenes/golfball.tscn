@@ -93,6 +93,7 @@ mesh = SubResource("BoxMesh_j5idn")
 collision_layer = 2
 mass = 0.05
 physics_material_override = ExtResource("3_bvs30")
+can_sleep = false
 linear_damp = 1.0
 script = ExtResource("5_dceiy")
 

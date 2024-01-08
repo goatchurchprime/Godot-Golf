@@ -53,8 +53,8 @@ func next_hole():
 
 @rpc("authority", "call_local")
 func initialize_player(pos):
-	player.move_to(pos)
 	player.enable(pos)
+	player.move_to(pos)
 
 func change_level_receiver(path, level_name):
 	change_level.rpc(path, level_name)
