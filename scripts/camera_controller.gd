@@ -12,4 +12,4 @@ func _input(event):
 		rotation.x = clamp(rotation.x, deg_to_rad(-50),deg_to_rad(10))
 
 func get_rotation_basis():
-	return -get_parent().transform.basis.x.rotated(Vector3.UP, deg_to_rad(90))
+	return get_parent().transform.basis.z
