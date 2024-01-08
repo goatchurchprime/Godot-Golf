@@ -46,15 +46,15 @@ func next_hole():
 	level_select.next_hole()
 	if not level_select.last_hole:
 		round_timer.start()
-		initialize_player.rpc(level_select.get_current_spawn_location_pos())
+		initialize_player.rpc(level_select.get_current_spawn_location_transform())
 	else:
 		if multiplayer.is_server():
 			active_game(false)
 
 @rpc("authority", "call_local")
 func initialize_player(pos):
-	player.move_to(pos)
 	player.enable(pos)
+	player.move_to(pos)
 
 func change_level_receiver(path, level_name):
 	change_level.rpc(path, level_name)

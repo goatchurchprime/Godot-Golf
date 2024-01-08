@@ -86,8 +86,8 @@ func game_win(peer_id):
 func change_level_func(level_path, level_name):
 	change_level_signal.emit(level_path, level_name)
 
-func get_current_spawn_location_pos():
-	return current_level_group.spawn_location.get_global_pos()
+func get_current_spawn_location_transform():
+	return current_level_group.spawn_location.global_transform
 
 func get_files(path):
 	if !path:

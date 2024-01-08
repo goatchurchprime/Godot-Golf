@@ -16,7 +16,7 @@ var aiming : bool
 var hit_strength : float
 var impulse : Vector3
 
-var last_pos : Vector3
+var last_pos : Transform3D
 
 var locked = true
 
@@ -34,10 +34,8 @@ func _enter_tree():
 	putts = 0
 
 func _ready():
-	rigidbody.set_freeze_enabled(true)
 	locked = true
 	if is_multiplayer_authority():
-		last_pos = Vector3.ZERO
 		hit_strength = MIN_STRENGTH
 
 func _input(event):
@@ -70,7 +68,7 @@ func add_hit_strength(event):
 
 func putt():
 	if is_multiplayer_authority():
-		last_pos = rigidbody.position
+		last_pos = rigidbody.transform
 		if abs(hit_strength) > 0:
 			print("hit_strength: " + str(hit_strength))
 			impulse = spring_arm.get_rotation_basis()
@@ -104,9 +102,7 @@ func _on_move_allowed_timer_timeout():
 		move_allowed = true
 
 func move_back():
-	rigidbody.linear_velocity = Vector3.ZERO
-	rigidbody.angular_velocity = Vector3.ZERO
-	rigidbody.position = last_pos
+	rigidbody.goto(last_pos)
 
 func move_to(pos):
 	last_pos = pos
@@ -114,17 +110,15 @@ func move_to(pos):
 
 func disable():
 	locked = true
-	last_pos = Vector3.ZERO
 	move_back()
-	rigidbody.set_freeze_enabled(true)
 	rigidbody.visible = false
 
 func enable(spawn_location):
 	rigidbody.set_collision_mask_value(2, false)
 	putts = 0
+	rigidbody.goto(spawn_location)
 	last_pos = spawn_location
 	locked = false
-	rigidbody.set_freeze_enabled(false)
 	rigidbody.visible = true
 	activate_camera()
 
