@@ -104,22 +104,23 @@ func _on_move_allowed_timer_timeout():
 func move_back():
 	rigidbody.goto(last_pos)
 
-func move_to(pos):
+func goto(pos):
 	last_pos = pos
 	move_back()
 
+@rpc("any_peer", "call_local")
 func disable():
 	locked = true
-	move_back()
-	rigidbody.visible = false
+	rigidbody.set_visible(false)
 
+@rpc("any_peer", "call_local")
 func enable(spawn_location):
 	rigidbody.set_collision_mask_value(2, false)
 	putts = 0
 	rigidbody.goto(spawn_location)
 	last_pos = spawn_location
 	locked = false
-	rigidbody.visible = true
+	rigidbody.set_visible(true)
 	activate_camera()
 
 func activate_camera():

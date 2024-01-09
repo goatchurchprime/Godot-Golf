@@ -1,5 +1,7 @@
 class_name Game extends Node3D
 
+const DID_NOT_FINISH_SCORE = 14
+
 const NEXT_HOLE_TIMER_WAIT = 3.0
 
 @onready var menu_background = $MenuBackground
@@ -11,12 +13,14 @@ const NEXT_HOLE_TIMER_WAIT = 3.0
 @onready var scoreboard = $Scoreboard
 
 var player : Golfball
-
 var players_won : int
-
 var next_hole_timer : Timer
 
+var finished : bool
+
 func _ready():
+	finished = false
+	
 	active_game(false)
 	
 	level_select.change_level_signal.connect(change_level_receiver)
@@ -40,21 +44,26 @@ func next_hole_receiver():
 
 @rpc("authority", "call_local")
 func next_hole():
-	scoreboard_next_hole()
 	players_won = 0
+	finished = false
+	
+	update_gui.rpc()
 	round_timer.stop()
 	level_select.next_hole()
+	
 	if not level_select.last_hole:
+		scoreboard_next_hole()
 		round_timer.start()
 		initialize_player.rpc(level_select.get_current_spawn_location_transform())
+		update_gui.rpc()
 	else:
 		if multiplayer.is_server():
 			active_game(false)
 
 @rpc("authority", "call_local")
 func initialize_player(pos):
-	player.enable(pos)
-	player.move_to(pos)
+	player.enable.rpc(pos)
+	player.goto(pos)
 
 func change_level_receiver(path, level_name):
 	change_level.rpc(path, level_name)
@@ -93,11 +102,13 @@ func game_win(peer_id):
 	print("winners: " + str(players_won))
 	
 	if peer_id == player.get_multiplayer_authority():
-		player.disable()
+		finished = true
+		player.disable.rpc()
 		update_gui.rpc()
 	
 	if players_won == get_tree().get_nodes_in_group("players").size():
 		print("All players have won")
+		round_timer.stop()
 		if multiplayer.is_server():
 			start_next_hole_timer.rpc()
 
@@ -151,6 +162,8 @@ func scoreboard_next_hole():
 @rpc("authority", "call_local")
 func start_next_hole_timer():
 	level_select.activate_hole_camera()
-	player.disable()
+	player.disable.rpc()
+	if not finished:
+		player.putts = DID_NOT_FINISH_SCORE
 	if multiplayer.is_server():
 		next_hole_timer.start()
