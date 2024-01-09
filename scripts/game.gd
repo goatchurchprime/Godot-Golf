@@ -161,9 +161,11 @@ func scoreboard_next_hole():
 
 @rpc("authority", "call_local")
 func start_next_hole_timer():
-	level_select.activate_hole_camera()
-	player.disable.rpc()
-	if not finished:
-		player.putts = DID_NOT_FINISH_SCORE
-	if multiplayer.is_server():
-		next_hole_timer.start()
+	if player.is_multiplayer_authority():
+		level_select.activate_hole_camera()
+		player.disable.rpc()
+		if not finished:
+			player.putts = DID_NOT_FINISH_SCORE
+		finished = false
+		if multiplayer.is_server():
+			next_hole_timer.start()
