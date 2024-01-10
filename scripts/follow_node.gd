@@ -10,8 +10,6 @@ var snap : bool
 
 func _process(delta):
 	if not use_lerp or snap:
-		if use_lerp:
-			print(snap)
 		snap = false
 		follow_exact()
 	else:

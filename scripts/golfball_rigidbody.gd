@@ -17,5 +17,4 @@ func _integrate_forces(state):
 		wish_state = wish_pos
 		wish_state.origin.y += WISH_POS_SKIN
 		state.set_transform(wish_state)
-		print("STATE: " + str(wish_state))
 		do_goto = false
