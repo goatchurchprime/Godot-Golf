@@ -62,7 +62,7 @@ func next_hole():
 
 @rpc("authority", "call_local")
 func initialize_player(pos):
-	player.enable(pos, level_select.next_level_rotation())
+	player.enable.rpc(pos, level_select.next_level_rotation())
 	player.goto(pos)
 
 func change_level_receiver(path, level_name):
@@ -103,7 +103,7 @@ func game_win(peer_id):
 	
 	if peer_id == player.get_multiplayer_authority():
 		finished = true
-		player.disable()
+		player.disable.rpc()
 		update_gui.rpc()
 	
 	if players_won == get_tree().get_nodes_in_group("players").size():
@@ -163,7 +163,7 @@ func scoreboard_next_hole():
 func start_next_hole_timer():
 	if player.is_multiplayer_authority():
 		level_select.activate_hole_camera()
-		player.disable()
+		player.disable.rpc()
 		if not finished:
 			player.putts = DID_NOT_FINISH_SCORE
 			finished = false

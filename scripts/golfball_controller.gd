@@ -109,10 +109,12 @@ func goto(pos):
 	last_pos = pos
 	move_back()
 
+@rpc("any_peer", "call_local")
 func disable():
 	locked = true
 	rigidbody.set_visible(false)
 
+@rpc("any_peer", "call_local")
 func enable(spawn_location, spawn_rotation):
 	rigidbody.set_collision_mask_value(2, false)
 	putts = 0
