@@ -1,6 +1,6 @@
-class_name RoundTimer extends Control
+class_name RoundTimerUI extends Control
 
-@onready var time_label = $TimeLabel
+@onready var time_label = $HBoxContainer/TimeLabel
 @onready var timer = $Timer
 
 signal timeout

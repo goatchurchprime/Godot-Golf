@@ -5,11 +5,10 @@ const DID_NOT_FINISH_SCORE = 14
 const NEXT_HOLE_TIMER_WAIT = 3.0
 
 @onready var menu_background = $MenuBackground
-@onready var GUI = $PuttingHUD
+@onready var hud = $Hud
 @onready var level_select = $LevelSelect
 @onready var multiplayer_menu = $MultiplayerMenu
 @onready var multiplayer_spawner = $MultiplayerSpawner
-@onready var round_timer = $RoundTimer
 @onready var scoreboard = $Scoreboard
 
 var player : Golfball
@@ -32,7 +31,7 @@ func _ready():
 	multiplayer_menu.is_multiplayer.connect(select_multiplayer)
 	
 	if multiplayer.is_server():
-		round_timer.timeout.connect(round_timer_timeout)
+		hud.timeout.connect(round_timer_timeout)
 	
 	next_hole_timer = initialize_timer()
 
@@ -48,12 +47,12 @@ func next_hole():
 	finished = false
 	
 	update_gui.rpc()
-	round_timer.stop()
+	hud.stop_timer()
 	level_select.next_hole()
 	
 	if not level_select.last_hole:
 		scoreboard_next_hole()
-		round_timer.start()
+		hud.start_timer()
 		initialize_player.rpc(level_select.get_current_spawn_location_transform())
 		update_gui.rpc()
 	else:
@@ -85,7 +84,7 @@ func change_level(path, level_name):
 
 @rpc("any_peer", "call_local")
 func update_gui():
-	GUI.update_text(player.putts)
+	hud.update_text(player.putts)
 	scoreboard.update()
 
 func update_gui_receiver():
@@ -108,17 +107,17 @@ func game_win(peer_id):
 	
 	if players_won == get_tree().get_nodes_in_group("players").size():
 		print("All players have won")
-		round_timer.stop()
+		hud.stop_timer()
 		if multiplayer.is_server():
 			start_next_hole_timer.rpc()
 
 func active_game(game_active):
 	if game_active:
-		GUI.visible = true
+		hud.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		level_select.visible = false
 	else:
-		GUI.visible = false
+		hud.visible = false
 		level_select.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 

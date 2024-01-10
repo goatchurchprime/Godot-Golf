@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://c45nvkwehpn5t"]
+
+[ext_resource type="Script" path="res://scripts/gui/score_hud.gd" id="1_4salr"]
+[ext_resource type="Texture2D" uid="uid://cxr0cpkghp8rl" path="res://assets/images/ball.png" id="2_fqqgh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_muyv5"]
+font_size = 55
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2jimm"]
+font_size = 11
+
+[node name="PuttingHUD" type="Control"]
+layout_mode = 3
+anchor_left = 0.891
+anchor_top = 0.813
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 125.568
+offset_top = 121.176
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_4salr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = -93.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HorseHUD" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.579
+anchor_top = 0.032
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0939865
+offset_top = 0.0239999
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_fqqgh")
+expand_mode = 3
+
+[node name="ScoreLabel" type="Label" parent="Panel/HorseHUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -13.0
+offset_right = 20.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_muyv5")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -18.0
+offset_right = 142.0
+offset_bottom = -2.0
+grow_vertical = 0
+text = "Tab for Scoreboard"
+label_settings = SubResource("LabelSettings_2jimm")

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd715frsmv2g5"]
+
+[ext_resource type="Script" path="res://scripts/gui/HUD.gd" id="1_ya441"]
+[ext_resource type="PackedScene" uid="uid://be31scdsjltuh" path="res://scenes/UI/HUD/round_timer.tscn" id="2_dqqhb"]
+[ext_resource type="PackedScene" uid="uid://c45nvkwehpn5t" path="res://scenes/UI/HUD/putting_ui.tscn" id="2_emh1n"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_ya441")
+
+[node name="PuttingHUD" parent="." instance=ExtResource("2_emh1n")]
+layout_mode = 1
+
+[node name="TimeLeft" parent="." instance=ExtResource("2_dqqhb")]
+layout_mode = 1
+offset_left = -129.0
+offset_top = -37.0
+offset_right = -129.0
+offset_bottom = -37.0
+
+[connection signal="timeout" from="TimeLeft" to="." method="_on_time_left_timeout"]
