@@ -13,3 +13,6 @@ func _input(event):
 
 func get_rotation_basis():
 	return get_parent().transform.basis.z
+
+func set_arm_rotation(rot):
+	get_parent().rotation.y = rot

@@ -23,6 +23,7 @@ var locked = true
 @onready var rigidbody = $Golfball
 @onready var move_allowed_timer = $MoveAllowedTimer
 
+@onready var camera_position = $CameraPosition
 @onready var camera = $CameraPosition/SpringArm3D/Camera3D
 @onready var spring_arm = $CameraPosition/SpringArm3D
 
@@ -74,7 +75,7 @@ func putt():
 			impulse = spring_arm.get_rotation_basis()
 			impulse.y = 0
 			impulse = impulse.normalized()
-			impulse*= -abs(hit_strength*STRENGTH)
+			impulse *= -abs(hit_strength*STRENGTH)
 			emit_particles()
 			play_putt_sound()
 			hit_strength = MIN_STRENGTH
@@ -108,13 +109,11 @@ func goto(pos):
 	last_pos = pos
 	move_back()
 
-@rpc("any_peer", "call_local")
 func disable():
 	locked = true
 	rigidbody.set_visible(false)
 
-@rpc("any_peer", "call_local")
-func enable(spawn_location):
+func enable(spawn_location, spawn_rotation):
 	rigidbody.set_collision_mask_value(2, false)
 	putts = 0
 	rigidbody.goto(spawn_location)
@@ -122,6 +121,8 @@ func enable(spawn_location):
 	locked = false
 	rigidbody.set_visible(true)
 	activate_camera()
+	camera_position.snap_to_pos()
+	spring_arm.set_arm_rotation(spawn_rotation)
 
 func activate_camera():
 	if is_multiplayer_authority():

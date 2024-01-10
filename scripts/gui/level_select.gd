@@ -127,3 +127,6 @@ func get_name_from_path(tmp_path):
 	substring = substring.trim_suffix(".tscn")
 	substring = substring.replace("_"," ")
 	return substring
+
+func next_level_rotation():
+	return current_level_group.spawn_location.global_rotation.y

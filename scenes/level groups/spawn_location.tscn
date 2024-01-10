@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://351ma0g0bcvy"]
+[gd_scene load_steps=3 format=3 uid="uid://351ma0g0bcvy"]
 
 [ext_resource type="Script" path="res://scripts/spawn_location.gd" id="1_0dqjj"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_bahbb"]
+size = Vector3(0.1, 0.1, 2)
+
 [node name="SpawnLocation" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_0dqjj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("BoxMesh_bahbb")

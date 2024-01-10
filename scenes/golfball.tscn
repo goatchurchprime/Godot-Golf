@@ -79,7 +79,7 @@ autostart = true
 
 [node name="FollowPosition" type="Node3D" parent="." node_paths=PackedStringArray("following_node")]
 script = ExtResource("2_fbk7p")
-LERP_WEIGHT = 100
+LERP_WEIGHT = 1.0
 following_node = NodePath("../Golfball")
 
 [node name="StrengthArrow" type="Node3D" parent="FollowPosition"]
@@ -105,7 +105,8 @@ mesh = SubResource("SphereMesh_f4cbf")
 
 [node name="CameraPosition" type="Node3D" parent="." node_paths=PackedStringArray("following_node")]
 script = ExtResource("2_fbk7p")
-LERP_WEIGHT = 4
+use_lerp = true
+LERP_WEIGHT = 0.5
 following_node = NodePath("../Golfball")
 
 [node name="PuttingGPUParticle" type="GPUParticles3D" parent="CameraPosition"]
