@@ -1,7 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://w6qkohd2ejme"]
 
 [ext_resource type="Script" path="res://scripts/follow_node.gd" id="2_fbk7p"]
-[ext_resource type="PhysicsMaterial" uid="uid://b7f3tpjorcnfy" path="res://physics/phys_mat_golfball.tres" id="3_bvs30"]
 [ext_resource type="AudioStream" uid="uid://dve11tyh5fanq" path="res://assets/audio/golfball_hit.mp3" id="4_vvdv4"]
 [ext_resource type="Script" path="res://scripts/golfball_controller.gd" id="4_x2185"]
 [ext_resource type="Script" path="res://scripts/golfball_rigidbody.gd" id="5_dceiy"]
@@ -10,6 +9,10 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_j5idn"]
 size = Vector3(0.01, 0.02, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4yvvj"]
+friction = 0.0
+bounce = 0.25
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_klkvt"]
 radius = 0.044
@@ -92,7 +95,7 @@ mesh = SubResource("BoxMesh_j5idn")
 [node name="Golfball" type="RigidBody3D" parent="."]
 collision_layer = 2
 mass = 0.05
-physics_material_override = ExtResource("3_bvs30")
+physics_material_override = SubResource("PhysicsMaterial_4yvvj")
 can_sleep = false
 linear_damp = 1.0
 script = ExtResource("5_dceiy")
