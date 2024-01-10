@@ -166,5 +166,6 @@ func start_next_hole_timer():
 		if not finished:
 			player.putts = DID_NOT_FINISH_SCORE
 			finished = false
+		update_gui.rpc()
 		if multiplayer.is_server():
 			next_hole_timer.start()
