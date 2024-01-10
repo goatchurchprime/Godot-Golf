@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://w6qkohd2ejme"]
+[gd_scene load_steps=21 format=3 uid="uid://w6qkohd2ejme"]
 
 [ext_resource type="Script" path="res://scripts/follow_node.gd" id="2_fbk7p"]
 [ext_resource type="AudioStream" uid="uid://dve11tyh5fanq" path="res://assets/audio/golfball_hit.mp3" id="4_vvdv4"]
 [ext_resource type="Script" path="res://scripts/golfball_controller.gd" id="4_x2185"]
 [ext_resource type="Script" path="res://scripts/golfball_rigidbody.gd" id="5_dceiy"]
+[ext_resource type="Texture2D" uid="uid://ct322aa3am2cd" path="res://assets/images/golfball_normals.png" id="5_g3rcn"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="5_rnkab"]
 [ext_resource type="Script" path="res://scripts/strength_arrow.gd" id="6_yi7yd"]
 
@@ -11,13 +12,19 @@
 size = Vector3(0.01, 0.02, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4yvvj"]
-friction = 0.0
+friction = 0.1
 bounce = 0.25
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_klkvt"]
 radius = 0.044
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rj2c3"]
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("5_g3rcn")
+
 [sub_resource type="SphereMesh" id="SphereMesh_f4cbf"]
+material = SubResource("StandardMaterial3D_rj2c3")
 radius = 0.044
 height = 0.088
 

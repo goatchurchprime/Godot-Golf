@@ -3,7 +3,7 @@ class_name Golfball extends Node3D
 signal putted
 
 const MIN_STRENGTH = 0
-const MAX_STRENGTH = -12
+const MAX_STRENGTH = -15
 const STRENGTH = 0.1
 const HIT_SENSITIVITY = 3
 const MIN_VELOCITY = 0.5
@@ -97,6 +97,7 @@ func play_putt_sound():
 func _on_move_allowed_timer_timeout():
 	if is_multiplayer_authority():
 		rigidbody.linear_velocity = Vector3.ZERO
+		rigidbody.angular_velocity = Vector3.ZERO
 		# Collision mask layer 1 and 2 active
 		if rigidbody.collision_mask != 3 and putts > 0:
 			rigidbody.set_collision_mask_value(2, true)
