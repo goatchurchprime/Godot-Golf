@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1ilb4u1816a3"]
+[gd_scene load_steps=3 format=3 uid="uid://b1ilb4u1816a3"]
 
 [ext_resource type="Script" path="res://scripts/gui/scoreboard.gd" id="1_g5nr3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h5rp1"]
+font_size = 24
 
 [node name="Scoreboard" type="Control"]
 layout_mode = 3
@@ -47,3 +50,4 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Players:"
+label_settings = SubResource("LabelSettings_h5rp1")

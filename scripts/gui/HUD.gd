@@ -1,4 +1,4 @@
-class_name HUD extends Control
+class_name UserHUD extends Control
 
 @onready var putting_hud = $PuttingHUD
 @onready var round_timer = $TimeLeft
