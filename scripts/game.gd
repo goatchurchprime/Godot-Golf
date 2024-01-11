@@ -5,6 +5,7 @@ const DID_NOT_FINISH_SCORE = 14
 const NEXT_HOLE_TIMER_WAIT = 3.0
 
 @onready var menu_background = $MenuBackground
+@onready var game_status = $GameStatus
 @onready var hud = $Hud
 @onready var level_select = $LevelSelect
 @onready var multiplayer_menu = $MultiplayerMenu
@@ -29,6 +30,11 @@ func _ready():
 	multiplayer_menu.player_added.connect(set_player)
 	multiplayer_menu.is_singleplayer.connect(select_singleplayer)
 	multiplayer_menu.is_multiplayer.connect(select_multiplayer)
+	
+	multiplayer.peer_connected.connect(peer_connected)
+	multiplayer.connected_to_server.connect(connection_successful)
+	multiplayer.connection_failed.connect(connection_failed)
+	multiplayer.server_disconnected .connect(server_disconnected)
 	
 	if multiplayer.is_server():
 		hud.timeout.connect(round_timer_timeout)
@@ -58,6 +64,8 @@ func next_hole():
 	else:
 		if multiplayer.is_server():
 			active_game(false)
+		else:
+			game_status.set_status(GameStatus.statuses.HOST_CHOOSING_MAP)
 
 @rpc("authority", "call_local")
 func initialize_player(pos):
@@ -69,6 +77,8 @@ func change_level_receiver(path, level_name):
 	
 @rpc("authority", "call_local")
 func change_level(path, level_name):
+	game_status.set_status(GameStatus.statuses.HIDDEN)
+	
 	if menu_background:
 		menu_background.queue_free()
 		menu_background = null
@@ -169,3 +179,16 @@ func start_next_hole_timer():
 		update_gui.rpc()
 		if multiplayer.is_server():
 			next_hole_timer.start()
+
+func peer_connected(_peer_id):
+	if multiplayer.is_server():
+		game_status.set_status(GameStatus.statuses.PEER_CONNECTED)
+
+func connection_successful():
+	game_status.set_status(GameStatus.statuses.CONNECTION_SUCCESFUL)
+
+func connection_failed():
+	game_status.set_status(GameStatus.statuses.CONNECTION_FAILED)
+
+func server_disconnected():
+	game_status.set_status(GameStatus.statuses.DISCONNECTED)
