@@ -47,7 +47,7 @@ func _input(event):
 					aiming = true
 				elif Input.is_action_just_released("left_mouse"):
 					putt()
-				if event is InputEventMouseMotion and aiming:
+				elif event is InputEventMouseMotion and aiming:
 					add_hit_strength(event)
 
 func _physics_process(delta):
