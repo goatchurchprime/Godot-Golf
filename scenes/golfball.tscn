@@ -8,26 +8,6 @@
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="5_rnkab"]
 [ext_resource type="Script" path="res://scripts/strength_arrow.gd" id="6_yi7yd"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_j5idn"]
-size = Vector3(0.01, 0.02, 1)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4yvvj"]
-friction = 0.1
-bounce = 0.25
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_klkvt"]
-radius = 0.044
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rj2c3"]
-normal_enabled = true
-normal_scale = 1.5
-normal_texture = ExtResource("5_g3rcn")
-
-[sub_resource type="SphereMesh" id="SphereMesh_f4cbf"]
-material = SubResource("StandardMaterial3D_rj2c3")
-radius = 0.044
-height = 0.088
-
 [sub_resource type="Gradient" id="Gradient_jiqsm"]
 colors = PackedColorArray(0.2, 0.2, 0.2, 1, 1, 1, 1, 1)
 
@@ -62,6 +42,26 @@ height = 0.1
 radial_segments = 8
 rings = 8
 
+[sub_resource type="BoxMesh" id="BoxMesh_j5idn"]
+size = Vector3(0.01, 0.02, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4yvvj"]
+friction = 0.1
+bounce = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_klkvt"]
+radius = 0.044
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rj2c3"]
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("5_g3rcn")
+
+[sub_resource type="SphereMesh" id="SphereMesh_f4cbf"]
+material = SubResource("StandardMaterial3D_rj2c3")
+radius = 0.044
+height = 0.088
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5gi3a"]
 properties/0/path = NodePath("Golfball:position")
 properties/0/spawn = true
@@ -92,6 +92,19 @@ script = ExtResource("2_fbk7p")
 LERP_WEIGHT = 1.0
 following_node = NodePath("../Golfball")
 
+[node name="PuttingGPUParticle" type="GPUParticles3D" parent="FollowPosition"]
+emitting = false
+amount = 32
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.8
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_j28ec")
+draw_pass_1 = SubResource("SphereMesh_1mqso")
+
+[node name="PuttingAudioPlayer" type="AudioStreamPlayer3D" parent="FollowPosition"]
+stream = ExtResource("4_vvdv4")
+
 [node name="StrengthArrow" type="Node3D" parent="FollowPosition"]
 visible = false
 script = ExtResource("6_yi7yd")
@@ -118,18 +131,6 @@ script = ExtResource("2_fbk7p")
 use_lerp = true
 LERP_WEIGHT = 0.5
 following_node = NodePath("../Golfball")
-
-[node name="PuttingGPUParticle" type="GPUParticles3D" parent="CameraPosition"]
-emitting = false
-lifetime = 0.75
-one_shot = true
-explosiveness = 0.8
-randomness = 0.5
-process_material = SubResource("ParticleProcessMaterial_j28ec")
-draw_pass_1 = SubResource("SphereMesh_1mqso")
-
-[node name="PuttingAudioPlayer" type="AudioStreamPlayer3D" parent="CameraPosition"]
-stream = ExtResource("4_vvdv4")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPosition"]
 transform = Transform3D(1, 0, 0, 0, 0.927184, 0.374607, 0, -0.374607, 0.927184, 0, 0.380318, 0)
