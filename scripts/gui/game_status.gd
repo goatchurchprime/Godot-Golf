@@ -1,6 +1,6 @@
 class_name GameStatus extends Control
 
-enum statuses {PEER_CONNECTED, CONNECTION_SUCCESFUL, CONNECTION_FAILED, HOST_CHOOSING_MAP, DISCONNECTED, HIDDEN}
+enum statuses {PEER_CONNECTED, CONNECTION_SUCCESSFUL, CONNECTION_FAILED, HOST_CHOOSING_MAP, DISCONNECTED, HIDDEN}
 
 @onready var label = $CenterContainer/Label
 
@@ -9,8 +9,8 @@ func set_status(status):
 	match status:
 		statuses.PEER_CONNECTED:
 			message = "A peer has connected"
-		statuses.CONNECTION_SUCCESFUL:
-			message = "Connection Succesful"
+		statuses.CONNECTION_SUCCESSFUL:
+			message = "Connection Successful"
 		statuses.CONNECTION_FAILED:
 			message = "Connection failed"
 		statuses.HOST_CHOOSING_MAP:

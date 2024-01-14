@@ -185,7 +185,7 @@ func peer_connected(_peer_id):
 		game_status.set_status(GameStatus.statuses.PEER_CONNECTED)
 
 func connection_successful():
-	game_status.set_status(GameStatus.statuses.CONNECTION_SUCCESFUL)
+	game_status.set_status(GameStatus.statuses.CONNECTION_SUCCESSFUL)
 
 func connection_failed():
 	game_status.set_status(GameStatus.statuses.CONNECTION_FAILED)

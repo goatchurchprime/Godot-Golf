@@ -81,7 +81,6 @@ func golfball_left_func(peer_id):
 
 func game_win(peer_id):
 	game_won.emit(peer_id)
-	#current_level_group.activate_hole_camera()
 
 func change_level_func(level_path, level_name):
 	change_level_signal.emit(level_path, level_name)
@@ -101,7 +100,7 @@ func get_files(path):
 			var tmp = dir.get_next()
 			if tmp != "":
 				var tmp_path = dir.get_current_dir() + "/" + tmp
-				# Fixes exporting map, removes suffix .remap at the end
+				# Fixes exporting map, removes suffix .remap
 				tmp_path = tmp_path.trim_suffix(".remap")
 				var tmp_name = get_name_from_path(tmp_path)
 				print(tmp_path)

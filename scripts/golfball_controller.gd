@@ -41,14 +41,13 @@ func _ready():
 
 func _input(event):
 	if is_multiplayer_authority():
-		if not locked:
-			if move_allowed:
-				if Input.is_action_just_pressed("left_mouse"):
-					aiming = true
-				elif Input.is_action_just_released("left_mouse"):
-					putt()
-				elif event is InputEventMouseMotion and aiming:
-					add_hit_strength(event)
+		if not locked and move_allowed:
+			if Input.is_action_just_pressed("left_mouse"):
+				aiming = true
+			elif Input.is_action_just_released("left_mouse"):
+				putt()
+			elif event is InputEventMouseMotion and aiming:
+				add_hit_strength(event)
 
 func _physics_process(delta):
 	if is_multiplayer_authority():
@@ -99,7 +98,7 @@ func _on_move_allowed_timer_timeout():
 		rigidbody.linear_velocity = Vector3.ZERO
 		rigidbody.angular_velocity = Vector3.ZERO
 		# Collision mask layer 1 and 2 active
-		if rigidbody.collision_mask != 3 and putts > 0:
+		if not rigidbody.get_collision_mask_value(2) and putts > 0:
 			rigidbody.set_collision_mask_value(2, true)
 		move_allowed = true
 

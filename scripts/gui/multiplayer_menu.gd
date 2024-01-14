@@ -25,7 +25,6 @@ signal is_singleplayer
 func _on_host_pressed():
 	hide()
 	enet_peer.create_server(PORT, MAX_PLAYERS)
-	#enet_peer.set_bind_ip("0.0.0.0")
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(player_disconnected)
