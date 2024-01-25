@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://d3imjxg2h3thk"]
+[gd_scene load_steps=38 format=3 uid="uid://d3imjxg2h3thk"]
 
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="1_e5jj4"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_37u63"]
@@ -16,6 +16,7 @@
 [ext_resource type="ArrayMesh" uid="uid://5ojyu2uls7x7" path="res://assets/objects/cirno/cirno_low.obj" id="10_sqyh1"]
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="11_lfgqb"]
 [ext_resource type="PackedScene" uid="uid://cr2sxlm13ehqs" path="res://scenes/decorations/shack.tscn" id="16_2x42p"]
+[ext_resource type="PackedScene" uid="uid://35nedlqrd4cm" path="res://scenes/level_objects/spinning_plus_shape.tscn" id="16_q7lea"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w783w"]
 sky_top_color = Color(0.262745, 0.458824, 0.686275, 1)
@@ -87,7 +88,7 @@ size = Vector3(0.1, 0.4, 15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dm3w1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rb1dq"]
-size = Vector3(14.2557, 4.40564, 3.02771)
+size = Vector3(12.0489, 4.40564, 6.0405)
 
 [node name="World1" type="Node3D"]
 
@@ -625,16 +626,16 @@ mesh = SubResource("BoxMesh_wwgut")
 shape = SubResource("BoxShape3D_dm3w1")
 
 [node name="LevelGroup3" parent="." instance=ExtResource("2_37u63")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5592, 0, -26.4134)
+transform = Transform3D(0.862937, 0, -0.505311, 0, 1, 0, 0.505311, 0, 0.862937, -21.4479, 1.78665, -20.5729)
 
 [node name="Hole" parent="LevelGroup3" instance=ExtResource("3_m0qga")]
-transform = Transform3D(0.794415, 0, -0.607376, 0, 1, 0, 0.607376, 0, 0.794415, 7.2, 0, 0)
+transform = Transform3D(0.794415, 0, -0.607376, 0, 1, 0, 0.607376, 0, 0.794415, -1, 0, -3)
 
 [node name="OutOfBoundsArea" parent="LevelGroup3" instance=ExtResource("5_tcjyp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07191, 1.21035, -0.0215664)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup3/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47601, 1.04413, 0.038269)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49957, 1.08328, -1.46399)
 shape = SubResource("BoxShape3D_rb1dq")
 
 [node name="SpawnLocation" parent="LevelGroup3" instance=ExtResource("4_nua1o")]
@@ -648,14 +649,21 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0,
 [node name="RowShape" parent="LevelGroup3/Course" instance=ExtResource("4_7gpb3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 0)
 
-[node name="RowShapeSlopeUp" parent="LevelGroup3/Course" instance=ExtResource("4_7gpb3")]
-transform = Transform3D(-4.37114e-08, -0.422618, 0.906308, 0, 0.906308, 0.422618, -1, 1.84732e-08, -3.9616e-08, 1.79928, 0.605875, 0)
+[node name="SpinningPlusShape" parent="LevelGroup3/Course" instance=ExtResource("16_q7lea")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.99509, 0, 0.0834045)
+rotation_amt = 0.3
 
-[node name="RowShapeSlopeDown" parent="LevelGroup3/Course" instance=ExtResource("4_7gpb3")]
-transform = Transform3D(-4.37114e-08, 0.422618, 0.906308, 0, 0.906308, -0.422618, -1, -1.84732e-08, -3.9616e-08, 4.5098, 0.605394, 0)
+[node name="CornerShape" parent="LevelGroup3/Course" instance=ExtResource("5_n7gmh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.006, 0, 0)
+
+[node name="CornerShape2" parent="LevelGroup3/Course" instance=ExtResource("5_n7gmh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, 0, -3)
+
+[node name="RowShape2" parent="LevelGroup3/Course" instance=ExtResource("4_7gpb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -3)
 
 [node name="UShape2" parent="LevelGroup3/Course" instance=ExtResource("3_g4aht")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.2, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -3)
 
 [node name="Shack" parent="." instance=ExtResource("16_2x42p")]
 transform = Transform3D(1.08098, 0, -0.905312, 0, 1.41, 0, 0.905312, 0, 1.08098, 23.0737, 0, -24.2384)
