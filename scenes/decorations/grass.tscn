@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjgl18c36f75l"]
+
+[ext_resource type="ArrayMesh" uid="uid://bhj14gv7qhepf" path="res://assets/objects/grass/grass03.obj" id="1_txmbn"]
+[ext_resource type="Texture2D" uid="uid://df5nbov7vwodp" path="res://assets/materials/grass_object/grass_summer.png" id="2_3u82o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfdur"]
+transparency = 2
+alpha_scissor_threshold = 0.001
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_3u82o")
+
+[node name="Grass" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.435, 0, 0, 0, 1.435, 0, 0, 0, 1.435, 0, 0, 0)
+mesh = ExtResource("1_txmbn")
+surface_material_override/0 = SubResource("StandardMaterial3D_wfdur")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.749808, 0, 0.40036, 0, 0.85, 0, -0.40036, 0, 0.749808, 0, 0, 0.225711)
+mesh = ExtResource("1_txmbn")
+surface_material_override/0 = SubResource("StandardMaterial3D_wfdur")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.1035, 0, 0.373514, 0, 1.165, 0, -0.373514, 0, 1.1035, -0.758431, 0, -0.394414)
+mesh = ExtResource("1_txmbn")
+surface_material_override/0 = SubResource("StandardMaterial3D_wfdur")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0365, 0, 0.553439, 0, 1.175, 0, -0.553439, 0, 1.0365, 0.182037, 0, -0.41464)
+mesh = ExtResource("1_txmbn")
+surface_material_override/0 = SubResource("StandardMaterial3D_wfdur")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.877828, 0, -0.67115, 0, 1.105, 0, 0.67115, 0, 0.877828, -0.702957, 0, 0.283169)
+mesh = ExtResource("1_txmbn")
+surface_material_override/0 = SubResource("StandardMaterial3D_wfdur")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.885772, 0, 0.677224, 0, 1.115, 0, -0.677224, 0, 0.885772, 0.22249, 0, -0.066287)
+mesh = ExtResource("1_txmbn")
+surface_material_override/0 = SubResource("StandardMaterial3D_wfdur")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.691141, 0, 0.528417, 0, 0.87, 0, -0.528417, 0, 0.691141, -0.44498, 0, 0)
+mesh = ExtResource("1_txmbn")
+surface_material_override/0 = SubResource("StandardMaterial3D_wfdur")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.659364, 0, 0.504122, 0, 0.83, 0, -0.504122, 0, 0.659364, 0, 0, -0.687696)
+mesh = ExtResource("1_txmbn")
+surface_material_override/0 = SubResource("StandardMaterial3D_wfdur")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.588421, 0, -0.875663, 0, 1.055, 0, 0.875663, 0, 0.588421, 0.566338, 0, 0)
+mesh = ExtResource("1_txmbn")
+surface_material_override/0 = SubResource("StandardMaterial3D_wfdur")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.69247, 0, 0.369744, 0, 0.785, 0, -0.369744, 0, 0.69247, 0.142608, 0, 0.263665)
+mesh = ExtResource("1_txmbn")
+surface_material_override/0 = SubResource("StandardMaterial3D_wfdur")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.08438, 0, 0.829068, 0, 1.365, 0, -0.829068, 0, 1.08438, -0.359326, 0, -0.382458)
+mesh = ExtResource("1_txmbn")
+surface_material_override/0 = SubResource("StandardMaterial3D_wfdur")

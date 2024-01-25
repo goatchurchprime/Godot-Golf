@@ -1,11 +1,13 @@
-[gd_scene load_steps=34 format=3 uid="uid://d3imjxg2h3thk"]
+[gd_scene load_steps=36 format=3 uid="uid://d3imjxg2h3thk"]
 
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="1_e5jj4"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_37u63"]
 [ext_resource type="PackedScene" uid="uid://cre124dy0mgrj" path="res://scenes/decorations/pine_tree.tscn" id="2_rtn13"]
 [ext_resource type="PackedScene" uid="uid://6c3sxht652g0" path="res://scenes/level_objects/u_shape.tscn" id="3_g4aht"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/level groups/hole.tscn" id="3_m0qga"]
+[ext_resource type="PackedScene" uid="uid://bir3vonmeqs5f" path="res://scenes/decorations/bush.tscn" id="3_vaslg"]
 [ext_resource type="Texture2D" uid="uid://dfmr816ryig2i" path="res://assets/images/trees.png" id="3_wsa6n"]
+[ext_resource type="PackedScene" uid="uid://bjgl18c36f75l" path="res://scenes/decorations/grass.tscn" id="4_5lkyd"]
 [ext_resource type="PackedScene" uid="uid://dkq7bwcakgjgq" path="res://scenes/level_objects/row_shape.tscn" id="4_7gpb3"]
 [ext_resource type="PackedScene" uid="uid://351ma0g0bcvy" path="res://scenes/level groups/spawn_location.tscn" id="4_nua1o"]
 [ext_resource type="PackedScene" uid="uid://c80lp440b60i1" path="res://scenes/level_objects/corner_shape.tscn" id="5_n7gmh"]
@@ -210,6 +212,73 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8151, 0, -16.6822)
 
 [node name="PineTree38" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -29.8489, 0, -26.5494)
+
+[node name="Bushes" type="Node3D" parent="WorldDecor"]
+
+[node name="Bush" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(1.545, 0, 0, 0, 1.545, 0, 0, 0, 1.545, 1.89124, 0, 22.6975)
+
+[node name="Bush2" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(1.235, 0, 0, 0, 1.235, 0, 0, 0, 1.235, -17.4947, 0, 28.6628)
+
+[node name="Bush3" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, 10.9729, 0, 0.114395)
+
+[node name="Bush4" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(1.305, 0, 0, 0, 1.305, 0, 0, 0, 1.305, -18.3541, 0, -2.48496)
+
+[node name="Bush5" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.72831, 0, 30.0735)
+
+[node name="Bush6" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(1.43, 0, 0, 0, 1.43, 0, 0, 0, 1.43, 17.9913, 0, 22.399)
+
+[node name="Bush7" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6921, 0, 14.2721)
+
+[node name="Bush8" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 19.7457, 1.90735e-06, -1.76497)
+
+[node name="Bush9" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(2.905, 0, 0, 0, 2.905, 0, 0, 0, 2.905, 3.43861, 0, -0.490503)
+
+[node name="Grass" type="Node3D" parent="WorldDecor"]
+
+[node name="Grass" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(1.235, 0, 0, 0, 1.235, 0, 0, 0, 1.235, 1.85511, 0, 15.8779)
+
+[node name="Grass2" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.89, 0, 0, 0, 0.89, 0, 0, 0, 0.89, 2.41192, 0, 13.5975)
+
+[node name="Grass3" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(1.165, 0, 0, 0, 1.165, 0, 0, 0, 1.165, 7.4172, 0, 3.91323)
+
+[node name="Grass4" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.93, 0, 0, 0, 0.93, 0, 0, 0, 0.93, -18.2347, 0, 2.82302)
+
+[node name="Grass5" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -0.855539, 0, 28.026)
+
+[node name="Grass6" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.91, 0, 0, 0, 0.91, 0, 0, 0, 0.91, -25.8662, 0, 0.706738)
+
+[node name="Grass7" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 14.9751, 0, 6.03208)
+
+[node name="Grass8" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.88, 0, 0, 0, 0.88, 0, 0, 0, 0.88, 12.4099, 0, 13.407)
+
+[node name="Grass9" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(1.09, 0, 0, 0, 1.09, 0, 0, 0, 1.09, 18.1816, 0, 28.3492)
+
+[node name="Grass10" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(1.42, 0, 0, 0, 1.42, 0, 0, 0, 1.42, -15.1242, 0, -2.70699)
+
+[node name="Grass11" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(1.165, 0, 0, 0, 1.165, 0, 0, 0, 1.165, -17.0873, 0, -10.7044)
+
+[node name="Grass12" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(1.29, 0, 0, 0, 1.29, 0, 0, 0, 1.29, -26.7709, 0, -3.00882)
 
 [node name="WorldBorder" type="Node3D" parent="WorldDecor"]
 
