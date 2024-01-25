@@ -22,12 +22,18 @@ uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
-const float WAVE_STRENGTH = 5.0;
+const float WAVE_SPEED = 0.3;
+
+const float WAVE_STRENGTH_X = 4.0;
+const float WAVE_STRENGTH_Y = 1.0;
+const float WAVE_STRENGTH_Z = 3.0;
 
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	VERTEX.z += cos(VERTEX.y) * VERTEX.y*WAVE_STRENGTH/10.0 * sin(TIME);
+	VERTEX.x += VERTEX.y*WAVE_STRENGTH_X/10.0 * sin(TIME * WAVE_SPEED);
+	VERTEX.y += VERTEX.y*WAVE_STRENGTH_Y/10.0 * sin(TIME * WAVE_SPEED);
+	VERTEX.z += VERTEX.y*WAVE_STRENGTH_Z/10.0 * sin(TIME * WAVE_SPEED);
 }
 
 
