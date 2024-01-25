@@ -207,7 +207,7 @@ transform = Transform3D(2.36891, 0.448307, -0.875504, 0, 2.28309, 1.16907, 0.983
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 21.8767, 1.5, -21.508)
 
 [node name="Hole" parent="LevelGroup2" instance=ExtResource("3_fbsxp")]
-transform = Transform3D(0.901546, -4.47035e-08, -0.432684, -0.216342, 0.866025, -0.450773, 0.374715, 0.5, 0.780762, 0, 0.122906, -17.2188)
+transform = Transform3D(0.87462, 0, -0.48481, 0, 1, 0, 0.48481, 0, 0.87462, 0, -0.0285292, -17.2188)
 
 [node name="OutOfBoundsArea" parent="LevelGroup2" instance=ExtResource("5_po8u8")]
 
