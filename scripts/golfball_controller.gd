@@ -21,6 +21,7 @@ var last_pos : Transform3D
 var locked = true
 
 @onready var rigidbody = $Golfball
+@onready var collision_shape = $Golfball/CollisionShape3D
 @onready var move_allowed_timer = $MoveAllowedTimer
 
 @onready var camera_position = $CameraPosition
@@ -112,10 +113,12 @@ func goto(pos):
 @rpc("any_peer", "call_local")
 func disable():
 	locked = true
+	collision_shape.disabled = true
 	rigidbody.set_visible(false)
 
 @rpc("any_peer", "call_local")
 func enable(spawn_location, spawn_rotation):
+	collision_shape.disabled = false
 	rigidbody.set_collision_mask_value(2, false)
 	putts = 0
 	rigidbody.goto(spawn_location)
