@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://babpuykavo20x"
-path.s3tc="res://.godot/imported/Stone_11-256x256.png-9e59d0c5bf14e4e6aaf2936c546e88e6.s3tc.ctex"
+uid="uid://dcc5ik3c366ca"
+path.s3tc="res://.godot/imported/Photoreal_Fire_06-512x512.png-2d97463950b1314e07338326dd8c8973.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/materials/rock/Stone_11-256x256.png"
-dest_files=["res://.godot/imported/Stone_11-256x256.png-9e59d0c5bf14e4e6aaf2936c546e88e6.s3tc.ctex"]
+source_file="res://assets/materials/lava/Photoreal_Fire_06-512x512.png"
+dest_files=["res://.godot/imported/Photoreal_Fire_06-512x512.png-2d97463950b1314e07338326dd8c8973.s3tc.ctex"]
 
 [params]
 
