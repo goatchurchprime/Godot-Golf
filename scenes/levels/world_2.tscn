@@ -25,7 +25,7 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_c4qow")
 
 [sub_resource type="Environment" id="Environment_it5m5"]
-background_energy_multiplier = 1.1
+background_energy_multiplier = 1.25
 sky = SubResource("Sky_h16q5")
 ssr_fade_in = 0.0832178
 ssao_intensity = 5.0
@@ -33,6 +33,7 @@ glow_bloom = 0.2
 fog_light_color = Color(0.101961, 0.117647, 0.0627451, 1)
 fog_density = 0.0588
 volumetric_fog_enabled = true
+volumetric_fog_density = 0.06
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ckjkr"]
 size = Vector3(80, 1, 80)
