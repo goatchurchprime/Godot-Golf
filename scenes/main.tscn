@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bg4sjmuo0nxot"]
+[gd_scene load_steps=10 format=3 uid="uid://bg4sjmuo0nxot"]
 
 [ext_resource type="PackedScene" uid="uid://bf0wxjnst3lm0" path="res://scenes/UI/level_select.tscn" id="1_2eddi"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_somfj"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bin524of6343q" path="res://scenes/menu_background.tscn" id="2_wy3ih"]
 [ext_resource type="PackedScene" uid="uid://8gngwjva0rhn" path="res://scenes/UI/game_status.tscn" id="7_2bxhg"]
 [ext_resource type="PackedScene" uid="uid://b1ilb4u1816a3" path="res://scenes/UI/scoreboard.tscn" id="7_743ai"]
+[ext_resource type="PackedScene" uid="uid://djefnitf7kn8w" path="res://scenes/decorations/rocks/rock01.tscn" id="9_uca2g"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_somfj")
@@ -42,3 +43,6 @@ autoplay = true
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/golfball.tscn")
 spawn_path = NodePath("..")
+
+[node name="Rock01" parent="." instance=ExtResource("9_uca2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2389, 0, -29.4599)
