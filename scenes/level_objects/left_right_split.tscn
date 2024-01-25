@@ -19,14 +19,14 @@ size = Vector3(0.1, 0.4, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_uomru"]
 material = ExtResource("2_moj76")
-size = Vector3(0.1, 0.4, 0.75)
+size = Vector3(0.1, 0.3, 0.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kg27c"]
 size = Vector3(0.1, 0.4, 0.75)
 
 [sub_resource type="BoxMesh" id="BoxMesh_er16i"]
 material = ExtResource("2_moj76")
-size = Vector3(0.1, 0.4, 1)
+size = Vector3(0.1, 0.3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0tefr"]
 size = Vector3(0.1, 0.4, 1)
