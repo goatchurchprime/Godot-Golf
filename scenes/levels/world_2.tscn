@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://85jqet14u5vk"]
+[gd_scene load_steps=29 format=3 uid="uid://85jqet14u5vk"]
 
-[ext_resource type="Texture2D" uid="uid://b3tq8pkflp44b" path="res://assets/materials/rock/rock_surface_diff_1k.jpg" id="1_7kcib"]
+[ext_resource type="Texture2D" uid="uid://babpuykavo20x" path="res://assets/materials/rock/Stone_11-256x256.png" id="1_8cn1a"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_0rx1a"]
+[ext_resource type="Material" uid="uid://bwvyr8a846v6" path="res://materials/rock.tres" id="2_mdlyo"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/level groups/hole.tscn" id="3_fbsxp"]
 [ext_resource type="PackedScene" uid="uid://351ma0g0bcvy" path="res://scenes/level groups/spawn_location.tscn" id="4_q0xpq"]
 [ext_resource type="PackedScene" uid="uid://co72gw4aw7535" path="res://scenes/level groups/out_of_bounds_area.tscn" id="5_po8u8"]
@@ -24,42 +25,33 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_c4qow")
 
 [sub_resource type="Environment" id="Environment_it5m5"]
+background_energy_multiplier = 1.1
 sky = SubResource("Sky_h16q5")
 ssr_fade_in = 0.0832178
 ssao_intensity = 5.0
 glow_bloom = 0.2
+fog_light_color = Color(0.101961, 0.117647, 0.0627451, 1)
+fog_density = 0.0588
 volumetric_fog_enabled = true
-adjustment_enabled = true
-adjustment_saturation = 1.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ckjkr"]
 size = Vector3(80, 1, 80)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_543b4"]
-albedo_texture = ExtResource("1_7kcib")
-uv1_scale = Vector3(0.275, 0.275, 0.275)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvrd6"]
+albedo_texture = ExtResource("1_8cn1a")
+uv1_scale = Vector3(0.08, 0.08, 0.08)
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_2k1hv"]
-material = SubResource("StandardMaterial3D_543b4")
+material = SubResource("StandardMaterial3D_jvrd6")
 size = Vector3(80, 1, 80)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55ca4"]
-albedo_texture = ExtResource("1_7kcib")
-uv1_scale = Vector3(-0.055, -0.055, -0.055)
-uv1_triplanar = true
-
 [sub_resource type="QuadMesh" id="QuadMesh_3148g"]
-material = SubResource("StandardMaterial3D_55ca4")
+material = ExtResource("2_mdlyo")
 size = Vector2(80, 40)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uob1"]
-albedo_texture = ExtResource("1_7kcib")
-uv1_scale = Vector3(0.01, 0.01, 0.01)
-uv1_triplanar = true
-
 [sub_resource type="QuadMesh" id="QuadMesh_83f3r"]
-material = SubResource("StandardMaterial3D_5uob1")
+material = ExtResource("2_mdlyo")
 size = Vector2(80, 80)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4x6o5"]

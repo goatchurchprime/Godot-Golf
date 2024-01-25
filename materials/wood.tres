@@ -1,4 +1,7 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://capwlvd6rcg5s"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://capwlvd6rcg5s"]
+
+[ext_resource type="Texture2D" uid="uid://c7xy78hudwa4f" path="res://assets/materials/wood/Wood_09-256x256.png" id="1_qvyjh"]
 
 [resource]
-albedo_color = Color(0.431373, 0.227451, 0.0392157, 1)
+albedo_texture = ExtResource("1_qvyjh")
+uv1_scale = Vector3(1, 0.39, 1)

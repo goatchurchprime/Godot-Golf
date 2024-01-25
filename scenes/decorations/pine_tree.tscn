@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cre124dy0mgrj"]
 
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="1_3a7y6"]
-[ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="2_wtxrb"]
+[ext_resource type="Material" uid="uid://cjyqym0unawme" path="res://materials/tree.tres" id="2_mgunv"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_v1byo"]
 material = ExtResource("1_3a7y6")
@@ -10,37 +10,37 @@ bottom_radius = 0.2
 height = 4.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_100f2"]
-material = ExtResource("2_wtxrb")
+material = ExtResource("2_mgunv")
 top_radius = 0.2
 bottom_radius = 2.0
 height = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_338sn"]
-material = ExtResource("2_wtxrb")
+material = ExtResource("2_mgunv")
 top_radius = 0.2
 bottom_radius = 1.8
 height = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_5cy07"]
-material = ExtResource("2_wtxrb")
+material = ExtResource("2_mgunv")
 top_radius = 0.2
 bottom_radius = 1.6
 height = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bil2m"]
-material = ExtResource("2_wtxrb")
+material = ExtResource("2_mgunv")
 top_radius = 0.2
 bottom_radius = 1.4
 height = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3jq0a"]
-material = ExtResource("2_wtxrb")
+material = ExtResource("2_mgunv")
 top_radius = 0.2
 bottom_radius = 1.0
 height = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_22re7"]
-material = ExtResource("2_wtxrb")
+material = ExtResource("2_mgunv")
 top_radius = 0.0
 bottom_radius = 0.7
 height = 1.0

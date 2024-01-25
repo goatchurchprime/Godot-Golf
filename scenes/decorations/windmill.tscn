@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://bicrvdrbk6q16" path="res://assets/objects/windmill/windmill.obj" id="1_i6s6u"]
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="2_41uxb"]
-[ext_resource type="Material" uid="uid://by025803sllra" path="res://materials/red_flag.tres" id="4_ppukd"]
+[ext_resource type="Material" uid="uid://boo1xkk2hp8u0" path="res://materials/roof.tres" id="4_2a1ih"]
 [ext_resource type="Material" uid="uid://bwvyr8a846v6" path="res://materials/rock.tres" id="4_vgvet"]
 [ext_resource type="Script" path="res://scripts/rotate_node.gd" id="5_5fu8o"]
 [ext_resource type="ArrayMesh" uid="uid://baf3nbgr4idnd" path="res://assets/objects/windmill/sail.obj" id="5_hi55v"]
@@ -23,7 +23,7 @@ mesh = ExtResource("1_i6s6u")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_41uxb")
 surface_material_override/1 = ExtResource("4_vgvet")
-surface_material_override/2 = ExtResource("4_ppukd")
+surface_material_override/2 = ExtResource("4_2a1ih")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Windmill"]
 shape = SubResource("ConcavePolygonShape3D_2x5cg")
