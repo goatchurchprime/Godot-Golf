@@ -4,11 +4,6 @@ class_name StrengthArrow extends Node3D
 @onready var spring_arm = $"../../CameraPosition/SpringArm3D"
 @onready var mesh = $ArrowMesh
 
-var material = StandardMaterial3D.new()
-
-func _ready():
-	mesh.material_override = material
-
 
 func _process(delta):
 	if ball.aiming:
@@ -35,4 +30,4 @@ func change_hit_strength():
 
 func change_color():
 	var color = clamp(int(abs(ball.hit_strength*25)),0,255)
-	material.albedo_color = Color8(color,0,0) 
+	mesh.get_active_material(0).albedo_color = Color8(color,0,0) 

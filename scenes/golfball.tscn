@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://w6qkohd2ejme"]
+[gd_scene load_steps=22 format=3 uid="uid://w6qkohd2ejme"]
 
 [ext_resource type="Script" path="res://scripts/follow_node.gd" id="2_fbk7p"]
 [ext_resource type="AudioStream" uid="uid://dve11tyh5fanq" path="res://assets/audio/golfball_hit.mp3" id="4_vvdv4"]
@@ -42,7 +42,10 @@ height = 0.1
 radial_segments = 8
 rings = 8
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_254s3"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_j5idn"]
+material = SubResource("StandardMaterial3D_254s3")
 size = Vector3(0.01, 0.02, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4yvvj"]
