@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://cjwyjfgwxeesi"]
 
-[ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="1_u008m"]
+[ext_resource type="Material" uid="uid://cckdy23j2537n" path="res://materials/course_grass.tres" id="1_qt673"]
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="2_moj76"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2x07w"]
-material = ExtResource("1_u008m")
+material = ExtResource("1_qt673")
 size = Vector3(3, 0.02, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tixbd"]
@@ -19,14 +19,14 @@ size = Vector3(0.1, 0.4, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_uomru"]
 material = ExtResource("2_moj76")
-size = Vector3(0.1, 0.4, 0.75)
+size = Vector3(0.1, 0.3, 0.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kg27c"]
 size = Vector3(0.1, 0.4, 0.75)
 
 [sub_resource type="BoxMesh" id="BoxMesh_er16i"]
 material = ExtResource("2_moj76")
-size = Vector3(0.1, 0.4, 1)
+size = Vector3(0.1, 0.3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0tefr"]
 size = Vector3(0.1, 0.4, 1)

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3tq8pkflp44b"
-path.s3tc="res://.godot/imported/rock_surface_diff_1k.jpg-2267864847bc0dc91df587070ceb428e.s3tc.ctex"
+uid="uid://c2ac1wnxpplfs"
+path.s3tc="res://.godot/imported/Grass_06-256x256.png-df6072745a77165a3269b0d39737d3e7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/materials/rock/rock_surface_diff_1k.jpg"
-dest_files=["res://.godot/imported/rock_surface_diff_1k.jpg-2267864847bc0dc91df587070ceb428e.s3tc.ctex"]
+source_file="res://assets/materials/tree/Grass_06-256x256.png"
+dest_files=["res://.godot/imported/Grass_06-256x256.png-df6072745a77165a3269b0d39737d3e7.s3tc.ctex"]
 
 [params]
 
