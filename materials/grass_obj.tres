@@ -22,7 +22,7 @@ uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
-const float WAVE_SPEED = 0.3;
+const float WAVE_SPEED = 0.6;
 
 const float WAVE_STRENGTH_X = 4.0;
 const float WAVE_STRENGTH_Y = 1.0;

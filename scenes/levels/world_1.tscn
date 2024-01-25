@@ -200,7 +200,7 @@ transform = Transform3D(1.305, 0, 0, 0, 1.305, 0, 0, 0, 1.305, -18.3541, 0, -2.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.72831, 0, 30.0735)
 
 [node name="Bush6" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
-transform = Transform3D(1.43, 0, 0, 0, 1.43, 0, 0, 0, 1.43, 17.9913, 0, 22.399)
+transform = Transform3D(1.43, 0, 0, 0, 1.43, 0, 0, 0, 1.43, 15.3241, 0, 25.8678)
 
 [node name="Bush7" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6921, 0, 14.2721)
@@ -283,7 +283,10 @@ transform = Transform3D(-0.658449, 0, 0.598786, 0, 0.89, 0, -0.598786, 0, -0.658
 transform = Transform3D(-0.861903, 0, 0.783804, 0, 1.165, 0, -0.783804, 0, -0.861903, -4.15349, 0, 3.46097)
 
 [node name="Grass16" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
-transform = Transform3D(-0.688042, 0, 0.625698, 0, 0.93, 0, -0.625698, 0, -0.688042, 14.0911, 0, 21.526)
+transform = Transform3D(-0.688042, 0, 0.625698, 0, 0.93, 0, -0.625698, 0, -0.688042, 15.0751, 0, 22.1012)
+
+[node name="Grass71" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.688042, 0, 0.625698, 0, 0.93, 0, -0.625698, 0, -0.688042, 10.8666, 0, 19.6543)
 
 [node name="Grass17" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
 transform = Transform3D(-0.836009, 0, 0.760256, 0, 1.13, 0, -0.760256, 0, -0.836009, 18.1899, 0, -8.81257)
@@ -607,3 +610,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0,
 
 [node name="Shack" parent="." instance=ExtResource("16_2x42p")]
 transform = Transform3D(1.08098, 0, -0.905312, 0, 1.41, 0, 0.905312, 0, 1.08098, 23.0737, 0, -24.2384)
+
+[node name="Rock01" parent="." instance=ExtResource("2_s15sc")]
+transform = Transform3D(0.496383, 0, -0.868104, 0, 1, 0, 0.868104, 0, 0.496383, -27.7004, 5.20068, -0.364479)
