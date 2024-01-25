@@ -242,6 +242,30 @@ transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 19.7457, 1.90735e-06, -
 [node name="Bush9" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
 transform = Transform3D(2.905, 0, 0, 0, 2.905, 0, 0, 0, 2.905, 3.43861, 0, -0.490503)
 
+[node name="Bush10" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(-1.38603, 0, -0.68261, 0, 1.545, 0, 0.68261, 0, -1.38603, 3.46034, 0, -15.9007)
+
+[node name="Bush11" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(-1.10792, 0, -0.545647, 0, 1.235, 0, 0.545647, 0, -1.10792, 18.216, 0, -29.8173)
+
+[node name="Bush12" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(-1.05858, 0, -0.521346, 0, 1.18, 0, 0.521346, 0, -1.05858, 5.29077, 0, 8.37117)
+
+[node name="Bush13" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(-1.17072, 0, -0.576574, 0, 1.305, 0, 0.576574, 0, -1.17072, 32.7486, 0, -2.25418)
+
+[node name="Bush14" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(-0.897104, 0, -0.441819, 0, 1, 0, 0.441819, 0, -0.897104, -4.13785, 0, -20.3806)
+
+[node name="Bush15" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(-1.28286, 0, -0.631801, 0, 1.43, 0, 0.631801, 0, -1.28286, -10.8512, 0, -8.51962)
+
+[node name="Bush16" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(-0.897104, 0, -0.441819, 0, 1, 0, 0.441819, 0, -0.897104, -9.68343, 0, -0.035635)
+
+[node name="Bush17" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(-1.43537, 0, -0.70691, 0, 1.6, 0, 0.70691, 0, -1.43537, -1.74894, 1.90735e-06, 13.9331)
+
 [node name="Grass" type="Node3D" parent="WorldDecor"]
 
 [node name="Grass" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
@@ -279,6 +303,78 @@ transform = Transform3D(1.165, 0, 0, 0, 1.165, 0, 0, 0, 1.165, -17.0873, 0, -10.
 
 [node name="Grass12" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
 transform = Transform3D(1.29, 0, 0, 0, 1.29, 0, 0, 0, 1.29, -26.7709, 0, -3.00882)
+
+[node name="Grass13" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.913691, 0, 0.8309, 0, 1.235, 0, -0.8309, 0, -0.913691, 8.0113, 0, -1.64875)
+
+[node name="Grass14" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.658449, 0, 0.598786, 0, 0.89, 0, -0.598786, 0, -0.658449, 6.06508, 0, -0.336225)
+
+[node name="Grass15" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.861903, 0, 0.783804, 0, 1.165, 0, -0.783804, 0, -0.861903, -4.15349, 0, 3.46097)
+
+[node name="Grass16" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.688042, 0, 0.625698, 0, 0.93, 0, -0.625698, 0, -0.688042, 14.0911, 0, 21.526)
+
+[node name="Grass17" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.836009, 0, 0.760256, 0, 1.13, 0, -0.760256, 0, -0.836009, 18.1899, 0, -8.81257)
+
+[node name="Grass18" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.673246, 0, 0.612242, 0, 0.91, 0, -0.612242, 0, -0.673246, 18.3133, 0, 28.226)
+
+[node name="Grass19" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.799017, 0, 0.726617, 0, 1.08, 0, -0.726617, 0, -0.799017, -8.31947, 0, -3.19149)
+
+[node name="Grass20" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.651051, 0, 0.592058, 0, 0.88, 0, -0.592058, 0, -0.651051, -1.45987, 0, -6.92185)
+
+[node name="Grass21" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.806415, 0, 0.733344, 0, 1.09, 0, -0.733344, 0, -0.806415, 4.3231, 0, -21.8597)
+
+[node name="Grass22" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-1.05056, 0, 0.955366, 0, 1.42, 0, -0.955366, 0, -1.05056, 8.06929, 0, 23.5245)
+
+[node name="Grass23" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.861903, 0, 0.783804, 0, 1.165, 0, -0.783804, 0, -0.861903, 4.14108, 0, 30.762)
+
+[node name="Grass24" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.954381, 0, 0.867903, 0, 1.29, 0, -0.867903, 0, -0.954381, 16.4828, 0, 31.5837)
+
+[node name="Grass25" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.730215, 0, 0.995997, 0, 1.235, 0, -0.995997, 0, 0.730215, 0.98719, 0, -21.135)
+
+[node name="Grass26" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.526228, 0, 0.717763, 0, 0.89, 0, -0.717763, 0, 0.526228, -0.522715, 0, -22.9324)
+
+[node name="Grass27" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.688827, 0, 0.939544, 0, 1.165, 0, -0.939544, 0, 0.688827, -5.37338, 0, -32.6951)
+
+[node name="Grass28" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.549879, 0, 0.750022, 0, 0.93, 0, -0.750022, 0, 0.549879, -21.4197, 0, -12.652)
+
+[node name="Grass29" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.668132, 0, 0.911317, 0, 1.13, 0, -0.911317, 0, 0.668132, 9.1816, 0, -11.7662)
+
+[node name="Grass30" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.538053, 0, 0.733893, 0, 0.91, 0, -0.733893, 0, 0.538053, -27.6387, 0, -7.74874)
+
+[node name="Grass31" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.638569, 0, 0.870994, 0, 1.08, 0, -0.870994, 0, 0.638569, 0.80414, 0, -37.5375)
+
+[node name="Grass32" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.520315, 0, 0.709698, 0, 0.88, 0, -0.709698, 0, 0.520315, 5.23512, 0, -31.1082)
+
+[node name="Grass33" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.644481, 0, 0.879058, 0, 1.09, 0, -0.879058, 0, 0.644481, 20.6983, 0, -26.928)
+
+[node name="Grass34" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.8396, 0, 1.1452, 0, 1.42, 0, -1.1452, 0, 0.8396, -24.0404, 0, -18.4303)
+
+[node name="Grass35" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.688827, 0, 0.939544, 0, 1.165, 0, -0.939544, 0, 0.688827, -31.6509, 0, -21.5757)
+
+[node name="Grass36" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.762735, 0, 1.04035, 0, 1.29, 0, -1.04035, 0, 0.762735, -31.1702, 0, -9.21596)
 
 [node name="WorldBorder" type="Node3D" parent="WorldDecor"]
 
