@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://d3imjxg2h3thk"]
+[gd_scene load_steps=39 format=3 uid="uid://d3imjxg2h3thk"]
 
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="1_e5jj4"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_37u63"]
 [ext_resource type="PackedScene" uid="uid://cre124dy0mgrj" path="res://scenes/decorations/pine_tree.tscn" id="2_rtn13"]
+[ext_resource type="PackedScene" uid="uid://djefnitf7kn8w" path="res://scenes/decorations/rocks/rock01.tscn" id="2_s15sc"]
 [ext_resource type="PackedScene" uid="uid://6c3sxht652g0" path="res://scenes/level_objects/u_shape.tscn" id="3_g4aht"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/level groups/hole.tscn" id="3_m0qga"]
 [ext_resource type="PackedScene" uid="uid://bir3vonmeqs5f" path="res://scenes/decorations/bush.tscn" id="3_vaslg"]
@@ -112,6 +113,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_p0svw")
 
 [node name="WorldDecor" type="Node3D" parent="."]
+
+[node name="Rock01" parent="WorldDecor" instance=ExtResource("2_s15sc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1462, 0, -26.5021)
 
 [node name="Trees" type="Node3D" parent="WorldDecor"]
 
