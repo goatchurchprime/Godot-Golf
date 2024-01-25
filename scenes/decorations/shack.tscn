@@ -1,32 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr2sxlm13ehqs"]
+[gd_scene load_steps=8 format=3 uid="uid://cr2sxlm13ehqs"]
 
-[ext_resource type="ArrayMesh" uid="uid://ckcevaiq4tdkn" path="res://assets/objects/shack/shack.obj" id="1_ykylv"]
+[ext_resource type="PackedScene" uid="uid://uaafbubjj4bw" path="res://assets/objects/shack/house2.glb" id="1_kbets"]
 [ext_resource type="Texture2D" uid="uid://bpkd3l70uyaky" path="res://assets/materials/shack/shack_tex1.png" id="2_wy0fq"]
 [ext_resource type="Texture2D" uid="uid://c2pqiut0eh20c" path="res://assets/materials/shack/shack_tex2.png" id="3_11v7n"]
-[ext_resource type="Texture2D" uid="uid://dt8stt5vq6ev5" path="res://assets/materials/shack/shack_tex3.png" id="4_rq0ky"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h160t"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7avwy"]
 cull_mode = 2
 albedo_texture = ExtResource("2_wy0fq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mv6k"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_svtju"]
 albedo_texture = ExtResource("3_11v7n")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qq8p7"]
-albedo_texture = ExtResource("4_rq0ky")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig6hf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi7ie"]
 albedo_texture = ExtResource("3_11v7n")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6jty"]
-albedo_texture = ExtResource("2_wy0fq")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fq3u4"]
+albedo_texture = ExtResource("3_11v7n")
 
-[node name="Shack" type="StaticBody3D"]
+[node name="house22" instance=ExtResource("1_kbets")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_ykylv")
-surface_material_override/0 = SubResource("StandardMaterial3D_h160t")
-surface_material_override/1 = SubResource("StandardMaterial3D_5mv6k")
-surface_material_override/2 = SubResource("StandardMaterial3D_qq8p7")
-surface_material_override/3 = SubResource("StandardMaterial3D_ig6hf")
-surface_material_override/4 = SubResource("StandardMaterial3D_f6jty")
+[node name="house2" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7avwy")
+
+[node name="house2_door1" parent="house2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_svtju")
+
+[node name="house2_door3" parent="house2" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_yi7ie")
+
+[node name="house2_windows" parent="house2" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_fq3u4")
