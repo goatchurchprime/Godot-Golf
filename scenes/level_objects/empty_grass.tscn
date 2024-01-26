@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1wsley1bdp6m"]
+
+[ext_resource type="Material" uid="uid://cckdy23j2537n" path="res://materials/course_grass.tres" id="1_iqlff"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2x07w"]
+material = ExtResource("1_iqlff")
+size = Vector3(3, 0.02, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tixbd"]
+size = Vector3(3, 0.02, 3)
+
+[node name="EmptyGrass" type="Node3D"]
+
+[node name="Grass" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grass"]
+mesh = SubResource("BoxMesh_2x07w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass"]
+shape = SubResource("BoxShape3D_tixbd")
