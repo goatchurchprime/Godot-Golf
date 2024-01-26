@@ -470,6 +470,12 @@ mesh = SubResource("QuadMesh_tgnwu")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40, 11, 0)
 mesh = SubResource("QuadMesh_tgnwu")
 
+[node name="Shack" parent="WorldDecor" instance=ExtResource("16_2x42p")]
+transform = Transform3D(1.08098, 0, -0.905312, 0, 1.41, 0, 0.905312, 0, 1.08098, 23.0737, 0, -24.2384)
+
+[node name="Rock02" parent="WorldDecor" instance=ExtResource("2_s15sc")]
+transform = Transform3D(0.496383, 0, -0.868104, 0, 1, 0, 0.868104, 0, 0.496383, -27.7004, 5.20068, -0.364479)
+
 [node name="LevelGroup1" parent="." instance=ExtResource("2_37u63")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.0685, 0, 19.722)
 
@@ -607,9 +613,3 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 
 
 [node name="UShape2" parent="LevelGroup4/Course" instance=ExtResource("3_g4aht")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -3)
-
-[node name="Shack" parent="." instance=ExtResource("16_2x42p")]
-transform = Transform3D(1.08098, 0, -0.905312, 0, 1.41, 0, 0.905312, 0, 1.08098, 23.0737, 0, -24.2384)
-
-[node name="Rock01" parent="." instance=ExtResource("2_s15sc")]
-transform = Transform3D(0.496383, 0, -0.868104, 0, 1, 0, 0.868104, 0, 0.496383, -27.7004, 5.20068, -0.364479)

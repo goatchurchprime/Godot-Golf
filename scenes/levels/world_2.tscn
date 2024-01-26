@@ -257,7 +257,7 @@ transform = Transform3D(1, 0, -1.7683e-07, 0, 1, 0, 1.7683e-07, 0, 1, 0, -1.1479
 [node name="CourseDecor" type="Node3D" parent="LevelGroup2"]
 
 [node name="Torch" parent="LevelGroup2/CourseDecor" instance=ExtResource("10_mco37")]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, -1.017, -12.4135)
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 1.5, -1.017, -12.413)
 
 [node name="LevelGroup3" parent="." instance=ExtResource("2_0rx1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3837, 3.31578, -28.8621)
