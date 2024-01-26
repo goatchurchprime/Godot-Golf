@@ -31,7 +31,7 @@ sky = SubResource("Sky_h16q5")
 tonemap_exposure = 1.5
 ssr_fade_in = 0.0832178
 ssao_enabled = true
-ssao_intensity = 5.0
+ssao_intensity = 16.0
 glow_enabled = true
 glow_bloom = 0.2
 adjustment_enabled = true
@@ -60,7 +60,7 @@ size = Vector3(6.04782, 2.32324, 12.0145)
 size = Vector3(3.03125, 3.52108, 19.1321)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rb1dq"]
-size = Vector3(12.1699, 4.05965, 3.14066)
+size = Vector3(12.1699, 7.30631, 3.14066)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1mkw"]
 size = Vector3(12.1699, 4.00737, 6.02058)
@@ -132,7 +132,7 @@ transform = Transform3D(1.98, 0, 0, 0, 2.574, 0, 0, 0, 1.98, 3.66311, 2.73387e-0
 transform = Transform3D(1.1, 0, 0, 0, 1.43, 0, 0, 0, 1.1, -25.3155, 2.73387e-08, -22.19)
 
 [node name="PineTree18" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
-transform = Transform3D(2.75, 0, 0, 0, 3.575, 0, 0, 0, 2.75, 0.268975, 2.73387e-08, -0.83248)
+transform = Transform3D(2.75, 0, 0, 0, 3.575, 0, 0, 0, 2.75, 0, 0, 0)
 
 [node name="PineTree20" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
 transform = Transform3D(1.1, 0, 0, 0, 1.43, 0, 0, 0, 1.1, -22.5099, 2.73387e-08, -34.9649)
@@ -542,7 +542,7 @@ transform = Transform3D(-0.794415, 0, 0.607376, 0, 1, 0, -0.607376, 0, -0.794415
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07191, 1.21035, -0.0215664)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup3/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60662, 0.587442, 0.0451654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60662, 2.21077, 0.0451653)
 shape = SubResource("BoxShape3D_rb1dq")
 
 [node name="SpawnLocation" parent="LevelGroup3" instance=ExtResource("4_nua1o")]

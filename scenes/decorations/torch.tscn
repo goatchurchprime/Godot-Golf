@@ -73,6 +73,7 @@ omni_range = 7.5
 
 [node name="FireParticleEmmiter" type="GPUParticles3D" parent="Top"]
 amount = 16
+speed_scale = 0.5
 explosiveness = 0.1
 randomness = 0.5
 visibility_aabb = AABB(-1.24104, -1.05742, -1.03829, 2.48209, 2.11484, 2.07658)

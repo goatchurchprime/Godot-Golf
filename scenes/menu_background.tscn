@@ -47,7 +47,7 @@ visible = false
 script = null
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(0.966268, -0.128769, 0.223034, 0, 0.866025, 0.5, -0.257538, -0.483134, 0.836812, 0, 0.5, 0)
+transform = Transform3D(-0.300023, 0.476966, -0.826128, 1.48745e-08, 0.866025, 0.5, 0.953932, 0.150011, -0.259827, 0, 0.5, 0)
 collision_mask = 0
 spring_length = 30.0
 
