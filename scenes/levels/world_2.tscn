@@ -73,7 +73,7 @@ size = Vector3(2.98639, 5.75562, 20.1907)
 size = Vector3(8.81084, 5.32051, 18.0122)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pboic"]
-size = Vector3(9.03717, 5.10352, 12.0498)
+size = Vector3(9.03717, 8.7627, 12.0498)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ln7sd"]
 size = Vector3(9.08148, 5.89896, 17.9634)
@@ -317,12 +317,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -31.71
 transform = Transform3D(1, 0, 2.84217e-14, 0, 1, 0, -2.84217e-14, 0, 1, 0, 0, 0)
 
 [node name="Hole" parent="LevelGroup4" instance=ExtResource("3_fbsxp")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.91006, 2.01, -8.97583)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.64248, 2.01, -8.97583)
 
 [node name="OutOfBoundsArea" parent="LevelGroup4" instance=ExtResource("5_po8u8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup4/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0254898, 2.51367, -4.49072)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0254898, 4.34326, -4.49072)
 shape = SubResource("BoxShape3D_pboic")
 
 [node name="Course" type="Node3D" parent="LevelGroup4"]
@@ -336,16 +336,16 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
 
 [node name="RowShape" parent="LevelGroup4/Course" instance=ExtResource("7_fl2eu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, -3)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.26758, 2, -3)
 
 [node name="RowShape2" parent="LevelGroup4/Course" instance=ExtResource("7_fl2eu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00001, 2, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73243, 2, -6)
 
 [node name="CornerShape2" parent="LevelGroup4/Course" instance=ExtResource("8_acfgg")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 2, -3)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.73243, 2, -3)
 
 [node name="UShape2" parent="LevelGroup4/Course" instance=ExtResource("6_13ov2")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.00001, 2, -9)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.73244, 2, -9)
 
 [node name="CourseDecor" type="Node3D" parent="LevelGroup4"]
 
