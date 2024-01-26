@@ -49,8 +49,8 @@ material = SubResource("StandardMaterial3D_254s3")
 size = Vector3(0.01, 0.02, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4yvvj"]
-friction = 0.1
-bounce = 0.4
+friction = 0.01
+bounce = 0.25
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_klkvt"]
 radius = 0.044
