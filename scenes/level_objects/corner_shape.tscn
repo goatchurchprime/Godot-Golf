@@ -22,7 +22,7 @@ material = ExtResource("2_gfmno")
 size = Vector3(1.4, 0.3, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tfyej"]
-size = Vector3(1.4, 0.4, 0.1)
+size = Vector3(1.4, 0.4, 0.825391)
 
 [node name="CornerShape" type="Node3D"]
 
@@ -61,4 +61,5 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 mesh = SubResource("BoxMesh_3r00g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CornerPiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.362695)
 shape = SubResource("BoxShape3D_tfyej")
