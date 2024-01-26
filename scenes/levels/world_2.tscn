@@ -252,7 +252,7 @@ transform = Transform3D(-1, 5.24718e-08, 7.78736e-08, 3.8152e-08, 0.984808, -0.1
 transform = Transform3D(-1, -4.47035e-08, -9.94011e-08, -8.84149e-08, 0.866025, 0.5, 6.37321e-08, 0.5, -0.866025, 0, -0.518402, -16.2925)
 
 [node name="UShape3" parent="LevelGroup2/Course" instance=ExtResource("6_13ov2")]
-transform = Transform3D(1, 0, -1.7683e-07, 0, 1, 0, 1.7683e-07, 0, 1, 0, -1.14798, -13.9164)
+transform = Transform3D(1, 0, -1.7683e-07, 0, 1, 0, 1.7683e-07, 0, 1, 0.001, -1.148, -13.916)
 
 [node name="CourseDecor" type="Node3D" parent="LevelGroup2"]
 

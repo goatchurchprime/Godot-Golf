@@ -104,7 +104,7 @@ mesh = SubResource("BoxMesh_pcc2c")
 shape = SubResource("BoxShape3D_uo7tg")
 
 [node name="Cube" parent="." index="2"]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 1.5, 0)
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0.001, 1.5, 0)
 surface_material_override/0 = ExtResource("1_kld2e")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube" index="0"]
