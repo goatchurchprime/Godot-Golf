@@ -72,8 +72,8 @@ size = Vector3(2.98639, 5.75562, 20.1907)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rreci"]
 size = Vector3(8.81084, 5.32051, 18.0122)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pboic"]
-size = Vector3(9.03717, 8.7627, 12.0498)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ih16r"]
+size = Vector3(7.43788, 8.7627, 12.0498)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ln7sd"]
 size = Vector3(9.08148, 5.89896, 17.9634)
@@ -294,7 +294,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.0
 transform = Transform3D(-1, 0, 8.74228e-08, 2.26267e-08, 0.965926, 0.258819, -8.44439e-08, 0.258819, -0.965926, 0, -0.394241, 11.9579)
 
 [node name="DownRight" parent="LevelGroup3/Course" instance=ExtResource("15_lj5ep")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -0.763211, 14.8589)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -0.777502, 14.8589)
 
 [node name="UShape2" parent="LevelGroup3/Course" instance=ExtResource("6_13ov2")]
 transform = Transform3D(-2.98023e-08, 0, -0.999999, 0, 1, 0, 0.999999, 0, -2.98023e-08, -5.70878, -2.281, 14.8592)
@@ -322,8 +322,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.2653
 [node name="OutOfBoundsArea" parent="LevelGroup4" instance=ExtResource("5_po8u8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup4/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0254898, 4.34326, -4.49072)
-shape = SubResource("BoxShape3D_pboic")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774155, 4.34326, -4.49072)
+shape = SubResource("BoxShape3D_ih16r")
 
 [node name="Course" type="Node3D" parent="LevelGroup4"]
 
