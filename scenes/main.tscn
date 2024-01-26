@@ -20,20 +20,19 @@ script = ExtResource("1_somfj")
 visible = false
 
 [node name="MultiplayerMenu" parent="." instance=ExtResource("2_5um1l")]
-anchors_preset = -1
-anchor_left = 0.21
-anchor_top = 0.216
-anchor_right = 0.76
-anchor_bottom = 0.808
-offset_left = 334.08
-offset_top = 184.032
-offset_right = -299.52
-offset_bottom = -199.584
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="Scoreboard" parent="." instance=ExtResource("7_743ai")]
 visible = false
 
 [node name="GameStatus" parent="." instance=ExtResource("7_2bxhg")]
+anchors_preset = 10
+anchor_bottom = 0.0
+offset_bottom = 0.0
+grow_vertical = 1
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_jscbh")

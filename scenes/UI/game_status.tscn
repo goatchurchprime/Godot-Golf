@@ -22,3 +22,6 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="CenterContainer"]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
