@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcrh0mjfq8lvx"]
+[gd_scene load_steps=13 format=3 uid="uid://bcrh0mjfq8lvx"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://dw4nkl265yvxp" path="res://physics/grass_phys_mat.tres" id="1_ncilu"]
 [ext_resource type="Material" uid="uid://cckdy23j2537n" path="res://materials/course_grass.tres" id="1_yhq03"]
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="2_sfdk2"]
+[ext_resource type="PhysicsMaterial" uid="uid://bjet2vq1wxjo5" path="res://physics/border_phys_mat.tres" id="3_dd6w7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2x07w"]
 material = ExtResource("1_yhq03")
@@ -37,6 +39,7 @@ size = Vector3(3, 0.1, 3)
 
 [node name="Grass" type="StaticBody3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.845)
+physics_material_override = ExtResource("1_ncilu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grass/Grass"]
 mesh = SubResource("BoxMesh_2x07w")
@@ -46,6 +49,7 @@ shape = SubResource("BoxShape3D_tixbd")
 
 [node name="Grass2" type="StaticBody3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.845)
+physics_material_override = ExtResource("1_ncilu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grass/Grass2"]
 mesh = SubResource("BoxMesh_2x07w")
@@ -55,6 +59,7 @@ shape = SubResource("BoxShape3D_tixbd")
 
 [node name="Grass3" type="StaticBody3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, 0)
+physics_material_override = ExtResource("1_ncilu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grass/Grass3"]
 mesh = SubResource("BoxMesh_ngfyu")
@@ -64,6 +69,7 @@ shape = SubResource("BoxShape3D_rax42")
 
 [node name="Grass4" type="StaticBody3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, 0)
+physics_material_override = ExtResource("1_ncilu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grass/Grass4"]
 mesh = SubResource("BoxMesh_ngfyu")
@@ -75,6 +81,7 @@ shape = SubResource("BoxShape3D_rax42")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Corners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+physics_material_override = ExtResource("3_dd6w7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/StaticBody3D"]
 mesh = SubResource("BoxMesh_08xn0")
@@ -84,6 +91,7 @@ shape = SubResource("BoxShape3D_khsn5")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="Corners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+physics_material_override = ExtResource("3_dd6w7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/StaticBody3D3"]
 mesh = SubResource("BoxMesh_08xn0")
@@ -93,6 +101,7 @@ shape = SubResource("BoxShape3D_khsn5")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Corners"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1.5)
+physics_material_override = ExtResource("3_dd6w7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
@@ -105,6 +114,7 @@ shape = SubResource("BoxShape3D_khsn5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Slope"]
 transform = Transform3D(0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0, 1, 0, -0.964, 0)
+physics_material_override = ExtResource("1_ncilu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Slope/StaticBody3D"]
 mesh = SubResource("BoxMesh_y21co")
