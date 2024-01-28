@@ -114,10 +114,12 @@ func goto(pos):
 func disable():
 	locked = true
 	collision_shape.disabled = true
+	rigidbody.freeze = true
 	rigidbody.set_visible(false)
 
 @rpc("any_peer", "call_local")
 func enable(spawn_location, spawn_rotation):
+	rigidbody.freeze = false
 	collision_shape.disabled = false
 	rigidbody.set_collision_mask_value(2, false)
 	putts = 0
