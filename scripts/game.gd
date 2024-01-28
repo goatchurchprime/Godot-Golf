@@ -40,7 +40,6 @@ func next_hole():
 
 @rpc("authority", "call_local")
 func next_hole_rpc():
-	print("myanmar")
 	players_won = 0
 	finished = false
 	
@@ -55,7 +54,6 @@ func next_hole_rpc():
 		initialize_player(level_select.get_current_spawn_location_transform())
 		update_gui()
 	else:
-		print("what")
 		if multiplayer.is_server():
 			game_active(false)
 		else:
@@ -116,6 +114,7 @@ func set_multiplayer():
 func start_next_hole_timer():
 	if not next_hole_timer:
 		next_hole_timer = initialize_next_hole_timer()
+	disable_players.rpc()
 	next_hole_timer.start()
 
 func initialize_next_hole_timer():
@@ -133,9 +132,14 @@ func initialize_next_hole_timer():
 	add_child(tmp)
 	return tmp
 
+func level_timeout():
+	if multiplayer.is_server():
+		start_next_hole_timer()
 
-
-
+@rpc("authority", "call_local")
+func disable_players():
+	player.disable.rpc()
+	level_select.activate_hole_camera()
 
 
 

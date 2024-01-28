@@ -512,111 +512,109 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0, 
 [node name="UShape2" parent="LevelGroup1/Course" instance=ExtResource("3_g4aht")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3, 0, -9)
 
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="LevelGroup2" parent="Node3D" instance=ExtResource("2_37u63")]
+[node name="LevelGroup2" parent="." instance=ExtResource("2_37u63")]
 transform = Transform3D(0.968535, 0, -0.248876, 0, 1, 0, 0.248876, 0, 0.968535, -11.5112, 0.571208, 28.4131)
 
-[node name="OutOfBoundsArea" parent="Node3D/LevelGroup2" instance=ExtResource("5_tcjyp")]
+[node name="OutOfBoundsArea" parent="LevelGroup2" instance=ExtResource("5_tcjyp")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/LevelGroup2/OutOfBoundsArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup2/OutOfBoundsArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0136757, 1.54661, -8.02356)
 shape = SubResource("BoxShape3D_j65ch")
 
-[node name="SpawnLocation" parent="Node3D/LevelGroup2" instance=ExtResource("4_nua1o")]
+[node name="SpawnLocation" parent="LevelGroup2" instance=ExtResource("4_nua1o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Hole" parent="Node3D/LevelGroup2" instance=ExtResource("3_m0qga")]
+[node name="Hole" parent="LevelGroup2" instance=ExtResource("3_m0qga")]
 transform = Transform3D(0.686935, 0, 0.726719, 0, 1, 0, -0.726719, 0, 0.686935, 0, 0.658017, -16.2709)
 
-[node name="Course" type="Node3D" parent="Node3D/LevelGroup2"]
+[node name="Course" type="Node3D" parent="LevelGroup2"]
 
-[node name="UShape" parent="Node3D/LevelGroup2/Course" instance=ExtResource("3_g4aht")]
+[node name="UShape" parent="LevelGroup2/Course" instance=ExtResource("3_g4aht")]
 
-[node name="RowShape" parent="Node3D/LevelGroup2/Course" instance=ExtResource("4_7gpb3")]
+[node name="RowShape" parent="LevelGroup2/Course" instance=ExtResource("4_7gpb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="RowShape2" parent="Node3D/LevelGroup2/Course" instance=ExtResource("4_7gpb3")]
+[node name="RowShape2" parent="LevelGroup2/Course" instance=ExtResource("4_7gpb3")]
 transform = Transform3D(1, 0, 0, 0, 0.986245, -0.165289, 0, 0.165289, 0.986245, 0, 0.249279, -5.94697)
 
-[node name="RowShape3" parent="Node3D/LevelGroup2/Course" instance=ExtResource("4_7gpb3")]
+[node name="RowShape3" parent="LevelGroup2/Course" instance=ExtResource("4_7gpb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -13.0019)
 
-[node name="UShape2" parent="Node3D/LevelGroup2/Course" instance=ExtResource("3_g4aht")]
+[node name="UShape2" parent="LevelGroup2/Course" instance=ExtResource("3_g4aht")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.6, -16.0019)
 
-[node name="LevelGroup3" parent="Node3D" instance=ExtResource("2_37u63")]
+[node name="LevelGroup3" parent="." instance=ExtResource("2_37u63")]
 transform = Transform3D(-0.998478, 0, 0.055142, 0, 1, 0, -0.055142, 0, -0.998478, -21.3857, 1.78665, 0.15759)
 
-[node name="Hole" parent="Node3D/LevelGroup3" instance=ExtResource("3_m0qga")]
+[node name="Hole" parent="LevelGroup3" instance=ExtResource("3_m0qga")]
 transform = Transform3D(-0.794415, 0, 0.607376, 0, 1, 0, -0.607376, 0, -0.794415, -1, 2.38308, 1.66893e-06)
 
-[node name="OutOfBoundsArea" parent="Node3D/LevelGroup3" instance=ExtResource("5_tcjyp")]
+[node name="OutOfBoundsArea" parent="LevelGroup3" instance=ExtResource("5_tcjyp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07191, 1.21035, -0.0215664)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/LevelGroup3/OutOfBoundsArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup3/OutOfBoundsArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60662, 2.21077, 0.0451653)
 shape = SubResource("BoxShape3D_rb1dq")
 
-[node name="SpawnLocation" parent="Node3D/LevelGroup3" instance=ExtResource("4_nua1o")]
+[node name="SpawnLocation" parent="LevelGroup3" instance=ExtResource("4_nua1o")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 0)
 
-[node name="Course" type="Node3D" parent="Node3D/LevelGroup3"]
+[node name="Course" type="Node3D" parent="LevelGroup3"]
 
-[node name="UShape" parent="Node3D/LevelGroup3/Course" instance=ExtResource("3_g4aht")]
+[node name="UShape" parent="LevelGroup3/Course" instance=ExtResource("3_g4aht")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 0)
 
-[node name="RowShape" parent="Node3D/LevelGroup3/Course" instance=ExtResource("4_7gpb3")]
+[node name="RowShape" parent="LevelGroup3/Course" instance=ExtResource("4_7gpb3")]
 transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, -0.999998, 0, -9.53674e-07)
 
-[node name="RowShape2" parent="Node3D/LevelGroup3/Course" instance=ExtResource("4_7gpb3")]
+[node name="RowShape2" parent="LevelGroup3/Course" instance=ExtResource("4_7gpb3")]
 transform = Transform3D(-2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, 2, 0, 0)
 
-[node name="Loop" parent="Node3D/LevelGroup3/Course" instance=ExtResource("15_hahmw")]
+[node name="Loop" parent="LevelGroup3/Course" instance=ExtResource("15_hahmw")]
 transform = Transform3D(-1, 0, -8.56817e-08, 0, 1, 0, 8.56817e-08, 0, -1, 5, 0, 0)
 
-[node name="RowShape3" parent="Node3D/LevelGroup3/Course" instance=ExtResource("4_7gpb3")]
+[node name="RowShape3" parent="LevelGroup3/Course" instance=ExtResource("4_7gpb3")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2, 2.38308, 0)
 
-[node name="UShape2" parent="Node3D/LevelGroup3/Course" instance=ExtResource("3_g4aht")]
+[node name="UShape2" parent="LevelGroup3/Course" instance=ExtResource("3_g4aht")]
 transform = Transform3D(-1.19209e-07, 0, -1, 0, 1, 0, 1, 0, -1.19209e-07, -1, 2.38308, 1.66893e-06)
 
-[node name="LevelGroup4" parent="Node3D" instance=ExtResource("2_37u63")]
+[node name="LevelGroup4" parent="." instance=ExtResource("2_37u63")]
 transform = Transform3D(0.851809, 0, 0.523852, 0, 1, 0, -0.523852, 0, 0.851809, -15.5525, 1.78665, -19.5772)
 
-[node name="Hole" parent="Node3D/LevelGroup4" instance=ExtResource("3_m0qga")]
+[node name="Hole" parent="LevelGroup4" instance=ExtResource("3_m0qga")]
 transform = Transform3D(0.794415, 0, -0.607376, 0, 1, 0, 0.607376, 0, 0.794415, -1, 0, -3)
 
-[node name="OutOfBoundsArea" parent="Node3D/LevelGroup4" instance=ExtResource("5_tcjyp")]
+[node name="OutOfBoundsArea" parent="LevelGroup4" instance=ExtResource("5_tcjyp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07191, 1.21035, -0.0215664)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/LevelGroup4/OutOfBoundsArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup4/OutOfBoundsArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.601, 0.489187, -1.47476)
 shape = SubResource("BoxShape3D_h1mkw")
 
-[node name="SpawnLocation" parent="Node3D/LevelGroup4" instance=ExtResource("4_nua1o")]
+[node name="SpawnLocation" parent="LevelGroup4" instance=ExtResource("4_nua1o")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 0)
 
-[node name="Course" type="Node3D" parent="Node3D/LevelGroup4"]
+[node name="Course" type="Node3D" parent="LevelGroup4"]
 
-[node name="UShape" parent="Node3D/LevelGroup4/Course" instance=ExtResource("3_g4aht")]
+[node name="UShape" parent="LevelGroup4/Course" instance=ExtResource("3_g4aht")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 0)
 
-[node name="RowShape" parent="Node3D/LevelGroup4/Course" instance=ExtResource("4_7gpb3")]
+[node name="RowShape" parent="LevelGroup4/Course" instance=ExtResource("4_7gpb3")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.999998, 0, -1.90735e-06)
 
-[node name="SpinningPlusShape" parent="Node3D/LevelGroup4/Course" instance=ExtResource("16_q7lea")]
+[node name="SpinningPlusShape" parent="LevelGroup4/Course" instance=ExtResource("16_q7lea")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.99509, 0, 0.0834045)
 rotation_amt = 0.3
 
-[node name="CornerShape" parent="Node3D/LevelGroup4/Course" instance=ExtResource("5_n7gmh")]
+[node name="CornerShape" parent="LevelGroup4/Course" instance=ExtResource("5_n7gmh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.006, 0, 0)
 
-[node name="CornerShape2" parent="Node3D/LevelGroup4/Course" instance=ExtResource("5_n7gmh")]
+[node name="CornerShape2" parent="LevelGroup4/Course" instance=ExtResource("5_n7gmh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, 0, -3)
 
-[node name="RowShape2" parent="Node3D/LevelGroup4/Course" instance=ExtResource("4_7gpb3")]
+[node name="RowShape2" parent="LevelGroup4/Course" instance=ExtResource("4_7gpb3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -3)
 
-[node name="UShape2" parent="Node3D/LevelGroup4/Course" instance=ExtResource("3_g4aht")]
+[node name="UShape2" parent="LevelGroup4/Course" instance=ExtResource("3_g4aht")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -3)
