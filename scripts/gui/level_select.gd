@@ -114,6 +114,7 @@ func get_name_from_path(tmp_path):
 	var substring = tmp_path.substr(last_slash+1,tmp_path.length())
 	substring = substring.trim_suffix(".tscn")
 	substring = substring.replace("_"," ")
+	substring = substring.capitalize()
 	return substring
 
 func next_level_rotation():
