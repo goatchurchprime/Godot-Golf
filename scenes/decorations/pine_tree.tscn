@@ -11,6 +11,9 @@ transparency = 2
 alpha_scissor_threshold = 0.001
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_g0opb")
+ao_enabled = true
+ao_texture = ExtResource("2_g0opb")
+ao_texture_channel = 1
 
 [node name="tree052" instance=ExtResource("1_87guy")]
 

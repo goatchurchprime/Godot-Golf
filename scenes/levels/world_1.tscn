@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d3imjxg2h3thk"]
+[gd_scene load_steps=30 format=3 uid="uid://d3imjxg2h3thk"]
 
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="1_e5jj4"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_37u63"]
@@ -17,25 +17,30 @@
 [ext_resource type="PackedScene" uid="uid://cr2sxlm13ehqs" path="res://scenes/decorations/shack.tscn" id="16_2x42p"]
 [ext_resource type="PackedScene" uid="uid://35nedlqrd4cm" path="res://scenes/level_objects/spinning_plus_shape.tscn" id="16_q7lea"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w783w"]
-sky_top_color = Color(0.262745, 0.458824, 0.686275, 1)
-sky_horizon_color = Color(0.596078, 0.666667, 0.721569, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j2dop"]
+noise_type = 0
+frequency = 0.0173
 
-[sub_resource type="Sky" id="Sky_h16q5"]
-sky_material = SubResource("ProceduralSkyMaterial_w783w")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fl27y"]
+seamless = true
+noise = SubResource("FastNoiseLite_j2dop")
 
-[sub_resource type="Environment" id="Environment_ht3dx"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k20td"]
+sky_top_color = Color(0.235294, 0.447059, 0.752941, 1)
+sky_horizon_color = Color(0.235294, 0.447059, 0.752941, 1)
+sky_cover = SubResource("NoiseTexture2D_fl27y")
+ground_bottom_color = Color(0.27451, 0.466667, 0.313726, 1)
+ground_horizon_color = Color(0.235294, 0.447059, 0.752941, 1)
+
+[sub_resource type="Sky" id="Sky_ed0sw"]
+sky_material = SubResource("ProceduralSkyMaterial_k20td")
+
+[sub_resource type="Environment" id="Environment_wxkmx"]
 background_mode = 2
-sky = SubResource("Sky_h16q5")
-tonemap_exposure = 1.5
-ssr_fade_in = 0.0832178
-ssao_enabled = true
-ssao_intensity = 16.0
-glow_enabled = true
-glow_bloom = 0.2
+sky = SubResource("Sky_ed0sw")
+ssao_intensity = 10.0
+ssao_detail = 0.0
 adjustment_enabled = true
-adjustment_saturation = 1.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6e5g"]
 size = Vector3(80, 1, 80)
@@ -69,12 +74,14 @@ size = Vector3(12.1699, 4.00737, 6.02058)
 [node name="World1" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ht3dx")
+environment = SubResource("Environment_wxkmx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.476668, 0.879084, 0, -0.879084, -0.476668, 0, 0, 0)
-light_energy = 1.2
+light_energy = 2.0
 shadow_enabled = true
+shadow_blur = 0.2
+directional_shadow_mode = 0
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
