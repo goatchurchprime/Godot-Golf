@@ -40,7 +40,7 @@ func add_player(peer_id):
 	player.name = str(peer_id)
 	player.username = username
 	get_tree().current_scene.add_child(player)
-	Global.set_player(player)
+	Global.register(player)
 
 @rpc("authority")
 func player_disconnected(peer_id):

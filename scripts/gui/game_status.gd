@@ -5,7 +5,7 @@ enum statuses {PEER_CONNECTED, CONNECTION_SUCCESSFUL, CONNECTION_FAILED, HOST_CH
 @onready var label = $CenterContainer/Label
 
 func _ready():
-	Global.set_game_status_ui(self)
+	Global.register(self)
 	multiplayer.peer_connected.connect(peer_connected)
 	multiplayer.connected_to_server.connect(connection_successful)
 	multiplayer.connection_failed.connect(connection_failed)

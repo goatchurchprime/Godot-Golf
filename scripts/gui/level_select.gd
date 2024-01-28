@@ -11,7 +11,7 @@ var level_paths : Array
 @onready var container = $LevelContainer/MarginContainer/HBoxContainer/VBoxContainer
 
 func _ready():
-	Global.set_level_select(self)
+	Global.register(self)
 	get_files(path)
 
 func change_level(level_path, level_name):

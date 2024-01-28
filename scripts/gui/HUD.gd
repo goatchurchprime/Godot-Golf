@@ -4,7 +4,7 @@ class_name UserHUD extends Control
 @onready var round_timer = $TimeLeft
 
 func _ready():
-	Global.set_hud(self)
+	Global.register(self)
 
 func update_text(text):
 	putting_hud.update_text(text)

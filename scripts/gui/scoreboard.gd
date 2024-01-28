@@ -7,7 +7,7 @@ const player_container_scene = preload("res://scenes/UI/scoreboard_elements/play
 var player_container_dict = {}
 
 func _ready():
-	Global.set_scoreboard(self)
+	Global.register(self)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("scoreboard"):

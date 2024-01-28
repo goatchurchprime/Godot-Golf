@@ -147,22 +147,17 @@ func disable_players():
 	player.disable.rpc()
 	level_select.activate_hole_camera()
 
-#SETTERS
-func set_hud(hud):
-	self.hud = hud
-
-func set_menu_background(menu_background):
-	self.menu_background = menu_background
-
-func set_level_select(level_select):
-	self.level_select = level_select
-
-func set_scoreboard(scoreboard):
-	self.scoreboard = scoreboard
-
-func set_game_status_ui(game_status_ui):
-	game_status = game_status_ui
-
-func set_player(player):
-	if not self.player:
-		self.player = player
+func register(node):
+	if node is UserHUD:
+		hud = node
+	elif node is MenuBackground:
+		menu_background = node
+	elif node is LevelSelect:
+		level_select = node
+	elif node is Scoreboard:
+		scoreboard = node
+	elif node is GameStatus:
+		game_status = node
+	elif node is Golfball:
+		if not player:
+			player = node
