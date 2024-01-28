@@ -109,9 +109,6 @@ func create_button(lvl_path, lvl_name):
 	btn.change_level.connect(change_level_func)
 	container.add_child(btn)
 
-func activate():
-	visible = true
-
 func get_name_from_path(tmp_path):
 	var last_slash = tmp_path.rfind("/")
 	var substring = tmp_path.substr(last_slash+1,tmp_path.length())

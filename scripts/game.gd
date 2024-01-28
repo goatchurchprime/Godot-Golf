@@ -36,16 +36,17 @@ func change_level_rpc(level_path, level_name):
 	next_hole()
 
 func next_hole():
-	next_hole_rpc.rpc()
+	if multiplayer.is_server():
+		next_hole_rpc.rpc()
 
 @rpc("authority", "call_local")
 func next_hole_rpc():
+	print("huumern huumern")
 	players_won = 0
 	finished = false
 	
 	update_gui()
 	hud.stop_timer()
-	
 	level_select.next_hole()
 	
 	if not level_select.last_hole:
@@ -72,7 +73,7 @@ func game_active(status):
 		level_select.visible = false
 	else:
 		hud.visible = false
-		level_select.activate()
+		level_select.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 @rpc("authority", "call_local")
@@ -91,11 +92,11 @@ func player_won(peer_id):
 
 @rpc("any_peer", "call_local")
 func game_win(peer_id):
-	finished = true
 	players_won += 1
-	print("winners: " + str(players_won))
 	if peer_id == player.get_multiplayer_authority():
+		finished = true
 		player.disable.rpc()
+	
 	update_gui.rpc()
 	
 	if players_won == get_tree().get_nodes_in_group("players").size():
@@ -105,15 +106,20 @@ func game_win(peer_id):
 			start_next_hole_timer()
 
 func set_singleplayer():
-	level_select.activate()
+	level_select.visible = true
 
 func set_multiplayer():
 	if multiplayer.is_server():
-		level_select.activate()
+		level_select.visible = true
 
 func start_next_hole_timer():
+	hud.stop_timer()
+	if not multiplayer.is_server():
+		return
+	
 	if not next_hole_timer:
 		next_hole_timer = initialize_next_hole_timer()
+	
 	disable_players.rpc()
 	next_hole_timer.start()
 
@@ -140,14 +146,6 @@ func level_timeout():
 func disable_players():
 	player.disable.rpc()
 	level_select.activate_hole_camera()
-
-
-
-
-
-
-
-
 
 #SETTERS
 func set_hud(hud):
