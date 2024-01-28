@@ -1,7 +1,5 @@
 class_name Golfball extends Node3D
 
-signal putted
-
 const MIN_STRENGTH = 0
 const MAX_STRENGTH = -15
 const STRENGTH = 0.125
@@ -83,7 +81,7 @@ func putt():
 		else:
 			print("Hit cancelled!")
 		aiming = false
-		emit_signal("putted")
+		Global.update_gui.rpc()
 
 func emit_particles():
 	particle_emitter.rotation.x = spring_arm.get_rotation_basis().x
