@@ -19,24 +19,20 @@ var peer = ENetMultiplayerPeer.new()
 
 signal player_added
 
-signal is_multiplayer
-signal is_singleplayer
-
 func _on_host_pressed():
+	Global.set_multiplayer()
 	hide()
 	enet_peer.create_server(PORT, MAX_PLAYERS)
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(player_disconnected)
 	add_player(multiplayer.get_unique_id())
-	is_multiplayer.emit()
 
 func _on_join_pressed():
 	hide()
 	enet_peer.create_client(ip_line_edit.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	add_player(multiplayer.get_unique_id())
-	is_multiplayer.emit()
 
 func add_player(peer_id):
 	print("Player connected")
@@ -44,7 +40,7 @@ func add_player(peer_id):
 	player.name = str(peer_id)
 	player.username = username
 	get_tree().current_scene.add_child(player)
-	player_added.emit(player)
+	Global.set_player(player)
 
 @rpc("authority")
 func player_disconnected(peer_id):
@@ -53,9 +49,10 @@ func player_disconnected(peer_id):
 			player.queue_free()
 
 func _on_singleplayer_button_pressed():
-	is_singleplayer.emit()
 	# Host authority defaults to 1, but opens no server
 	add_player(1)
+	Global.set_singleplayer()
+	queue_free()
 
 func _on_multiplayer_button_pressed():
 	singleplayer_multiplayer_container.queue_free()

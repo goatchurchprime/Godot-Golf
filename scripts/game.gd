@@ -1,84 +1,27 @@
-class_name Game extends Node3D
-
-const DID_NOT_FINISH_SCORE = 14
+class_name Game extends Node
 
 const NEXT_HOLE_TIMER_WAIT = 3.0
+const DID_NOT_FINISH_SCORE = 14
 
-@onready var menu_background = $MenuBackground
-@onready var game_status = $GameStatus
-@onready var hud = $Hud
-@onready var level_select = $LevelSelect
-@onready var multiplayer_menu = $MultiplayerMenu
-@onready var multiplayer_spawner = $MultiplayerSpawner
-@onready var scoreboard = $Scoreboard
-
-var player : Golfball
 var players_won : int
-var next_hole_timer : Timer
-
 var finished : bool
 
-func _ready():
-	finished = false
-	
-	active_game(false)
-	
-	level_select.change_level_signal.connect(change_level_receiver)
-	level_select.golfball_left.connect(golfball_left)
-	level_select.game_won.connect(game_win_receiver)
-	
-	multiplayer_menu.player_added.connect(set_player)
-	multiplayer_menu.is_singleplayer.connect(select_singleplayer)
-	multiplayer_menu.is_multiplayer.connect(select_multiplayer)
-	
-	multiplayer.peer_connected.connect(peer_connected)
-	multiplayer.connected_to_server.connect(connection_successful)
-	multiplayer.connection_failed.connect(connection_failed)
-	multiplayer.server_disconnected .connect(server_disconnected)
-	
-	if multiplayer.is_server():
-		hud.timeout.connect(round_timer_timeout)
-	
-	next_hole_timer = initialize_timer()
+var player : Golfball
+var hud : UserHUD
+var menu_background : MenuBackground
+var level_select : LevelSelect
+var scoreboard : Scoreboard
+var game_status : GameStatus
 
-func round_timer_timeout():
-	start_next_hole_timer.rpc()
+var next_hole_timer : Timer
 
-func next_hole_receiver():
-	next_hole.rpc()
+func change_level(level_path, level_name):
+	change_level_rpc.rpc(level_path, level_name)
 
 @rpc("authority", "call_local")
-func next_hole():
-	players_won = 0
-	finished = false
-	
-	update_gui.rpc()
-	hud.stop_timer()
-	level_select.next_hole()
-	
-	if not level_select.last_hole:
-		scoreboard_next_hole()
-		hud.start_timer()
-		initialize_player.rpc(level_select.get_current_spawn_location_transform())
-		update_gui.rpc()
-	else:
-		if multiplayer.is_server():
-			active_game(false)
-		else:
-			game_status.set_status(GameStatus.statuses.HOST_CHOOSING_MAP)
-
-@rpc("authority", "call_local")
-func initialize_player(pos):
-	player.enable.rpc(pos, level_select.next_level_rotation())
-	player.goto(pos)
-
-func change_level_receiver(path, level_name):
-	change_level.rpc(path, level_name)
-	
-@rpc("authority", "call_local")
-func change_level(path, level_name):
+func change_level_rpc(level_path, level_name):
 	game_status.set_status(GameStatus.statuses.HIDDEN)
-	
+
 	if menu_background:
 		menu_background.queue_free()
 		menu_background = null
@@ -86,43 +29,45 @@ func change_level(path, level_name):
 	scoreboard.reset()
 	update_gui.rpc()
 	
-	level_select.change_level(path, level_name)
-	active_game(true)
+	level_select.change_level(level_path, level_name)
 	
+	game_active(true)
+
+	next_hole()
+
+func next_hole():
 	if multiplayer.is_server():
-		next_hole.rpc()
+		next_hole_rpc.rpc()
+
+@rpc("authority", "call_local")
+func next_hole_rpc():
+	print("huumern huumern")
+	players_won = 0
+	finished = false
+	
+	update_gui()
+	hud.stop_timer()
+	level_select.next_hole()
+	
+	if not level_select.last_hole:
+		scoreboard.next_hole()
+		hud.start_timer()
+		initialize_player(level_select.get_current_spawn_location_transform())
+		update_gui()
+	else:
+		if multiplayer.is_server():
+			game_active(false)
+		else:
+			game_status.set_status(GameStatus.statuses.HOST_CHOOSING_MAP)
+
 
 @rpc("any_peer", "call_local")
 func update_gui():
 	hud.update_text(player.putts)
 	scoreboard.update()
 
-func update_gui_receiver():
-	update_gui.rpc()
-
-func game_win_receiver(peer_id):
-	if peer_id == player.get_multiplayer_authority():
-		game_win.rpc(peer_id)
-		level_select.activate_hole_camera()
-	
-@rpc("any_peer", "call_local")
-func game_win(peer_id):
-	players_won += 1
-	print("winners: " + str(players_won))
-	
-	if peer_id == player.get_multiplayer_authority():
-		finished = true
-		player.disable.rpc()
-		update_gui.rpc()
-	
-	if players_won == get_tree().get_nodes_in_group("players").size():
-		print("All players have won")
-		hud.stop_timer()
-		if multiplayer.is_server():
-			start_next_hole_timer.rpc()
-
-func active_game(game_active):
-	if game_active:
+func game_active(status):
+	if status:
 		hud.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		level_select.visible = false
@@ -131,25 +76,54 @@ func active_game(game_active):
 		level_select.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-func golfball_left(peer_id):
-	if player.get_multiplayer_authority() == peer_id:
+@rpc("authority", "call_local")
+func initialize_player(pos):
+	player.enable.rpc(pos, level_select.next_level_rotation())
+	player.goto(pos)
+
+func golball_left(peer_id):
+	if peer_id == player.get_multiplayer_authority():
 		player.move_back()
 
-func set_player(player):
-	if not self.player:
-		self.player = player
-		player.putted.connect(update_gui_receiver)
+func player_won(peer_id):
+	if peer_id == player.get_multiplayer_authority():
+		level_select.activate_hole_camera()
+		game_win.rpc(peer_id)
 
-func select_singleplayer():
-	multiplayer_menu.queue_free()
-	multiplayer_menu = null
-	level_select.activate()
+@rpc("any_peer", "call_local")
+func game_win(peer_id):
+	players_won += 1
+	if peer_id == player.get_multiplayer_authority():
+		finished = true
+		player.disable.rpc()
+	
+	update_gui.rpc()
+	
+	if players_won == get_tree().get_nodes_in_group("players").size():
+		print("All players have won")
+		hud.stop_timer()
+		if multiplayer.is_server():
+			start_next_hole_timer()
 
-func select_multiplayer():
+func set_singleplayer():
+	level_select.visible = true
+
+func set_multiplayer():
 	if multiplayer.is_server():
-		level_select.activate()
+		level_select.visible = true
 
-func initialize_timer():
+func start_next_hole_timer():
+	hud.stop_timer()
+	if not multiplayer.is_server():
+		return
+	
+	if not next_hole_timer:
+		next_hole_timer = initialize_next_hole_timer()
+	
+	disable_players.rpc()
+	next_hole_timer.start()
+
+func initialize_next_hole_timer():
 	if not multiplayer.is_server():
 		return
 	
@@ -160,35 +134,35 @@ func initialize_timer():
 	tmp.wait_time = NEXT_HOLE_TIMER_WAIT
 	tmp.autostart = false
 	tmp.one_shot = true
-	tmp.timeout.connect(next_hole_receiver)
+	tmp.timeout.connect(next_hole)
 	add_child(tmp)
 	return tmp
 
-func scoreboard_next_hole():
-	scoreboard.next_hole()
-	update_gui.rpc()
+func level_timeout():
+	if multiplayer.is_server():
+		start_next_hole_timer()
 
 @rpc("authority", "call_local")
-func start_next_hole_timer():
-	if player.is_multiplayer_authority():
-		level_select.activate_hole_camera()
-		player.disable.rpc()
-		if not finished:
-			player.putts = DID_NOT_FINISH_SCORE
-			finished = false
-		update_gui.rpc()
-		if multiplayer.is_server():
-			next_hole_timer.start()
+func disable_players():
+	player.disable.rpc()
+	level_select.activate_hole_camera()
 
-func peer_connected(_peer_id):
-	if multiplayer.is_server():
-		game_status.set_status(GameStatus.statuses.PEER_CONNECTED)
+#SETTERS
+func set_hud(hud):
+	self.hud = hud
 
-func connection_successful():
-	game_status.set_status(GameStatus.statuses.CONNECTION_SUCCESSFUL)
+func set_menu_background(menu_background):
+	self.menu_background = menu_background
 
-func connection_failed():
-	game_status.set_status(GameStatus.statuses.CONNECTION_FAILED)
+func set_level_select(level_select):
+	self.level_select = level_select
 
-func server_disconnected():
-	game_status.set_status(GameStatus.statuses.DISCONNECTED)
+func set_scoreboard(scoreboard):
+	self.scoreboard = scoreboard
+
+func set_game_status_ui(game_status_ui):
+	game_status = game_status_ui
+
+func set_player(player):
+	if not self.player:
+		self.player = player

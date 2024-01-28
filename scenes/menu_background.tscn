@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bin524of6343q"]
+[gd_scene load_steps=4 format=3 uid="uid://bin524of6343q"]
 
 [ext_resource type="PackedScene" uid="uid://d3imjxg2h3thk" path="res://scenes/levels/world_1.tscn" id="1_3mfu7"]
+[ext_resource type="Script" path="res://scripts/menu_background.gd" id="1_aqxbb"]
 [ext_resource type="Script" path="res://scripts/hole_camera.gd" id="2_jkh6w"]
 
 [node name="MenuBackground" type="Node3D"]
+script = ExtResource("1_aqxbb")
 
 [node name="World1" parent="." instance=ExtResource("1_3mfu7")]
 
