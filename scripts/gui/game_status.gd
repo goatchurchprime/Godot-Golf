@@ -6,6 +6,23 @@ enum statuses {PEER_CONNECTED, CONNECTION_SUCCESSFUL, CONNECTION_FAILED, HOST_CH
 
 func _ready():
 	Global.set_game_status_ui(self)
+	multiplayer.peer_connected.connect(peer_connected)
+	multiplayer.connected_to_server.connect(connection_successful)
+	multiplayer.connection_failed.connect(connection_failed)
+	multiplayer.server_disconnected .connect(server_disconnected)
+
+func peer_connected(_peer_id):
+	if multiplayer.is_server():
+		set_status(statuses.PEER_CONNECTED)
+
+func connection_successful():
+	set_status(statuses.CONNECTION_SUCCESSFUL)
+
+func connection_failed():
+	set_status(statuses.CONNECTION_FAILED)
+
+func server_disconnected():
+	set_status(statuses.DISCONNECTED)
 
 func set_status(status):
 	var message : String
