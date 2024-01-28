@@ -3,15 +3,8 @@ class_name LevelSelect extends Control
 const LEVEL_BUTTON = preload("res://scenes/lvl_select_button.tscn")
 
 var level_groups : Array
-
 var last_hole : bool
-
 var current_level_group : LevelGroup
-
-signal change_level_signal
-signal game_won
-signal golfball_left
-
 var level_paths : Array
 
 @export_dir var path
@@ -48,14 +41,14 @@ func disconnect_signals():
 		print("SIGNALS DISCONNECTED")
 		if current_level_group.golfball_won.is_connected(game_win):
 			current_level_group.golfball_won.disconnect(game_win)
-		if current_level_group.golfball_out_of_bounds.is_connected(golfball_left_func):
-			current_level_group.golfball_out_of_bounds.disconnect(golfball_left_func)
+		if current_level_group.golfball_out_of_bounds.is_connected(golfball_left):
+			current_level_group.golfball_out_of_bounds.disconnect(golfball_left)
 
 func connect_signals():
 	if current_level_group:
 		print("SIGNALS CONNECTED")
+		current_level_group.golfball_out_of_bounds.connect(golfball_left)
 		current_level_group.golfball_won.connect(game_win)
-		current_level_group.golfball_out_of_bounds.connect(golfball_left_func)
 
 func next_hole():
 	if not current_level_group:
@@ -69,16 +62,17 @@ func next_hole():
 					break
 				current_level_group = level_groups[n+1]
 				break
+	
 	connect_signals()
 
 func activate_hole_camera():
 	current_level_group.activate_hole_camera()
 
-func golfball_left_func(peer_id):
-	golfball_left.emit(peer_id)
+func golfball_left():
+	Global.golball_left()
 
 func game_win(peer_id):
-	game_won.emit(peer_id)
+	Global.player_won()
 
 func change_level_func(level_path, level_name):
 	Global.change_level(level_path, level_name)
