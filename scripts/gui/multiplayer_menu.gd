@@ -20,6 +20,7 @@ var peer = ENetMultiplayerPeer.new()
 signal player_added
 
 func _on_host_pressed():
+	Global.set_multiplayer()
 	hide()
 	enet_peer.create_server(PORT, MAX_PLAYERS)
 	multiplayer.multiplayer_peer = enet_peer

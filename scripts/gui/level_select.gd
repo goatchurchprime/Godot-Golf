@@ -68,11 +68,11 @@ func next_hole():
 func activate_hole_camera():
 	current_level_group.activate_hole_camera()
 
-func golfball_left():
-	Global.golball_left()
+func golfball_left(peer_id):
+	Global.golball_left(peer_id)
 
 func game_win(peer_id):
-	Global.player_won()
+	Global.player_won(peer_id)
 
 func change_level_func(level_path, level_name):
 	Global.change_level(level_path, level_name)

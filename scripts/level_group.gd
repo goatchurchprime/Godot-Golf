@@ -19,7 +19,7 @@ func game_win(peer_id):
 	golfball_won.emit(peer_id)
 
 func golfball_left(peer_id):
-	golfball_out_of_bounds.emit()
+	golfball_out_of_bounds.emit(peer_id)
 
 func check_variables():
 	if not Hole:

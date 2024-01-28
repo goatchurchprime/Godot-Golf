@@ -82,19 +82,22 @@ func initialize_player(pos):
 	player.enable.rpc(pos, level_select.next_level_rotation())
 	player.goto(pos)
 
-func golball_left():
-	player.move_back()
+func golball_left(peer_id):
+	if peer_id == player.get_multiplayer_authority():
+		player.move_back()
 
-func player_won():
-	level_select.activate_hole_camera()
-	game_win.rpc()
+func player_won(peer_id):
+	if peer_id == player.get_multiplayer_authority():
+		level_select.activate_hole_camera()
+		game_win.rpc(peer_id)
 
 @rpc("any_peer", "call_local")
-func game_win():
+func game_win(peer_id):
 	finished = true
 	players_won += 1
 	print("winners: " + str(players_won))
-	player.disable.rpc()
+	if peer_id == player.get_multiplayer_authority():
+		player.disable.rpc()
 	update_gui.rpc()
 	
 	if players_won == get_tree().get_nodes_in_group("players").size():
@@ -105,7 +108,10 @@ func game_win():
 
 func set_singleplayer():
 	level_select.activate()
-	initialize_next_hole_timer()
+
+func set_multiplayer():
+	if multiplayer.is_server():
+		level_select.activate()
 
 func start_next_hole_timer():
 	if not next_hole_timer:
