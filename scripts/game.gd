@@ -1,16 +1,19 @@
 class_name Game extends Node
 
+const NEXT_HOLE_TIMER_WAIT = 3.0
 const DID_NOT_FINISH_SCORE = 14
 
-var player : Golfball
 var players_won : int
 var finished : bool
 
+var player : Golfball
 var hud : UserHUD
 var menu_background : MenuBackground
 var level_select : LevelSelect
 var scoreboard : Scoreboard
 var game_status : GameStatus
+
+var next_hole_timer : Timer
 
 func change_level(level_path, level_name):
 	change_level_rpc.rpc(level_path, level_name)
@@ -30,10 +33,14 @@ func change_level_rpc(level_path, level_name):
 	
 	game_active(true)
 
-	next_hole.rpc()
+	next_hole()
+
+func next_hole():
+	next_hole_rpc.rpc()
 
 @rpc("authority", "call_local")
-func next_hole():
+func next_hole_rpc():
+	print("myanmar")
 	players_won = 0
 	finished = false
 	
@@ -48,6 +55,7 @@ func next_hole():
 		initialize_player(level_select.get_current_spawn_location_transform())
 		update_gui()
 	else:
+		print("what")
 		if multiplayer.is_server():
 			game_active(false)
 		else:
@@ -60,13 +68,13 @@ func update_gui():
 	scoreboard.update()
 
 func game_active(status):
-	if game_active:
+	if status:
 		hud.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		level_select.visible = false
 	else:
 		hud.visible = false
-		level_select.visible = true
+		level_select.activate()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 @rpc("authority", "call_local")
@@ -93,9 +101,31 @@ func game_win():
 		print("All players have won")
 		hud.stop_timer()
 		if multiplayer.is_server():
-			next_hole.rpc()
+			start_next_hole_timer()
 
+func set_singleplayer():
+	level_select.activate()
+	initialize_next_hole_timer()
 
+func start_next_hole_timer():
+	if not next_hole_timer:
+		next_hole_timer = initialize_next_hole_timer()
+	next_hole_timer.start()
+
+func initialize_next_hole_timer():
+	if not multiplayer.is_server():
+		return
+	
+	if next_hole_timer:
+		remove_child(next_hole_timer)
+	
+	var tmp = Timer.new()
+	tmp.wait_time = NEXT_HOLE_TIMER_WAIT
+	tmp.autostart = false
+	tmp.one_shot = true
+	tmp.timeout.connect(next_hole)
+	add_child(tmp)
+	return tmp
 
 
 
@@ -124,9 +154,6 @@ func set_scoreboard(scoreboard):
 
 func set_game_status_ui(game_status_ui):
 	game_status = game_status_ui
-
-func set_singleplayer():
-	level_select.activate()
 
 func set_player(player):
 	if not self.player:
