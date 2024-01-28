@@ -15,13 +15,11 @@ signal golfball_left
 var level_paths : Array
 
 @export_dir var path
-
-@onready var menu = $LevelContainer
 @onready var container = $LevelContainer/MarginContainer/HBoxContainer/VBoxContainer
 
 func _ready():
+	Global.set_level_select(self)
 	get_files(path)
-	menu.visible = false
 
 func change_level(level_path, level_name):
 	last_hole = false
@@ -83,7 +81,7 @@ func game_win(peer_id):
 	game_won.emit(peer_id)
 
 func change_level_func(level_path, level_name):
-	change_level_signal.emit(level_path, level_name)
+	Global.change_level(level_path, level_name)
 
 func get_current_spawn_location_transform():
 	return current_level_group.spawn_location.global_transform
@@ -118,7 +116,7 @@ func create_button(lvl_path, lvl_name):
 	container.add_child(btn)
 
 func activate():
-	menu.visible = true
+	visible = true
 
 func get_name_from_path(tmp_path):
 	var last_slash = tmp_path.rfind("/")

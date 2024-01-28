@@ -4,6 +4,9 @@ enum statuses {PEER_CONNECTED, CONNECTION_SUCCESSFUL, CONNECTION_FAILED, HOST_CH
 
 @onready var label = $CenterContainer/Label
 
+func _ready():
+	Global.set_game_status_ui(self)
+
 func set_status(status):
 	var message : String
 	match status:

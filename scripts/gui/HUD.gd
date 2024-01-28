@@ -5,6 +5,9 @@ class_name UserHUD extends Control
 
 signal timeout
 
+func _ready():
+	Global.set_hud(self)
+
 func update_text(text):
 	putting_hud.update_text(text)
 

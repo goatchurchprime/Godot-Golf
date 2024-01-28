@@ -13,10 +13,10 @@
 [node name="Hud" parent="." instance=ExtResource("2_6r1xq")]
 visible = false
 
-[node name="MenuBackground" parent="." instance=ExtResource("2_wy3ih")]
-
 [node name="LevelSelect" parent="." instance=ExtResource("1_2eddi")]
 visible = false
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_wy3ih")]
 
 [node name="MultiplayerMenu" parent="." instance=ExtResource("2_5um1l")]
 offset_left = 0.0
