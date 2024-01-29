@@ -126,7 +126,7 @@ func enable(spawn_location, spawn_rotation):
 	locked = false
 	rigidbody.set_visible(true)
 	activate_camera()
-	camera_position.snap_to_pos()
+	camera_position.call_deferred("snap_to_pos")
 	spring_arm.set_arm_rotation(spawn_rotation)
 
 func activate_camera():
