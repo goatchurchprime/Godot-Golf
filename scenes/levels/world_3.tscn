@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d1s048mumxyuh"]
+[gd_scene load_steps=22 format=3 uid="uid://d1s048mumxyuh"]
 
 [ext_resource type="Texture2D" uid="uid://blh0slgh11j7f" path="res://assets/materials/sand/sand.png" id="1_r0w8n"]
 [ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="2_2ncwk"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dkq7bwcakgjgq" path="res://scenes/level_objects/row_shape.tscn" id="5_0dbu2"]
 [ext_resource type="PackedScene" uid="uid://co72gw4aw7535" path="res://scenes/level groups/out_of_bounds_area.tscn" id="6_43mnn"]
 [ext_resource type="PackedScene" uid="uid://5lmwf1igroec" path="res://scenes/level_objects/booster_pad.tscn" id="6_ruk64"]
+[ext_resource type="PackedScene" uid="uid://v2yw53x48s0y" path="res://scenes/decorations/sandstone_wall.tscn" id="7_3xy4j"]
 [ext_resource type="PackedScene" uid="uid://cjwyjfgwxeesi" path="res://scenes/level_objects/left_right_split.tscn" id="9_jcr6w"]
 [ext_resource type="PackedScene" uid="uid://d1wsley1bdp6m" path="res://scenes/level_objects/empty_grass.tscn" id="9_sfq84"]
 [ext_resource type="PackedScene" uid="uid://c80lp440b60i1" path="res://scenes/level_objects/corner_shape.tscn" id="10_g6ki5"]
@@ -28,9 +29,6 @@ size = Vector3(80, 1, 80)
 [sub_resource type="BoxShape3D" id="BoxShape3D_wv4kq"]
 size = Vector3(80, 1, 80)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1exik"]
-size = Vector3(80, 1, 80)
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qqnfk"]
 sky_top_color = Color(0.207843, 0.454902, 0.729412, 1)
 sky_horizon_color = Color(0.77451, 0.80098, 0.829412, 1)
@@ -46,6 +44,9 @@ sky = SubResource("Sky_e2ypb")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1exik"]
+size = Vector3(80, 1, 80)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6731j"]
 size = Vector3(17.1944, 9.70023, 30.2949)
 
@@ -60,21 +61,21 @@ mesh = SubResource("BoxMesh_yr64q")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldFloor"]
 shape = SubResource("BoxShape3D_wv4kq")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vltua")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
 [node name="NonPlayableArea" parent="." instance=ExtResource("2_2ncwk")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NonPlayableArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_1exik")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_vltua")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
 [node name="LevelGroup1" parent="." instance=ExtResource("2_gsy5m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0578, 0, -15.3061)
+transform = Transform3D(0.995448, 0, 0.0953072, 0, 1, 0, -0.0953072, 0, 0.995448, -21.3769, 0, -26.2085)
 
 [node name="Hole" parent="LevelGroup1" instance=ExtResource("4_5hynr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 24)
@@ -88,6 +89,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584297, 4.35011, 11.1157)
 shape = SubResource("BoxShape3D_6731j")
 
 [node name="CourseDecor" type="Node3D" parent="LevelGroup1"]
+
+[node name="SandstoneWall" parent="LevelGroup1/CourseDecor" instance=ExtResource("7_3xy4j")]
+transform = Transform3D(-0.984365, 0, -0.17614, 0, 1, 0, 0.17614, 0, -0.984365, 3.30763, 0, 24.491)
+
+[node name="SandstoneWall2" parent="LevelGroup1/CourseDecor" instance=ExtResource("7_3xy4j")]
+transform = Transform3D(-0.952725, 0, 0.303834, 0, 1, 0, -0.303834, 0, -0.952725, -3.56022, 0, 24.5323)
 
 [node name="Course" type="Node3D" parent="LevelGroup1"]
 
