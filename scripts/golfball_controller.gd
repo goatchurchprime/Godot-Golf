@@ -1,7 +1,7 @@
 class_name Golfball extends Node3D
 
 const MIN_STRENGTH = 0
-const MAX_STRENGTH = -15
+const MAX_STRENGTH = -13
 const STRENGTH = 0.125
 const HIT_SENSITIVITY = 3
 const MIN_VELOCITY = 0.5
