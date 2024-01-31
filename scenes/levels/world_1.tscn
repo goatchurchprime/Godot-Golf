@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d3imjxg2h3thk"]
+[gd_scene load_steps=32 format=3 uid="uid://d3imjxg2h3thk"]
 
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="1_e5jj4"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_37u63"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://qwv5hbrafkgd" path="res://scenes/level_objects/loop.tscn" id="15_hahmw"]
 [ext_resource type="PackedScene" uid="uid://cr2sxlm13ehqs" path="res://scenes/decorations/shack.tscn" id="16_2x42p"]
 [ext_resource type="PackedScene" uid="uid://35nedlqrd4cm" path="res://scenes/level_objects/spinning_plus_shape.tscn" id="16_q7lea"]
+[ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="17_6rcyw"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_j2dop"]
 noise_type = 0
@@ -49,6 +50,9 @@ size = Vector3(80, 1, 80)
 material = ExtResource("1_e5jj4")
 size = Vector3(80, 1, 80)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_su1o3"]
+size = Vector3(80, 1, 80)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ci352"]
 transparency = 1
 shading_mode = 0
@@ -60,16 +64,16 @@ material = SubResource("StandardMaterial3D_ci352")
 size = Vector2(80, 51.695)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wi5f"]
-size = Vector3(6.04782, 2.32324, 12.0145)
+size = Vector3(26.6675, 2.32324, 39.2485)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j65ch"]
-size = Vector3(3.03125, 3.52108, 19.1321)
+size = Vector3(24.5237, 3.95781, 33.3197)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rb1dq"]
-size = Vector3(12.1699, 7.30631, 3.14066)
+size = Vector3(33.9184, 8.90657, 21.0639)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1mkw"]
-size = Vector3(12.1699, 4.00737, 6.02058)
+size = Vector3(29.9233, 5.61208, 23.975)
 
 [node name="World1" type="Node3D"]
 
@@ -92,6 +96,12 @@ shape = SubResource("BoxShape3D_e6e5g")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_p0svw")
+
+[node name="NonPlayableArea" parent="." instance=ExtResource("17_6rcyw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NonPlayableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_su1o3")
 
 [node name="WorldDecor" type="Node3D" parent="."]
 
@@ -500,7 +510,7 @@ transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
 [node name="OutOfBoundsArea" parent="LevelGroup1" instance=ExtResource("5_tcjyp")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup1/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49788, 1.10498, -4.50311)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63029, 1.10498, -2.51217)
 shape = SubResource("BoxShape3D_4wi5f")
 
 [node name="Course" type="Node3D" parent="LevelGroup1"]
@@ -525,7 +535,7 @@ transform = Transform3D(0.968535, 0, -0.248876, 0, 1, 0, 0.248876, 0, 0.968535, 
 [node name="OutOfBoundsArea" parent="LevelGroup2" instance=ExtResource("5_tcjyp")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup2/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0136757, 1.54661, -8.02356)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.10974, 1.32825, -8.94477)
 shape = SubResource("BoxShape3D_j65ch")
 
 [node name="SpawnLocation" parent="LevelGroup2" instance=ExtResource("4_nua1o")]
@@ -560,7 +570,7 @@ transform = Transform3D(-0.794415, 0, 0.607376, 0, 1, 0, -0.607376, 0, -0.794415
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07191, 1.21035, -0.0215664)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup3/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60662, 2.21077, 0.0451653)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92279, 1.41064, 1.58731)
 shape = SubResource("BoxShape3D_rb1dq")
 
 [node name="SpawnLocation" parent="LevelGroup3" instance=ExtResource("4_nua1o")]
@@ -596,7 +606,7 @@ transform = Transform3D(0.794415, 0, -0.607376, 0, 1, 0, 0.607376, 0, 0.794415, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07191, 1.21035, -0.0215664)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup4/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.601, 0.489187, -1.47476)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.43385, -0.31317, -1.9194)
 shape = SubResource("BoxShape3D_h1mkw")
 
 [node name="SpawnLocation" parent="LevelGroup4" instance=ExtResource("4_nua1o")]
