@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d3imjxg2h3thk"]
+[gd_scene load_steps=32 format=3 uid="uid://d3imjxg2h3thk"]
 
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="1_e5jj4"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_37u63"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://qwv5hbrafkgd" path="res://scenes/level_objects/loop.tscn" id="15_hahmw"]
 [ext_resource type="PackedScene" uid="uid://cr2sxlm13ehqs" path="res://scenes/decorations/shack.tscn" id="16_2x42p"]
 [ext_resource type="PackedScene" uid="uid://35nedlqrd4cm" path="res://scenes/level_objects/spinning_plus_shape.tscn" id="16_q7lea"]
+[ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="17_6rcyw"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_j2dop"]
 noise_type = 0
@@ -47,6 +48,9 @@ size = Vector3(80, 1, 80)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p0svw"]
 material = ExtResource("1_e5jj4")
+size = Vector3(80, 1, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_su1o3"]
 size = Vector3(80, 1, 80)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ci352"]
@@ -92,6 +96,12 @@ shape = SubResource("BoxShape3D_e6e5g")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_p0svw")
+
+[node name="NonPlayableArea" parent="." instance=ExtResource("17_6rcyw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NonPlayableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_su1o3")
 
 [node name="WorldDecor" type="Node3D" parent="."]
 
