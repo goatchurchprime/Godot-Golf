@@ -1,22 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1s048mumxyuh"]
+[gd_scene load_steps=8 format=3 uid="uid://d1s048mumxyuh"]
 
 [ext_resource type="Texture2D" uid="uid://blh0slgh11j7f" path="res://assets/materials/sand/sand.png" id="1_r0w8n"]
-[ext_resource type="Script" path="res://scripts/hole_camera.gd" id="2_2pfwc"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qqnfk"]
-sky_top_color = Color(0.207843, 0.454902, 0.729412, 1)
-sky_horizon_color = Color(0.77451, 0.80098, 0.829412, 1)
-ground_bottom_color = Color(0.890196, 0.74902, 0.588235, 1)
-ground_horizon_color = Color(0.77451, 0.80098, 0.829412, 1)
-
-[sub_resource type="Sky" id="Sky_e2ypb"]
-sky_material = SubResource("ProceduralSkyMaterial_qqnfk")
-
-[sub_resource type="Environment" id="Environment_vltua"]
-background_mode = 2
-sky = SubResource("Sky_e2ypb")
-tonemap_mode = 2
-glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkkv4"]
 albedo_color = Color(0.819608, 0.654902, 0.458824, 1)
@@ -33,7 +17,30 @@ size = Vector3(80, 1, 80)
 [sub_resource type="BoxShape3D" id="BoxShape3D_wv4kq"]
 size = Vector3(80, 1, 80)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qqnfk"]
+sky_top_color = Color(0.207843, 0.454902, 0.729412, 1)
+sky_horizon_color = Color(0.77451, 0.80098, 0.829412, 1)
+ground_bottom_color = Color(0.890196, 0.74902, 0.588235, 1)
+ground_horizon_color = Color(0.77451, 0.80098, 0.829412, 1)
+
+[sub_resource type="Sky" id="Sky_e2ypb"]
+sky_material = SubResource("ProceduralSkyMaterial_qqnfk")
+
+[sub_resource type="Environment" id="Environment_vltua"]
+background_mode = 2
+sky = SubResource("Sky_e2ypb")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="World3" type="Node3D"]
+
+[node name="WorldFloor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldFloor"]
+mesh = SubResource("BoxMesh_yr64q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldFloor"]
+shape = SubResource("BoxShape3D_wv4kq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vltua")
@@ -41,20 +48,3 @@ environment = SubResource("Environment_vltua")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_yr64q")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_wv4kq")
-
-[node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.828647, 0.559772, 0, -0.559772, 0.828647, 0, 0, 0)
-spring_length = 3.0
-
-[node name="HoleCamera" type="Camera3D" parent="SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 0.992491, -0.12232, 0, 0.12232, 0.992491, 0, 0, 0)
-script = ExtResource("2_2pfwc")
-active = true
