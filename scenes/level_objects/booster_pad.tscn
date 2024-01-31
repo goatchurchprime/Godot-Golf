@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://5lmwf1igroec"]
+[gd_scene load_steps=15 format=3 uid="uid://5lmwf1igroec"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dw4nkl265yvxp" path="res://physics/grass_phys_mat.tres" id="1_lwljg"]
 [ext_resource type="Material" uid="uid://cckdy23j2537n" path="res://materials/course_grass.tres" id="2_ctmfn"]
 [ext_resource type="Script" path="res://scripts/booster.gd" id="3_xb0o7"]
 [ext_resource type="Texture2D" uid="uid://cpc3ugdctwoww" path="res://assets/materials/booster_pad/booster_pad.png" id="4_omvcj"]
+[ext_resource type="PhysicsMaterial" uid="uid://bjet2vq1wxjo5" path="res://physics/border_phys_mat.tres" id="5_c1x13"]
+[ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="6_oiubs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2x07w"]
 material = ExtResource("2_ctmfn")
@@ -98,6 +100,13 @@ shader_parameter/texture_albedo = ExtResource("4_omvcj")
 material = SubResource("ShaderMaterial_v3oy7")
 size = Vector3(3, 0.2, 0.3)
 
+[sub_resource type="BoxMesh" id="BoxMesh_x002j"]
+material = ExtResource("6_oiubs")
+size = Vector3(0.1, 0.4, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_15eex"]
+size = Vector3(0.1, 0.4, 3)
+
 [node name="BoosterPad" type="Node3D"]
 
 [node name="Grass" type="StaticBody3D" parent="."]
@@ -110,6 +119,7 @@ mesh = SubResource("BoxMesh_2x07w")
 shape = SubResource("BoxShape3D_tixbd")
 
 [node name="Booster" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 collision_mask = 15
 script = ExtResource("3_xb0o7")
 
@@ -119,5 +129,29 @@ shape = SubResource("BoxShape3D_6ydxa")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Booster"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("BoxMesh_0vp2p")
+
+[node name="Corners" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+physics_material_override = ExtResource("5_c1x13")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0)
+mesh = SubResource("BoxMesh_x002j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Corners/StaticBody3D"]
+shape = SubResource("BoxShape3D_15eex")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+physics_material_override = ExtResource("5_c1x13")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0)
+mesh = SubResource("BoxMesh_x002j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Corners/StaticBody3D3"]
+shape = SubResource("BoxShape3D_15eex")
 
 [connection signal="body_entered" from="Booster" to="Booster" method="_on_body_entered"]
