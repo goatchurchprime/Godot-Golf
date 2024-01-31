@@ -23,17 +23,13 @@ code = "// NOTE: Shader automatically converted from Godot Engine 4.2.stable's S
 shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
-uniform float point_size : hint_range(0,128);
 varying vec3 uv1_triplanar_pos;
 uniform float uv1_blend_sharpness;
 varying vec3 uv1_power_normal;
 uniform vec3 uv1_scale;
 uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
 
 const float COLOR_CHANGE_SPEED = 4.0;
-
 
 void vertex() {
 	vec3 normal = NORMAL;
@@ -51,9 +47,6 @@ void vertex() {
 	uv1_triplanar_pos *= vec3(1.0,-1.0, 1.0);
 }
 
-
-
-
 vec4 triplanar_texture(sampler2D p_sampler,vec3 p_weights,vec3 p_triplanar_pos) {
 	vec4 samp=vec4(0.0);
 	samp+= texture(p_sampler,p_triplanar_pos.xy) * p_weights.z;
@@ -62,23 +55,18 @@ vec4 triplanar_texture(sampler2D p_sampler,vec3 p_weights,vec3 p_triplanar_pos) 
 	return samp;
 }
 
-
 void fragment() {
 	vec4 albedo_tex = triplanar_texture(texture_albedo,uv1_power_normal,uv1_triplanar_pos);
-	vec3 albedo = 0.4*(vec3(1,sin(TIME*COLOR_CHANGE_SPEED),cos(TIME*COLOR_CHANGE_SPEED)));
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	ALBEDO = albedo_tex.rgb;
 }
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v3oy7"]
 render_priority = 0
 shader = SubResource("Shader_uvv2p")
-shader_parameter/point_size = 1.0
 shader_parameter/uv1_blend_sharpness = 1.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0.375)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/texture_albedo = ExtResource("4_omvcj")
 
 [sub_resource type="BoxMesh" id="BoxMesh_0vp2p"]
