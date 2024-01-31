@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d1s048mumxyuh"]
+[gd_scene load_steps=25 format=3 uid="uid://d1s048mumxyuh"]
 
 [ext_resource type="Texture2D" uid="uid://blh0slgh11j7f" path="res://assets/materials/sand/sand.png" id="1_r0w8n"]
 [ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="2_2ncwk"]
@@ -9,11 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://dkq7bwcakgjgq" path="res://scenes/level_objects/row_shape.tscn" id="5_0dbu2"]
 [ext_resource type="PackedScene" uid="uid://co72gw4aw7535" path="res://scenes/level groups/out_of_bounds_area.tscn" id="6_43mnn"]
 [ext_resource type="PackedScene" uid="uid://5lmwf1igroec" path="res://scenes/level_objects/booster_pad.tscn" id="6_ruk64"]
-[ext_resource type="PackedScene" uid="uid://v2yw53x48s0y" path="res://scenes/decorations/sandstone_wall.tscn" id="7_3xy4j"]
+[ext_resource type="PackedScene" uid="uid://v2yw53x48s0y" path="res://scenes/decorations/sand/sandstone_wall.tscn" id="7_3xy4j"]
 [ext_resource type="PackedScene" uid="uid://cjwyjfgwxeesi" path="res://scenes/level_objects/left_right_split.tscn" id="9_jcr6w"]
 [ext_resource type="PackedScene" uid="uid://d1wsley1bdp6m" path="res://scenes/level_objects/empty_grass.tscn" id="9_sfq84"]
 [ext_resource type="PackedScene" uid="uid://c80lp440b60i1" path="res://scenes/level_objects/corner_shape.tscn" id="10_g6ki5"]
-[ext_resource type="PackedScene" uid="uid://cuievupfktjng" path="res://scenes/decorations/pyramid.tscn" id="14_p0s4p"]
+[ext_resource type="PackedScene" uid="uid://cuievupfktjng" path="res://scenes/decorations/sand/pyramid.tscn" id="14_p0s4p"]
+[ext_resource type="PackedScene" uid="uid://ddoopcmumydki" path="res://scenes/decorations/sand/sandstone_wall_passage.tscn" id="15_xy7lt"]
+[ext_resource type="PackedScene" uid="uid://bjkudogg2s2m4" path="res://scenes/decorations/torch.tscn" id="16_ypp7m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkkv4"]
 albedo_color = Color(0.819608, 0.654902, 0.458824, 1)
@@ -79,7 +81,7 @@ shape = SubResource("BoxShape3D_1exik")
 transform = Transform3D(0.995448, 0, 0.0953072, 0, 1, 0, -0.0953072, 0, 0.995448, -21.3769, 0, -26.2085)
 
 [node name="Hole" parent="LevelGroup1" instance=ExtResource("4_5hynr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 24)
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 1, 24.25)
 
 [node name="SpawnLocation" parent="LevelGroup1" instance=ExtResource("3_cve25")]
 
@@ -90,9 +92,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584297, 4.35011, 11.1157)
 shape = SubResource("BoxShape3D_6731j")
 
 [node name="CourseDecor" type="Node3D" parent="LevelGroup1"]
-
-[node name="SandstoneWall" parent="LevelGroup1/CourseDecor" instance=ExtResource("7_3xy4j")]
-transform = Transform3D(-0.984365, 0, -0.17614, 0, 1, 0, 0.17614, 0, -0.984365, 3.30763, 0, 24.491)
 
 [node name="SandstoneWall2" parent="LevelGroup1/CourseDecor" instance=ExtResource("7_3xy4j")]
 transform = Transform3D(-0.952725, 0, 0.303834, 0, 1, 0, -0.303834, 0, -0.952725, -3.56022, 0, 24.5323)
@@ -147,3 +146,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
 
 [node name="Pyramid" parent="." instance=ExtResource("14_p0s4p")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.19248, -9.53674e-07, -1.3731)
+
+[node name="SandstoneWall" parent="." instance=ExtResource("15_xy7lt")]
+transform = Transform3D(-0.990882, 0, -0.13473, 0, 1, 0, 0.13473, 0, -0.990882, -16.0462, 0, -2.4099)
+
+[node name="Torch" parent="." instance=ExtResource("16_ypp7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6127, 2.44242, -1.51604)
