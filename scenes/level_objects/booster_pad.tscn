@@ -1,0 +1,157 @@
+[gd_scene load_steps=15 format=3 uid="uid://5lmwf1igroec"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://dw4nkl265yvxp" path="res://physics/grass_phys_mat.tres" id="1_lwljg"]
+[ext_resource type="Material" uid="uid://cckdy23j2537n" path="res://materials/course_grass.tres" id="2_ctmfn"]
+[ext_resource type="Script" path="res://scripts/booster.gd" id="3_xb0o7"]
+[ext_resource type="Texture2D" uid="uid://cpc3ugdctwoww" path="res://assets/materials/booster_pad/booster_pad.png" id="4_omvcj"]
+[ext_resource type="PhysicsMaterial" uid="uid://bjet2vq1wxjo5" path="res://physics/border_phys_mat.tres" id="5_c1x13"]
+[ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="6_oiubs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2x07w"]
+material = ExtResource("2_ctmfn")
+size = Vector3(3, 0.02, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tixbd"]
+size = Vector3(3, 0.02, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ydxa"]
+size = Vector3(0.5, 0.5, 3)
+
+[sub_resource type="Shader" id="Shader_uvv2p"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+varying vec3 uv1_triplanar_pos;
+uniform float uv1_blend_sharpness;
+varying vec3 uv1_power_normal;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	vec3 normal = NORMAL;
+	TANGENT = vec3(0.0,0.0,-1.0) * abs(normal.x);
+	TANGENT+= vec3(1.0,0.0,0.0) * abs(normal.y);
+	TANGENT+= vec3(1.0,0.0,0.0) * abs(normal.z);
+	TANGENT = normalize(TANGENT);
+	BINORMAL = vec3(0.0,1.0,0.0) * abs(normal.x);
+	BINORMAL+= vec3(0.0,0.0,-1.0) * abs(normal.y);
+	BINORMAL+= vec3(0.0,1.0,0.0) * abs(normal.z);
+	BINORMAL = normalize(BINORMAL);
+	uv1_power_normal=pow(abs(NORMAL),vec3(uv1_blend_sharpness));
+	uv1_triplanar_pos = VERTEX * (uv1_scale * vec3(2,1,1)) + uv1_offset * (TIME * 1.5);
+	uv1_power_normal/=dot(uv1_power_normal,vec3(1.0));
+	uv1_triplanar_pos *= vec3(1.0,-1.0, 1.0);
+}
+
+
+
+
+vec4 triplanar_texture(sampler2D p_sampler,vec3 p_weights,vec3 p_triplanar_pos) {
+	vec4 samp=vec4(0.0);
+	samp+= texture(p_sampler,p_triplanar_pos.xy) * p_weights.z;
+	samp+= texture(p_sampler,p_triplanar_pos.xz) * p_weights.y;
+	samp+= texture(p_sampler,p_triplanar_pos.zy * vec2(-1.0,1.0)) * p_weights.x;
+	return samp;
+}
+
+
+void fragment() {
+	vec4 albedo_tex = triplanar_texture(texture_albedo,uv1_power_normal,uv1_triplanar_pos);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(triplanar_texture(texture_metallic,uv1_power_normal,uv1_triplanar_pos),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(triplanar_texture(texture_roughness,uv1_power_normal,uv1_triplanar_pos),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3oy7"]
+render_priority = 0
+shader = SubResource("Shader_uvv2p")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0.375)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("4_omvcj")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0vp2p"]
+material = SubResource("ShaderMaterial_v3oy7")
+size = Vector3(3, 0.2, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x002j"]
+material = ExtResource("6_oiubs")
+size = Vector3(0.1, 0.4, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_15eex"]
+size = Vector3(0.1, 0.4, 3)
+
+[node name="BoosterPad" type="Node3D"]
+
+[node name="Grass" type="StaticBody3D" parent="."]
+physics_material_override = ExtResource("1_lwljg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grass"]
+mesh = SubResource("BoxMesh_2x07w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass"]
+shape = SubResource("BoxShape3D_tixbd")
+
+[node name="Booster" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+collision_mask = 15
+script = ExtResource("3_xb0o7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Booster"]
+shape = SubResource("BoxShape3D_6ydxa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Booster"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_0vp2p")
+
+[node name="Corners" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+physics_material_override = ExtResource("5_c1x13")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0)
+mesh = SubResource("BoxMesh_x002j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Corners/StaticBody3D"]
+shape = SubResource("BoxShape3D_15eex")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+physics_material_override = ExtResource("5_c1x13")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0)
+mesh = SubResource("BoxMesh_x002j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Corners/StaticBody3D3"]
+shape = SubResource("BoxShape3D_15eex")
+
+[connection signal="body_entered" from="Booster" to="Booster" method="_on_body_entered"]
