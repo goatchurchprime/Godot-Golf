@@ -134,4 +134,4 @@ func activate_camera():
 		camera.make_current()
 
 func get_is_stopped():
-	return not move_allowed
+	return move_allowed
