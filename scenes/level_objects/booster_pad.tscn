@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://5lmwf1igroec"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://dw4nkl265yvxp" path="res://physics/grass_phys_mat.tres" id="1_lwljg"]
+[ext_resource type="Material" uid="uid://cckdy23j2537n" path="res://materials/course_grass.tres" id="2_ctmfn"]
+[ext_resource type="Script" path="res://scripts/booster.gd" id="3_xb0o7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2x07w"]
+material = ExtResource("2_ctmfn")
+size = Vector3(3, 0.02, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tixbd"]
+size = Vector3(3, 0.02, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ydxa"]
+size = Vector3(0.5, 0.5, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0vp2p"]
+size = Vector3(0.3, 0.2, 3)
+
+[node name="BoosterPad" type="Node3D"]
+
+[node name="Grass" type="StaticBody3D" parent="."]
+physics_material_override = ExtResource("1_lwljg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grass"]
+mesh = SubResource("BoxMesh_2x07w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass"]
+shape = SubResource("BoxShape3D_tixbd")
+
+[node name="Booster" type="Area3D" parent="."]
+collision_mask = 15
+script = ExtResource("3_xb0o7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Booster"]
+shape = SubResource("BoxShape3D_6ydxa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Booster"]
+mesh = SubResource("BoxMesh_0vp2p")
+
+[connection signal="body_entered" from="Booster" to="Booster" method="_on_body_entered"]
