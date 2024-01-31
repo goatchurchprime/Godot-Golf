@@ -132,3 +132,6 @@ func enable(spawn_location, spawn_rotation):
 func activate_camera():
 	if is_multiplayer_authority():
 		camera.make_current()
+
+func get_is_stopped():
+	return not move_allowed
