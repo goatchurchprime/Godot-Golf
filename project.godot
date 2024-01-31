@@ -63,7 +63,7 @@ scoreboard={
 [physics]
 
 common/physics_ticks_per_second=600
-common/max_physics_steps_per_frame=10
+common/max_physics_steps_per_frame=80
 
 [rendering]
 
