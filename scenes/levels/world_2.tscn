@@ -71,7 +71,7 @@ section_length = 0.1
 size = Vector3(22.5244, 7.41052, 26.7988)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bknjj"]
-size = Vector3(11.3496, 5.75562, 28.1238)
+size = Vector3(11.3496, 6.44568, 28.1238)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rreci"]
 size = Vector3(18.7112, 5.32051, 26.9708)
@@ -239,7 +239,7 @@ transform = Transform3D(0.87462, 0, -0.48481, 0, 1, 0, 0.48481, 0, 0.87462, 0, -
 [node name="OutOfBoundsArea" parent="LevelGroup2" instance=ExtResource("5_po8u8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup2/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16745, 1.77839, -9.53478)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16745, 1.43336, -9.53478)
 shape = SubResource("BoxShape3D_bknjj")
 
 [node name="SpawnLocation" parent="LevelGroup2" instance=ExtResource("4_q0xpq")]
