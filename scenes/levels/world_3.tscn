@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d1s048mumxyuh"]
 
-[ext_resource type="Texture2D" uid="uid://mpf7n8176uo1" path="res://assets/materials/sand/sand.png" id="1_r0w8n"]
+[ext_resource type="Texture2D" uid="uid://blh0slgh11j7f" path="res://assets/materials/sand/sand.png" id="1_r0w8n"]
 [ext_resource type="Script" path="res://scripts/hole_camera.gd" id="2_2pfwc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qqnfk"]
@@ -21,7 +21,7 @@ glow_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkkv4"]
 albedo_color = Color(0.819608, 0.654902, 0.458824, 1)
 normal_enabled = true
-normal_scale = -5.0
+normal_scale = 2.53
 normal_texture = ExtResource("1_r0w8n")
 uv1_scale = Vector3(-0.175, -0.175, -0.175)
 uv1_triplanar = true
