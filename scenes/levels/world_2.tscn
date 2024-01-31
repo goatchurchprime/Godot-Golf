@@ -68,19 +68,19 @@ radius = 5.151
 section_length = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4x6o5"]
-size = Vector3(9.05725, 8.01855, 14.9278)
+size = Vector3(22.5244, 7.41052, 26.7988)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bknjj"]
-size = Vector3(2.98639, 5.75562, 20.1907)
+size = Vector3(11.3496, 5.75562, 28.1238)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rreci"]
-size = Vector3(8.81084, 5.32051, 18.0122)
+size = Vector3(18.7112, 5.32051, 26.9708)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ih16r"]
-size = Vector3(7.43788, 8.7627, 12.0498)
+size = Vector3(17.8355, 8.7627, 18.6067)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ln7sd"]
-size = Vector3(9.08148, 5.89896, 17.9634)
+size = Vector3(17.4076, 5.89896, 22.0745)
 
 [node name="World2" type="Node3D"]
 
@@ -170,7 +170,7 @@ transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
 [node name="OutOfBoundsArea" parent="LevelGroup1" instance=ExtResource("5_po8u8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup1/OutOfBoundsArea"]
-transform = Transform3D(0.999985, 0, -4.90274e-13, 0, 1, 0, 4.90274e-13, 0, 0.999985, -0.00895309, 3.50928, -5.95046)
+transform = Transform3D(0.999985, 0, -4.90274e-13, 0, 1, 0, 4.90274e-13, 0, 0.999985, -0.012846, 3.20527, -6.79471)
 shape = SubResource("BoxShape3D_4x6o5")
 
 [node name="Course" type="Node3D" parent="LevelGroup1"]
@@ -239,7 +239,7 @@ transform = Transform3D(0.87462, 0, -0.48481, 0, 1, 0, 0.48481, 0, 0.87462, 0, -
 [node name="OutOfBoundsArea" parent="LevelGroup2" instance=ExtResource("5_po8u8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup2/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0190201, 1.77839, -8.55276)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16745, 1.77839, -9.53478)
 shape = SubResource("BoxShape3D_bknjj")
 
 [node name="SpawnLocation" parent="LevelGroup2" instance=ExtResource("4_q0xpq")]
@@ -280,7 +280,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90878, -2.281, 14.8652)
 [node name="OutOfBoundsArea" parent="LevelGroup3" instance=ExtResource("5_po8u8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup3/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89848, 0.0833955, 7.49806)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92415, 0.0833955, 9.79878)
 shape = SubResource("BoxShape3D_rreci")
 
 [node name="Course" type="Node3D" parent="LevelGroup3"]
@@ -332,7 +332,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.2653
 [node name="OutOfBoundsArea" parent="LevelGroup4" instance=ExtResource("5_po8u8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup4/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774155, 4.34326, -4.49072)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.293097, 4.34326, -3.48108)
 shape = SubResource("BoxShape3D_ih16r")
 
 [node name="Course" type="Node3D" parent="LevelGroup4"]
@@ -371,7 +371,7 @@ transform = Transform3D(0.943951, 0, 0.330086, 0, 1, 0, -0.330086, 0, 0.943951, 
 [node name="OutOfBoundsArea" parent="LevelGroup5" instance=ExtResource("5_po8u8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup5/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00991821, 2.81868, -7.45096)
+transform = Transform3D(1, 0, -5.21541e-07, 0, 1, 0, 5.21541e-07, 0, 1, -0.134927, 2.81868, -8.48109)
 shape = SubResource("BoxShape3D_ln7sd")
 
 [node name="SpawnLocation" parent="LevelGroup5" instance=ExtResource("4_q0xpq")]

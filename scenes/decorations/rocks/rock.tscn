@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvsutob3fldtw"]
+[gd_scene load_steps=5 format=3 uid="uid://bvsutob3fldtw"]
 
 [ext_resource type="Material" uid="uid://bwvyr8a846v6" path="res://materials/rock.tres" id="1_p36n5"]
 
@@ -10,9 +10,6 @@ material = ExtResource("1_p36n5")
 size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_at7ky"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vh1ol"]
-size = Vector3(0.5, 0.5, 0.5)
 
 [node name="Rock" type="StaticBody3D"]
 
@@ -33,15 +30,3 @@ mesh = SubResource("BoxMesh_sqxkj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_at7ky")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.760406, 0, -0.649448, 0, 1, 0, 0.649448, 0, 0.760406, 0.429, -0.25, -0.314)
-shape = SubResource("BoxShape3D_vh1ol")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.760406, 0, -0.649448, 0, 1, 0, 0.649448, 0, 0.760406, -0.464, -0.25, 0.357)
-shape = SubResource("BoxShape3D_vh1ol")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.506942, -0.312371, -0.803389, 0.714643, 0.673445, 0.189095, 0.481971, -0.669997, 0.564631, -0.014, 0.397, 0.014)
-shape = SubResource("BoxShape3D_vh1ol")
