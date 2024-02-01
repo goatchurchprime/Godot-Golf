@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d1s048mumxyuh"]
+[gd_scene load_steps=29 format=3 uid="uid://d1s048mumxyuh"]
 
 [ext_resource type="Texture2D" uid="uid://blh0slgh11j7f" path="res://assets/materials/sand/sand.png" id="1_r0w8n"]
 [ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="2_2ncwk"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://cuievupfktjng" path="res://scenes/decorations/sand/pyramid.tscn" id="14_p0s4p"]
 [ext_resource type="PackedScene" uid="uid://ddoopcmumydki" path="res://scenes/decorations/sand/sandstone_wall_passage.tscn" id="15_xy7lt"]
 [ext_resource type="PackedScene" uid="uid://bjkudogg2s2m4" path="res://scenes/decorations/torch.tscn" id="16_ypp7m"]
+[ext_resource type="PackedScene" uid="uid://qwv5hbrafkgd" path="res://scenes/level_objects/loop.tscn" id="17_d01u8"]
+[ext_resource type="Material" uid="uid://cckdy23j2537n" path="res://materials/course_grass.tres" id="17_xrs6o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkkv4"]
 albedo_color = Color(0.819608, 0.654902, 0.458824, 1)
@@ -50,10 +52,22 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_1exik"]
 size = Vector3(80, 1, 80)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dedjl"]
+size = Vector3(15.6176, 14.024, 53.6015)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2x07w"]
+material = ExtResource("17_xrs6o")
+size = Vector3(3, 0.02, 3)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6731j"]
 size = Vector3(17.1944, 9.70023, 30.2949)
 
 [node name="World3" type="Node3D"]
+
+[node name="WorldDecor" type="Node3D" parent="."]
+
+[node name="Pyramid" parent="WorldDecor" instance=ExtResource("14_p0s4p")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.19248, -9.53674e-07, -1.3731)
 
 [node name="WorldFloor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -68,7 +82,7 @@ shape = SubResource("BoxShape3D_wv4kq")
 environment = SubResource("Environment_vltua")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
 [node name="NonPlayableArea" parent="." instance=ExtResource("2_2ncwk")]
@@ -77,11 +91,225 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_1exik")
 
+[node name="LevelGroup2" parent="." instance=ExtResource("2_gsy5m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3153, 0.787785, 27.9412)
+
+[node name="OutOfBoundsArea" parent="LevelGroup2" instance=ExtResource("6_43mnn")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup2/OutOfBoundsArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113953, 6.51202, -19.8244)
+shape = SubResource("BoxShape3D_dedjl")
+
+[node name="Hole" parent="LevelGroup2" instance=ExtResource("4_5hynr")]
+transform = Transform3D(-0.859861, 0, -0.510528, 0, 1, 0, 0.510528, 0, -0.859861, 1, 0.0274875, -39)
+
+[node name="SpawnLocation" parent="LevelGroup2" instance=ExtResource("3_cve25")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 0)
+
+[node name="Course" type="Node3D" parent="LevelGroup2"]
+
+[node name="UShape" parent="LevelGroup2/Course" instance=ExtResource("4_5baaq")]
+
+[node name="CornerShape2" parent="LevelGroup2/Course" instance=ExtResource("10_g6ki5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -6)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LevelGroup2/Course/CornerShape2/Grass" index="1"]
+mesh = SubResource("BoxMesh_2x07w")
+
+[node name="CornerShape4" parent="LevelGroup2/Course" instance=ExtResource("10_g6ki5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LevelGroup2/Course/CornerShape4/Grass" index="1"]
+mesh = SubResource("BoxMesh_2x07w")
+
+[node name="BoosterPad" parent="LevelGroup2/Course" instance=ExtResource("6_ruk64")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -3)
+boost_strength = 0.5
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/BoosterPad/Corners" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 3.8147e-06)
+
+[node name="StaticBody3D3" parent="LevelGroup2/Course/BoosterPad/Corners" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1, 0)
+
+[node name="BoosterPad2" parent="LevelGroup2/Course" instance=ExtResource("6_ruk64")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 0, -21)
+boost_strength = 1.5
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/BoosterPad2/Corners" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 3.8147e-06)
+
+[node name="StaticBody3D3" parent="LevelGroup2/Course/BoosterPad2/Corners" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1, 0)
+
+[node name="RowShape" parent="LevelGroup2/Course" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+visible = false
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/RowShape/Corners" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1, 0)
+
+[node name="Loop" parent="LevelGroup2/Course" instance=ExtResource("17_d01u8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/Loop/Borders" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 1.5)
+
+[node name="StaticBody3D2" parent="LevelGroup2/Course/Loop/Borders" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -1.5)
+
+[node name="MeshInstance3D" parent="LevelGroup2/Course/Loop/Grass2" index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0019989, 0, 3)
+
+[node name="Loop2" parent="LevelGroup2/Course" instance=ExtResource("17_d01u8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -9)
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/Loop2/Borders" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 1.5)
+
+[node name="StaticBody3D2" parent="LevelGroup2/Course/Loop2/Borders" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -1.5)
+
+[node name="MeshInstance3D" parent="LevelGroup2/Course/Loop2/Grass2" index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0019989, 0, 3)
+
+[node name="Loop3" parent="LevelGroup2/Course" instance=ExtResource("17_d01u8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -12)
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/Loop3/Borders" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 1.5)
+
+[node name="StaticBody3D2" parent="LevelGroup2/Course/Loop3/Borders" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -1.5)
+
+[node name="MeshInstance3D" parent="LevelGroup2/Course/Loop3/Grass2" index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0019989, 0, 3)
+
+[node name="Loop4" parent="LevelGroup2/Course" instance=ExtResource("17_d01u8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -15)
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/Loop4/Borders" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 1.5)
+
+[node name="StaticBody3D2" parent="LevelGroup2/Course/Loop4/Borders" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -1.5)
+
+[node name="MeshInstance3D" parent="LevelGroup2/Course/Loop4/Grass2" index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0019989, 0, 3)
+
+[node name="Loop5" parent="LevelGroup2/Course" instance=ExtResource("17_d01u8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -18)
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/Loop5/Borders" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 1.5)
+
+[node name="StaticBody3D2" parent="LevelGroup2/Course/Loop5/Borders" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -1.5)
+
+[node name="MeshInstance3D" parent="LevelGroup2/Course/Loop5/Grass2" index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0019989, 0, 3)
+
+[node name="Loop12" parent="LevelGroup2/Course" instance=ExtResource("17_d01u8")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 0, -36)
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/Loop12/Borders" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 1.5)
+
+[node name="StaticBody3D2" parent="LevelGroup2/Course/Loop12/Borders" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -1.5)
+
+[node name="MeshInstance3D" parent="LevelGroup2/Course/Loop12/Grass2" index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0019989, 0, 3)
+
+[node name="Loop13" parent="LevelGroup2/Course" instance=ExtResource("17_d01u8")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 0, -33)
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/Loop13/Borders" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 1.5)
+
+[node name="StaticBody3D2" parent="LevelGroup2/Course/Loop13/Borders" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -1.5)
+
+[node name="MeshInstance3D" parent="LevelGroup2/Course/Loop13/Grass2" index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0019989, 0, 3)
+
+[node name="Loop14" parent="LevelGroup2/Course" instance=ExtResource("17_d01u8")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 0, -30)
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/Loop14/Borders" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 1.5)
+
+[node name="StaticBody3D2" parent="LevelGroup2/Course/Loop14/Borders" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -1.5)
+
+[node name="MeshInstance3D" parent="LevelGroup2/Course/Loop14/Grass2" index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0019989, 0, 3)
+
+[node name="Loop15" parent="LevelGroup2/Course" instance=ExtResource("17_d01u8")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 0, -27)
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/Loop15/Borders" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 1.5)
+
+[node name="StaticBody3D2" parent="LevelGroup2/Course/Loop15/Borders" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -1.5)
+
+[node name="MeshInstance3D" parent="LevelGroup2/Course/Loop15/Grass2" index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0019989, 0, 3)
+
+[node name="Loop16" parent="LevelGroup2/Course" instance=ExtResource("17_d01u8")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 0, -24)
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/Loop16/Borders" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 1.5)
+
+[node name="StaticBody3D2" parent="LevelGroup2/Course/Loop16/Borders" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -1.5)
+
+[node name="MeshInstance3D" parent="LevelGroup2/Course/Loop16/Grass2" index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0019989, 0, 3)
+
+[node name="Loop6" parent="LevelGroup2/Course" instance=ExtResource("17_d01u8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -21)
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/Loop6/Borders" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 1.5)
+
+[node name="StaticBody3D2" parent="LevelGroup2/Course/Loop6/Borders" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -1.5)
+
+[node name="Grass2" parent="LevelGroup2/Course/Loop6" index="1"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0.000999451, 0.5, 0)
+
+[node name="MeshInstance3D" parent="LevelGroup2/Course/Loop6/Grass2" index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0019989, 0, 3)
+
+[node name="Loop7" parent="LevelGroup2/Course" instance=ExtResource("17_d01u8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, -21)
+
+[node name="StaticBody3D" parent="LevelGroup2/Course/Loop7/Borders" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 1.5)
+
+[node name="StaticBody3D2" parent="LevelGroup2/Course/Loop7/Borders" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, -1.5)
+
+[node name="Grass2" parent="LevelGroup2/Course/Loop7" index="1"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0.000999451, 0.5, 0)
+
+[node name="MeshInstance3D" parent="LevelGroup2/Course/Loop7/Grass2" index="0"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.0019989, 0, 3)
+
+[node name="CornerShape3" parent="LevelGroup2/Course" instance=ExtResource("10_g6ki5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -39)
+
+[node name="UShape2" parent="LevelGroup2/Course" instance=ExtResource("4_5baaq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, -39)
+
 [node name="LevelGroup1" parent="." instance=ExtResource("2_gsy5m")]
 transform = Transform3D(0.995448, 0, 0.0953072, 0, 1, 0, -0.0953072, 0, 0.995448, -21.3769, 0, -26.2085)
 
 [node name="Hole" parent="LevelGroup1" instance=ExtResource("4_5hynr")]
-transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 1, 24.25)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 1, 24.25)
 
 [node name="SpawnLocation" parent="LevelGroup1" instance=ExtResource("3_cve25")]
 
@@ -95,6 +323,12 @@ shape = SubResource("BoxShape3D_6731j")
 
 [node name="SandstoneWall2" parent="LevelGroup1/CourseDecor" instance=ExtResource("7_3xy4j")]
 transform = Transform3D(-0.952725, 0, 0.303834, 0, 1, 0, -0.303834, 0, -0.952725, -3.56022, 0, 24.5323)
+
+[node name="SandstoneWall" parent="LevelGroup1/CourseDecor" instance=ExtResource("15_xy7lt")]
+transform = Transform3D(-0.999212, 0, -0.0396785, 0, 1, 0, 0.0396785, 0, -0.999212, 3.03826, 0, 24.1983)
+
+[node name="Torch" parent="LevelGroup1/CourseDecor" instance=ExtResource("16_ypp7m")]
+transform = Transform3D(0.995448, 0, -0.0953072, 0, 1, 0, 0.0953072, 0, 0.995448, 4.38004, 2.44242, 25.2247)
 
 [node name="Course" type="Node3D" parent="LevelGroup1"]
 
@@ -144,11 +378,20 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0, 
 [node name="LeftRightSplit2" parent="LevelGroup1/Course" instance=ExtResource("9_jcr6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
 
-[node name="Pyramid" parent="." instance=ExtResource("14_p0s4p")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.19248, -9.53674e-07, -1.3731)
-
-[node name="SandstoneWall" parent="." instance=ExtResource("15_xy7lt")]
-transform = Transform3D(-0.990882, 0, -0.13473, 0, 1, 0, 0.13473, 0, -0.990882, -16.0462, 0, -2.4099)
-
-[node name="Torch" parent="." instance=ExtResource("16_ypp7m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6127, 2.44242, -1.51604)
+[editable path="LevelGroup2/Course/CornerShape2"]
+[editable path="LevelGroup2/Course/CornerShape4"]
+[editable path="LevelGroup2/Course/BoosterPad"]
+[editable path="LevelGroup2/Course/BoosterPad2"]
+[editable path="LevelGroup2/Course/RowShape"]
+[editable path="LevelGroup2/Course/Loop"]
+[editable path="LevelGroup2/Course/Loop2"]
+[editable path="LevelGroup2/Course/Loop3"]
+[editable path="LevelGroup2/Course/Loop4"]
+[editable path="LevelGroup2/Course/Loop5"]
+[editable path="LevelGroup2/Course/Loop12"]
+[editable path="LevelGroup2/Course/Loop13"]
+[editable path="LevelGroup2/Course/Loop14"]
+[editable path="LevelGroup2/Course/Loop15"]
+[editable path="LevelGroup2/Course/Loop16"]
+[editable path="LevelGroup2/Course/Loop6"]
+[editable path="LevelGroup2/Course/Loop7"]
