@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl5qct6kdwh68"]
+
+[ext_resource type="PackedScene" uid="uid://bq8ff03feej4m" path="res://assets/objects/axe/axe.glb" id="1_v2udn"]
+[ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="2_pfr6s"]
+[ext_resource type="Material" uid="uid://bwvyr8a846v6" path="res://materials/rock.tres" id="3_4g6rt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qamhv"]
+size = Vector3(0.1, 0.125, 1.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gtwfy"]
+size = Vector3(0.54, 0.125, 0.483)
+
+[node name="axe" instance=ExtResource("1_v2udn")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.237585)
+shape = SubResource("BoxShape3D_qamhv")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.258545)
+shape = SubResource("BoxShape3D_gtwfy")
+
+[node name="Double Axe" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_pfr6s")
+surface_material_override/1 = ExtResource("3_4g6rt")
+surface_material_override/2 = ExtResource("3_4g6rt")
