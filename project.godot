@@ -59,6 +59,7 @@ scoreboard={
 [layer_names]
 
 3d_physics/layer_2="Golfballs"
+3d_physics/layer_3="Non Camera Colliding"
 
 [physics]
 
