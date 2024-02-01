@@ -13,6 +13,8 @@ size = Vector3(0.54, 0.125, 0.483)
 [node name="axe" instance=ExtResource("1_v2udn")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="0"]
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.237585)

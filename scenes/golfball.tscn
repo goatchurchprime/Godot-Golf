@@ -118,6 +118,7 @@ mesh = SubResource("BoxMesh_j5idn")
 
 [node name="Golfball" type="RigidBody3D" parent="."]
 collision_layer = 2
+collision_mask = 5
 mass = 0.05
 physics_material_override = SubResource("PhysicsMaterial_4yvvj")
 can_sleep = false
