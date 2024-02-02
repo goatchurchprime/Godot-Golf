@@ -1,14 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg4sjmuo0nxot"]
+[gd_scene load_steps=9 format=3 uid="uid://bg4sjmuo0nxot"]
 
 [ext_resource type="PackedScene" uid="uid://bf0wxjnst3lm0" path="res://scenes/UI/level_select.tscn" id="1_2eddi"]
 [ext_resource type="PackedScene" uid="uid://d3soqqlkvvbbp" path="res://scenes/UI/multiplayer_menu.tscn" id="2_5um1l"]
 [ext_resource type="PackedScene" uid="uid://dd715frsmv2g5" path="res://scenes/UI/HUD/HUD.tscn" id="2_6r1xq"]
-[ext_resource type="AudioStream" uid="uid://4o7ej4rdlh0m" path="res://assets/audio/gymnopedie1.mp3" id="2_jscbh"]
+[ext_resource type="AudioStream" uid="uid://4o7ej4rdlh0m" path="res://assets/audio/music/gymnopedie1.mp3" id="2_jscbh"]
 [ext_resource type="PackedScene" uid="uid://bin524of6343q" path="res://scenes/menu_background.tscn" id="2_wy3ih"]
 [ext_resource type="PackedScene" uid="uid://8gngwjva0rhn" path="res://scenes/UI/game_status.tscn" id="7_2bxhg"]
 [ext_resource type="PackedScene" uid="uid://b1ilb4u1816a3" path="res://scenes/UI/scoreboard.tscn" id="7_743ai"]
+[ext_resource type="PackedScene" uid="uid://bca0l8i71i7yv" path="res://scenes/teleport_overlay.tscn" id="7_tv0yl"]
 
 [node name="Main" type="Node3D"]
+
+[node name="TeleportOverlay" parent="." instance=ExtResource("7_tv0yl")]
+visible = false
 
 [node name="Hud" parent="." instance=ExtResource("2_6r1xq")]
 visible = false
