@@ -81,6 +81,7 @@ size = Vector3(0.1, 0.4, 3)
 size = Vector3(0.1, 0.4, 3)
 
 [node name="BoosterPad" type="Node3D"]
+script = ExtResource("3_xb0o7")
 
 [node name="Grass" type="StaticBody3D" parent="."]
 physics_material_override = ExtResource("1_lwljg")
@@ -94,7 +95,6 @@ shape = SubResource("BoxShape3D_tixbd")
 [node name="Booster" type="Area3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 collision_mask = 15
-script = ExtResource("3_xb0o7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Booster"]
 shape = SubResource("BoxShape3D_6ydxa")
@@ -127,4 +127,5 @@ mesh = SubResource("BoxMesh_x002j")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Corners/StaticBody3D3"]
 shape = SubResource("BoxShape3D_15eex")
 
+[connection signal="body_entered" from="Booster" to="." method="_on_booster_body_entered"]
 [connection signal="body_entered" from="Booster" to="Booster" method="_on_body_entered"]
