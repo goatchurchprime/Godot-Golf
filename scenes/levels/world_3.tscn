@@ -397,7 +397,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -31, 0, 25)
 
 [node name="Hole" parent="LevelGroup3" instance=ExtResource("4_5hynr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99998, 2.05771, 37)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.99998, 2.05771, 37)
 
 [node name="OutOfBoundsArea" parent="LevelGroup3" instance=ExtResource("6_43mnn")]
 
