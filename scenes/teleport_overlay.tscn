@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bca0l8i71i7yv"]
+[gd_scene load_steps=3 format=3 uid="uid://bca0l8i71i7yv"]
 
 [ext_resource type="Script" path="res://scripts/teleport_overlay.gd" id="1_3xskf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kd0vb"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="TeleportOverlay" type="Control"]
 layout_mode = 3
@@ -18,3 +21,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kd0vb")

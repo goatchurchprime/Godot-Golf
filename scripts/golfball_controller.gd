@@ -103,6 +103,7 @@ func _on_move_allowed_timer_timeout():
 
 func move_back():
 	rigidbody.goto(last_pos)
+	snap_camera()
 
 func goto(pos):
 	last_pos = pos
@@ -126,8 +127,11 @@ func enable(spawn_location, spawn_rotation):
 	locked = false
 	rigidbody.set_visible(true)
 	activate_camera()
-	camera_position.call_deferred("snap_to_pos")
+	snap_camera()
 	spring_arm.set_arm_rotation(spawn_rotation)
+
+func snap_camera():
+	camera_position.call_deferred("snap_to_pos")
 
 func activate_camera():
 	if is_multiplayer_authority():
