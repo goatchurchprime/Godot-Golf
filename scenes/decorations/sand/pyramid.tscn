@@ -683,3 +683,13 @@ mesh = SubResource("BoxMesh_ug8xd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_mjrq2")
+
+[node name="Top" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Top"]
+mesh = SubResource("BoxMesh_p1km7")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="Top"]
+shape = SubResource("BoxShape3D_m62m2")
