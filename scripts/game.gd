@@ -12,6 +12,7 @@ var menu_background : MenuBackground
 var level_select : LevelSelect
 var scoreboard : Scoreboard
 var game_status : GameStatus
+var teleport_overlay : TeleportOverlay
 
 var next_hole_timer : Timer
 
@@ -84,6 +85,8 @@ func initialize_player(pos):
 func golball_left(peer_id):
 	if peer_id == player.get_multiplayer_authority():
 		player.move_back()
+		if teleport_overlay:
+			teleport_overlay.activate()
 
 func player_won(peer_id):
 	if peer_id == player.get_multiplayer_authority():
@@ -161,3 +164,5 @@ func register(node):
 	elif node is Golfball:
 		if not player:
 			player = node
+	elif node is TeleportOverlay:
+		teleport_overlay = node
