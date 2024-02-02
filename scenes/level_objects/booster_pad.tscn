@@ -72,7 +72,7 @@ shader_parameter/texture_albedo = ExtResource("4_omvcj")
 
 [sub_resource type="BoxMesh" id="BoxMesh_0vp2p"]
 material = SubResource("ShaderMaterial_v3oy7")
-size = Vector3(3, 0.2, 0.3)
+size = Vector3(3, 0.1, 0.3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_x002j"]
 material = ExtResource("6_oiubs")
@@ -102,7 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("BoxShape3D_6ydxa")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Booster"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.05, 0)
 mesh = SubResource("BoxMesh_0vp2p")
 
 [node name="Corners" type="Node3D" parent="."]
