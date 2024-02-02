@@ -1,6 +1,6 @@
 class_name TeleportOverlay extends Control
 
-const SCROLL_SPEED = 10
+const SCROLL_SPEED = 3500
 
 @onready var panel = $Panel
 
@@ -13,6 +13,6 @@ func activate():
 func _process(delta):
 	if visible:
 		panel.position.x += SCROLL_SPEED * delta
-		if panel.position.x > get_viewport().get_visible_rect().size:
+		if panel.position.x > get_viewport().get_visible_rect().size.x:
 			panel.position.x = 0
 			visible = false
