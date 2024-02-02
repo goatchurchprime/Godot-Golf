@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d1s048mumxyuh"]
+[gd_scene load_steps=32 format=3 uid="uid://d1s048mumxyuh"]
 
 [ext_resource type="Texture2D" uid="uid://blh0slgh11j7f" path="res://assets/materials/sand/sand.png" id="1_r0w8n"]
 [ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="2_2ncwk"]
@@ -18,6 +18,23 @@
 [ext_resource type="PackedScene" uid="uid://bjkudogg2s2m4" path="res://scenes/decorations/torch.tscn" id="16_ypp7m"]
 [ext_resource type="PackedScene" uid="uid://qwv5hbrafkgd" path="res://scenes/level_objects/loop.tscn" id="17_d01u8"]
 [ext_resource type="Material" uid="uid://cckdy23j2537n" path="res://materials/course_grass.tres" id="17_xrs6o"]
+[ext_resource type="Script" path="res://scripts/rotate_node.gd" id="19_pjyso"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qqnfk"]
+sky_top_color = Color(0.207843, 0.454902, 0.729412, 1)
+sky_horizon_color = Color(0.77451, 0.80098, 0.829412, 1)
+ground_bottom_color = Color(0.890196, 0.74902, 0.588235, 1)
+ground_horizon_color = Color(0.77451, 0.80098, 0.829412, 1)
+ground_energy_multiplier = 2.0
+
+[sub_resource type="Sky" id="Sky_e2ypb"]
+sky_material = SubResource("ProceduralSkyMaterial_qqnfk")
+
+[sub_resource type="Environment" id="Environment_vltua"]
+background_mode = 2
+sky = SubResource("Sky_e2ypb")
+ambient_light_sky_contribution = 0.26
+tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkkv4"]
 albedo_color = Color(0.819608, 0.654902, 0.458824, 1)
@@ -34,23 +51,14 @@ size = Vector3(80, 1, 80)
 [sub_resource type="BoxShape3D" id="BoxShape3D_wv4kq"]
 size = Vector3(80, 1, 80)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qqnfk"]
-sky_top_color = Color(0.207843, 0.454902, 0.729412, 1)
-sky_horizon_color = Color(0.77451, 0.80098, 0.829412, 1)
-ground_bottom_color = Color(0.890196, 0.74902, 0.588235, 1)
-ground_horizon_color = Color(0.77451, 0.80098, 0.829412, 1)
-
-[sub_resource type="Sky" id="Sky_e2ypb"]
-sky_material = SubResource("ProceduralSkyMaterial_qqnfk")
-
-[sub_resource type="Environment" id="Environment_vltua"]
-background_mode = 2
-sky = SubResource("Sky_e2ypb")
-tonemap_mode = 2
-glow_enabled = true
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_1exik"]
 size = Vector3(80, 1, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74c8q"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ho3di"]
+size = Vector3(23.4009, 14.0019, 23.3088)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6731j"]
 size = Vector3(17.1944, 9.70023, 30.2949)
@@ -63,6 +71,13 @@ material = ExtResource("17_xrs6o")
 size = Vector3(3, 0.02, 3)
 
 [node name="World3" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vltua")
 
 [node name="WorldDecor" type="Node3D" parent="."]
 
@@ -78,18 +93,107 @@ mesh = SubResource("BoxMesh_yr64q")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldFloor"]
 shape = SubResource("BoxShape3D_wv4kq")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_vltua")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
 [node name="NonPlayableArea" parent="." instance=ExtResource("2_2ncwk")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NonPlayableArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_1exik")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NonPlayableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.192, 0.5, -1.373)
+shape = SubResource("BoxShape3D_74c8q")
+
+[node name="LevelGroup3" parent="." instance=ExtResource("2_gsy5m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 8.41928)
+
+[node name="Hole" parent="LevelGroup3" instance=ExtResource("4_5hynr")]
+transform = Transform3D(0.301605, 0, 0.953433, 0, 1, 0, -0.953433, 0, 0.301605, 8.935, 1.43895, -0.9)
+
+[node name="OutOfBoundsArea" parent="LevelGroup3" instance=ExtResource("6_43mnn")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup3/OutOfBoundsArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.187347, 6.50096, -9.91614)
+shape = SubResource("BoxShape3D_ho3di")
+
+[node name="SpawnLocation" parent="LevelGroup3" instance=ExtResource("3_cve25")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+
+[node name="Course" type="Node3D" parent="LevelGroup3"]
+
+[node name="UShape" parent="LevelGroup3/Course" instance=ExtResource("4_5baaq")]
+
+[node name="RowShape" parent="LevelGroup3/Course" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(1, 0, 0, 0, 0.984929, -0.172961, 0, 0.172961, 0.984929, 0, 0.2474, -2.93612)
+
+[node name="RowShape2" parent="LevelGroup3/Course" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1, -7)
+
+[node name="CornerShape" parent="LevelGroup3/Course" instance=ExtResource("10_g6ki5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -7)
+
+[node name="SpinningObjects" type="Node3D" parent="LevelGroup3/Course"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -13.5)
+script = ExtResource("19_pjyso")
+rotation_amt = 1.0
+rotate_z_axis = true
+
+[node name="RowShape3" parent="LevelGroup3/Course/SpinningObjects" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
+
+[node name="RowShape4" parent="LevelGroup3/Course/SpinningObjects" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="RowShape5" parent="LevelGroup3/Course/SpinningObjects" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+
+[node name="CornerShape2" parent="LevelGroup3/Course" instance=ExtResource("10_g6ki5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 1, -19)
+
+[node name="BoosterPad2" parent="LevelGroup3/Course" instance=ExtResource("6_ruk64")]
+transform = Transform3D(-4.2222e-08, -0.258819, 0.965926, -1.13133e-08, 0.965926, 0.258819, -1, 0, -4.37114e-08, -4.06522, 1.38801, -19)
+boost_strength = 0.6
+
+[node name="RowShape3" parent="LevelGroup3/Course" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(-4.37114e-08, 8.88178e-16, 1, 0, 1, -1.77636e-15, -1, -3.88235e-23, -4.37114e-08, 5.93478, 1.38801, -19)
+
+[node name="CornerShape3" parent="LevelGroup3/Course" instance=ExtResource("10_g6ki5")]
+transform = Transform3D(-1, -7.7647e-23, -8.74228e-08, 0, 1, -1.77636e-15, 8.74228e-08, -8.88178e-16, -1, 8.93478, 1.38801, -19)
+
+[node name="BoosterPad3" parent="LevelGroup3/Course" instance=ExtResource("6_ruk64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.935, 1.388, -16)
+boost_strength = 1.0
+
+[node name="SpinningObjects2" type="Node3D" parent="LevelGroup3/Course"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.935, 1.388, -8.5)
+script = ExtResource("19_pjyso")
+rotation_amt = -1.0
+rotate_z_axis = true
+
+[node name="RowShape5" parent="LevelGroup3/Course/SpinningObjects2" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5)
+
+[node name="RowShape6" parent="LevelGroup3/Course/SpinningObjects2" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="RowShape7" parent="LevelGroup3/Course/SpinningObjects2" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="RowShape8" parent="LevelGroup3/Course/SpinningObjects2" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
+
+[node name="UShape2" parent="LevelGroup3/Course" instance=ExtResource("4_5baaq")]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, -1.77636e-15, -3.55271e-15, 8.88178e-16, 1, 8.93478, 1.38801, -1)
+
+[node name="CourseDecor" type="Node3D" parent="LevelGroup3"]
+
+[node name="SandstoneWall" parent="LevelGroup3/CourseDecor" instance=ExtResource("7_3xy4j")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.8, 0, -8)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="LevelGroup3/CourseDecor"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.935, 4.614, -0.9)
+light_energy = 2.4
+spot_range = 6.635
+spot_angle = 32.76
 
 [node name="LevelGroup1" parent="." instance=ExtResource("2_gsy5m")]
 transform = Transform3D(0.995448, 0, 0.0953072, 0, 1, 0, -0.0953072, 0, 0.995448, -21.3769, 0, -26.2085)
