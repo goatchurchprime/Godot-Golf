@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://w6qkohd2ejme"]
 
 [ext_resource type="Script" path="res://scripts/follow_node.gd" id="2_fbk7p"]
-[ext_resource type="AudioStream" uid="uid://dve11tyh5fanq" path="res://assets/audio/golfball_hit.mp3" id="4_vvdv4"]
+[ext_resource type="AudioStream" uid="uid://dve11tyh5fanq" path="res://assets/audio/sound/golfball_hit.mp3" id="4_vvdv4"]
 [ext_resource type="Script" path="res://scripts/golfball_controller.gd" id="4_x2185"]
 [ext_resource type="Script" path="res://scripts/golfball_rigidbody.gd" id="5_dceiy"]
 [ext_resource type="Texture2D" uid="uid://b78gsq388qay8" path="res://assets/images/golfball_normals.png" id="5_g3rcn"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5lmwf1igroec"]
+[gd_scene load_steps=16 format=3 uid="uid://5lmwf1igroec"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dw4nkl265yvxp" path="res://physics/grass_phys_mat.tres" id="1_lwljg"]
 [ext_resource type="Material" uid="uid://cckdy23j2537n" path="res://materials/course_grass.tres" id="2_ctmfn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cpc3ugdctwoww" path="res://assets/materials/booster_pad/booster_pad.png" id="4_omvcj"]
 [ext_resource type="PhysicsMaterial" uid="uid://bjet2vq1wxjo5" path="res://physics/border_phys_mat.tres" id="5_c1x13"]
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="6_oiubs"]
+[ext_resource type="AudioStream" uid="uid://bo6sdl147vpre" path="res://assets/audio/sound/speed_boost.mp3" id="7_kwjnr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2x07w"]
 material = ExtResource("2_ctmfn")
@@ -127,6 +128,11 @@ mesh = SubResource("BoxMesh_x002j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Corners/StaticBody3D3"]
 shape = SubResource("BoxShape3D_15eex")
+
+[node name="BoostAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_kwjnr")
+volume_db = -1.0
+max_distance = 20.0
 
 [connection signal="body_entered" from="Booster" to="." method="_on_booster_body_entered"]
 [connection signal="body_entered" from="Booster" to="Booster" method="_on_body_entered"]
