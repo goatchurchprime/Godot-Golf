@@ -8,7 +8,7 @@ extends Node3D
 
 func _physics_process(delta):
 	if rotate_x_axis:
-			rotate_x(rotation_amt*delta)
+		rotate_x(rotation_amt*delta)
 	if rotate_y_axis:
 		rotate_y(rotation_amt*delta)
 	if rotate_z_axis:
