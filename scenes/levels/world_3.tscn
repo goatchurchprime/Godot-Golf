@@ -390,6 +390,12 @@ transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -0.001
 [node name="CornerShape3" parent="LevelGroup2/Course" instance=ExtResource("10_g6ki5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -39)
 
+[node name="MeshInstance3D3" parent="LevelGroup2/Course/CornerShape3/Corners" index="4"]
+transform = Transform3D(-0.949349, 0, -0.314225, 0, 1, 0, 0.314225, 0, -0.949349, 0.669714, 0, -1.25948)
+
+[node name="CollisionShape3D3" parent="LevelGroup2/Course/CornerShape3/Corners" index="5"]
+transform = Transform3D(-0.949349, 0, -0.314225, 0, 1, 0, 0.314225, 0, -0.949349, 0.555744, 0, -1.6038)
+
 [node name="UShape2" parent="LevelGroup2/Course" instance=ExtResource("4_5baaq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, -39)
 
@@ -596,6 +602,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3793, 1.58801, -20.4209)
 [editable path="LevelGroup2/Course/Loop16"]
 [editable path="LevelGroup2/Course/Loop6"]
 [editable path="LevelGroup2/Course/Loop7"]
+[editable path="LevelGroup2/Course/CornerShape3"]
 [editable path="LevelGroup3/Course/RowShape4"]
 [editable path="LevelGroup3/Course/RowShape9"]
 [editable path="LevelGroup3/Course/RowShape5"]
