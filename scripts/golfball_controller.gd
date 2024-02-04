@@ -122,8 +122,7 @@ func enable(spawn_location, spawn_rotation):
 	collision_shape.disabled = false
 	rigidbody.set_collision_mask_value(2, false)
 	putts = 0
-	rigidbody.goto(spawn_location)
-	last_pos = spawn_location
+	goto(spawn_location)
 	locked = false
 	rigidbody.set_visible(true)
 	activate_camera()
