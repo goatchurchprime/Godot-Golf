@@ -15,15 +15,15 @@ uniform vec3 uv1_offset;
 
 const float WAVE_SPEED = 0.6;
 
-const float WAVE_STRENGTH_X = 4.0;
-const float WAVE_STRENGTH_Y = 1.0;
-const float WAVE_STRENGTH_Z = 3.0;
+const float WAVE_STRENGTH_X = 0.4;
+const float WAVE_STRENGTH_Y = 0.1;
+const float WAVE_STRENGTH_Z = 0.3;
 
 void vertex() {
-	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	VERTEX.x += VERTEX.y*WAVE_STRENGTH_X/10.0 * sin(TIME * WAVE_SPEED);
-	VERTEX.y += VERTEX.y*WAVE_STRENGTH_Y/10.0 * sin(TIME * WAVE_SPEED);
-	VERTEX.z += VERTEX.y*WAVE_STRENGTH_Z/10.0 * sin(TIME * WAVE_SPEED);
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+	VERTEX.x += VERTEX.y * WAVE_STRENGTH_X * sin(TIME * WAVE_SPEED);
+	VERTEX.y += VERTEX.y * WAVE_STRENGTH_Y * sin(TIME * WAVE_SPEED);
+	VERTEX.z += VERTEX.y * WAVE_STRENGTH_Z * sin(TIME * WAVE_SPEED);
 }
 
 void fragment() {
