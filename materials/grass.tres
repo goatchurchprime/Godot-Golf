@@ -18,6 +18,7 @@ height = 2000
 noise = SubResource("FastNoiseLite_pb2iq")
 
 [resource]
+render_priority = -1
 albedo_texture = ExtResource("1_j3xrh")
 normal_enabled = true
 normal_scale = -0.53
