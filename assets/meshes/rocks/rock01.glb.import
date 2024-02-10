@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://uaafbubjj4bw"
-path="res://.godot/imported/house2.glb-9812c5fd7b4e861bc787c84a0e7a149f.scn"
+uid="uid://wqi86totdt42"
+path="res://.godot/imported/rock01.glb-b31d265213795e2f94760e21e3247888.scn"
 
 [deps]
 
-source_file="res://assets/objects/shack/house2.glb"
-dest_files=["res://.godot/imported/house2.glb-9812c5fd7b4e861bc787c84a0e7a149f.scn"]
+source_file="res://assets/meshes/rocks/rock01.glb"
+dest_files=["res://.godot/imported/rock01.glb-b31d265213795e2f94760e21e3247888.scn"]
 
 [params]
 

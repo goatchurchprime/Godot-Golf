@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cre124dy0mgrj"]
 
-[ext_resource type="PackedScene" uid="uid://28qk5jngrucw" path="res://assets/objects/trees/tree05.glb" id="1_87guy"]
+[ext_resource type="PackedScene" uid="uid://28qk5jngrucw" path="res://assets/meshes/trees/tree05.glb" id="1_87guy"]
 [ext_resource type="Texture2D" uid="uid://cast8b4l07y8c" path="res://assets/materials/trees/tree05_summer.png" id="2_g0opb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6bld"]
@@ -16,6 +16,7 @@ metallic = 0.5
 clearcoat = 0.0
 ao_enabled = true
 ao_texture = ExtResource("2_g0opb")
+ao_texture_channel = 1
 
 [node name="tree052" instance=ExtResource("1_87guy")]
 

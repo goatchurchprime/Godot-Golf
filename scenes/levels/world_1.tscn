@@ -2,19 +2,19 @@
 
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="1_e5jj4"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_37u63"]
-[ext_resource type="PackedScene" uid="uid://cre124dy0mgrj" path="res://scenes/decorations/pine_tree.tscn" id="2_rtn13"]
+[ext_resource type="PackedScene" uid="uid://cre124dy0mgrj" path="res://scenes/decorations/grassy/pine_tree.tscn" id="2_rtn13"]
 [ext_resource type="PackedScene" uid="uid://djefnitf7kn8w" path="res://scenes/decorations/rocks/rock01.tscn" id="2_s15sc"]
 [ext_resource type="PackedScene" uid="uid://6c3sxht652g0" path="res://scenes/level_objects/u_shape.tscn" id="3_g4aht"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/level groups/hole.tscn" id="3_m0qga"]
-[ext_resource type="PackedScene" uid="uid://bir3vonmeqs5f" path="res://scenes/decorations/bush.tscn" id="3_vaslg"]
+[ext_resource type="PackedScene" uid="uid://bir3vonmeqs5f" path="res://scenes/decorations/grassy/bush.tscn" id="3_vaslg"]
 [ext_resource type="Texture2D" uid="uid://dfmr816ryig2i" path="res://assets/images/trees.png" id="3_wsa6n"]
-[ext_resource type="PackedScene" uid="uid://bjgl18c36f75l" path="res://scenes/decorations/grass.tscn" id="4_5lkyd"]
+[ext_resource type="PackedScene" uid="uid://bjgl18c36f75l" path="res://scenes/decorations/grassy/grass.tscn" id="4_5lkyd"]
 [ext_resource type="PackedScene" uid="uid://dkq7bwcakgjgq" path="res://scenes/level_objects/row_shape.tscn" id="4_7gpb3"]
 [ext_resource type="PackedScene" uid="uid://351ma0g0bcvy" path="res://scenes/level groups/spawn_location.tscn" id="4_nua1o"]
 [ext_resource type="PackedScene" uid="uid://c80lp440b60i1" path="res://scenes/level_objects/corner_shape.tscn" id="5_n7gmh"]
 [ext_resource type="PackedScene" uid="uid://co72gw4aw7535" path="res://scenes/level groups/out_of_bounds_area.tscn" id="5_tcjyp"]
 [ext_resource type="PackedScene" uid="uid://qwv5hbrafkgd" path="res://scenes/level_objects/loop.tscn" id="15_hahmw"]
-[ext_resource type="PackedScene" uid="uid://cr2sxlm13ehqs" path="res://scenes/decorations/shack.tscn" id="16_2x42p"]
+[ext_resource type="PackedScene" uid="uid://cr2sxlm13ehqs" path="res://scenes/decorations/buildings/shack.tscn" id="16_2x42p"]
 [ext_resource type="PackedScene" uid="uid://35nedlqrd4cm" path="res://scenes/level_objects/spinning_plus_shape.tscn" id="16_q7lea"]
 [ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="17_6rcyw"]
 
@@ -45,13 +45,13 @@ sky_material = SubResource("ProceduralSkyMaterial_k20td")
 
 [sub_resource type="Environment" id="Environment_wxkmx"]
 background_mode = 2
+background_energy_multiplier = 0.85
 sky = SubResource("Sky_ed0sw")
 ambient_light_sky_contribution = 0.8
 ssao_radius = 2.75
 ssao_intensity = 5.0
 ssao_detail = 0.0
 glow_levels/7 = 1.0
-adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_8u8xc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6e5g"]
@@ -188,6 +188,12 @@ transform = Transform3D(1.65, 0, 0, 0, 2.145, 0, 0, 0, 1.65, 25.561, 2.73387e-08
 [node name="PineTree27" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
 transform = Transform3D(1.1, 0, 0, 0, 1.43, 0, 0, 0, 1.1, 25.769, 2.73387e-08, 7.66424)
 
+[node name="PineTree32" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(1.1, 0, 0, 0, 1.43, 0, 0, 0, 1.1, 7.02724, 2.73387e-08, 14.7786)
+
+[node name="PineTree34" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
+transform = Transform3D(0.294573, 0, 1.05982, 0, 1.43, 0, -1.05982, 0, 0.294573, 18.1153, 2.73387e-08, 16.3298)
+
 [node name="PineTree28" parent="WorldDecor/Trees" instance=ExtResource("2_rtn13")]
 transform = Transform3D(1.1, 0, 0, 0, 1.43, 0, 0, 0, 1.1, 32.8598, 2.73387e-08, 7.84974)
 
@@ -240,6 +246,9 @@ transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 19.7457, 1.90735e-06, -
 
 [node name="Bush9" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
 transform = Transform3D(2.905, 0, 0, 0, 2.905, 0, 0, 0, 2.905, 3.43861, 0, -0.490503)
+
+[node name="Bush18" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
+transform = Transform3D(1.7539, 0, -2.31579, 0, 2.905, 0, 2.31579, 0, 1.7539, 5.52545, -0.0105541, 16.8293)
 
 [node name="Bush10" parent="WorldDecor/Bushes" instance=ExtResource("3_vaslg")]
 transform = Transform3D(-1.38603, 0, -0.68261, 0, 1.545, 0, 0.68261, 0, -1.38603, 3.46034, 0, -15.9007)
@@ -392,6 +401,12 @@ transform = Transform3D(-0.144424, 0, 1.12073, 0, 1.13, 0, -1.12073, 0, -0.14442
 
 [node name="Grass41" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
 transform = Transform3D(-0.116306, 0, 0.902537, 0, 0.91, 0, -0.902537, 0, -0.116306, 7.5169, 0, 21.9535)
+
+[node name="Grass72" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(-0.283096, 0, 2.19683, 0, 2.215, 0, -2.19683, 0, -0.283096, 9.22695, 0, 12.158)
+
+[node name="Grass73" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
+transform = Transform3D(0.639355, 0, 2.12072, 0, 2.215, 0, -2.12072, 0, 0.639355, 10.814, 0, 11.5766)
 
 [node name="Grass42" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
 transform = Transform3D(-0.138034, 0, 1.07114, 0, 1.08, 0, -1.07114, 0, -0.138034, 7.57869, 0, -19.2333)
@@ -649,4 +664,5 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -3)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.996195, 0.0240234, -0.0837795, 0, 0.961262, 0.275637, 0.0871557, -0.274588, 0.957604, 11.115, 1.5, 21.903)
+transform = Transform3D(0.996195, 0.0136342, -0.0860827, 0, 0.987688, 0.156434, 0.0871557, -0.155839, 0.98393, 10.985, 1.04, 21.903)
+current = true

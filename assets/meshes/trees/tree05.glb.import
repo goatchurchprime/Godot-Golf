@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://wqi86totdt42"
-path="res://.godot/imported/rock01.glb-e7e0f57ce5d6c29155a1ce56fc91502d.scn"
+uid="uid://28qk5jngrucw"
+path="res://.godot/imported/tree05.glb-c5dd85cd7ee3710fbe6d0fe3ec41a306.scn"
 
 [deps]
 
-source_file="res://assets/objects/rocks/rock01.glb"
-dest_files=["res://.godot/imported/rock01.glb-e7e0f57ce5d6c29155a1ce56fc91502d.scn"]
+source_file="res://assets/meshes/trees/tree05.glb"
+dest_files=["res://.godot/imported/tree05.glb-c5dd85cd7ee3710fbe6d0fe3ec41a306.scn"]
 
 [params]
 
@@ -24,11 +24,18 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=true
+animation/import=false
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"@MATERIAL:0": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/tree.tres"
+}
+}
+}
 gltf/naming_version=1
-gltf/embedded_image_handling=1
+gltf/embedded_image_handling=2

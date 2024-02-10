@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://qwv5hbrafkgd"]
 
 [ext_resource type="Material" uid="uid://cckdy23j2537n" path="res://materials/course_grass.tres" id="1_kld2e"]
-[ext_resource type="PackedScene" uid="uid://dg1qh8fefk6rh" path="res://assets/objects/ramp/ramp_new.glb" id="1_p7l82"]
+[ext_resource type="PackedScene" uid="uid://dg1qh8fefk6rh" path="res://assets/meshes/ramp/ramp_new.glb" id="1_p7l82"]
 [ext_resource type="PhysicsMaterial" uid="uid://bjet2vq1wxjo5" path="res://physics/border_phys_mat.tres" id="2_ab7vp"]
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="2_xywm1"]
 [ext_resource type="PhysicsMaterial" uid="uid://dw4nkl265yvxp" path="res://physics/grass_phys_mat.tres" id="4_nodkb"]

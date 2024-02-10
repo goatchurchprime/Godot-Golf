@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cl5qct6kdwh68"]
 
-[ext_resource type="PackedScene" uid="uid://bq8ff03feej4m" path="res://assets/objects/axe/axe.glb" id="1_v2udn"]
+[ext_resource type="PackedScene" uid="uid://bq8ff03feej4m" path="res://assets/meshes/axe/axe.glb" id="1_v2udn"]
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="2_pfr6s"]
 [ext_resource type="Material" uid="uid://bwvyr8a846v6" path="res://materials/rock.tres" id="3_4g6rt"]
 

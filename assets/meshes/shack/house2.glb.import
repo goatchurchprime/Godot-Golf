@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://28qk5jngrucw"
-path="res://.godot/imported/tree05.glb-0500dd224cd756e383d4b6c123ac2b8e.scn"
+uid="uid://uaafbubjj4bw"
+path="res://.godot/imported/house2.glb-454b40f2200a8b9bf808c5857a678153.scn"
 
 [deps]
 
-source_file="res://assets/objects/trees/tree05.glb"
-dest_files=["res://.godot/imported/tree05.glb-0500dd224cd756e383d4b6c123ac2b8e.scn"]
+source_file="res://assets/meshes/shack/house2.glb"
+dest_files=["res://.godot/imported/house2.glb-454b40f2200a8b9bf808c5857a678153.scn"]
 
 [params]
 
@@ -24,18 +24,11 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=false
+animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"@MATERIAL:0": {
-"use_external/enabled": true,
-"use_external/path": "res://materials/tree.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
-gltf/embedded_image_handling=2
+gltf/embedded_image_handling=1

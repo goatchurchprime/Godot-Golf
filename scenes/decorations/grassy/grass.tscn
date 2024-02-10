@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjgl18c36f75l"]
 
-[ext_resource type="PackedScene" uid="uid://ch1kldm27hwen" path="res://assets/objects/grass/grass03.glb" id="1_bd8iy"]
+[ext_resource type="PackedScene" uid="uid://ch1kldm27hwen" path="res://assets/meshes/grass/grass03.glb" id="1_bd8iy"]
 [ext_resource type="Material" uid="uid://bx25du4fnbgym" path="res://materials/grass_obj.tres" id="2_bdsie"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h2bd"]
