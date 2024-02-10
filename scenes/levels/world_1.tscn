@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d3imjxg2h3thk"]
+[gd_scene load_steps=34 format=3 uid="uid://d3imjxg2h3thk"]
 
 [ext_resource type="Material" uid="uid://bu2jkvkaok207" path="res://materials/grass.tres" id="1_e5jj4"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_37u63"]
@@ -17,6 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://cr2sxlm13ehqs" path="res://scenes/decorations/shack.tscn" id="16_2x42p"]
 [ext_resource type="PackedScene" uid="uid://35nedlqrd4cm" path="res://scenes/level_objects/spinning_plus_shape.tscn" id="16_q7lea"]
 [ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="17_6rcyw"]
+
+[sub_resource type="Gradient" id="Gradient_cyfnw"]
+offsets = PackedFloat32Array(0, 0.121212, 0.848485, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.109655, 0.115449, 0.134509, 1, 0.86, 0.834773, 0.7224, 1, 1, 0.9835, 0.91, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8u8xc"]
+gradient = SubResource("Gradient_cyfnw")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_j2dop"]
 noise_type = 0
@@ -39,9 +46,13 @@ sky_material = SubResource("ProceduralSkyMaterial_k20td")
 [sub_resource type="Environment" id="Environment_wxkmx"]
 background_mode = 2
 sky = SubResource("Sky_ed0sw")
-ssao_intensity = 10.0
+ambient_light_sky_contribution = 0.8
+ssao_radius = 2.75
+ssao_intensity = 5.0
 ssao_detail = 0.0
+glow_levels/7 = 1.0
 adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture1D_8u8xc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6e5g"]
 size = Vector3(80, 1, 80)
@@ -82,9 +93,10 @@ environment = SubResource("Environment_wxkmx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.476668, 0.879084, 0, -0.879084, -0.476668, 0, 0, 0)
+light_color = Color(1, 1, 0.898039, 1)
 light_energy = 2.0
 shadow_enabled = true
-shadow_blur = 0.2
+shadow_blur = 0.1
 directional_shadow_mode = 0
 
 [node name="Floor" type="StaticBody3D" parent="."]
@@ -304,7 +316,7 @@ transform = Transform3D(-0.861903, 0, 0.783804, 0, 1.165, 0, -0.783804, 0, -0.86
 transform = Transform3D(-0.688042, 0, 0.625698, 0, 0.93, 0, -0.625698, 0, -0.688042, 15.0751, 0, 22.1012)
 
 [node name="Grass71" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
-transform = Transform3D(-0.688042, 0, 0.625698, 0, 0.93, 0, -0.625698, 0, -0.688042, 10.8666, 0, 19.6543)
+transform = Transform3D(-0.688042, 0, 0.625698, 0, 0.93, 0, -0.625698, 0, -0.688042, 8.64419, 0, 19.6543)
 
 [node name="Grass17" parent="WorldDecor/Grass" instance=ExtResource("4_5lkyd")]
 transform = Transform3D(-0.836009, 0, 0.760256, 0, 1.13, 0, -0.760256, 0, -0.836009, 18.1899, 0, -8.81257)
@@ -499,7 +511,7 @@ transform = Transform3D(1.08098, 0, -0.905312, 0, 1.41, 0, 0.905312, 0, 1.08098,
 transform = Transform3D(0.496383, 0, -0.868104, 0, 1, 0, 0.868104, 0, 0.496383, -27.7004, 5.20068, -0.364479)
 
 [node name="LevelGroup1" parent="." instance=ExtResource("2_37u63")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.0685, 0, 19.722)
+transform = Transform3D(0.995292, 0, -0.0969228, 0, 1, 0, 0.0969228, 0, 0.995292, 11.2036, 0, 20.7852)
 
 [node name="Hole" parent="LevelGroup1" instance=ExtResource("3_m0qga")]
 transform = Transform3D(-0.666598, 0, -0.745418, 0, 1, 0, 0.745418, 0, -0.666598, 3, 0, -9)
@@ -635,3 +647,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 
 
 [node name="UShape2" parent="LevelGroup4/Course" instance=ExtResource("3_g4aht")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -3)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.996195, 0.0240234, -0.0837795, 0, 0.961262, 0.275637, 0.0871557, -0.274588, 0.957604, 11.115, 1.5, 21.903)
