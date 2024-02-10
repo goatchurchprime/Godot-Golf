@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d1s048mumxyuh"]
+[gd_scene load_steps=36 format=3 uid="uid://d1s048mumxyuh"]
 
 [ext_resource type="Texture2D" uid="uid://blh0slgh11j7f" path="res://assets/materials/sand/sand.png" id="1_r0w8n"]
 [ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="2_2ncwk"]
@@ -21,6 +21,13 @@
 [ext_resource type="Script" path="res://scripts/rotate_node.gd" id="19_pjyso"]
 [ext_resource type="PackedScene" uid="uid://bd5fsppet6yq4" path="res://scenes/decorations/dartboard.tscn" id="19_xiqia"]
 
+[sub_resource type="Gradient" id="Gradient_jge0s"]
+offsets = PackedFloat32Array(0, 0.0468227, 0.849498)
+colors = PackedColorArray(0, 0, 0, 1, 0.034105, 0.0366628, 0.00395185, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wkyx3"]
+gradient = SubResource("Gradient_jge0s")
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qqnfk"]
 sky_top_color = Color(0.207843, 0.454902, 0.729412, 1)
 sky_horizon_color = Color(0.77451, 0.80098, 0.829412, 1)
@@ -33,8 +40,12 @@ sky_material = SubResource("ProceduralSkyMaterial_qqnfk")
 [sub_resource type="Environment" id="Environment_vltua"]
 background_mode = 2
 sky = SubResource("Sky_e2ypb")
-ambient_light_sky_contribution = 0.26
+ambient_light_sky_contribution = 0.3
 tonemap_mode = 2
+tonemap_exposure = 0.9
+tonemap_white = 2.85
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture1D_wkyx3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkkv4"]
 albedo_color = Color(0.819608, 0.654902, 0.458824, 1)
