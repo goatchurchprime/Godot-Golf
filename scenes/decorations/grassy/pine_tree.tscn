@@ -1,22 +1,82 @@
-[gd_scene load_steps=5 format=3 uid="uid://cre124dy0mgrj"]
+[gd_scene load_steps=6 format=3 uid="uid://cre124dy0mgrj"]
 
 [ext_resource type="PackedScene" uid="uid://28qk5jngrucw" path="res://assets/meshes/trees/tree05.glb" id="1_87guy"]
 [ext_resource type="Texture2D" uid="uid://cast8b4l07y8c" path="res://assets/materials/trees/tree05_summer.png" id="2_g0opb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6bld"]
 albedo_texture = ExtResource("2_g0opb")
+metallic = 0.3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okc84"]
-render_priority = 1
-transparency = 2
-alpha_scissor_threshold = 0.001
-alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("2_g0opb")
-metallic = 0.5
-clearcoat = 0.0
-ao_enabled = true
-ao_texture = ExtResource("2_g0opb")
-ao_texture_channel = 1
+[sub_resource type="Shader" id="Shader_144ke"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float alpha_scissor_threshold;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+const float WAVE_SPEED = 0.6;
+const float WAVE_STRENGTH_X = 0.1;
+const float WAVE_STRENGTH_Y = 0.1;
+const float WAVE_STRENGTH_Z = 0.1;
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	if (VERTEX.y > 0.0){
+		VERTEX.x += (VERTEX.y) * WAVE_STRENGTH_X * sin(TIME * WAVE_SPEED);
+		VERTEX.y += (VERTEX.y) * WAVE_STRENGTH_Y * sin(TIME * WAVE_SPEED);
+		VERTEX.z += (VERTEX.y) * WAVE_STRENGTH_Z * cos(TIME * WAVE_SPEED);
+	}
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec2 base_uv2 = UV2;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	ALPHA *= albedo.a * albedo_tex.a;
+	ALPHA_SCISSOR_THRESHOLD = alpha_scissor_threshold;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5wo5v"]
+render_priority = 0
+shader = SubResource("Shader_144ke")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/alpha_scissor_threshold = 0.001
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.5
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("2_g0opb")
 
 [node name="tree052" instance=ExtResource("1_87guy")]
 
@@ -24,4 +84,4 @@ ao_texture_channel = 1
 surface_material_override/0 = SubResource("StandardMaterial3D_s6bld")
 
 [node name="tree05_top" parent="tree05" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_okc84")
+surface_material_override/0 = SubResource("ShaderMaterial_5wo5v")
