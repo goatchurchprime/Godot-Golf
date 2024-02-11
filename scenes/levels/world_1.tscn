@@ -655,7 +655,7 @@ transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.999998, 0, -1.90735e-06)
 
 [node name="SpinningPlusShape" parent="LevelGroup4/Course" instance=ExtResource("16_q7lea")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.99509, 0, 0.0834045)
-rotation_amt = 0.3
+seconds_per_rotation = 15
 
 [node name="CornerShape" parent="LevelGroup4/Course" instance=ExtResource("5_n7gmh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.006, 0, 0)
