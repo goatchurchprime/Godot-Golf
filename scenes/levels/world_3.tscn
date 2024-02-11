@@ -81,7 +81,7 @@ material = ExtResource("17_xrs6o")
 size = Vector3(3, 0.02, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1o2gk"]
-size = Vector3(22.9387, 17.6775, 61.2875)
+size = Vector3(17.2438, 17.6775, 61.2875)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2x07w"]
 material = ExtResource("17_xrs6o")
@@ -463,7 +463,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.9999
 [node name="OutOfBoundsArea" parent="LevelGroup3" instance=ExtResource("6_43mnn")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup3/OutOfBoundsArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54505, 8.33875, 21.9997)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302418, 8.33875, 21.9997)
 shape = SubResource("BoxShape3D_1o2gk")
 
 [node name="SpawnLocation" parent="LevelGroup3" instance=ExtResource("3_cve25")]
@@ -485,38 +485,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00807, 5.76179)
 [node name="CornerShape" parent="LevelGroup3/Course" instance=ExtResource("10_g6ki5")]
 transform = Transform3D(8.74228e-08, 0, 1, 0, 1, 0, -1, 0, 8.74228e-08, 0, 0, 11.53)
 
-[node name="RowShape4" parent="LevelGroup3/Course" instance=ExtResource("5_0dbu2")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, 11.53)
-
-[node name="StaticBody3D3" parent="LevelGroup3/Course/RowShape4/Corners" index="1"]
-transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 1.5, -1, 0)
-
 [node name="CornerShape2" parent="LevelGroup3/Course" instance=ExtResource("10_g6ki5")]
-transform = Transform3D(1, 0, -1.31134e-07, 0, 1, 0, 1.31134e-07, 0, 1, -6, 0, 11.53)
+transform = Transform3D(1, 0, -1.31134e-07, 0, 1, 0, 1.31134e-07, 0, 1, -3, 0, 11.53)
 
 [node name="CornerShape3" parent="LevelGroup3/Course" instance=ExtResource("10_g6ki5")]
-transform = Transform3D(-1.74846e-07, 0, -1, 0, 1, 0, 1, 0, -1.74846e-07, -6, 0, 5.53)
+transform = Transform3D(-1.74846e-07, 0, -1, 0, 1, 0, 1, 0, -1.74846e-07, -3, 0, 5.53)
 
 [node name="CornerShape4" parent="LevelGroup3/Course" instance=ExtResource("10_g6ki5")]
 transform = Transform3D(-1, 0, 2.18557e-07, 0, 1, 0, -2.18557e-07, 0, -1, 2.99999, 0, 5.53)
 
-[node name="RowShape9" parent="LevelGroup3/Course" instance=ExtResource("5_0dbu2")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 0, 8.53)
-
-[node name="StaticBody3D" parent="LevelGroup3/Course/RowShape9/Corners" index="0"]
-transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, -1.5, -1, 0)
-
-[node name="RowShape5" parent="LevelGroup3/Course" instance=ExtResource("5_0dbu2")]
+[node name="RowShape4" parent="LevelGroup3/Course" instance=ExtResource("5_0dbu2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8.53)
-
-[node name="StaticBody3D" parent="LevelGroup3/Course/RowShape5/Corners" index="0"]
-transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, -1.5, -1, 0)
-
-[node name="RowShape6" parent="LevelGroup3/Course" instance=ExtResource("5_0dbu2")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, 5.53)
-
-[node name="StaticBody3D" parent="LevelGroup3/Course/RowShape6/Corners" index="0"]
-transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, -1.5, -1, 0)
 
 [node name="RowShape7" parent="LevelGroup3/Course" instance=ExtResource("5_0dbu2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 5.53)
@@ -791,7 +770,3 @@ spot_angle_attenuation = 0.615572
 [editable path="LevelGroup2/Course/Loop6"]
 [editable path="LevelGroup2/Course/Loop7"]
 [editable path="LevelGroup2/Course/CornerShape3"]
-[editable path="LevelGroup3/Course/RowShape4"]
-[editable path="LevelGroup3/Course/RowShape9"]
-[editable path="LevelGroup3/Course/RowShape5"]
-[editable path="LevelGroup3/Course/RowShape6"]
