@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cuievupfktjng"]
+[gd_scene load_steps=63 format=3 uid="uid://cuievupfktjng"]
 
 [ext_resource type="Texture2D" uid="uid://sunxi33cq2b3" path="res://assets/materials/sandstone/sandstone.png" id="1_pbdml"]
 [ext_resource type="Material" uid="uid://hd0gjure67cf" path="res://materials/sandstone_wall.tres" id="2_15kuf"]
@@ -115,9 +115,23 @@ size = Vector3(1, 1, 11)
 material = SubResource("StandardMaterial3D_ljef7")
 size = Vector3(1, 1, 10)
 
-[sub_resource type="BoxMesh" id="BoxMesh_nh7pu"]
+[sub_resource type="BoxMesh" id="BoxMesh_j4813"]
 material = SubResource("StandardMaterial3D_ljef7")
-size = Vector3(1, 1, 9)
+size = Vector3(1, 1, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_53eev"]
+material = SubResource("StandardMaterial3D_ljef7")
+size = Vector3(1, 0.5, 2.08)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rv0bj"]
+material = SubResource("StandardMaterial3D_ljef7")
+size = Vector3(1, 0.5, 1.515)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trlri"]
+material = SubResource("StandardMaterial3D_ljef7")
+
+[sub_resource type="BoxMesh" id="BoxMesh_t275i"]
+material = SubResource("StandardMaterial3D_ljef7")
 
 [sub_resource type="BoxMesh" id="BoxMesh_2i82y"]
 material = SubResource("StandardMaterial3D_ljef7")
@@ -187,6 +201,10 @@ size = Vector3(1, 1, 3)
 size = Vector3(1, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m62m2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nh7pu"]
+material = SubResource("StandardMaterial3D_ljef7")
+size = Vector3(1, 1, 9)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ug8xd"]
 material = ExtResource("2_15kuf")
@@ -460,8 +478,28 @@ mesh = SubResource("BoxMesh_osoy2")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Side3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, 0)
-mesh = SubResource("BoxMesh_nh7pu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, -1.5405)
+mesh = SubResource("BoxMesh_j4813")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Side3"]
+transform = Transform3D(0.984028, 0.175055, 0.0323149, -0.178012, 0.967679, 0.178633, -2.81126e-11, -0.181532, 0.983385, 5, 4.3, 2.12454)
+mesh = SubResource("BoxMesh_53eev")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Side3"]
+transform = Transform3D(1, -2.72158e-08, -9.5063e-09, 2.72158e-08, 0.782521, 0.622624, -9.5063e-09, -0.622624, 0.782521, 5.02191, 3.81551, 1.36627)
+mesh = SubResource("BoxMesh_rv0bj")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Side3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00456, 3.99999, 4.01126)
+mesh = SubResource("BoxMesh_trlri")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="Side3"]
+transform = Transform3D(0.886163, -1.5967e-08, 0.463373, -0.169262, 0.930897, 0.3237, -0.431353, -0.365283, 0.824926, 5.00456, 3.99999, 3.41126)
+mesh = SubResource("BoxMesh_t275i")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Side3"]
