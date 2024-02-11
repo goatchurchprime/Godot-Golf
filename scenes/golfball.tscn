@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://w6qkohd2ejme"]
+[gd_scene load_steps=23 format=3 uid="uid://w6qkohd2ejme"]
 
 [ext_resource type="Script" path="res://scripts/follow_node.gd" id="2_fbk7p"]
 [ext_resource type="AudioStream" uid="uid://dve11tyh5fanq" path="res://assets/audio/sound/golfball_hit.mp3" id="4_vvdv4"]
 [ext_resource type="Script" path="res://scripts/golfball_controller.gd" id="4_x2185"]
 [ext_resource type="Script" path="res://scripts/golfball_rigidbody.gd" id="5_dceiy"]
 [ext_resource type="Texture2D" uid="uid://b78gsq388qay8" path="res://assets/images/golfball_normals.png" id="5_g3rcn"]
+[ext_resource type="Shader" path="res://materials/strength_arrow.gdshader" id="5_n36et"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="5_rnkab"]
 [ext_resource type="Script" path="res://scripts/strength_arrow.gd" id="6_yi7yd"]
 
@@ -42,11 +43,15 @@ height = 0.1
 radial_segments = 8
 rings = 8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_254s3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_70d8i"]
+render_priority = 0
+shader = ExtResource("5_n36et")
+shader_parameter/max_hit_strength = 15
+shader_parameter/hit_strength = 5.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_j5idn"]
-material = SubResource("StandardMaterial3D_254s3")
-size = Vector3(0.01, 0.02, 1)
+material = SubResource("ShaderMaterial_70d8i")
+size = Vector3(0.01, 0.02, 0.01)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4yvvj"]
 friction = 0.01
@@ -110,10 +115,10 @@ stream = ExtResource("4_vvdv4")
 doppler_tracking = 2
 
 [node name="StrengthArrow" type="Node3D" parent="FollowPosition"]
-visible = false
 script = ExtResource("6_yi7yd")
 
 [node name="ArrowMesh" type="MeshInstance3D" parent="FollowPosition/StrengthArrow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
 mesh = SubResource("BoxMesh_j5idn")
 
 [node name="Golfball" type="RigidBody3D" parent="."]

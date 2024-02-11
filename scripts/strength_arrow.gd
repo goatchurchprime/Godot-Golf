@@ -4,16 +4,16 @@ class_name StrengthArrow extends Node3D
 @onready var spring_arm = $"../../CameraPosition/SpringArm3D"
 @onready var mesh = $ArrowMesh
 
+func _ready():
+	mesh.get_active_material(0).set_shader_parameter("max_hit_strength", ball.MAX_STRENGTH)
 
 func _process(delta):
 	if ball.aiming:
 		show()
 		rotate_to_camera()
-		change_hit_strength()
-		change_color()
+		update_hit_strength()
 	else:
 		hide()
-
 
 func rotate_to_camera():
 	var tmp_rotation = spring_arm.get_rotation_basis()
@@ -22,12 +22,5 @@ func rotate_to_camera():
 		look_at(tmp_rotation + tmp_position) 
 		rotation.x = 0 
 
-
-func change_hit_strength():
-	mesh.scale.z = ball.hit_strength/10
-	mesh.position.z = -mesh.scale.z/2 + 0.1
-
-
-func change_color():
-	var color = clamp(int(abs(ball.hit_strength*25)),0,255)
-	mesh.get_active_material(0).albedo_color = Color8(color,0,0) 
+func update_hit_strength():
+	mesh.get_active_material(0).set_shader_parameter("hit_strength", ball.hit_strength)
