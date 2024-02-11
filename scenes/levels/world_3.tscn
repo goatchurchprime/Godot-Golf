@@ -250,10 +250,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83266, 0, 0)
 mesh = SubResource("BoxMesh_r1ewg")
 
 [node name="MeshInstance3D11" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83266, 1.07371, -19.0163)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83266, 2.0915, -21.835)
 mesh = SubResource("BoxMesh_r1ewg")
 
 [node name="MeshInstance3D10" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 1.83266, 1.6102, -19.0974)
+mesh = SubResource("BoxMesh_r1ewg")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
 transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 1.83266, 0.592418, -16.2786)
 mesh = SubResource("BoxMesh_r1ewg")
 
