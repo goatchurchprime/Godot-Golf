@@ -43,7 +43,7 @@ material = SubResource("StandardMaterial3D_t38df")
 size = Vector2(0.25, 0.25)
 
 [node name="FireParticle" type="GPUParticles3D"]
-amount = 128
+amount = 64
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_ddddg")
 draw_pass_1 = SubResource("QuadMesh_ywytu")
