@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cnpye6smp24u5"]
 
 [ext_resource type="Texture2D" uid="uid://d2j3414t5qt5u" path="res://assets/materials/fire/fire.png" id="1_2cu4d"]
-[ext_resource type="Script" path="res://scripts/FireParticle.gd" id="2_doldo"]
+[ext_resource type="Script" path="res://scripts/fire_particle.gd" id="2_doldo"]
 
 [sub_resource type="Curve" id="Curve_hefkf"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.760563, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.17647, 0.0, 0, 0]
