@@ -19,6 +19,7 @@ var last_pos : Transform3D
 var locked = true
 
 @onready var rigidbody = $Golfball
+@onready var mat = $Golfball/MeshInstance3D.get_active_material(0)
 @onready var collision_shape = $Golfball/CollisionShape3D
 @onready var move_allowed_timer = $MoveAllowedTimer
 
@@ -86,6 +87,9 @@ func putt():
 func emit_particles():
 	particle_emitter.rotation.x = spring_arm.get_rotation_basis().x
 	particle_emitter.restart()
+
+func set_color(color):
+	mat.albedo_color = color
 
 func play_putt_sound():
 	putt_audio_player.volume_db = clamp(MAX_STRENGTH*4 - hit_strength*10, -30, 0)
