@@ -5,6 +5,7 @@ var mat : StandardMaterial3D
 
 func _ready():
 	var parent = get_parent_node_3d()
+	
 	for child in parent.get_children():
 		if child is MeshInstance3D:
 			mat = child.get_active_material(0)

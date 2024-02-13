@@ -61,11 +61,13 @@ bounce = 0.25
 radius = 0.044
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rj2c3"]
+resource_local_to_scene = true
 normal_enabled = true
 normal_scale = -2.0
 normal_texture = ExtResource("5_g3rcn")
 
 [sub_resource type="SphereMesh" id="SphereMesh_f4cbf"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_rj2c3")
 radius = 0.044
 height = 0.088
