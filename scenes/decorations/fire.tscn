@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bv7npcc56ram"]
 
-[ext_resource type="Script" path="res://scripts/fire_applier.gd" id="1_baigf"]
+[ext_resource type="Script" path="res://scripts/fire.gd" id="1_baigf"]
 [ext_resource type="PackedScene" uid="uid://cnpye6smp24u5" path="res://scenes/FireParticle.tscn" id="2_tbwyg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rdei0"]

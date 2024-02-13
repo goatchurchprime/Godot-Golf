@@ -1,4 +1,4 @@
-class_name FireApplier extends Area3D
+class_name Fire extends Area3D
 
 @export var fire_scene : PackedScene
 
