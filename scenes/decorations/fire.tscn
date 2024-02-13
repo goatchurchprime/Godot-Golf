@@ -13,6 +13,7 @@ script = ExtResource("1_baigf")
 fire_scene = ExtResource("2_tbwyg")
 
 [node name="FireParticle" parent="." instance=ExtResource("2_tbwyg")]
+visibility_aabb = AABB(-1.5, -1, -1.5, 3, 3, 3)
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
