@@ -56,10 +56,14 @@ layout_mode = 2
 max_value = 255.0
 value = 255.0
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer"]
+[node name="ColorPreview" type="ColorRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Apply" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Apply"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Red" to="." method="_on_red_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Green" to="." method="_on_green_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Blue" to="." method="_on_blue_value_changed"]
