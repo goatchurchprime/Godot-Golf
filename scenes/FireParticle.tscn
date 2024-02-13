@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cnpye6smp24u5"]
 
 [ext_resource type="Texture2D" uid="uid://d2j3414t5qt5u" path="res://assets/materials/fire/fire.png" id="1_2cu4d"]
-[ext_resource type="Script" path="res://scripts/fire_particle.gd" id="2_doldo"]
+[ext_resource type="Script" path="res://scripts/fire_particle.gd" id="2_vqyjy"]
 
 [sub_resource type="Curve" id="Curve_hefkf"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.760563, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.17647, 0.0, 0, 0]
@@ -11,8 +11,8 @@ point_count = 3
 curve = SubResource("Curve_hefkf")
 
 [sub_resource type="Gradient" id="Gradient_5j7dk"]
-offsets = PackedFloat32Array(0, 0.12973, 0.832432)
-colors = PackedColorArray(0.241091, 0.0903122, 0, 1, 0.526976, 0.230616, 0, 1, 1, 0, 0, 1)
+offsets = PackedFloat32Array(0.0648649, 0.767568, 0.87027)
+colors = PackedColorArray(0.526976, 0.230616, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_kpc7l"]
 gradient = SubResource("Gradient_5j7dk")
@@ -43,18 +43,18 @@ material = SubResource("StandardMaterial3D_t38df")
 size = Vector2(0.25, 0.25)
 
 [node name="FireParticle" type="GPUParticles3D"]
-amount = 64
+amount = 128
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_ddddg")
 draw_pass_1 = SubResource("QuadMesh_ywytu")
-script = ExtResource("2_doldo")
+script = ExtResource("2_vqyjy")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.776471, 0, 0.0196078, 1)
 light_energy = 15.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 8.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
