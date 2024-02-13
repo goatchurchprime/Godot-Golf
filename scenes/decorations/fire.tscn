@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv7npcc56ram"]
+
+[ext_resource type="Script" path="res://scripts/fire.gd" id="1_baigf"]
+[ext_resource type="PackedScene" uid="uid://cnpye6smp24u5" path="res://scenes/FireParticle.tscn" id="2_tbwyg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rdei0"]
+size = Vector3(3, 3, 3)
+
+[node name="Fire" type="Area3D"]
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_baigf")
+fire_scene = ExtResource("2_tbwyg")
+
+[node name="FireParticle" parent="." instance=ExtResource("2_tbwyg")]
+visibility_aabb = AABB(-1.5, -1, -1.5, 3, 3, 3)
+script = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rdei0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
