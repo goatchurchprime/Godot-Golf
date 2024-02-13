@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://d1s048mumxyuh"]
+[gd_scene load_steps=52 format=3 uid="uid://d1s048mumxyuh"]
 
 [ext_resource type="Texture2D" uid="uid://blh0slgh11j7f" path="res://assets/materials/sand/sand.png" id="1_r0w8n"]
 [ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="2_2ncwk"]
@@ -17,8 +17,10 @@
 [ext_resource type="PhysicsMaterial" uid="uid://bjet2vq1wxjo5" path="res://physics/border_phys_mat.tres" id="14_4gxrc"]
 [ext_resource type="PackedScene" uid="uid://cuievupfktjng" path="res://scenes/decorations/sand/pyramid.tscn" id="14_p0s4p"]
 [ext_resource type="Material" uid="uid://capwlvd6rcg5s" path="res://materials/wood.tres" id="15_mx2a7"]
+[ext_resource type="PackedScene" uid="uid://bv7npcc56ram" path="res://scenes/decorations/fire.tscn" id="15_qxalo"]
 [ext_resource type="PackedScene" uid="uid://ddoopcmumydki" path="res://scenes/decorations/sand/sandstone_wall_passage.tscn" id="15_xy7lt"]
 [ext_resource type="PackedScene" uid="uid://bjkudogg2s2m4" path="res://scenes/decorations/torch.tscn" id="16_ypp7m"]
+[ext_resource type="PackedScene" uid="uid://dyhm42mnovvd5" path="res://scenes/decorations/sand/sandstone_wall_hole.tscn" id="17_m76vy"]
 [ext_resource type="Material" uid="uid://cckdy23j2537n" path="res://materials/course_grass.tres" id="17_xrs6o"]
 [ext_resource type="PackedScene" uid="uid://bd5fsppet6yq4" path="res://scenes/decorations/dartboard.tscn" id="19_xiqia"]
 
@@ -69,14 +71,14 @@ size = Vector3(80, 1, 80)
 [sub_resource type="BoxShape3D" id="BoxShape3D_74c8q"]
 size = Vector3(30, 2.6991, 30)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6731j"]
-size = Vector3(18.0759, 9.70023, 47.8904)
-
 [sub_resource type="BoxMesh" id="BoxMesh_r1ewg"]
 size = Vector3(3, 1, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5wdkm"]
 size = Vector3(6, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6731j"]
+size = Vector3(18.0759, 9.70023, 47.8904)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1o2gk"]
 size = Vector3(17.2438, 17.6775, 61.2875)
@@ -159,6 +161,129 @@ shape = SubResource("BoxShape3D_1exik")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.192, 0.0995483, -1.373)
 shape = SubResource("BoxShape3D_74c8q")
 
+[node name="LevelGroup2" parent="." instance=ExtResource("2_gsy5m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.316, 0.842619, 29.9352)
+
+[node name="Hole" parent="LevelGroup2" instance=ExtResource("4_5hynr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0251617, -28)
+
+[node name="SpawnLocation" parent="LevelGroup2" instance=ExtResource("3_cve25")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 0)
+
+[node name="OutOfBoundsArea" parent="LevelGroup2" instance=ExtResource("6_43mnn")]
+
+[node name="Course" type="Node3D" parent="LevelGroup2"]
+
+[node name="RowShape" parent="LevelGroup2/Course" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
+
+[node name="CornerShape" parent="LevelGroup2/Course" instance=ExtResource("10_g6ki5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 1, 0)
+
+[node name="CornerShape2" parent="LevelGroup2/Course" instance=ExtResource("10_g6ki5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+
+[node name="BoosterPad" parent="LevelGroup2/Course" instance=ExtResource("6_ruk64")]
+transform = Transform3D(-1, 1.51808e-08, -8.60946e-08, 0, 0.984808, 0.173648, 8.74228e-08, 0.173648, -0.984808, -3, 1.25131, -2.89614)
+boost_strength = 1.0
+
+[node name="LeftRightSplit" parent="LevelGroup2/Course" instance=ExtResource("9_jcr6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, -22)
+
+[node name="UShape" parent="LevelGroup2/Course" instance=ExtResource("4_5baaq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, -0.8, -22)
+
+[node name="UShape2" parent="LevelGroup2/Course" instance=ExtResource("4_5baaq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, -0.8, -22)
+
+[node name="RowShape2" parent="LevelGroup2/Course" instance=ExtResource("5_0dbu2")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.413772, -24.8707)
+
+[node name="UShape3" parent="LevelGroup2/Course" instance=ExtResource("4_5baaq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.0266016, -27.816)
+
+[node name="SandstoneWall" parent="LevelGroup2/Course" instance=ExtResource("17_m76vy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12894, 0.239094, -5.80023)
+
+[node name="SandstoneWall3" parent="LevelGroup2/Course" instance=ExtResource("17_m76vy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12894, 0.239094, -10.8002)
+
+[node name="BoosterPad2" parent="LevelGroup2/Course" instance=ExtResource("6_ruk64")]
+transform = Transform3D(-1, 1.51808e-08, -8.60946e-08, 0, 0.984808, 0.173648, 8.74228e-08, 0.173648, -0.984808, 3, 1.25131, -2.89614)
+boost_strength = 1.0
+
+[node name="SandstoneWall2" parent="LevelGroup2/Course" instance=ExtResource("17_m76vy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87106, 0.239094, -5.80023)
+
+[node name="SandstoneWall4" parent="LevelGroup2/Course" instance=ExtResource("17_m76vy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87106, 0.239094, -10.8002)
+
+[node name="CourseDecor" type="Node3D" parent="LevelGroup2"]
+
+[node name="Torch" parent="LevelGroup2/CourseDecor" instance=ExtResource("16_ypp7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24887, 1.43909, -9.64305)
+
+[node name="Torch2" parent="LevelGroup2/CourseDecor" instance=ExtResource("16_ypp7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00215, 1.43909, -9.40034)
+
+[node name="FireApplier" parent="LevelGroup2/CourseDecor" instance=ExtResource("15_qxalo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12063, 1.29196, -10.781)
+
+[node name="FireApplier2" parent="LevelGroup2/CourseDecor" instance=ExtResource("15_qxalo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89498, 1.25111, -10.781)
+
+[node name="BlockOut" type="Node3D" parent="LevelGroup2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83039, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83266, 0, 0)
+mesh = SubResource("BoxMesh_r1ewg")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83266, 2.0915, -21.835)
+mesh = SubResource("BoxMesh_r1ewg")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 1.83266, 1.6102, -19.0974)
+mesh = SubResource("BoxMesh_r1ewg")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 1.83266, 0.592418, -16.2786)
+mesh = SubResource("BoxMesh_r1ewg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -0.343529, 0.456803, -3)
+mesh = SubResource("BoxMesh_r1ewg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 3.65647, 0.456803, -3)
+mesh = SubResource("BoxMesh_r1ewg")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -0.343529, 0.456803, -6)
+mesh = SubResource("BoxMesh_r1ewg")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 3.65647, 0.456803, -6)
+mesh = SubResource("BoxMesh_r1ewg")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -0.343529, 0.456803, -9)
+mesh = SubResource("BoxMesh_r1ewg")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 3.65647, 0.456803, -9)
+mesh = SubResource("BoxMesh_r1ewg")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 3.65647, 0.456803, -9)
+mesh = SubResource("BoxMesh_r1ewg")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.283654, -13.9)
+mesh = SubResource("BoxMesh_5wdkm")
+
 [node name="LevelGroup1" parent="." instance=ExtResource("2_gsy5m")]
 transform = Transform3D(0.995448, 0, 0.0953072, 0, 1, 0, -0.0953072, 0, 0.995448, -21.3769, 0, -26.2085)
 
@@ -231,67 +356,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0, 
 
 [node name="LeftRightSplit2" parent="LevelGroup1/Course" instance=ExtResource("9_jcr6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
-
-[node name="LevelGroup2" parent="." instance=ExtResource("2_gsy5m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2759, 0, 29.9352)
-
-[node name="Hole" parent="LevelGroup2" instance=ExtResource("4_5hynr")]
-
-[node name="SpawnLocation" parent="LevelGroup2" instance=ExtResource("3_cve25")]
-
-[node name="OutOfBoundsArea" parent="LevelGroup2" instance=ExtResource("6_43mnn")]
-
-[node name="Course" type="Node3D" parent="LevelGroup2"]
-
-[node name="BlockOut" type="Node3D" parent="LevelGroup2"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83266, 0, 0)
-mesh = SubResource("BoxMesh_r1ewg")
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83266, 2.0915, -21.835)
-mesh = SubResource("BoxMesh_r1ewg")
-
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 1.83266, 1.6102, -19.0974)
-mesh = SubResource("BoxMesh_r1ewg")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 1.83266, 0.592418, -16.2786)
-mesh = SubResource("BoxMesh_r1ewg")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -0.343529, 0.456803, -3)
-mesh = SubResource("BoxMesh_r1ewg")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 3.65647, 0.456803, -3)
-mesh = SubResource("BoxMesh_r1ewg")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -0.343529, 0.456803, -6)
-mesh = SubResource("BoxMesh_r1ewg")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 3.65647, 0.456803, -6)
-mesh = SubResource("BoxMesh_r1ewg")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -0.343529, 0.456803, -9)
-mesh = SubResource("BoxMesh_r1ewg")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 3.65647, 0.456803, -9)
-mesh = SubResource("BoxMesh_r1ewg")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 3.65647, 0.456803, -9)
-mesh = SubResource("BoxMesh_r1ewg")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="LevelGroup2/BlockOut"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.283654, -13.9)
-mesh = SubResource("BoxMesh_5wdkm")
 
 [node name="LevelGroup3" parent="." instance=ExtResource("2_gsy5m")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -31, 0, 25)
