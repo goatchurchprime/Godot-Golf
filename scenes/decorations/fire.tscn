@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_rdei0"]
 size = Vector3(3, 3, 3)
 
-[node name="FireApplier" type="Area3D"]
+[node name="Fire" type="Area3D"]
 collision_layer = 15
 collision_mask = 15
 script = ExtResource("1_baigf")
