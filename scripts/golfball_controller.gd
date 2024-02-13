@@ -88,6 +88,7 @@ func emit_particles():
 	particle_emitter.rotation.x = spring_arm.get_rotation_basis().x
 	particle_emitter.restart()
 
+@rpc("authority", "call_local")
 func set_color(color):
 	mat.albedo_color = color
 
