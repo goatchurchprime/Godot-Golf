@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdhia4vi4ovi5"]
+[gd_scene load_steps=4 format=3 uid="uid://bdhia4vi4ovi5"]
 
+[ext_resource type="Theme" uid="uid://cui388khn2ihv" path="res://themes/menu_theme.tres" id="1_8tyrw"]
 [ext_resource type="Script" path="res://scripts/gui/character_customization.gd" id="1_akfwf"]
 [ext_resource type="Texture2D" uid="uid://ct83ebbgkimdl" path="res://assets/materials/customization_face/face.png" id="2_awxvc"]
 
@@ -14,6 +15,7 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+theme = ExtResource("1_8tyrw")
 script = ExtResource("1_akfwf")
 
 [node name="CharacterCustomizeButton" type="TextureButton" parent="."]
@@ -24,10 +26,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -99.0
-offset_top = -99.0
-offset_right = -6.0
-offset_bottom = -6.0
+offset_left = -61.0
+offset_top = -61.0
+offset_right = -14.0
+offset_bottom = -14.0
 grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("2_awxvc")
@@ -38,10 +40,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 33.0
-offset_top = 163.0
-offset_right = -33.0
-offset_bottom = -163.0
+offset_left = 102.0
+offset_top = 171.0
+offset_bottom = -101.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://8gngwjva0rhn"]
+[gd_scene load_steps=3 format=3 uid="uid://8gngwjva0rhn"]
 
 [ext_resource type="Script" path="res://scripts/gui/game_status.gd" id="1_18qdd"]
+[ext_resource type="Theme" uid="uid://cui388khn2ihv" path="res://themes/menu_theme.tres" id="1_77r4l"]
 
 [node name="GameStatus" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 offset_bottom = -582.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_77r4l")
 script = ExtResource("1_18qdd")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

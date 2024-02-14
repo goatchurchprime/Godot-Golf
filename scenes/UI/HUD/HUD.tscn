@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd715frsmv2g5"]
+[gd_scene load_steps=5 format=3 uid="uid://dd715frsmv2g5"]
 
+[ext_resource type="Theme" uid="uid://cui388khn2ihv" path="res://themes/menu_theme.tres" id="1_oyr5a"]
 [ext_resource type="Script" path="res://scripts/gui/HUD.gd" id="1_ya441"]
 [ext_resource type="PackedScene" uid="uid://be31scdsjltuh" path="res://scenes/UI/HUD/round_timer.tscn" id="2_dqqhb"]
 [ext_resource type="PackedScene" uid="uid://c45nvkwehpn5t" path="res://scenes/UI/HUD/putting_ui.tscn" id="2_emh1n"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
+theme = ExtResource("1_oyr5a")
 script = ExtResource("1_ya441")
 
 [node name="PuttingHUD" parent="." instance=ExtResource("2_emh1n")]
@@ -20,9 +22,9 @@ layout_mode = 1
 
 [node name="TimeLeft" parent="." instance=ExtResource("2_dqqhb")]
 layout_mode = 1
-offset_left = -117.0
-offset_top = -37.0
-offset_right = -117.0
-offset_bottom = -37.0
+offset_left = -200.0
+offset_top = -60.0
+offset_right = -119.0
+offset_bottom = -35.0
 
 [connection signal="timeout" from="TimeLeft" to="." method="_on_time_left_timeout"]
