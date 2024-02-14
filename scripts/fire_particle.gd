@@ -10,7 +10,6 @@ func _ready():
 		if child is MeshInstance3D:
 			mat = child.get_active_material(0)
 			if mat is StandardMaterial3D:
-				mat.albedo_color
 				original_albedo = mat.albedo_color
 				mat.albedo_color = Color(1,0,0,1)
 	
