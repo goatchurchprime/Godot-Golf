@@ -1,6 +1,6 @@
 [gd_scene load_steps=52 format=3 uid="uid://d1s048mumxyuh"]
 
-[ext_resource type="Texture2D" uid="uid://blh0slgh11j7f" path="res://assets/materials/sand/sand.png" id="1_r0w8n"]
+[ext_resource type="Texture2D" uid="uid://blh0slgh11j7f" path="res://assets/textures/sand/sand.png" id="1_r0w8n"]
 [ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="2_2ncwk"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_gsy5m"]
 [ext_resource type="PackedScene" uid="uid://351ma0g0bcvy" path="res://scenes/level groups/spawn_location.tscn" id="3_cve25"]

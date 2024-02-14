@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://chq202ips3l1d"]
 
-[ext_resource type="Texture2D" uid="uid://dcc5ik3c366ca" path="res://assets/materials/lava/Photoreal_Fire_06-512x512.png" id="1_tx0cs"]
+[ext_resource type="Texture2D" uid="uid://dcc5ik3c366ca" path="res://assets/textures/lava/Photoreal_Fire_06-512x512.png" id="1_tx0cs"]
 
 [resource]
 albedo_texture = ExtResource("1_tx0cs")
