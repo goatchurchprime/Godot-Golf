@@ -23,18 +23,18 @@ func _on_blue_value_changed(value):
 	set_color_preview()
 
 func set_color_preview():
-	var r = red_slider.value / 255
-	var g = green_slider.value / 255
-	var b = blue_slider.value / 255
+	var r = red_slider.value
+	var g = green_slider.value
+	var b = blue_slider.value
 	color_preview.color = Color(r,g,b)
 
 func _on_exit_pressed():
 	set_status(false)
 
 func _on_apply_pressed():
-	var r = red_slider.value / 255
-	var g = green_slider.value / 255
-	var b = blue_slider.value / 255
+	var r = red_slider.value
+	var g = green_slider.value
+	var b = blue_slider.value
 	Global.set_player_color(Color(r,g,b))
 
 func _on_character_customize_button_pressed():

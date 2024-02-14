@@ -62,18 +62,21 @@ layout_mode = 2
 
 [node name="Red" type="HSlider" parent="CustomizationContainer/VBoxContainer"]
 layout_mode = 2
-max_value = 255.0
-value = 255.0
+max_value = 1.0
+step = 0.02
+value = 1.0
 
 [node name="Green" type="HSlider" parent="CustomizationContainer/VBoxContainer"]
 layout_mode = 2
-max_value = 255.0
-value = 255.0
+max_value = 1.0
+step = 0.02
+value = 1.0
 
 [node name="Blue" type="HSlider" parent="CustomizationContainer/VBoxContainer"]
 layout_mode = 2
-max_value = 255.0
-value = 255.0
+max_value = 1.0
+step = 0.02
+value = 1.0
 
 [node name="ColorPreview" type="ColorRect" parent="CustomizationContainer/VBoxContainer"]
 layout_mode = 2
