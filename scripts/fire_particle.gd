@@ -8,8 +8,8 @@ func _ready():
 	
 	for child in parent.get_children():
 		if child is MeshInstance3D:
-			mat = child.get_active_material(0)
 			if mat is StandardMaterial3D:
+				mat = child.get_active_material(0)
 				original_albedo = mat.albedo_color
 				mat.albedo_color = Color(1,0,0,1)
 	
