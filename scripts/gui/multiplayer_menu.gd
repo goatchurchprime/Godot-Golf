@@ -33,6 +33,7 @@ func _on_join_pressed():
 	enet_peer.create_client(ip_line_edit.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	add_player(multiplayer.get_unique_id())
+	Global.set_multiplayer()
 
 func add_player(peer_id):
 	print("Player connected")

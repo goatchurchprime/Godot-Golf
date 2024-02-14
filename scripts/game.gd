@@ -13,6 +13,7 @@ var level_select : LevelSelect
 var scoreboard : Scoreboard
 var game_status : GameStatus
 var teleport_overlay : TeleportOverlay
+var character_customization : CharacterCustomization
 
 var next_hole_timer : Timer
 
@@ -69,12 +70,16 @@ func update_gui():
 
 func game_active(status):
 	if status:
+		character_customization.visible = false
 		hud.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		level_select.visible = false
+		if multiplayer.is_server():
+			level_select.visible = false
 	else:
+		character_customization.visible = true
 		hud.visible = false
-		level_select.visible = true
+		if multiplayer.is_server():
+			level_select.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 @rpc("authority", "call_local")
@@ -109,11 +114,10 @@ func game_win(peer_id):
 			start_next_hole_timer()
 
 func set_singleplayer():
-	level_select.visible = true
+	game_active(false)
 
 func set_multiplayer():
-	if multiplayer.is_server():
-		level_select.visible = true
+	game_active(false)
 
 func start_next_hole_timer():
 	hud.stop_timer()
@@ -150,6 +154,10 @@ func disable_players():
 	player.disable.rpc()
 	level_select.activate_hole_camera()
 
+
+func set_player_color(color):
+	player.set_color.rpc(color)
+
 func register(node):
 	if node is UserHUD:
 		hud = node
@@ -166,3 +174,5 @@ func register(node):
 			player = node
 	elif node is TeleportOverlay:
 		teleport_overlay = node
+	elif node is CharacterCustomization:
+		character_customization = node
