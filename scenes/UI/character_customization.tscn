@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdhia4vi4ovi5"]
+[gd_scene load_steps=6 format=3 uid="uid://bdhia4vi4ovi5"]
 
 [ext_resource type="Theme" uid="uid://cui388khn2ihv" path="res://themes/menu_theme.tres" id="1_8tyrw"]
 [ext_resource type="Script" path="res://scripts/gui/character_customization.gd" id="1_akfwf"]
-[ext_resource type="Texture2D" uid="uid://ct83ebbgkimdl" path="res://assets/materials/customization_face/face.png" id="2_awxvc"]
+[ext_resource type="Texture2D" uid="uid://ct83ebbgkimdl" path="res://assets/textures/customization_face/face.png" id="2_awxvc"]
+
+[sub_resource type="Gradient" id="Gradient_ised8"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wjf20"]
+gradient = SubResource("Gradient_ised8")
 
 [node name="CharacterCustomization" type="Control"]
 layout_mode = 3
@@ -33,6 +39,7 @@ offset_bottom = -14.0
 grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("2_awxvc")
+texture_pressed = SubResource("GradientTexture1D_wjf20")
 stretch_mode = 0
 
 [node name="CustomizationContainer" type="MarginContainer" parent="."]
