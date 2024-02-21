@@ -3,22 +3,33 @@
 [sub_resource type="Shader" id="Shader_d8cr1"]
 code = "shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley;
+
 uniform vec4 albedo : source_color;
 
-const float WAVE_SPEED = 0.6;
-const float WAVE_STRENGTH_X = 0.5;
-const float WAVE_STRENGTH_Z = 0.5;
+uniform float WAVE_SPEED = 0.6;
+
+uniform float WIND_AFFECT_THRESHOLD = 0.6;
+uniform int WIND_CURVE_EXPONENT = 6;
+uniform float WIND_CURVE_OFFSET = -0.1;
+
+uniform float WAVE_STRENGTH_X = 2.0;
+uniform float WAVE_STRENGTH_Z = 2.5;
 
 
 void vertex() {
-	if (VERTEX.y > 0.0){
-		VERTEX.y += (VERTEX.y) * WAVE_STRENGTH_X * sin(TIME * WAVE_SPEED);
-		VERTEX.z += (VERTEX.y) * WAVE_STRENGTH_Z * cos(TIME * WAVE_SPEED);
-	}
+	// Offset vertex cord by 1.
+	float distance_from_pole = VERTEX.y + 1.0; 
+	// Decide how much wind affects based on distance from pole.
+	float wind_affect = pow((distance_from_pole * 0.6) + WIND_CURVE_OFFSET, float(WIND_CURVE_EXPONENT));
+	wind_affect = clamp(wind_affect, 0.0, 1.0);
+	
+	// Add vertical swing
+	VERTEX.x += wind_affect * cos(TIME) * WAVE_STRENGTH_X;
+	// Add vertical swing
+	VERTEX.z += wind_affect * cos(TIME) * WAVE_STRENGTH_Z;
 }
 
 void fragment() {
-	vec2 base_uv = UV;
 	ALBEDO = albedo.rgb;
 }
 "
@@ -27,3 +38,9 @@ void fragment() {
 render_priority = 0
 shader = SubResource("Shader_d8cr1")
 shader_parameter/albedo = Color(1, 0, 0.0156863, 1)
+shader_parameter/WAVE_SPEED = 0.6
+shader_parameter/WIND_AFFECT_THRESHOLD = 0.6
+shader_parameter/WIND_CURVE_EXPONENT = 8
+shader_parameter/WIND_CURVE_OFFSET = -0.1
+shader_parameter/WAVE_STRENGTH_X = 2.5
+shader_parameter/WAVE_STRENGTH_Z = 3.0
