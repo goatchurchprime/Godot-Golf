@@ -56,7 +56,7 @@ shader_parameter/wobble_speed = 12.0
 [sub_resource type="BoxMesh" id="BoxMesh_j5idn"]
 material = SubResource("ShaderMaterial_70d8i")
 size = Vector3(0.01, 0.02, 0.01)
-subdivide_depth = 20
+subdivide_depth = 8
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4yvvj"]
 friction = 0.01
