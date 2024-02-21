@@ -1,24 +1,28 @@
 shader_type spatial;
 render_mode unshaded, depth_test_disabled;
 
-uniform int max_hit_strength = -13;
+uniform int max_hit_strength = 0;
 uniform float hit_strength;
-const float MAX_LENGTH = 400.0;
+uniform float MAX_LENGTH = 400.0;
 
-const float WOBBLE_THRESHOLD = 250.0;
-const float WOBBLE_AMPLITUDE = 0.00025;
-const float WOBBLE_SPEED = 3.5 * PI;
+uniform float WOBBLE_THRESHOLD = 250.0;
+uniform float WOBBLE_AMPLITUDE = 2.0;
+uniform float WOBBLE_SPEED = 3.5;
+uniform float MAX_WOBBLE = 400;
 
 void vertex() {
+	// Do not apply backwards
 	if (VERTEX.z <= 0.0){
+		// Calculate length
 		float len = -hit_strength / float(max_hit_strength) * MAX_LENGTH;
 		VERTEX.z *= len;
 		
+		// Calculate wobble
 		float wobble_amt = -len - WOBBLE_THRESHOLD;
+		wobble_amt = clamp(wobble_amt,0,400);
 		
-		if (wobble_amt > 0.0){
-			VERTEX.x += sin(TIME * WOBBLE_SPEED) * wobble_amt * WOBBLE_AMPLITUDE;
-		}
+		// Apply wobble
+		VERTEX.x += sin(TIME * (WOBBLE_SPEED * PI)) * wobble_amt * WOBBLE_AMPLITUDE / 4000.0;
 	}
 }
 

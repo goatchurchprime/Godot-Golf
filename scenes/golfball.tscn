@@ -46,8 +46,13 @@ rings = 8
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_70d8i"]
 render_priority = 0
 shader = ExtResource("5_n36et")
-shader_parameter/max_hit_strength = 15
+shader_parameter/max_hit_strength = 0
 shader_parameter/hit_strength = 5.0
+shader_parameter/MAX_LENGTH = 400.0
+shader_parameter/WOBBLE_THRESHOLD = 225.0
+shader_parameter/WOBBLE_AMPLITUDE = 2.0
+shader_parameter/WOBBLE_SPEED = 3.5
+shader_parameter/MAX_WOBBLE = 400.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_j5idn"]
 material = SubResource("ShaderMaterial_70d8i")
