@@ -41,6 +41,6 @@ shader_parameter/albedo = Color(1, 0, 0.0156863, 1)
 shader_parameter/WAVE_SPEED = 0.6
 shader_parameter/WIND_AFFECT_THRESHOLD = 0.6
 shader_parameter/WIND_CURVE_EXPONENT = 8
-shader_parameter/WIND_CURVE_OFFSET = -0.1
+shader_parameter/WIND_CURVE_OFFSET = -0.045
 shader_parameter/WAVE_STRENGTH_X = 2.5
 shader_parameter/WAVE_STRENGTH_Z = 3.0
