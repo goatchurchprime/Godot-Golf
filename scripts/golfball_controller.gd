@@ -1,7 +1,7 @@
 class_name Golfball extends Node3D
 
 const MIN_STRENGTH = 0
-const MAX_STRENGTH = -13
+const MAX_STRENGTH = 13
 const STRENGTH = 0.125
 const HIT_SENSITIVITY = 3
 const MIN_VELOCITY = 0.5
@@ -63,8 +63,8 @@ func _physics_process(delta):
 				move_allowed_timer.start()
 
 func add_hit_strength(event):
-	hit_strength += deg_to_rad(-event.relative.y)*HIT_SENSITIVITY
-	hit_strength = clamp(hit_strength,MAX_STRENGTH,MIN_STRENGTH)
+	hit_strength += deg_to_rad(event.relative.y)*HIT_SENSITIVITY
+	hit_strength = clamp(hit_strength, MIN_STRENGTH, MAX_STRENGTH)
 
 func putt():
 	if is_multiplayer_authority():
@@ -93,7 +93,7 @@ func set_color(color):
 	mat.albedo_color = color
 
 func play_putt_sound():
-	putt_audio_player.volume_db = clamp(MAX_STRENGTH*4 - hit_strength*10, -30, 0)
+	putt_audio_player.volume_db = hit_strength - MAX_STRENGTH
 	putt_audio_player.play()
 
 #Stop rigidbody from moving
