@@ -2,27 +2,28 @@ shader_type spatial;
 render_mode unshaded, depth_test_disabled;
 
 uniform int max_hit_strength = 0;
-uniform float hit_strength;
-uniform float MAX_LENGTH = 400.0;
+uniform float hit_strength = 0.0;
+uniform float max_length = 15.0;
 
-uniform float WOBBLE_THRESHOLD = 250.0;
-uniform float WOBBLE_AMPLITUDE = 2.0;
-uniform float WOBBLE_SPEED = 3.5;
-uniform float MAX_WOBBLE = 400;
+// Threshold to activate wobbling effect
+uniform float wobble_activation_threshold = 0.5;
+uniform float wobble_amplitude = 0.1;
+uniform float wobble_speed = 12.0;
+
 
 void vertex() {
-	// Do not apply backwards
-	if (VERTEX.z <= 0.0){
-		// Calculate length
-		float len = -hit_strength / float(max_hit_strength) * MAX_LENGTH;
-		VERTEX.z *= len;
-		
-		// Calculate wobble
-		float wobble_amt = -len - WOBBLE_THRESHOLD;
-		wobble_amt = clamp(wobble_amt,0,400);
-		
-		// Apply wobble
-		VERTEX.x += sin(TIME * (WOBBLE_SPEED * PI)) * wobble_amt * WOBBLE_AMPLITUDE / 4000.0;
+	float len = hit_strength / float(max_hit_strength) * max_length; 
+	// Extend to new length
+	VERTEX.z *= len * max_length;
+	// Offset position so the end is always at the same position
+	VERTEX.z += len / (200.0/max_length);
+	
+
+	//Wobble
+	if (hit_strength > float(max_hit_strength) * wobble_activation_threshold){
+		float wobble_amount = pow(VERTEX.z,2);
+		wobble_amount *= hit_strength;
+		VERTEX.x += sin(TIME * wobble_speed) * (wobble_amount / 1000.0);
 	}
 }
 
