@@ -27,6 +27,10 @@ func randomize_audio(audio_player):
 	audio_player.stream = impact_sounds[randi()%impact_sounds.size()]
 
 func play_audio(body):
+	#Play sound only for player
+	if not golfball_rigidbody.get_parent().is_multiplayer_authority():
+		return
+		
 	if not collision_conditions_met(body):
 		return
 	
