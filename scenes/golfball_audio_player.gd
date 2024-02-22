@@ -54,7 +54,5 @@ func collision_conditions_met(body):
 
 func set_audio_player_volume(audio_player):
 	var volume = golfball_rigidbody.linear_velocity.length() + MIN_IMPACT_VOLUME
-	print(volume)
 	volume = clamp (volume, MIN_IMPACT_VOLUME, 0)
 	audio_player.volume_db = volume + VOLUME_OFFSET
-	print(audio_player.volume_db)
