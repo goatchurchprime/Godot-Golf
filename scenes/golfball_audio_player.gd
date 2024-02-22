@@ -1,6 +1,7 @@
 class_name GolfballAudioPlayer extends Node3D
 
 const MIN_IMPACT_VOLUME = -7.5
+const VOLUME_OFFSET = -10
 
 @onready var golfball_rigidbody = $".."/Golfball
 @export var impact_sounds : Array[AudioStream] = []
@@ -55,5 +56,5 @@ func set_audio_player_volume(audio_player):
 	var volume = golfball_rigidbody.linear_velocity.length() + MIN_IMPACT_VOLUME
 	print(volume)
 	volume = clamp (volume, MIN_IMPACT_VOLUME, 0)
-	audio_player.volume_db = volume
+	audio_player.volume_db = volume + VOLUME_OFFSET
 	print(audio_player.volume_db)
