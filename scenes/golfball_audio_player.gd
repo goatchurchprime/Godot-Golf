@@ -1,9 +1,9 @@
 class_name GolfballAudioPlayer extends Node3D
 
+const MIN_IMPACT_VOLUME = -7.5
+
 @onready var golfball_rigidbody = $".."/Golfball
-
 @export var impact_sounds : Array[AudioStream] = []
-
 @onready var audio_players = []
 
 
@@ -36,7 +36,7 @@ func play_audio(body):
 		return
 	
 	randomize_audio(tmp_audio_player)
-	
+	set_audio_player_volume(tmp_audio_player)
 	tmp_audio_player.play()
 
 func collision_conditions_met(body):
@@ -46,3 +46,10 @@ func collision_conditions_met(body):
 		if body.physics_material_override.rough == false:
 			return false
 	return true
+
+func set_audio_player_volume(audio_player):
+	var volume = golfball_rigidbody.linear_velocity.length() + MIN_IMPACT_VOLUME
+	print(volume)
+	volume = clamp (volume, MIN_IMPACT_VOLUME, 0)
+	audio_player.volume_db = volume
+	print(audio_player.volume_db)
