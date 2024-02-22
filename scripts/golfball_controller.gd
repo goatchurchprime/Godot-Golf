@@ -93,7 +93,7 @@ func set_color(color):
 	mat.albedo_color = color
 
 func play_putt_sound():
-	putt_audio_player.volume_db = hit_strength - MAX_STRENGTH
+	putt_audio_player.volume_db = hit_strength - MAX_STRENGTH*1.5
 	putt_audio_player.play()
 
 #Stop rigidbody from moving
