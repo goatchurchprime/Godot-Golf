@@ -7,8 +7,8 @@ uniform float max_length = 15.0;
 
 // Threshold to activate wobbling effect
 uniform float wobble_activation_threshold = 0.5;
-uniform float wobble_amplitude = 0.1;
-uniform float wobble_speed = 12.0;
+uniform float wobble_amplitude = 0.8;
+uniform float wobble_speed = 16.0;
 
 
 void vertex() {

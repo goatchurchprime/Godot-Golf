@@ -50,8 +50,8 @@ shader_parameter/max_hit_strength = 13
 shader_parameter/hit_strength = 13.0
 shader_parameter/max_length = 15.0
 shader_parameter/wobble_activation_threshold = 0.5
-shader_parameter/wobble_amplitude = 0.1
-shader_parameter/wobble_speed = 12.0
+shader_parameter/wobble_amplitude = 0.8
+shader_parameter/wobble_speed = 16.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_j5idn"]
 material = SubResource("ShaderMaterial_70d8i")
