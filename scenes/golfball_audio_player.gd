@@ -4,14 +4,41 @@ const MIN_IMPACT_VOLUME = -7.5
 const VOLUME_OFFSET = 0
 
 @onready var golfball_rigidbody = $".."/Golfball
-@export var wood_sounds : Array[AudioStream] = []
+@export_dir var wood_sounds_dir
 @onready var audio_players = []
+
+var wood_sounds = []
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	wood_sounds = get_sounds_in_path(wood_sounds_dir)
+	print(wood_sounds)
 	get_audio_players()
 	golfball_rigidbody.body_entered.connect(play_audio)
+
+func get_sounds_in_path(path):
+	var arr = []
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		while true:
+			var tmp = dir.get_next()
+			if tmp != "":
+				if tmp.ends_with(".mp3"):
+					var sound = load_mp3(path+"/"+tmp)
+					arr.append(sound)
+			else:
+				dir.list_dir_end()
+				break
+	return arr
+
+func load_mp3(path):
+	var file = FileAccess.open(path, FileAccess.READ)
+	var sound = AudioStreamMP3.new()
+	sound.data = file.get_buffer(file.get_length())
+	return sound
+
 
 func get_audio_players():
 	audio_players.clear()

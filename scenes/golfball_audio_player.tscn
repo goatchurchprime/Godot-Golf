@@ -1,15 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bq0na3j6k8slx"]
+[gd_scene load_steps=2 format=3 uid="uid://bq0na3j6k8slx"]
 
 [ext_resource type="Script" path="res://scenes/golfball_audio_player.gd" id="1_vx3lu"]
-[ext_resource type="AudioStream" uid="uid://dmy0e6h33tgwk" path="res://assets/audio/sound/physics/golfball/impact/1.mp3" id="2_vicgs"]
-[ext_resource type="AudioStream" uid="uid://btiv4msrvhfng" path="res://assets/audio/sound/physics/golfball/impact/2.mp3" id="3_j1hcv"]
-[ext_resource type="AudioStream" uid="uid://do2847r0cw8t6" path="res://assets/audio/sound/physics/golfball/impact/3.mp3" id="4_77pxg"]
-[ext_resource type="AudioStream" uid="uid://3vtrro6uum3i" path="res://assets/audio/sound/physics/golfball/impact/4.mp3" id="5_xv4yv"]
-[ext_resource type="AudioStream" uid="uid://0amlsegbefio" path="res://assets/audio/sound/physics/golfball/impact/5.mp3" id="6_r7qf7"]
 
 [node name="GolfballAudioPlayer" type="Node3D"]
 script = ExtResource("1_vx3lu")
-wood_sounds = Array[AudioStream]([ExtResource("2_vicgs"), ExtResource("3_j1hcv"), ExtResource("4_77pxg"), ExtResource("5_xv4yv"), ExtResource("6_r7qf7")])
+wood_sounds_dir = "res://assets/audio/sound/physics/wood"
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 
