@@ -22,7 +22,6 @@ size = Vector3(0.1, 0.4, 1)
 
 [node name="SpinningPlusShape" type="Node3D"]
 script = ExtResource("1_75xco")
-rotation_amt = 0.1
 rotate_y_axis = true
 
 [node name="Grass" type="StaticBody3D" parent="."]
@@ -68,7 +67,7 @@ shape = SubResource("BoxShape3D_tixbd")
 
 [node name="Corners" type="Node3D" parent="."]
 
-[node name="1" type="StaticBody3D" parent="Corners"]
+[node name="1" type="StaticBody3D" parent="Corners" groups=["Wood"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 physics_material_override = ExtResource("4_bwu3c")
 
@@ -88,7 +87,7 @@ mesh = SubResource("BoxMesh_08xn0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.485, 0, 0)
 shape = SubResource("BoxShape3D_khsn5")
 
-[node name="2" type="StaticBody3D" parent="Corners"]
+[node name="2" type="StaticBody3D" parent="Corners" groups=["Wood"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 physics_material_override = ExtResource("4_bwu3c")
 
@@ -108,7 +107,7 @@ mesh = SubResource("BoxMesh_08xn0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.485, 0, 0)
 shape = SubResource("BoxShape3D_khsn5")
 
-[node name="3" type="StaticBody3D" parent="Corners"]
+[node name="3" type="StaticBody3D" parent="Corners" groups=["Wood"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 0)
 physics_material_override = ExtResource("4_bwu3c")
 
@@ -128,7 +127,7 @@ mesh = SubResource("BoxMesh_08xn0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.485, 0.001, 0)
 shape = SubResource("BoxShape3D_khsn5")
 
-[node name="4" type="StaticBody3D" parent="Corners"]
+[node name="4" type="StaticBody3D" parent="Corners" groups=["Wood"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 0)
 physics_material_override = ExtResource("4_bwu3c")
 
