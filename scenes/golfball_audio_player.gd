@@ -1,19 +1,21 @@
 class_name GolfballAudioPlayer extends Node3D
 
 const MIN_IMPACT_VOLUME = -7.5
-const VOLUME_OFFSET = 0
+const VOLUME_OFFSET = 2
 
 @onready var golfball_rigidbody = $".."/Golfball
 @export_dir var wood_sounds_dir
+@export_dir var stone_sounds_dir
 @onready var audio_players = []
 
 var wood_sounds = []
+var stone_sounds = []
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	wood_sounds = get_sounds_in_path(wood_sounds_dir)
-	print(wood_sounds)
+	stone_sounds = get_sounds_in_path(stone_sounds_dir)
 	get_audio_players()
 	golfball_rigidbody.body_entered.connect(play_audio)
 
@@ -74,6 +76,8 @@ func get_body_material(body):
 	if body is StaticBody3D:
 		if body.is_in_group("Wood"):
 			return wood_sounds
+		elif body.is_in_group("Stone"):
+			return stone_sounds
 	return false
 
 func set_audio(audio_player, audio_clips):
