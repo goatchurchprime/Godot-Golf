@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://dyhm42mnovvd5"]
 
-[ext_resource type="Texture2D" uid="uid://sunxi33cq2b3" path="res://assets/materials/sandstone/sandstone.png" id="1_e1po8"]
+[ext_resource type="Texture2D" uid="uid://sunxi33cq2b3" path="res://assets/textures/sandstone/sandstone.png" id="1_e1po8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpdb4"]
 albedo_texture = ExtResource("1_e1po8")
@@ -53,7 +53,7 @@ size = Vector3(1, 1.5, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_68t36"]
 size = Vector3(0.94281, 1.5, 2.33862)
 
-[node name="SandstoneWall" type="StaticBody3D"]
+[node name="SandstoneWall" type="StaticBody3D" groups=["Stone"]]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)

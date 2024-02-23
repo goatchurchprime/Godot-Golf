@@ -216,7 +216,7 @@ size = Vector3(13, 1, 13)
 
 [node name="Pyramid" type="Node3D"]
 
-[node name="Side1" type="StaticBody3D" parent="."]
+[node name="Side1" type="StaticBody3D" parent="." groups=["Stone"]]
 physics_material_override = ExtResource("1_gecs1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Side1"]
@@ -336,7 +336,7 @@ shape = SubResource("BoxShape3D_qjt8c")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 12, 0)
 shape = SubResource("BoxShape3D_wha8v")
 
-[node name="Side2" type="StaticBody3D" parent="."]
+[node name="Side2" type="StaticBody3D" parent="." groups=["Stone"]]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 physics_material_override = ExtResource("1_gecs1")
 
@@ -457,7 +457,7 @@ shape = SubResource("BoxShape3D_qjt8c")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 12, 0)
 shape = SubResource("BoxShape3D_wha8v")
 
-[node name="Side3" type="StaticBody3D" parent="."]
+[node name="Side3" type="StaticBody3D" parent="." groups=["Stone"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 physics_material_override = ExtResource("1_gecs1")
 
@@ -598,7 +598,7 @@ shape = SubResource("BoxShape3D_batdt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 12, 2.18557e-08)
 shape = SubResource("BoxShape3D_m62m2")
 
-[node name="Side4" type="StaticBody3D" parent="."]
+[node name="Side4" type="StaticBody3D" parent="." groups=["Stone"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 physics_material_override = ExtResource("1_gecs1")
 
@@ -719,7 +719,7 @@ shape = SubResource("BoxShape3D_batdt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 12, 2.18557e-08)
 shape = SubResource("BoxShape3D_m62m2")
 
-[node name="Floor" type="StaticBody3D" parent="."]
+[node name="Floor" type="StaticBody3D" parent="." groups=["Stone"]]
 physics_material_override = ExtResource("1_gecs1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
@@ -728,7 +728,7 @@ mesh = SubResource("BoxMesh_ug8xd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_mjrq2")
 
-[node name="Top" type="StaticBody3D" parent="."]
+[node name="Top" type="StaticBody3D" parent="." groups=["Stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
 physics_material_override = ExtResource("1_gecs1")
 
