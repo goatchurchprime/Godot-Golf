@@ -1,17 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://bq0na3j6k8slx"]
+[gd_scene load_steps=7 format=3 uid="uid://bq0na3j6k8slx"]
 
 [ext_resource type="Script" path="res://scenes/golfball_audio_player.gd" id="1_vx3lu"]
-[ext_resource type="AudioStream" uid="uid://62moc4quajbd" path="res://assets/audio/sound/physics/golfball/impact/body_medium_break2.wav" id="2_3ua5y"]
-[ext_resource type="AudioStream" uid="uid://cf3lls7qk0f2s" path="res://assets/audio/sound/physics/golfball/impact/body_medium_impact_hard1.wav" id="3_t0ojc"]
-[ext_resource type="AudioStream" uid="uid://dfpttsk540nkc" path="res://assets/audio/sound/physics/golfball/impact/body_medium_impact_hard2.wav" id="4_8mm6v"]
-[ext_resource type="AudioStream" uid="uid://wrlrxdv42jb4" path="res://assets/audio/sound/physics/golfball/impact/body_medium_impact_hard3.wav" id="5_af1o4"]
-[ext_resource type="AudioStream" uid="uid://cg2govjny45g7" path="res://assets/audio/sound/physics/golfball/impact/body_medium_impact_hard4.wav" id="6_gy1dn"]
-[ext_resource type="AudioStream" uid="uid://cqptllyrs3hjr" path="res://assets/audio/sound/physics/golfball/impact/body_medium_impact_hard5.wav" id="7_45xge"]
-[ext_resource type="AudioStream" uid="uid://b8m5wxqpq1qs7" path="res://assets/audio/sound/physics/golfball/impact/body_medium_impact_hard6.wav" id="8_sv8o4"]
+[ext_resource type="AudioStream" uid="uid://dmy0e6h33tgwk" path="res://assets/audio/sound/physics/golfball/impact/1.mp3" id="2_vicgs"]
+[ext_resource type="AudioStream" uid="uid://btiv4msrvhfng" path="res://assets/audio/sound/physics/golfball/impact/2.mp3" id="3_j1hcv"]
+[ext_resource type="AudioStream" uid="uid://do2847r0cw8t6" path="res://assets/audio/sound/physics/golfball/impact/3.mp3" id="4_77pxg"]
+[ext_resource type="AudioStream" uid="uid://3vtrro6uum3i" path="res://assets/audio/sound/physics/golfball/impact/4.mp3" id="5_xv4yv"]
+[ext_resource type="AudioStream" uid="uid://0amlsegbefio" path="res://assets/audio/sound/physics/golfball/impact/5.mp3" id="6_r7qf7"]
 
 [node name="GolfballAudioPlayer" type="Node3D"]
 script = ExtResource("1_vx3lu")
-impact_sounds = Array[AudioStream]([ExtResource("2_3ua5y"), ExtResource("3_t0ojc"), ExtResource("4_8mm6v"), ExtResource("5_af1o4"), ExtResource("6_gy1dn"), ExtResource("7_45xge"), ExtResource("8_sv8o4")])
+impact_sounds = Array[AudioStream]([ExtResource("2_vicgs"), ExtResource("3_j1hcv"), ExtResource("4_77pxg"), ExtResource("5_xv4yv"), ExtResource("6_r7qf7")])
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 
