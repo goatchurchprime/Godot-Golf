@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://w6qkohd2ejme"]
+[gd_scene load_steps=24 format=3 uid="uid://w6qkohd2ejme"]
 
 [ext_resource type="Script" path="res://scripts/follow_node.gd" id="2_fbk7p"]
 [ext_resource type="AudioStream" uid="uid://dve11tyh5fanq" path="res://assets/audio/sound/golfball_hit.mp3" id="4_vvdv4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://materials/strength_arrow.gdshader" id="5_n36et"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="5_rnkab"]
 [ext_resource type="Script" path="res://scripts/strength_arrow.gd" id="6_yi7yd"]
+[ext_resource type="PackedScene" uid="uid://bq0na3j6k8slx" path="res://scenes/golfball_audio_player.tscn" id="9_fy5xe"]
 
 [sub_resource type="Gradient" id="Gradient_jiqsm"]
 colors = PackedColorArray(0.2, 0.2, 0.2, 1, 1, 1, 1, 1)
@@ -135,6 +136,8 @@ mass = 0.05
 physics_material_override = SubResource("PhysicsMaterial_4yvvj")
 can_sleep = false
 freeze = true
+max_contacts_reported = 8
+contact_monitor = true
 linear_damp = 1.0
 script = ExtResource("5_dceiy")
 
@@ -158,6 +161,8 @@ script = ExtResource("5_rnkab")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPosition/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, 1.5)
+
+[node name="GolfballAudioPlayer" parent="." instance=ExtResource("9_fy5xe")]
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5gi3a")

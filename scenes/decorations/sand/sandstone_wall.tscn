@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://v2yw53x48s0y"]
+[gd_scene load_steps=12 format=3 uid="uid://v2yw53x48s0y"]
 
-[ext_resource type="Texture2D" uid="uid://sunxi33cq2b3" path="res://assets/materials/sandstone/sandstone.png" id="1_2jgd6"]
+[ext_resource type="Texture2D" uid="uid://sunxi33cq2b3" path="res://assets/textures/sandstone/sandstone.png" id="1_2jgd6"]
+[ext_resource type="PhysicsMaterial" uid="uid://dot0lgrlfvfpa" path="res://physics/sandstone_phys_mat.tres" id="1_8rmkb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpdb4"]
 albedo_texture = ExtResource("1_2jgd6")
@@ -36,6 +37,7 @@ size = Vector3(1.75, 1, 2.5)
 size = Vector3(1.1, 0.4, 1.47)
 
 [node name="SandstoneWall" type="StaticBody3D"]
+physics_material_override = ExtResource("1_8rmkb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_8aio5")
