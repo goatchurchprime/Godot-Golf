@@ -4,7 +4,7 @@ const MIN_IMPACT_VOLUME = -7.5
 const VOLUME_OFFSET = 0
 
 @onready var golfball_rigidbody = $".."/Golfball
-@export var impact_sounds : Array[AudioStream] = []
+@export var wood_sounds : Array[AudioStream] = []
 @onready var audio_players = []
 
 
@@ -24,15 +24,14 @@ func get_inactive_audio_player():
 		if not audio_player.playing:
 			return audio_player
 
-func randomize_audio(audio_player):
-	audio_player.stream = impact_sounds[randi()%impact_sounds.size()]
-
 func play_audio(body):
 	#Play sound only for player
 	if not golfball_rigidbody.get_parent().is_multiplayer_authority():
 		return
-		
-	if not collision_conditions_met(body):
+	
+	var audio_clips = get_body_material(body)
+	# If body should not play audio, return
+	if not audio_clips:
 		return
 	
 	var tmp_audio_player = get_inactive_audio_player()
@@ -40,17 +39,18 @@ func play_audio(body):
 	if not tmp_audio_player:
 		return
 	
-	randomize_audio(tmp_audio_player)
+	set_audio(tmp_audio_player, audio_clips)
 	set_audio_player_volume(tmp_audio_player)
 	tmp_audio_player.play()
 
-func collision_conditions_met(body):
+func get_body_material(body):
 	if body is StaticBody3D:
-		if not body.physics_material_override:
-			return false
-		if body.physics_material_override.rough == false:
-			return false
-	return true
+		if body.is_in_group("Wood"):
+			return wood_sounds
+	return false
+
+func set_audio(audio_player, audio_clips):
+	audio_player.stream = audio_clips[randi()%audio_clips.size()]
 
 func set_audio_player_volume(audio_player):
 	var volume = golfball_rigidbody.linear_velocity.length() + MIN_IMPACT_VOLUME

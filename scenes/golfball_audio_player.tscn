@@ -9,7 +9,7 @@
 
 [node name="GolfballAudioPlayer" type="Node3D"]
 script = ExtResource("1_vx3lu")
-impact_sounds = Array[AudioStream]([ExtResource("2_vicgs"), ExtResource("3_j1hcv"), ExtResource("4_77pxg"), ExtResource("5_xv4yv"), ExtResource("6_r7qf7")])
+wood_sounds = Array[AudioStream]([ExtResource("2_vicgs"), ExtResource("3_j1hcv"), ExtResource("4_77pxg"), ExtResource("5_xv4yv"), ExtResource("6_r7qf7")])
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 
