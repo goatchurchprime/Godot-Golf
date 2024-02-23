@@ -1,7 +1,7 @@
 class_name GolfballAudioPlayer extends Node3D
 
 const MIN_IMPACT_VOLUME = -7.5
-const VOLUME_OFFSET = -10
+const VOLUME_OFFSET = 0
 
 @onready var golfball_rigidbody = $".."/Golfball
 @export var impact_sounds : Array[AudioStream] = []
