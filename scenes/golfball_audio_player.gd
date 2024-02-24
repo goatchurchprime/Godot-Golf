@@ -5,27 +5,30 @@ const VOLUME_OFFSET = 2
 
 @onready var golfball_rigidbody = $".."/Golfball
 
-@export_dir var wood_sounds_dir
-@export_dir var stone_sounds_dir
-@export_dir var grass_sounds_dir
-@export_dir var sand_sounds_dir
+@export_dir var sounds_path
 @onready var audio_players = []
 
-var wood_sounds = []
-var stone_sounds = []
-var grass_sounds = []
-var sand_sounds = []
-
+var audio = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	wood_sounds = get_sounds_in_path(wood_sounds_dir)
-	stone_sounds = get_sounds_in_path(stone_sounds_dir)
-	grass_sounds = get_sounds_in_path(grass_sounds_dir)
-	sand_sounds = get_sounds_in_path(sand_sounds_dir)
-	
+	initialize_sounds(sounds_path)
 	get_audio_players()
 	golfball_rigidbody.body_entered.connect(play_audio)
+	
+func initialize_sounds(path):
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		while true:
+			var tmp = dir.get_next()
+			if tmp != "":
+				var sound_key = tmp.capitalize()
+				var sounds_path = dir.get_current_dir() + "/" + tmp
+				audio[sound_key] = get_sounds_in_path(sounds_path)
+			else:
+				dir.list_dir_end()
+				break
 
 func get_sounds_in_path(path):
 	var arr = []
@@ -43,6 +46,7 @@ func get_sounds_in_path(path):
 			else:
 				dir.list_dir_end()
 				break
+	print(arr)
 	return arr
 
 func load_mp3(path):
@@ -80,15 +84,10 @@ func get_inactive_audio_player():
 
 func get_body_material(body):
 	if body is StaticBody3D:
-		if body.is_in_group("Wood"):
-			return wood_sounds
-		elif body.is_in_group("Stone"):
-			return stone_sounds
-		elif body.is_in_group("Grass"):
-			return grass_sounds
-		elif body.is_in_group("Sand"):
-			return sand_sounds
-	return false
+		for group in body.get_groups():
+			if audio.has(group):
+				return audio[group]
+	return null
 
 func set_audio(audio_player, audio_clips):
 	audio_player.stream = audio_clips[randi()%audio_clips.size()]

@@ -4,10 +4,7 @@
 
 [node name="GolfballAudioPlayer" type="Node3D"]
 script = ExtResource("1_vx3lu")
-wood_sounds_dir = "res://assets/audio/sound/physics/wood"
-stone_sounds_dir = "res://assets/audio/sound/physics/stone"
-grass_sounds_dir = "res://assets/audio/sound/physics/grass"
-sand_sounds_dir = "res://assets/audio/sound/physics/sand"
+sounds_path = "res://assets/audio/sound/physics"
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 
