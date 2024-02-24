@@ -6,6 +6,7 @@
 script = ExtResource("1_vx3lu")
 wood_sounds_dir = "res://assets/audio/sound/physics/wood"
 stone_sounds_dir = "res://assets/audio/sound/physics/stone"
+grass_sounds_dir = "res://assets/audio/sound/physics/grass"
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 
