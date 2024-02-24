@@ -8,11 +8,13 @@ const VOLUME_OFFSET = 2
 @export_dir var wood_sounds_dir
 @export_dir var stone_sounds_dir
 @export_dir var grass_sounds_dir
+@export_dir var sand_sounds_dir
 @onready var audio_players = []
 
 var wood_sounds = []
 var stone_sounds = []
 var grass_sounds = []
+var sand_sounds = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,6 +22,7 @@ func _ready():
 	wood_sounds = get_sounds_in_path(wood_sounds_dir)
 	stone_sounds = get_sounds_in_path(stone_sounds_dir)
 	grass_sounds = get_sounds_in_path(grass_sounds_dir)
+	sand_sounds = get_sounds_in_path(sand_sounds_dir)
 	
 	get_audio_players()
 	golfball_rigidbody.body_entered.connect(play_audio)
@@ -83,6 +86,8 @@ func get_body_material(body):
 			return stone_sounds
 		elif body.is_in_group("Grass"):
 			return grass_sounds
+		elif body.is_in_group("Sand"):
+			return sand_sounds
 	return false
 
 func set_audio(audio_player, audio_clips):
