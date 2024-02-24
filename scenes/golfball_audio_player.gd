@@ -39,7 +39,7 @@ func get_sounds_in_path(path):
 			var tmp = dir.get_next()
 			if tmp != "":
 				var tmp_path = dir.get_current_dir() + "/" + tmp
-				# Fixes exporting map, removes suffix .remap and .import
+				# Fixes exporting audio, removes suffix .remap and .import
 				tmp_path = tmp_path.trim_suffix(".remap")
 				tmp_path = tmp_path.trim_suffix(".import")
 				arr.append(load_mp3(tmp_path))
@@ -58,7 +58,7 @@ func play_audio(body):
 		return
 	
 	var audio_clips = get_body_material(body)
-	# If body should not play audio, return
+	# If body has corresponding audio
 	if not audio_clips:
 		return
 	
@@ -83,10 +83,9 @@ func get_inactive_audio_player():
 			return audio_player
 
 func get_body_material(body):
-	if body is StaticBody3D:
-		for group in body.get_groups():
-			if audio.has(group):
-				return audio[group]
+	for group in body.get_groups():
+		if audio.has(group):
+			return audio[group]
 	return null
 
 func set_audio(audio_player, audio_clips):
