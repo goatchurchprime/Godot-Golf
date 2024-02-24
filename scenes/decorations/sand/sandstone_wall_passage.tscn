@@ -58,7 +58,7 @@ size = Vector3(2.395, 0.75, 0.3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_l17rk"]
 size = Vector3(0.555, 0.3, 1.48)
 
-[node name="SandstoneWall" type="StaticBody3D"]
+[node name="SandstoneWall" type="StaticBody3D" groups=["Stone"]]
 physics_material_override = ExtResource("1_ubhmv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
