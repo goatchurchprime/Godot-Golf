@@ -1,18 +1,13 @@
 class_name TeleportOverlay extends Control
 
-const SCROLL_SPEED = 2
-
-@onready var panel = $Panel
+@onready var animation_player = $AnimationPlayer
 
 func _ready():
 	Global.register(self)
 
 func activate():
 	visible = true
+	animation_player.play("slide_away")
 
-func _process(delta):
-	if visible:
-		panel.position.x += SCROLL_SPEED * delta * get_viewport().get_visible_rect().size.x
-		if panel.position.x > get_viewport().get_visible_rect().size.x:
-			panel.position.x = 0
-			visible = false
+func _on_animation_player_animation_finished(anim_name):
+	visible = false
