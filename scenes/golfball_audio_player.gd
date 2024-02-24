@@ -4,6 +4,7 @@ const MIN_IMPACT_VOLUME = -7.5
 const VOLUME_OFFSET = 2
 
 @onready var golfball_rigidbody = $".."/Golfball
+
 @export_dir var wood_sounds_dir
 @export_dir var stone_sounds_dir
 @onready var audio_players = []
@@ -27,31 +28,18 @@ func get_sounds_in_path(path):
 		while true:
 			var tmp = dir.get_next()
 			if tmp != "":
-				if tmp.ends_with(".mp3"):
-					var sound = load_mp3(path+"/"+tmp)
-					arr.append(sound)
+				var tmp_path = dir.get_current_dir() + "/" + tmp
+				# Fixes exporting map, removes suffix .remap and .import
+				tmp_path = tmp_path.trim_suffix(".remap")
+				tmp_path = tmp_path.trim_suffix(".import")
+				arr.append(load_mp3(tmp_path))
 			else:
 				dir.list_dir_end()
 				break
 	return arr
 
 func load_mp3(path):
-	var file = FileAccess.open(path, FileAccess.READ)
-	var sound = AudioStreamMP3.new()
-	sound.data = file.get_buffer(file.get_length())
-	return sound
-
-
-func get_audio_players():
-	audio_players.clear()
-	for child in get_children():
-		if child is AudioStreamPlayer:
-			audio_players.append(child)
-
-func get_inactive_audio_player():
-	for audio_player in audio_players:
-		if not audio_player.playing:
-			return audio_player
+	return ResourceLoader.load(path)
 
 func play_audio(body):
 	#Play sound only for player
@@ -71,6 +59,17 @@ func play_audio(body):
 	set_audio(tmp_audio_player, audio_clips)
 	set_audio_player_volume(tmp_audio_player)
 	tmp_audio_player.play()
+
+func get_audio_players():
+	audio_players.clear()
+	for child in get_children():
+		if child is AudioStreamPlayer:
+			audio_players.append(child)
+
+func get_inactive_audio_player():
+	for audio_player in audio_players:
+		if not audio_player.playing:
+			return audio_player
 
 func get_body_material(body):
 	if body is StaticBody3D:
