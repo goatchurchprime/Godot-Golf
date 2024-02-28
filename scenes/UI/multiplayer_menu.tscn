@@ -39,7 +39,7 @@ alignment = 1
 
 [node name="NameLineEdit" type="LineEdit" parent="NameSelectionContainer"]
 layout_mode = 2
-placeholder_text = "Insert your name here"
+placeholder_text = "Enter your name here"
 expand_to_text_length = true
 
 [node name="NameConfirmButton" type="Button" parent="NameSelectionContainer"]
