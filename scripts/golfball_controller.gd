@@ -110,7 +110,8 @@ func _on_move_allowed_timer_timeout():
 		# Collision mask layer 1 and 2 active
 		if not rigidbody.get_collision_mask_value(2) and putts > 0:
 			rigidbody.set_collision_mask_value(2, true)
-		current_state = States.MOVE_ALLOWED
+		if current_state == States.MOVE_NOT_ALLOWED:
+			current_state = States.MOVE_ALLOWED
 
 func move_back():
 	rigidbody.goto(last_pos)
