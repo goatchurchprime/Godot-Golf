@@ -8,7 +8,7 @@ func _ready():
 	mesh.get_active_material(0).set_shader_parameter("max_hit_strength", ball.MAX_STRENGTH)
 
 func _process(delta):
-	if ball.aiming:
+	if ball.get_is_aiming():
 		show()
 		rotate_to_camera()
 		update_hit_strength()
