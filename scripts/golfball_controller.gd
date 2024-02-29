@@ -6,7 +6,6 @@ enum States {
 		AIMING,
 		LOCKED
 	}
-
 var current_state : States
 
 const MIN_STRENGTH = 0
@@ -40,19 +39,21 @@ func _enter_tree():
 	putts = 0
 
 func _ready():
-	locked = true
+	current_state = States.LOCKED
 	if is_multiplayer_authority():
 		hit_strength = MIN_STRENGTH
 
 func _input(event):
 	if is_multiplayer_authority():
-		if not locked and move_allowed:
-			if Input.is_action_just_pressed("left_mouse"):
-				aiming = true
-			elif Input.is_action_just_released("left_mouse"):
-				putt()
-			elif event is InputEventMouseMotion and aiming:
-				add_hit_strength(event)
+		match current_state:
+			States.MOVE_ALLOWED:
+				if Input.is_action_just_pressed("left_mouse"):
+					current_state = States.AIMING
+			States.AIMING:
+				if event is InputEventMouseMotion:
+					add_hit_strength(event)
+				elif Input.is_action_just_released("left_mouse"):
+					putt()
 
 func _physics_process(delta):
 	if is_multiplayer_authority():
@@ -61,7 +62,7 @@ func _physics_process(delta):
 			impulse = Vector3.ZERO
 		
 		if abs(rigidbody.linear_velocity.length()) > MIN_VELOCITY:
-			move_allowed = false
+			current_state = States.MOVE_NOT_ALLOWED
 			move_allowed_timer.stop()
 		else:
 			if move_allowed_timer.is_stopped():
@@ -86,7 +87,7 @@ func putt():
 			putts += 1
 		else:
 			print("Hit cancelled!")
-		aiming = false
+		current_state = States.MOVE_NOT_ALLOWED
 		Global.update_gui.rpc()
 
 func emit_particles():
@@ -109,7 +110,7 @@ func _on_move_allowed_timer_timeout():
 		# Collision mask layer 1 and 2 active
 		if not rigidbody.get_collision_mask_value(2) and putts > 0:
 			rigidbody.set_collision_mask_value(2, true)
-		move_allowed = true
+		current_state = States.MOVE_ALLOWED
 
 func move_back():
 	rigidbody.goto(last_pos)
@@ -121,7 +122,7 @@ func goto(pos):
 
 @rpc("any_peer", "call_local")
 func disable():
-	locked = true
+	current_state = States.LOCKED
 	collision_shape.disabled = true
 	rigidbody.freeze = true
 	rigidbody.set_visible(false)
@@ -133,7 +134,7 @@ func enable(spawn_location, spawn_rotation):
 	rigidbody.set_collision_mask_value(2, false)
 	putts = 0
 	goto(spawn_location)
-	locked = false
+	current_state = States.MOVE_NOT_ALLOWED
 	rigidbody.set_visible(true)
 	activate_camera()
 	snap_camera()
@@ -146,5 +147,12 @@ func activate_camera():
 	if is_multiplayer_authority():
 		camera.make_current()
 
+func get_is_aiming():
+	if current_state == States.AIMING:
+		return true
+	return false
+
 func get_is_stopped():
-	return move_allowed
+	if current_state == States.MOVE_ALLOWED:
+		return true
+	return false
