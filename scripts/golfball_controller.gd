@@ -1,5 +1,14 @@
 class_name Golfball extends Node3D
 
+enum States {
+		MoveNotAllowed, 
+		MoveAllowed,
+		Aiming,
+		Locked
+	}
+
+var current_state : States
+
 const MIN_STRENGTH = 0
 const MAX_STRENGTH = 13
 const STRENGTH = 0.125
