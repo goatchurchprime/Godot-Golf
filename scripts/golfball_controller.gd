@@ -18,14 +18,10 @@ const MIN_VELOCITY = 0.5
 var username
 
 var putts
-var move_allowed : bool
-var aiming : bool
 var hit_strength : float
 var impulse : Vector3
 
 var last_pos : Transform3D
-
-var locked = true
 
 @onready var rigidbody = $Golfball
 @onready var mat = $Golfball/MeshInstance3D.get_active_material(0)
