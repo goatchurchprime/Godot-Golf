@@ -6,6 +6,7 @@ enum States {
 		AIMING,
 		LOCKED
 	}
+
 var current_state : States
 
 const MIN_STRENGTH = 0
