@@ -14,7 +14,6 @@ func _on_body_entered(body):
 		if not golfballs.has(body.get_parent()):
 			golfballs.append(body.get_parent())
 
-
 func _on_body_exited(body):
 	if body.get_parent() is Golfball:
 		if golfballs.has(body.get_parent()):

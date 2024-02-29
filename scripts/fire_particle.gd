@@ -12,7 +12,6 @@ func _ready():
 			if mat is StandardMaterial3D:
 				original_albedo = mat.albedo_color
 				mat.albedo_color = Color(1,0,0,1)
-	
 
 func _on_timer_timeout():
 	if mat and original_albedo:
