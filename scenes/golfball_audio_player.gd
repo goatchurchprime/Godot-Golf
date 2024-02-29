@@ -15,7 +15,7 @@ func _ready():
 	initialize_sounds(sounds_path)
 	get_audio_players()
 	golfball_rigidbody.body_entered.connect(play_audio)
-	
+
 func initialize_sounds(path):
 	var dir = DirAccess.open(path)
 	if dir:

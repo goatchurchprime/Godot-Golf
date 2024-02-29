@@ -154,7 +154,6 @@ func disable_players():
 	player.disable.rpc()
 	level_select.activate_hole_camera()
 
-
 func set_player_color(color):
 	player.set_color.rpc(color)
 
