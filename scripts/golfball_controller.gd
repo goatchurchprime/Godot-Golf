@@ -1,10 +1,10 @@
 class_name Golfball extends Node3D
 
 enum States {
-		MoveNotAllowed, 
-		MoveAllowed,
-		Aiming,
-		Locked
+		MOVE_NOT_ALLOWED, 
+		MOVE_ALLOWED,
+		AIMING,
+		LOCKED
 	}
 
 var current_state : States
