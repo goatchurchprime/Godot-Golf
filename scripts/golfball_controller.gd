@@ -149,6 +149,9 @@ func activate_camera():
 	if is_multiplayer_authority():
 		camera.make_current()
 
+func get_hit_strength():
+	return hit_strength
+
 func get_is_aiming():
 	if current_state == States.AIMING:
 		return true
