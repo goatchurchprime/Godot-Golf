@@ -23,4 +23,7 @@ func rotate_to_camera():
 		rotation.x = 0 
 
 func update_hit_strength():
-	mesh.get_active_material(0).set_shader_parameter("hit_strength", ball.hit_strength)
+	var current_shader_hit_strength = mesh.get_active_material(0).get_shader_parameter("hit_strength")
+	var current_ball_hit_strength = ball.get_hit_strength()
+	if current_shader_hit_strength != current_ball_hit_strength:
+		mesh.get_active_material(0).set_shader_parameter("hit_strength", current_ball_hit_strength)
