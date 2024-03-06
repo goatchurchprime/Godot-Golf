@@ -1,8 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://d1s048mumxyuh"]
+[gd_scene load_steps=52 format=3 uid="uid://d1s048mumxyuh"]
 
-[ext_resource type="Texture2D" uid="uid://blh0slgh11j7f" path="res://assets/textures/sand/sand.png" id="1_r0w8n"]
 [ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="2_2ncwk"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_gsy5m"]
+[ext_resource type="Material" uid="uid://bgq1teoretycj" path="res://materials/sand.tres" id="2_r0s2q"]
 [ext_resource type="PackedScene" uid="uid://351ma0g0bcvy" path="res://scenes/level groups/spawn_location.tscn" id="3_cve25"]
 [ext_resource type="PackedScene" uid="uid://6c3sxht652g0" path="res://scenes/level_objects/u_shape.tscn" id="4_5baaq"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/level groups/hole.tscn" id="4_5hynr"]
@@ -50,16 +50,8 @@ tonemap_white = 2.85
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_wkyx3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkkv4"]
-albedo_color = Color(0.819608, 0.654902, 0.458824, 1)
-normal_enabled = true
-normal_scale = -7.0
-normal_texture = ExtResource("1_r0w8n")
-uv1_scale = Vector3(-0.175, -0.175, -0.175)
-uv1_triplanar = true
-
 [sub_resource type="BoxMesh" id="BoxMesh_yr64q"]
-material = SubResource("StandardMaterial3D_tkkv4")
+material = ExtResource("2_r0s2q")
 size = Vector3(80, 1, 80)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wv4kq"]

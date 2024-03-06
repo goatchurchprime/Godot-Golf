@@ -1,11 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://cre124dy0mgrj"]
 
 [ext_resource type="PackedScene" uid="uid://28qk5jngrucw" path="res://assets/meshes/trees/tree05.glb" id="1_87guy"]
-[ext_resource type="Texture2D" uid="uid://cast8b4l07y8c" path="res://assets/materials/trees/tree05_summer.png" id="2_g0opb"]
+[ext_resource type="Texture2D" uid="uid://cast8b4l07y8c" path="res://assets/textures/trees/tree05_summer.png" id="2_g0opb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6bld"]
 albedo_texture = ExtResource("2_g0opb")
 metallic = 0.3
+texture_filter = 0
 
 [sub_resource type="Shader" id="Shader_144ke"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.2.stable's StandardMaterial3D.
@@ -13,7 +14,7 @@ code = "// NOTE: Shader automatically converted from Godot Engine 4.2.stable's S
 shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
 uniform float alpha_scissor_threshold;
 uniform float point_size : hint_range(0,128);
 uniform float roughness : hint_range(0,1);

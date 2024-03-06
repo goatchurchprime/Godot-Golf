@@ -1,64 +1,58 @@
-[gd_scene load_steps=64 format=3 uid="uid://cuievupfktjng"]
+[gd_scene load_steps=62 format=3 uid="uid://cuievupfktjng"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dot0lgrlfvfpa" path="res://physics/sandstone_phys_mat.tres" id="1_gecs1"]
-[ext_resource type="Texture2D" uid="uid://sunxi33cq2b3" path="res://assets/textures/sandstone/sandstone.png" id="1_pbdml"]
 [ext_resource type="Material" uid="uid://hd0gjure67cf" path="res://materials/sandstone_wall.tres" id="2_15kuf"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljef7"]
-albedo_texture = ExtResource("1_pbdml")
-uv1_scale = Vector3(-0.375, -0.375, -0.375)
-uv1_triplanar = true
-
 [sub_resource type="BoxMesh" id="BoxMesh_odpqq"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 15)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dff8n"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 14)
 
 [sub_resource type="BoxMesh" id="BoxMesh_w5lqu"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 13)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mvnq0"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 12)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hbmkf"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 11)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nfycx"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_cf7tm"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 9)
 
 [sub_resource type="BoxMesh" id="BoxMesh_goxdv"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g1fmv"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 7)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5m4kw"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_04htm"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3ol7b"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_bg3ja"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxbaq"]
@@ -101,69 +95,69 @@ size = Vector3(1, 1, 4)
 size = Vector3(1, 1, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_fvci1"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 13)
 
 [sub_resource type="BoxMesh" id="BoxMesh_y8qc3"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 12)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rsoot"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 11)
 
 [sub_resource type="BoxMesh" id="BoxMesh_osoy2"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_j4813"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_53eev"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 0.5, 2.08)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rv0bj"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 0.5, 1.515)
 
 [sub_resource type="BoxMesh" id="BoxMesh_trlri"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 
 [sub_resource type="BoxMesh" id="BoxMesh_t275i"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 
 [sub_resource type="BoxMesh" id="BoxMesh_2i82y"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jpu0j"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 7)
 
 [sub_resource type="BoxMesh" id="BoxMesh_imxna"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hvn0a"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l0fdj"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_riatr"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_yxrox"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p1km7"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qkuxl"]
 size = Vector3(1, 1, 13)
@@ -204,7 +198,7 @@ size = Vector3(1, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_m62m2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nh7pu"]
-material = SubResource("StandardMaterial3D_ljef7")
+material = ExtResource("2_15kuf")
 size = Vector3(1, 1, 9)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ug8xd"]

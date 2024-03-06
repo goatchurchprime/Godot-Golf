@@ -1,27 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://v2yw53x48s0y"]
+[gd_scene load_steps=11 format=3 uid="uid://v2yw53x48s0y"]
 
-[ext_resource type="Texture2D" uid="uid://sunxi33cq2b3" path="res://assets/textures/sandstone/sandstone.png" id="1_2jgd6"]
 [ext_resource type="PhysicsMaterial" uid="uid://dot0lgrlfvfpa" path="res://physics/sandstone_phys_mat.tres" id="1_8rmkb"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpdb4"]
-albedo_texture = ExtResource("1_2jgd6")
-uv1_scale = Vector3(0.34, 0.34, 0.34)
-uv1_triplanar = true
+[ext_resource type="Material" uid="uid://hd0gjure67cf" path="res://materials/sandstone_wall.tres" id="2_4bifb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8aio5"]
-material = SubResource("StandardMaterial3D_kpdb4")
+material = ExtResource("2_4bifb")
 size = Vector3(3, 5, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jojgq"]
-material = SubResource("StandardMaterial3D_kpdb4")
+material = ExtResource("2_4bifb")
 size = Vector3(1.75, 1, 2.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h04ib"]
-material = SubResource("StandardMaterial3D_kpdb4")
+material = ExtResource("2_4bifb")
 size = Vector3(1.1, 0.4, 1.47)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0n526"]
-material = SubResource("StandardMaterial3D_kpdb4")
+material = ExtResource("2_4bifb")
 size = Vector3(1.75, 0.5, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e3ssu"]

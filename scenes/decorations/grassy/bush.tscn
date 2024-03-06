@@ -1,13 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://bir3vonmeqs5f"]
 
 [ext_resource type="PackedScene" uid="uid://ca51lbxk1dyv" path="res://assets/meshes/bushes/bush02.glb" id="1_435cl"]
-[ext_resource type="Texture2D" uid="uid://dwnlmovnqg2ss" path="res://assets/materials/bushes/bush2_summer.png" id="2_nyv18"]
+[ext_resource type="Texture2D" uid="uid://dwnlmovnqg2ss" path="res://assets/textures/bushes/bush2_summer.png" id="2_nyv18"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g02uo"]
 transparency = 2
 alpha_scissor_threshold = 0.001
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_nyv18")
+texture_filter = 0
 
 [node name="bush02" instance=ExtResource("1_435cl")]
 
