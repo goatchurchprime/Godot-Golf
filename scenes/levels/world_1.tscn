@@ -27,9 +27,11 @@ gradient = SubResource("Gradient_cyfnw")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_j2dop"]
 noise_type = 0
-frequency = 0.0173
+frequency = 0.035
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fl27y"]
+width = 256
+height = 256
 seamless = true
 noise = SubResource("FastNoiseLite_j2dop")
 
@@ -42,6 +44,7 @@ ground_horizon_color = Color(0.235294, 0.447059, 0.752941, 1)
 
 [sub_resource type="Sky" id="Sky_ed0sw"]
 sky_material = SubResource("ProceduralSkyMaterial_k20td")
+radiance_size = 0
 
 [sub_resource type="Environment" id="Environment_wxkmx"]
 background_mode = 2
@@ -97,7 +100,6 @@ transform = Transform3D(0.771642, 0.633667, -0.0550903, 0.47527, -0.516853, 0.71
 light_color = Color(1, 1, 0.898039, 1)
 light_energy = 1.75
 shadow_enabled = true
-shadow_blur = 0.1
 directional_shadow_mode = 0
 
 [node name="Floor" type="StaticBody3D" parent="." groups=["Grass"]]
