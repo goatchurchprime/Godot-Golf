@@ -118,8 +118,13 @@ shape = SubResource("BoxShape3D_su1o3")
 
 [node name="WorldDecor" type="Node3D" parent="."]
 
-[node name="Rock01" parent="WorldDecor" instance=ExtResource("2_s15sc")]
+[node name="Rocks" type="Node3D" parent="WorldDecor"]
+
+[node name="Rock01" parent="WorldDecor/Rocks" instance=ExtResource("2_s15sc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1462, 0, -26.5021)
+
+[node name="Rock02" parent="WorldDecor/Rocks" instance=ExtResource("2_s15sc")]
+transform = Transform3D(0.496383, 0, -0.868104, 0, 1, 0, 0.868104, 0, 0.496383, -27.7004, 5.20068, -0.364479)
 
 [node name="Trees" type="Node3D" parent="WorldDecor"]
 
@@ -528,9 +533,6 @@ mesh = SubResource("QuadMesh_tgnwu")
 
 [node name="Shack" parent="WorldDecor" instance=ExtResource("16_2x42p")]
 transform = Transform3D(1.08098, 0, -0.905312, 0, 1.41, 0, 0.905312, 0, 1.08098, 23.0737, 0, -24.2384)
-
-[node name="Rock02" parent="WorldDecor" instance=ExtResource("2_s15sc")]
-transform = Transform3D(0.496383, 0, -0.868104, 0, 1, 0, 0.868104, 0, 0.496383, -27.7004, 5.20068, -0.364479)
 
 [node name="LevelGroup1" parent="." instance=ExtResource("2_37u63")]
 transform = Transform3D(0.995292, 0, -0.0969228, 0, 1, 0, 0.0969228, 0, 0.995292, 11.2036, 0, 20.7852)
