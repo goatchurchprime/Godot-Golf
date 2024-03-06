@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://djefnitf7kn8w" path="res://scenes/decorations/rocks/rock01.tscn" id="2_s15sc"]
 [ext_resource type="PackedScene" uid="uid://6c3sxht652g0" path="res://scenes/level_objects/u_shape.tscn" id="3_g4aht"]
 [ext_resource type="PackedScene" uid="uid://d2s65plx0h5fy" path="res://scenes/level groups/hole.tscn" id="3_m0qga"]
-[ext_resource type="Texture2D" uid="uid://dfmr816ryig2i" path="res://assets/images/trees.png" id="3_wsa6n"]
 [ext_resource type="PackedScene" uid="uid://bjgl18c36f75l" path="res://scenes/decorations/grassy/grass.tscn" id="4_5lkyd"]
 [ext_resource type="PackedScene" uid="uid://dkq7bwcakgjgq" path="res://scenes/level_objects/row_shape.tscn" id="4_7gpb3"]
 [ext_resource type="PackedScene" uid="uid://351ma0g0bcvy" path="res://scenes/level groups/spawn_location.tscn" id="4_nua1o"]
 [ext_resource type="PackedScene" uid="uid://c80lp440b60i1" path="res://scenes/level_objects/corner_shape.tscn" id="5_n7gmh"]
 [ext_resource type="PackedScene" uid="uid://co72gw4aw7535" path="res://scenes/level groups/out_of_bounds_area.tscn" id="5_tcjyp"]
+[ext_resource type="Texture2D" uid="uid://kfxquhhgrsap" path="res://assets/skybox/trees.png" id="7_1vnnq"]
 [ext_resource type="PackedScene" uid="uid://qwv5hbrafkgd" path="res://scenes/level_objects/loop.tscn" id="15_hahmw"]
 [ext_resource type="PackedScene" uid="uid://cr2sxlm13ehqs" path="res://scenes/decorations/buildings/shack.tscn" id="16_2x42p"]
 [ext_resource type="PackedScene" uid="uid://35nedlqrd4cm" path="res://scenes/level_objects/spinning_plus_shape.tscn" id="16_q7lea"]
@@ -67,7 +67,8 @@ size = Vector3(80, 1, 80)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ci352"]
 transparency = 1
 shading_mode = 0
-albedo_texture = ExtResource("3_wsa6n")
+albedo_texture = ExtResource("7_1vnnq")
+texture_filter = 0
 disable_receive_shadows = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_tgnwu"]
