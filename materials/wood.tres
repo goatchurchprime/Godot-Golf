@@ -6,3 +6,4 @@
 albedo_texture = ExtResource("1_qvyjh")
 uv1_scale = Vector3(0.9, 3, 1)
 uv1_triplanar = true
+texture_filter = 0

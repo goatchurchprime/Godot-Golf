@@ -19,7 +19,6 @@ noise = SubResource("FastNoiseLite_pb2iq")
 
 [resource]
 albedo_texture = ExtResource("1_h26lu")
-normal_enabled = true
 normal_scale = 0.5
 normal_texture = SubResource("NoiseTexture2D_x366o")
 clearcoat_roughness = 1.0
@@ -27,3 +26,4 @@ anisotropy = 1.0
 uv1_scale = Vector3(0.16, 0.16, 0.16)
 uv1_triplanar = true
 uv1_world_triplanar = true
+texture_filter = 0

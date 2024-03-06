@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cjyqym0unawme"]
 
-[ext_resource type="Texture2D" uid="uid://c2ac1wnxpplfs" path="res://assets/materials/tree/Grass_06-256x256.png" id="1_u3sxb"]
+[ext_resource type="Texture2D" uid="uid://c2ac1wnxpplfs" path="res://assets/textures/tree/Grass_06-256x256.png" id="1_u3sxb"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_pb2iq"]
 noise_type = 0
@@ -24,3 +24,4 @@ normal_scale = -0.53
 normal_texture = SubResource("NoiseTexture2D_x366o")
 uv1_scale = Vector3(-0.07, -0.195, -0.2)
 uv1_triplanar = true
+texture_filter = 0
