@@ -6,16 +6,16 @@
 script = ExtResource("1_vx3lu")
 sounds_path = "res://assets/audio/sound/physics"
 
-[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="AudioPlayer2" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioPlayer2" type="AudioStreamPlayer" parent="."]
 
-[node name="AudioPlayer3" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioPlayer3" type="AudioStreamPlayer" parent="."]
 
-[node name="AudioPlayer4" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioPlayer4" type="AudioStreamPlayer" parent="."]
 
-[node name="AudioPlayer5" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioPlayer5" type="AudioStreamPlayer" parent="."]
 
-[node name="AudioPlayer6" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioPlayer6" type="AudioStreamPlayer" parent="."]
 
-[node name="AudioPlayer7" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioPlayer7" type="AudioStreamPlayer" parent="."]
