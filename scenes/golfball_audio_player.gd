@@ -1,7 +1,7 @@
 class_name GolfballAudioPlayer extends Node3D
 
 const MIN_IMPACT_VOLUME = -7.5
-const VOLUME_OFFSET = 0
+const VOLUME_OFFSET = 10
 
 @onready var golfball_rigidbody = $".."/Golfball
 
@@ -74,7 +74,7 @@ func play_audio(body):
 func get_audio_players():
 	audio_players.clear()
 	for child in get_children():
-		if child is AudioStreamPlayer:
+		if child is AudioStreamPlayer3D:
 			audio_players.append(child)
 
 func get_inactive_audio_player():
