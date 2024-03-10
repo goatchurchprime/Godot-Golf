@@ -19,6 +19,7 @@ visible = false
 visible = false
 
 [node name="LevelSelect" parent="." instance=ExtResource("1_2eddi")]
+visible = false
 anchors_preset = 9
 anchor_right = 0.0
 offset_left = 0.0
