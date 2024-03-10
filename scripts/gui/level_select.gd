@@ -8,7 +8,7 @@ var current_level_group : LevelGroup
 var level_paths : Array
 
 @export_dir var path
-@onready var container = $LevelContainer/MarginContainer/HBoxContainer/VBoxContainer
+@onready var container = $LevelContainer/MarginContainer/VBoxContainer
 
 func _ready():
 	Global.register(self)

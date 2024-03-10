@@ -5,6 +5,8 @@
 [node name="Button" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
+size_flags_horizontal = 0
+alignment = 0
 script = ExtResource("1_i5r14")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
