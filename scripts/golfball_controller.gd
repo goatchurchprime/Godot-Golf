@@ -19,7 +19,6 @@ var username
 
 var putts
 var hit_strength : float
-var impulse : Vector3
 
 var last_pos : Transform3D
 
@@ -58,10 +57,6 @@ func _input(event):
 
 func _physics_process(delta):
 	if is_multiplayer_authority():
-		if impulse:
-			rigidbody.apply_impulse(impulse)
-			impulse = Vector3.ZERO
-		
 		if abs(rigidbody.linear_velocity.length()) > MIN_VELOCITY:
 			current_state = States.MOVE_NOT_ALLOWED
 			move_allowed_timer.stop()
@@ -78,7 +73,7 @@ func putt():
 		last_pos = rigidbody.transform
 		if abs(hit_strength) > 0:
 			print("hit_strength: " + str(hit_strength))
-			impulse = spring_arm.get_rotation_basis()
+			var impulse = spring_arm.get_rotation_basis()
 			impulse.y = 0
 			impulse = impulse.normalized()
 			impulse *= -abs(hit_strength*STRENGTH)
@@ -86,6 +81,7 @@ func putt():
 			play_putt_sound()
 			hit_strength = MIN_STRENGTH
 			putts += 1
+			rigidbody.apply_impulse(impulse)
 		else:
 			print("Hit cancelled!")
 		current_state = States.MOVE_NOT_ALLOWED
