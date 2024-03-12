@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bq0na3j6k8slx"]
 
-[ext_resource type="Script" path="res://scenes/golfball_audio_player.gd" id="1_vx3lu"]
+[ext_resource type="Script" path="res://scripts/golfball_audio_player.gd" id="1_vx3lu"]
 
 [node name="GolfballAudioPlayer" type="Node3D"]
 script = ExtResource("1_vx3lu")
