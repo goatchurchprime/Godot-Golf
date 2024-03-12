@@ -28,7 +28,7 @@ func remove_current_level():
 
 func initialize_level(level_path):
 	disconnect_signals()
-	var tmp = load(level_path).instantiate()
+	var tmp = ResourceLoader.load(level_path).instantiate()
 	get_tree().current_scene.add_child(tmp)
 	var tmp_children = tmp.get_children()
 	for child in tmp_children:
