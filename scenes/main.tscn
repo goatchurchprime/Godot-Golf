@@ -44,7 +44,7 @@ visible = false
 [node name="GameStatus" parent="." instance=ExtResource("7_2bxhg")]
 anchors_preset = 10
 anchor_bottom = 0.0
-offset_bottom = 0.0
+offset_bottom = 53.0
 grow_vertical = 1
 
 [node name="CharacterCustomization" parent="." instance=ExtResource("8_bjoif")]
