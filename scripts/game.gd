@@ -46,6 +46,7 @@ func next_hole_rpc():
 	level_select.next_hole()
 	
 	if not level_select.last_hole:
+		teleport_overlay.activate()
 		scoreboard.next_hole()
 		hud.start_timer()
 		initialize_player(level_select.get_current_spawn_location_transform())
