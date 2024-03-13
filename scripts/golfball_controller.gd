@@ -12,6 +12,7 @@ var current_state : States
 const MAX_STRENGTH = 13
 const STRENGTH = 0.125
 const HIT_SENSITIVITY = 3
+
 const MIN_VELOCITY = 0.5
 
 var username
