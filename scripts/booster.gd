@@ -5,7 +5,9 @@ class_name Booster extends Node3D
 @onready var boost_sound_player = $BoostAudioPlayer
 
 func _on_booster_body_entered(body):
-	if body.get_parent() is Golfball:
-		body.get_parent().impulse = Vector3(global_transform.basis.z.normalized()) * boost_strength
-		print(body.get_parent().impulse)
+	var golfball_head = body.get_parent()
+	if golfball_head is Golfball:
+		var impulse = Vector3(global_transform.basis.z.normalized()) * boost_strength
+		golfball_head.rigidbody.apply_impulse(impulse) 
+		print(impulse)
 		boost_sound_player.play()
