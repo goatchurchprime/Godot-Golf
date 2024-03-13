@@ -2,17 +2,23 @@ class_name LevelSelect extends Control
 
 const LEVEL_BUTTON = preload("res://scenes/lvl_select_button.tscn")
 
-var level_groups : Array
 var last_hole : bool
+
+var level_groups : Array
 var current_level_group : LevelGroup
-var level_paths : Array
 
 @export_dir var path
 @onready var container = $LevelContainer/MarginContainer/VBoxContainer
 
 func _ready():
 	Global.register(self)
-	get_files(path)
+	if !path:
+		print("Level select is missing folder")
+		return
+	var levels = FileFetcherSingleton.get_scenes_in_path(path)
+	for level in levels:
+		create_button(level, get_name_from_path(level))
+	
 
 func change_level(level_path, level_name):
 	last_hole = false
@@ -80,29 +86,7 @@ func change_level_func(level_path, level_name):
 func get_current_spawn_location_transform():
 	return current_level_group.spawn_location.global_transform
 
-func get_files(path):
-	if !path:
-		print("Level select is missing folder")
-		return
-	var dir = DirAccess.open(path)
-	
-	if dir:
-		dir.list_dir_begin()
-		while true:
-			var tmp = dir.get_next()
-			if tmp != "":
-				var tmp_path = dir.get_current_dir() + "/" + tmp
-				# Fixes exporting map, removes suffix .remap
-				tmp_path = tmp_path.trim_suffix(".remap")
-				var tmp_name = get_name_from_path(tmp_path)
-				print(tmp_path)
-				create_button(tmp_path, tmp_name)
-			else:
-				dir.list_dir_end()
-				break
-
 func create_button(lvl_path, lvl_name):
-	level_paths.append(lvl_path)
 	var btn = LEVEL_BUTTON.instantiate()
 	btn.level_path = lvl_path
 	btn.text = lvl_name
