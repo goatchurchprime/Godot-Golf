@@ -65,7 +65,7 @@ func _physics_process(delta):
 
 func add_hit_strength(event):
 	hit_strength += deg_to_rad(event.relative.y)*HIT_SENSITIVITY
-	hit_strength = min(hit_strength, MAX_STRENGTH)
+	hit_strength = clamp(hit_strength, 0, MAX_STRENGTH)
 
 func putt():
 	if is_multiplayer_authority():
