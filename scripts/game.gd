@@ -4,7 +4,6 @@ const NEXT_HOLE_TIMER_WAIT = 3.0
 const DID_NOT_FINISH_SCORE = 14
 
 var players_won : int
-var finished : bool
 
 var player : Golfball
 var hud : UserHUD
@@ -45,7 +44,6 @@ func next_hole():
 func next_hole_rpc():
 	print("huumern huumern")
 	players_won = 0
-	finished = false
 	
 	update_gui()
 	hud.stop_timer()
@@ -102,7 +100,6 @@ func player_won(peer_id):
 func game_win(peer_id):
 	players_won += 1
 	if peer_id == player.get_multiplayer_authority():
-		finished = true
 		player.disable.rpc()
 	
 	update_gui.rpc()
