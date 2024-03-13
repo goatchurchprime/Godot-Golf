@@ -31,3 +31,9 @@ func get_sounds_in_path(path):
 				dir.list_dir_end()
 				break
 	return arr
+
+# Fixes resource loading when game is exported. Trims suffixes remap and import
+func trim_suffixes(file_path):
+	file_path = file_path.trim_suffix(".remap")
+	file_path = file_path.trim_suffix(".import")
+	return file_path
