@@ -5,8 +5,6 @@ const SENSITIVITY = 0.25
 const LERP_WEIGHT = 1
 const MAX_FOV_OFFSET = 20
 
-const VELOCITY_THRESHOLD = 6
-
 @onready var ball = $"../.."
 @onready var camera = $Camera3D
 @onready var standard_fov = camera.fov
