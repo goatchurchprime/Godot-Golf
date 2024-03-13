@@ -24,32 +24,10 @@ func initialize_sounds(path):
 			if tmp != "":
 				var sound_key = tmp.capitalize()
 				var sounds_path = dir.get_current_dir() + "/" + tmp
-				audio[sound_key] = get_sounds_in_path(sounds_path)
+				audio[sound_key] = FileFetcherSingleton.get_sounds_in_path(sounds_path)
 			else:
 				dir.list_dir_end()
 				break
-
-func get_sounds_in_path(path):
-	var arr = []
-	var dir = DirAccess.open(path)
-	if dir:
-		dir.list_dir_begin()
-		while true:
-			var tmp = dir.get_next()
-			if tmp != "":
-				var tmp_path = dir.get_current_dir() + "/" + tmp
-				# Fixes exporting audio, removes suffix .remap and .import
-				tmp_path = tmp_path.trim_suffix(".remap")
-				tmp_path = tmp_path.trim_suffix(".import")
-				arr.append(load_mp3(tmp_path))
-			else:
-				dir.list_dir_end()
-				break
-	print(arr)
-	return arr
-
-func load_mp3(path):
-	return ResourceLoader.load(path)
 
 func play_audio(body):
 	#Play sound only for player
