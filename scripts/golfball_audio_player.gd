@@ -91,7 +91,8 @@ func set_audio(audio_player, audio_clips):
 	audio_player.stream = audio_clips[randi()%audio_clips.size()]
 
 func set_audio_player_volume(audio_player):
-	var volume = golfball_rigidbody.linear_velocity.length() + VOLUME_OFFSET
-	volume = min(volume, 0)
-	audio_player.volume_db = volume
+	var velocity_magnitude = abs(golfball_rigidbody.linear_velocity.length())
+	var golfball_max_strength = golfball_rigidbody.get_parent().MAX_STRENGTH
+	audio_player.volume_db = velocity_magnitude - golfball_max_strength
+	audio_player.volume_db = min(audio_player.volume_db, 0)
 	print(audio_player.volume_db)
