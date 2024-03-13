@@ -1,12 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://w6qkohd2ejme"]
+[gd_scene load_steps=26 format=3 uid="uid://w6qkohd2ejme"]
 
 [ext_resource type="Script" path="res://scripts/follow_node.gd" id="2_fbk7p"]
+[ext_resource type="Script" path="res://scripts/particles/putting_particle.gd" id="3_63jtw"]
 [ext_resource type="AudioStream" uid="uid://dve11tyh5fanq" path="res://assets/audio/sound/golfball_hit.mp3" id="4_vvdv4"]
 [ext_resource type="Script" path="res://scripts/golfball_controller.gd" id="4_x2185"]
 [ext_resource type="Script" path="res://scripts/golfball_rigidbody.gd" id="5_dceiy"]
 [ext_resource type="Texture2D" uid="uid://b78gsq388qay8" path="res://assets/images/golfball_normals.png" id="5_g3rcn"]
 [ext_resource type="Shader" path="res://materials/strength_arrow.gdshader" id="5_n36et"]
 [ext_resource type="Script" path="res://scripts/camera_controller.gd" id="5_rnkab"]
+[ext_resource type="Script" path="res://scripts/audio/putting_audio.gd" id="5_uxqvb"]
 [ext_resource type="Script" path="res://scripts/strength_arrow.gd" id="6_yi7yd"]
 [ext_resource type="PackedScene" uid="uid://bq0na3j6k8slx" path="res://scenes/golfball_audio_player.tscn" id="9_fy5xe"]
 
@@ -117,10 +119,12 @@ explosiveness = 0.8
 randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_j28ec")
 draw_pass_1 = SubResource("SphereMesh_1mqso")
+script = ExtResource("3_63jtw")
 
 [node name="PuttingAudioPlayer" type="AudioStreamPlayer3D" parent="FollowPosition"]
 stream = ExtResource("4_vvdv4")
 doppler_tracking = 2
+script = ExtResource("5_uxqvb")
 
 [node name="StrengthArrow" type="Node3D" parent="FollowPosition"]
 script = ExtResource("6_yi7yd")
@@ -167,4 +171,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, 1.5)
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5gi3a")
 
+[connection signal="putted" from="." to="FollowPosition/PuttingGPUParticle" method="_on_golfball_putted"]
+[connection signal="putted" from="." to="FollowPosition/PuttingAudioPlayer" method="_on_golfball_putted"]
 [connection signal="timeout" from="MoveAllowedTimer" to="." method="_on_move_allowed_timer_timeout"]

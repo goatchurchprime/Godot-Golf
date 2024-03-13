@@ -22,6 +22,8 @@ var hit_strength : float
 
 var last_pos : Transform3D
 
+signal putted
+
 @onready var rigidbody = $Golfball
 @onready var mat = $Golfball/MeshInstance3D.get_active_material(0)
 @onready var collision_shape = $Golfball/CollisionShape3D
@@ -77,8 +79,7 @@ func putt():
 			impulse.y = 0
 			impulse = impulse.normalized()
 			impulse *= -abs(hit_strength*STRENGTH)
-			emit_particles()
-			play_putt_sound()
+			putted.emit()
 			hit_strength = 0
 			putts += 1
 			rigidbody.apply_impulse(impulse)
@@ -86,10 +87,6 @@ func putt():
 			print("Hit cancelled!")
 		current_state = States.MOVE_NOT_ALLOWED
 		Global.update_gui.rpc()
-
-func emit_particles():
-	particle_emitter.rotation.x = spring_arm.get_rotation_basis().x
-	particle_emitter.restart()
 
 @rpc("authority", "call_local")
 func set_color(color):
