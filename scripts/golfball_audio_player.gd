@@ -24,7 +24,7 @@ func initialize_sounds(path):
 			if tmp != "":
 				var sound_key = tmp.capitalize()
 				var sounds_path = dir.get_current_dir() + "/" + tmp
-				audio[sound_key] = FileFetcherSingleton.get_sounds_in_path(sounds_path)
+				audio[sound_key] = FileFetcher.get_sounds_in_path(sounds_path)
 			else:
 				dir.list_dir_end()
 				break

@@ -1,6 +1,6 @@
 class_name FileFetcher extends Node
 
-func get_scenes_in_path(path):
+static func get_scenes_in_path(path):
 	var arr = []
 	var dir = DirAccess.open(path)
 	if dir:
@@ -16,7 +16,7 @@ func get_scenes_in_path(path):
 				break
 	return arr
 
-func get_sounds_in_path(path):
+static func get_sounds_in_path(path):
 	var arr = []
 	var dir = DirAccess.open(path)
 	if dir:
@@ -33,7 +33,7 @@ func get_sounds_in_path(path):
 	return arr
 
 # Fixes resource loading when game is exported. Trims suffixes remap and import
-func trim_suffixes(file_path):
+static func trim_suffixes(file_path):
 	file_path = file_path.trim_suffix(".remap")
 	file_path = file_path.trim_suffix(".import")
 	return file_path

@@ -17,7 +17,7 @@ func _ready():
 		print("Level select is missing folder")
 		return
 		
-	var levels = FileFetcherSingleton.get_scenes_in_path(path)
+	var levels = FileFetcher.get_scenes_in_path(path)
 	
 	for level in levels:
 		create_button(level, get_name_from_path(level))

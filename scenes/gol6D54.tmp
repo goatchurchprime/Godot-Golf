@@ -1,0 +1,176 @@
+[gd_scene load_steps=26 format=3 uid="uid://w6qkohd2ejme"]
+
+[ext_resource type="Script" path="res://scripts/follow_node.gd" id="2_fbk7p"]
+[ext_resource type="Script" path="res://scripts/particles/putting_particle.gd" id="3_63jtw"]
+[ext_resource type="AudioStream" uid="uid://dve11tyh5fanq" path="res://assets/audio/sound/golfball_hit.mp3" id="4_vvdv4"]
+[ext_resource type="Script" path="res://scripts/golfball_controller.gd" id="4_x2185"]
+[ext_resource type="Script" path="res://scripts/golfball_rigidbody.gd" id="5_dceiy"]
+[ext_resource type="Texture2D" uid="uid://b78gsq388qay8" path="res://assets/images/golfball_normals.png" id="5_g3rcn"]
+[ext_resource type="Shader" path="res://materials/strength_arrow.gdshader" id="5_n36et"]
+[ext_resource type="Script" path="res://scripts/camera_controller.gd" id="5_rnkab"]
+[ext_resource type="Script" path="res://scripts/audio/putting_audio.gd" id="5_uxqvb"]
+[ext_resource type="Script" path="res://scripts/strength_arrow.gd" id="6_yi7yd"]
+[ext_resource type="PackedScene" uid="uid://bq0na3j6k8slx" path="res://scenes/golfball_audio_player.tscn" id="9_fy5xe"]
+
+[sub_resource type="Gradient" id="Gradient_jiqsm"]
+colors = PackedColorArray(0.2, 0.2, 0.2, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7vo1p"]
+gradient = SubResource("Gradient_jiqsm")
+
+[sub_resource type="Curve" id="Curve_ds6xx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.768041, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_grkje"]
+curve = SubResource("Curve_ds6xx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j28ec"]
+direction = Vector3(0, 0.75, 1)
+spread = 30.0
+flatness = 0.5
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_grkje")
+color_ramp = SubResource("GradientTexture1D_7vo1p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpu7s"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_1mqso"]
+material = SubResource("StandardMaterial3D_mpu7s")
+radius = 0.05
+height = 0.1
+radial_segments = 8
+rings = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_70d8i"]
+render_priority = 0
+shader = ExtResource("5_n36et")
+shader_parameter/max_hit_strength = 13
+shader_parameter/hit_strength = 13.0
+shader_parameter/max_length = 15.0
+shader_parameter/wobble_activation_threshold = 0.5
+shader_parameter/wobble_amplitude = 0.8
+shader_parameter/wobble_speed = 16.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_j5idn"]
+material = SubResource("ShaderMaterial_70d8i")
+size = Vector3(0.01, 0.02, 0.01)
+subdivide_depth = 8
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4yvvj"]
+friction = 0.01
+bounce = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_klkvt"]
+radius = 0.044
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rj2c3"]
+resource_local_to_scene = true
+normal_enabled = true
+normal_scale = -2.0
+normal_texture = ExtResource("5_g3rcn")
+
+[sub_resource type="SphereMesh" id="SphereMesh_f4cbf"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_rj2c3")
+radius = 0.044
+height = 0.088
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5gi3a"]
+properties/0/path = NodePath("Golfball:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Golfball:linear_velocity")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Golfball:angular_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:username")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:putts")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+
+[node name="Golfball" type="Node3D" groups=["players"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.847, 0)
+script = ExtResource("4_x2185")
+
+[node name="MoveAllowedTimer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
+[node name="FollowPosition" type="Node3D" parent="." node_paths=PackedStringArray("following_node")]
+script = ExtResource("2_fbk7p")
+LERP_WEIGHT = 1.0
+following_node = NodePath("../Golfball")
+
+[node name="PuttingGPUParticle" type="GPUParticles3D" parent="FollowPosition"]
+emitting = false
+amount = 32
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.8
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_j28ec")
+draw_pass_1 = SubResource("SphereMesh_1mqso")
+script = ExtResource("3_63jtw")
+
+[node name="PuttingAudioPlayer" type="AudioStreamPlayer3D" parent="FollowPosition"]
+stream = ExtResource("4_vvdv4")
+doppler_tracking = 2
+script = ExtResource("5_uxqvb")
+
+[node name="StrengthArrow" type="Node3D" parent="FollowPosition"]
+script = ExtResource("6_yi7yd")
+
+[node name="ArrowMesh" type="MeshInstance3D" parent="FollowPosition/StrengthArrow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
+mesh = SubResource("BoxMesh_j5idn")
+
+[node name="Golfball" type="RigidBody3D" parent="." groups=["Golfball"]]
+collision_layer = 2
+collision_mask = 5
+mass = 0.05
+physics_material_override = SubResource("PhysicsMaterial_4yvvj")
+can_sleep = false
+freeze = true
+max_contacts_reported = 8
+contact_monitor = true
+linear_damp = 1.0
+script = ExtResource("5_dceiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Golfball"]
+shape = SubResource("SphereShape3D_klkvt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Golfball"]
+mesh = SubResource("SphereMesh_f4cbf")
+
+[node name="CameraPosition" type="Node3D" parent="." node_paths=PackedStringArray("following_node")]
+script = ExtResource("2_fbk7p")
+use_lerp = true
+LERP_WEIGHT = 0.5
+following_node = NodePath("../Golfball")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPosition"]
+transform = Transform3D(1, 0, 0, 0, 0.927184, 0.374607, 0, -0.374607, 0.927184, 0, 0.380318, 0)
+spring_length = 1.5
+margin = 0.1
+script = ExtResource("5_rnkab")
+
+[node name="Camera3D" type="Camera3D" parent="CameraPosition/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.38419e-07, 1.5)
+
+[node name="GolfballAudioPlayer" parent="." instance=ExtResource("9_fy5xe")]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_5gi3a")
+
+[connection signal="putted" from="." to="FollowPosition/PuttingGPUParticle" method="_on_golfball_putted"]
+[connection signal="putted" from="." to="FollowPosition/PuttingAudioPlayer" method="_on_golfball_putted"]
+[connection signal="timeout" from="MoveAllowedTimer" to="." method="_on_move_allowed_timer_timeout"]
