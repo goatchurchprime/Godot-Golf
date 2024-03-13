@@ -12,10 +12,13 @@ var current_level_group : LevelGroup
 
 func _ready():
 	Global.register(self)
+	
 	if !path:
 		print("Level select is missing folder")
 		return
+		
 	var levels = FileFetcherSingleton.get_scenes_in_path(path)
+	
 	for level in levels:
 		create_button(level, get_name_from_path(level))
 	
@@ -29,6 +32,7 @@ func remove_current_level():
 	if current_level_group:
 		get_tree().current_scene.remove_child(current_level_group.get_parent())
 		current_level_group = null
+	
 	if level_groups:
 		level_groups.clear()
 
