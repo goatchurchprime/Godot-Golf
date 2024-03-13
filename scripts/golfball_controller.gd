@@ -33,9 +33,6 @@ signal putted
 @onready var camera = $CameraPosition/SpringArm3D/Camera3D
 @onready var spring_arm = $CameraPosition/SpringArm3D
 
-@onready var particle_emitter = $FollowPosition/PuttingGPUParticle
-@onready var putt_audio_player = $FollowPosition/PuttingAudioPlayer
-
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
 	putts = 0
