@@ -4,10 +4,9 @@ var golfballs : Array
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if golfballs.size() > 0:
-		for golfball in golfballs:
-			if golfball.get_is_stopped():
-				Global.golball_left(golfball.get_multiplayer_authority())
+	for golfball in golfballs:
+		if golfball.get_is_stopped():
+			Global.golball_left(golfball.get_multiplayer_authority())
 
 func _on_body_entered(body):
 	if body.get_parent() is Golfball:
