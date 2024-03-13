@@ -77,7 +77,7 @@ func game_active(status):
 
 @rpc("authority", "call_local")
 func initialize_player(pos):
-	player.enable.rpc(pos, level_select.next_level_rotation())
+	player.enable.rpc(pos, level_select.get_next_level_spawn_rotation())
 	player.goto(pos)
 
 func golball_left(peer_id):

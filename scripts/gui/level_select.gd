@@ -105,5 +105,5 @@ func get_name_from_path(tmp_path):
 	substring = substring.capitalize()
 	return substring
 
-func next_level_rotation():
+func get_next_level_spawn_rotation():
 	return current_level_group.spawn_location.global_rotation.y
