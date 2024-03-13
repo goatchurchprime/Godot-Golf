@@ -9,7 +9,6 @@ enum States {
 
 var current_state : States
 
-const MIN_STRENGTH = 0
 const MAX_STRENGTH = 13
 const STRENGTH = 0.125
 const HIT_SENSITIVITY = 3
@@ -41,7 +40,7 @@ func _enter_tree():
 func _ready():
 	current_state = States.LOCKED
 	if is_multiplayer_authority():
-		hit_strength = MIN_STRENGTH
+		hit_strength = 0
 
 func _input(event):
 	if is_multiplayer_authority():
@@ -66,7 +65,7 @@ func _physics_process(delta):
 
 func add_hit_strength(event):
 	hit_strength += deg_to_rad(event.relative.y)*HIT_SENSITIVITY
-	hit_strength = clamp(hit_strength, MIN_STRENGTH, MAX_STRENGTH)
+	hit_strength = min(hit_strength, MAX_STRENGTH)
 
 func putt():
 	if is_multiplayer_authority():
@@ -79,7 +78,7 @@ func putt():
 			impulse *= -abs(hit_strength*STRENGTH)
 			emit_particles()
 			play_putt_sound()
-			hit_strength = MIN_STRENGTH
+			hit_strength = 0
 			putts += 1
 			rigidbody.apply_impulse(impulse)
 		else:
