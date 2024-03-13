@@ -89,10 +89,6 @@ func putt():
 func set_color(color):
 	mat.albedo_color = color
 
-func play_putt_sound():
-	putt_audio_player.volume_db = hit_strength - MAX_STRENGTH*1.5
-	putt_audio_player.play()
-
 #Stop rigidbody from moving
 func _on_move_allowed_timer_timeout():
 	if is_multiplayer_authority():
