@@ -17,6 +17,9 @@ func _input(event):
 		rotation.x = clamp(rotation.x, deg_to_rad(-50),deg_to_rad(10))
 
 func _physics_process(delta):
+	set_fov(delta)
+
+func set_fov(delta):
 	var rigidbody_velocity = abs(ball.rigidbody.linear_velocity.length())
 	camera.fov = lerp(camera.fov, standard_fov + rigidbody_velocity, delta * LERP_WEIGHT)
 	camera.fov = clamp(camera.fov, standard_fov, moving_camera_fov)
