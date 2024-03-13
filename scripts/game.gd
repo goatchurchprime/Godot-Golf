@@ -29,11 +29,8 @@ func change_level_rpc(level_path, level_name):
 	
 	scoreboard.reset()
 	update_gui.rpc()
-	
 	level_select.change_level(level_path, level_name)
-	
 	game_active(true)
-
 	next_hole()
 
 func next_hole():
@@ -42,7 +39,6 @@ func next_hole():
 
 @rpc("authority", "call_local")
 func next_hole_rpc():
-	print("huumern huumern")
 	players_won = 0
 	
 	update_gui()
@@ -59,7 +55,6 @@ func next_hole_rpc():
 			game_active(false)
 		else:
 			game_status.set_status(GameStatus.statuses.HOST_CHOOSING_MAP)
-
 
 @rpc("any_peer", "call_local")
 func update_gui():
@@ -99,12 +94,15 @@ func player_won(peer_id):
 @rpc("any_peer", "call_local")
 func game_win(peer_id):
 	players_won += 1
+	
 	if peer_id == player.get_multiplayer_authority():
 		player.disable.rpc()
 	
 	update_gui.rpc()
 	
-	if players_won == get_tree().get_nodes_in_group("players").size():
+	var amount_of_players = get_tree().get_nodes_in_group("players").size()
+	
+	if players_won == amount_of_players:
 		print("All players have won")
 		hud.stop_timer()
 		if multiplayer.is_server():
@@ -118,6 +116,7 @@ func set_multiplayer():
 
 func start_next_hole_timer():
 	hud.stop_timer()
+	
 	if not multiplayer.is_server():
 		return
 	
