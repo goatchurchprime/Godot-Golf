@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://bir3vonmeqs5f" path="res://scenes/decorations/grassy/bush.tscn" id="18_4u3tm"]
 
 [sub_resource type="Gradient" id="Gradient_iqyxn"]
+offsets = PackedFloat32Array(0, 0.935829, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.937255, 0.937255, 0.909804, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_jaue7"]
 gradient = SubResource("Gradient_iqyxn")
@@ -56,7 +58,7 @@ glow_levels/7 = 1.0
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_jaue7")
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1dlyn"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2414m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6e5g"]
 size = Vector3(80, 1, 80)
@@ -95,14 +97,12 @@ size = Vector3(24.3118, 5.61208, 20.4122)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wxkmx")
-camera_attributes = SubResource("CameraAttributesPractical_1dlyn")
+camera_attributes = SubResource("CameraAttributesPractical_2414m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.771642, 0.633667, -0.0550903, 0.47527, -0.516853, 0.712026, 0.422714, -0.575612, -0.699989, 12.1059, 1.40531, 15.9237)
-light_color = Color(1, 1, 0.898039, 1)
+transform = Transform3D(0.866212, 0.132983, -0.481656, 0.47527, -0.516853, 0.712026, -0.154258, -0.845682, -0.510907, 0.108147, -0.140501, 0.0181808)
 light_energy = 3.0
 shadow_enabled = true
-directional_shadow_mode = 1
 
 [node name="Floor" type="StaticBody3D" parent="." groups=["Grass"]]
 
