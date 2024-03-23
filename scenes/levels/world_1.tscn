@@ -19,8 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://bir3vonmeqs5f" path="res://scenes/decorations/grassy/bush.tscn" id="18_4u3tm"]
 
 [sub_resource type="Gradient" id="Gradient_iqyxn"]
-offsets = PackedFloat32Array(0, 0.935829, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.937255, 0.937255, 0.909804, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.946524, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.921569, 0.921569, 0.894118, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_jaue7"]
 gradient = SubResource("Gradient_iqyxn")
