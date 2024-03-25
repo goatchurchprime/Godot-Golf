@@ -55,6 +55,10 @@ ssao_radius = 2.75
 ssao_intensity = 5.0
 ssao_detail = 0.0
 glow_levels/7 = 1.0
+fog_enabled = true
+fog_sun_scatter = 0.2
+fog_density = 0.002
+fog_sky_affect = 0.15
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_jaue7")
 
