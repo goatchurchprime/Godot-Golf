@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://bf0wxjnst3lm0"]
 
 [ext_resource type="Theme" uid="uid://cui388khn2ihv" path="res://themes/menu_theme.tres" id="1_h6dxh"]
-[ext_resource type="Texture2D" uid="uid://irlti1bgtydq" path="res://assets/images/godot_golf.png" id="1_mnjtw"]
 [ext_resource type="Script" path="res://scripts/gui/level_select.gd" id="1_w2a3l"]
+[ext_resource type="Texture2D" uid="uid://dgnyfhw1yvvt1" path="res://assets/images/godot_golf_logo.png" id="3_5qana"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5yox"]
-bg_color = Color(0, 0, 0, 0.34902)
+bg_color = Color(0, 0, 0, 0.301961)
 skew = Vector2(0.6, 0)
 
 [sub_resource type="Theme" id="Theme_1668k"]
@@ -56,7 +56,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="LevelContainer"]
 layout_mode = 2
-texture = ExtResource("1_mnjtw")
+texture = ExtResource("3_5qana")
 expand_mode = 5
 
 [node name="HSeparator" type="HSeparator" parent="LevelContainer"]
