@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/gui/multiplayer_menu.gd" id="1_7u6sm"]
 [ext_resource type="PackedScene" uid="uid://w6qkohd2ejme" path="res://scenes/golfball.tscn" id="2_52pmy"]
-[ext_resource type="Texture2D" uid="uid://irlti1bgtydq" path="res://assets/images/godot_golf.png" id="3_sgrph"]
 [ext_resource type="Theme" uid="uid://cui388khn2ihv" path="res://themes/menu_theme.tres" id="4_0icmm"]
+[ext_resource type="Texture2D" uid="uid://dgnyfhw1yvvt1" path="res://assets/images/godot_golf_logo.png" id="4_o1rfd"]
 
 [node name="MultiplayerMenu" type="Control"]
 layout_mode = 3
@@ -63,7 +63,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="SingleplayerMultiplayerContainer"]
 layout_mode = 2
-texture = ExtResource("3_sgrph")
+texture = ExtResource("4_o1rfd")
 expand_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SingleplayerMultiplayerContainer"]
