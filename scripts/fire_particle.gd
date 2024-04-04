@@ -13,6 +13,9 @@ func _ready():
 				original_albedo = mat.albedo_color
 				mat.albedo_color = Color(1,0,0,1)
 
+func _process(delta):
+	look_at(Vector3.UP)
+
 func _on_timer_timeout():
 	if mat and original_albedo:
 		mat.albedo_color = original_albedo
