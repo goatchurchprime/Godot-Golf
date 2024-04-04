@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://d1s048mumxyuh"]
+[gd_scene load_steps=57 format=3 uid="uid://d1s048mumxyuh"]
 
 [ext_resource type="PackedScene" uid="uid://cc5fvw3tlma6w" path="res://scenes/level groups/non_playable_area.tscn" id="2_2ncwk"]
 [ext_resource type="PackedScene" uid="uid://djlxy14ltetd6" path="res://scenes/level groups/level_group.tscn" id="2_gsy5m"]
@@ -100,6 +100,20 @@ size = Vector3(3, 0.1, 0.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ervh3"]
 size = Vector3(0.915, 0.2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0tnhd"]
+material = ExtResource("17_xrs6o")
+size = Vector3(3, 0.02, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h6shw"]
+size = Vector3(3, 0.02, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5xvui"]
+material = ExtResource("15_mx2a7")
+size = Vector3(0.1, 0.4, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8tckh"]
+size = Vector3(0.1, 0.4, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ovebc"]
 material = ExtResource("17_xrs6o")
@@ -511,8 +525,37 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -6.7, 2.33
 [node name="RowShape4" parent="LevelGroup4/Course" instance=ExtResource("5_0dbu2")]
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -6.7, 3.83967, -9.85341)
 
-[node name="CornerShape2" parent="LevelGroup4/Course" instance=ExtResource("10_g6ki5")]
+[node name="CornerShape2" type="Node3D" parent="LevelGroup4/Course"]
 transform = Transform3D(-4.37114e-08, 0, -1, -0.5, 0.866025, 2.18557e-08, 0.866025, 0.5, -3.78552e-08, -6.7, 5.33967, -12.4534)
+
+[node name="Grass" type="StaticBody3D" parent="LevelGroup4/Course/CornerShape2"]
+physics_material_override = ExtResource("12_nddy6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelGroup4/Course/CornerShape2/Grass"]
+mesh = SubResource("BoxMesh_0tnhd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup4/Course/CornerShape2/Grass"]
+shape = SubResource("BoxShape3D_h6shw")
+
+[node name="Corners" type="StaticBody3D" parent="LevelGroup4/Course/CornerShape2" groups=["Wood"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1.5)
+physics_material_override = ExtResource("14_4gxrc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LevelGroup4/Course/CornerShape2/Corners"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 0, -1.5)
+mesh = SubResource("BoxMesh_5xvui")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelGroup4/Course/CornerShape2/Corners"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 0, -1.5)
+shape = SubResource("BoxShape3D_8tckh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelGroup4/Course/CornerShape2/Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
+mesh = SubResource("BoxMesh_5xvui")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelGroup4/Course/CornerShape2/Corners"]
+shape = SubResource("BoxShape3D_8tckh")
 
 [node name="RowShape5" type="Node3D" parent="LevelGroup4/Course"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0.5, 0.866025, 2.18557e-08, -0.866025, 0.5, -3.78552e-08, -3.7, 5.33967, -12.4534)
