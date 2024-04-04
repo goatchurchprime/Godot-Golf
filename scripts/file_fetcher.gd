@@ -5,6 +5,7 @@ static func get_scenes_in_path(path):
 	var dir = DirAccess.open(path)
 	
 	if !dir:
+		printerr("FileFetcher missing scene path")
 		return null
 		
 	dir.list_dir_begin()
