@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3soqqlkvvbbp"]
+[gd_scene load_steps=6 format=3 uid="uid://d3soqqlkvvbbp"]
 
 [ext_resource type="Script" path="res://scripts/gui/multiplayer_menu.gd" id="1_7u6sm"]
 [ext_resource type="PackedScene" uid="uid://w6qkohd2ejme" path="res://scenes/golfball.tscn" id="2_52pmy"]
 [ext_resource type="Theme" uid="uid://cui388khn2ihv" path="res://themes/menu_theme.tres" id="4_0icmm"]
 [ext_resource type="Texture2D" uid="uid://dgnyfhw1yvvt1" path="res://assets/images/godot_golf_logo.png" id="4_o1rfd"]
+[ext_resource type="PackedScene" uid="uid://cfmoahalri06d" path="res://addons/player-networking/NetworkGateway.tscn" id="5_pirhu"]
 
 [node name="MultiplayerMenu" type="Control"]
 layout_mode = 3
@@ -78,6 +79,21 @@ text = "Singleplayer"
 layout_mode = 2
 text = "Multiplayer"
 
+[node name="HBoxWebRTC" type="HBoxContainer" parent="SingleplayerMultiplayerContainer"]
+layout_mode = 2
+
+[node name="WebRTC" type="Button" parent="SingleplayerMultiplayerContainer/HBoxWebRTC"]
+layout_mode = 2
+text = "WebRTC network"
+
+[node name="Label" type="Label" parent="SingleplayerMultiplayerContainer/HBoxWebRTC"]
+layout_mode = 2
+text = "Roomname:"
+
+[node name="LineEdit" type="LineEdit" parent="SingleplayerMultiplayerContainer/HBoxWebRTC"]
+layout_mode = 2
+text = "Tokyo"
+
 [node name="MultiplayerContainer" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 1
@@ -111,8 +127,18 @@ placeholder_text = "Insert host-IP"
 layout_mode = 2
 text = "Join"
 
+[node name="NetworkGateway" parent="." instance=ExtResource("5_pirhu")]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 476.0
+offset_right = 921.0
+offset_bottom = 773.0
+
 [connection signal="pressed" from="NameSelectionContainer/NameConfirmButton" to="." method="_on_name_confirm_button_pressed"]
 [connection signal="pressed" from="SingleplayerMultiplayerContainer/HBoxContainer/SingleplayerButton" to="." method="_on_singleplayer_button_pressed"]
 [connection signal="pressed" from="SingleplayerMultiplayerContainer/HBoxContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
+[connection signal="pressed" from="SingleplayerMultiplayerContainer/HBoxWebRTC/WebRTC" to="." method="_on_web_rtc_pressed"]
 [connection signal="pressed" from="MultiplayerContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="MultiplayerContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="resolved_as_necessary" from="NetworkGateway" to="." method="_on_network_gateway_resolved_as_necessary"]
+[connection signal="webrtc_multiplayerpeer_set" from="NetworkGateway" to="." method="_on_network_gateway_webrtc_multiplayerpeer_set"]

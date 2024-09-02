@@ -47,4 +47,3 @@ func set_status(status):
 	else:
 		remove_child(customization_container)
 		add_child(customize_button)
-

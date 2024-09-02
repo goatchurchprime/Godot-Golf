@@ -30,7 +30,7 @@ func _on_host_pressed():
 
 func _on_join_pressed():
 	hide()
-	enet_peer.create_client(ip_line_edit.text, PORT)
+	enet_peer.create_client(ip_line_edit.text if ip_line_edit.text else "127.0.0.1", PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	add_player(multiplayer.get_unique_id())
 	Global.set_multiplayer()
@@ -64,3 +64,36 @@ func _on_name_confirm_button_pressed():
 	name_selection_container.queue_free()
 	name_selection_container = null
 	singleplayer_multiplayer_container.visible = true
+
+func _on_web_rtc_pressed():
+	$NetworkGateway.PlayerConnections.LocalPlayer.get_node("Label").text = username
+	var roomname = singleplayer_multiplayer_container.get_node("HBoxWebRTC/LineEdit").text
+	if roomname:
+		$NetworkGateway.MQTTsignalling.get_node("VBox/HBox2/roomname").text = roomname
+		$NetworkGateway.selectandtrigger_networkoption($NetworkGateway.NETWORK_OPTIONS_MQTT_WEBRTC.AS_NECESSARY_MANUALCHANGE)
+		singleplayer_multiplayer_container.queue_free()
+		singleplayer_multiplayer_container = null
+
+
+func _on_network_gateway_resolved_as_necessary(asserver):
+	print("_on_network_gateway_resolved_as_necessary ", asserver)
+	if asserver:
+		Global.set_multiplayer()
+		hide()
+		$NetworkGateway.selectandtrigger_networkoption($NetworkGateway.NETWORK_OPTIONS_MQTT_WEBRTC.AS_SERVER)
+	else:
+		hide()
+		$NetworkGateway.selectandtrigger_networkoption($NetworkGateway.NETWORK_OPTIONS_MQTT_WEBRTC.AS_CLIENT)
+
+
+func _on_network_gateway_webrtc_multiplayerpeer_set(asserver):
+	print("_on_network_gateway_webrtc_multiplayerpeer_set ", asserver)
+	if asserver:
+		print("** server ",multiplayer.multiplayer_peer, multiplayer.is_server())
+		multiplayer.peer_connected.connect(add_player)
+		multiplayer.peer_disconnected.connect(player_disconnected)
+		add_player(multiplayer.get_unique_id())
+	else:
+		print("** client ",multiplayer.multiplayer_peer, multiplayer.is_server())
+		add_player(multiplayer.get_unique_id())
+		Global.set_multiplayer()
